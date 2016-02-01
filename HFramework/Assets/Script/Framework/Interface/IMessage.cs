@@ -6,8 +6,8 @@ namespace HFramework
     /// <summary>
     /// 控制逻辑必须继承
     /// </summary>
-    public interface ICommand
+    public interface IMessage
     {
-        void Execute(Message paramMessage);
+        void OnMessage(Message paramMessage);
     }
 }
