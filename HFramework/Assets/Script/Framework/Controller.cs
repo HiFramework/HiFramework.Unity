@@ -4,7 +4,7 @@ using System;
 
 namespace HFramework
 {
-    public class Controller : IMessage
+    public class Controller : IController
     {
         public Action<Message> viewEventHandler;
 
@@ -16,6 +16,16 @@ namespace HFramework
         public void OnMessage(Message paramMessage)
         {
 
+        }
+
+        public void Register()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove()
+        {
+            throw new NotImplementedException();
         }
     }
 }

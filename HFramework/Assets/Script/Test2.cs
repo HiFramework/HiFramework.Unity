@@ -5,20 +5,8 @@ using System;
 
 public class Test2 : Controller
 {
-    public void Execute(Message paramMessage)
+    public override void OnMessage(Message paramMessage)
     {
-        Debug.Log("execute");
-    }
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        Debug.Log(paramMessage.name);
     }
 }

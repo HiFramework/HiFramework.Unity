@@ -5,35 +5,35 @@ namespace HFramework
 {
     public class ControllerMediator
     {
-        private IDictionary<Message, Type> messageMap;
+        private IDictionary<string, Type> controllerMap;
 
         public ControllerMediator()
         {
-            messageMap = new Dictionary<Message, Type>();
+            controllerMap = new Dictionary<string, Type>();
         }
-        public void DispatchMessage(Message paramMessage)
+        public void DispatchMessage(string paramKey, Message paramMessage)
         {
-            if (messageMap.ContainsKey(paramMessage))
+            if (controllerMap.ContainsKey(paramKey))
             {
-                Type type = messageMap[paramMessage];
+                Type type = controllerMap[paramKey];
                 object obj = Activator.CreateInstance(type);
                 if (obj is Controller)
                     ((Controller)obj).OnMessage(paramMessage);
             }
             else
             {
-                UnityEngine.Debug.LogError("You should register message to controller first");
+                UnityEngine.Debug.LogError("You should register key to controller first");
             }
         }
-        public void Register(Message paramMessage, Type paramType)
+        public void Register<T>(string paramKey)
         {
-            messageMap[paramMessage] = paramType;
+            controllerMap[paramKey] = typeof(T);
         }
 
-        public void Remove(Message paramMessage)
+        public void Remove(string paramKey)
         {
-            if (messageMap.ContainsKey(paramMessage))
-                messageMap.Remove(paramMessage);
+            if (controllerMap.ContainsKey(paramKey))
+                controllerMap.Remove(paramKey);
         }
     }
 }

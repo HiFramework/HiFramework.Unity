@@ -9,11 +9,16 @@ public class Test1 : MonoBehaviour
     {
 
 
-        Message me = new Message("123");
+        //Message me = new Message("123");
 
 
-        Facade.Controller.Register(me, typeof(Test2));
-        Facade.Controller.DispatchMessage(me);
+        //Facade.Controller.Register<Test2>(me);
+        //Facade.Controller.DispatchMessage(me);
+
+
+
+
+
     }
 
     // Update is called once per frame
