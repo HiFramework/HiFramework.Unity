@@ -1,27 +1,24 @@
-﻿//using UnityEngine;
-//using System.Collections;
-//using HFramework;
-//public class Test1 : MonoBehaviour
-//{
+﻿using UnityEngine;
+using System.Collections;
+using HFramework;
+public class Test1 : MonoBehaviour
+{
 
-//    // Use this for initialization
-//    void Start()
-//    {
-
-
-//        Message me = new Message("123");
+    // Use this for initialization
+    void Start()
+    {
 
 
-//        Debug.Log(Facade.Controller);
+        Message me = new Message("123");
 
 
-//        Facade.Controller.Register(me, typeof(Test2));
-//        Facade.Controller.Execute(me);
-//    }
+        Facade.Controller.Register(me, typeof(Test2));
+        Facade.Controller.DispatchMessage(me);
+    }
 
-//    // Update is called once per frame
-//    void Update()
-//    {
+    // Update is called once per frame
+    void Update()
+    {
 
-//    }
-//}
+    }
+}

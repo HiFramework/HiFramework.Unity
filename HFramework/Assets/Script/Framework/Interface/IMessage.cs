@@ -8,6 +8,7 @@ namespace HFramework
     /// </summary>
     public interface IMessage
     {
+        void DispatchMessage(Message paramMessage);
         void OnMessage(Message paramMessage);
     }
 }

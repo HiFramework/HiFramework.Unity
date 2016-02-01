@@ -2,25 +2,25 @@
 {
     public class Facade
     {
-        private static Controller controller;
-        public static Controller Controller
+        private static ControllerMediator controllerMediator;
+        public static ControllerMediator Controller
         {
             get
             {
-                if (controller == null)
-                    controller = new Controller();
-                return controller;
+                if (controllerMediator == null)
+                    controllerMediator = new ControllerMediator();
+                return controllerMediator;
             }
         }
 
-        private static Mediator mediator;
-        public static Mediator Mediator
+        private static ViewMediator viewMediator;
+        public static ViewMediator View
         {
             get
             {
-                if (mediator == null)
-                    mediator = new Mediator();
-                return mediator;
+                if (viewMediator == null)
+                    viewMediator = new ViewMediator();
+                return View;
             }
         }
     }
