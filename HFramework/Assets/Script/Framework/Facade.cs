@@ -2,26 +2,16 @@
 {
     public class Facade
     {
-        private static Facade instance;
-        public static Facade Instance
+        private static Controller controller;
+        public static Controller Controller
         {
             get
             {
-                if (instance == null)
-                    instance = new Facade();
-                return instance;
+                if (controller == null)
+                    controller = new Controller();
+                return controller;
             }
         }
-
-        public Controller controller;
-
-        public void StartFramework()
-        {
-            if (controller == null)
-                controller = new Controller();
-
-        }
-
 
     }
 }

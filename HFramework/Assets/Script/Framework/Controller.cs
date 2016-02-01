@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace HFramework
 {
-    public class Controller : IController
+    public class Controller : ICommand
     {
         private IDictionary<Message, Type> messageMap;
 
@@ -23,7 +23,7 @@ namespace HFramework
             {
                 Type type = messageMap[paramMessage];
                 object obj = Activator.CreateInstance(type);
-                ((IController)obj).Execute(paramMessage);
+                ((ICommand)obj).Execute(paramMessage);
             }
             else
             {
