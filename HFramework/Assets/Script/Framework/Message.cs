@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HFramework
+namespace HiFramework
 {
     public class Message
     {

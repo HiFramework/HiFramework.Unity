@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace HFramework
+namespace HiFramework
 {
-    public class ControllerMediator
+    public class ControllerMediator : IController, IMessageDispatch
     {
         private IDictionary<string, Type> controllerMap;
 
@@ -11,11 +11,13 @@ namespace HFramework
         {
             controllerMap = new Dictionary<string, Type>();
         }
-        public void DispatchMessage(string paramKey, Message paramMessage)
+
+        public void Dispatch<T>(T paramKey, Message paramMessage)
         {
-            if (controllerMap.ContainsKey(paramKey))
+            string key = (string)Convert.ChangeType(paramKey, typeof(string));
+            if (controllerMap.ContainsKey(key))
             {
-                Type type = controllerMap[paramKey];
+                Type type = controllerMap[key];
                 object obj = Activator.CreateInstance(type);
                 if (obj is Controller)
                     ((Controller)obj).OnMessage(paramMessage);

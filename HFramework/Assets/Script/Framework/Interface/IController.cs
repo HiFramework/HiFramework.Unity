@@ -1,13 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
-
-
-
-namespace HFramework
+namespace HiFramework
 {
-    public interface IController : IMessage
+    public interface IController : IMessageDispatch
     {
-        void Register();
-        void Remove();
+        void Register<T>(string paramKey);
+        void Remove(string paramKey);
     }
 }

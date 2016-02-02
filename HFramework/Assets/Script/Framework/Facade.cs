@@ -1,26 +1,26 @@
-﻿namespace HFramework
+﻿namespace HiFramework
 {
     public class Facade
     {
-        private static ControllerMediator controllerMediator;
-        public static ControllerMediator Controller
+        private static IController controller;
+        public static IController Controller
         {
             get
             {
-                if (controllerMediator == null)
-                    controllerMediator = new ControllerMediator();
-                return controllerMediator;
+                if (controller == null)
+                    controller = new ControllerMediator();
+                return controller;
             }
         }
 
-        private static ViewMediator viewMediator;
-        public static ViewMediator View
+        private static IView view;
+        public static IView View
         {
             get
             {
-                if (viewMediator == null)
-                    viewMediator = new ViewMediator();
-                return View;
+                if (view == null)
+                    view = new ViewMediator();
+                return view;
             }
         }
     }

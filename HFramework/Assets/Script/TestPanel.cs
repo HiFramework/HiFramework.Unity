@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using HFramework;
+using HiFramework;
 
 public class TestPanel : View
 {

@@ -2,30 +2,30 @@
 using System.Collections;
 using System;
 
-namespace HFramework
+namespace HiFramework
 {
-    public class Controller : IController
+    public class Controller : IController, IMessage
     {
         public Action<Message> viewEventHandler;
 
-        public void DispatchMessage(Message paramMessage)
+        public void Dispatch<T>(T paramKey, Message paramMessage)
         {
 
         }
 
-        public void OnMessage(Message paramMessage)
+        public virtual void OnMessage(Message paramMessage)
         {
 
         }
 
-        public void Register()
+        public void Register<T>(string paramKey)
         {
-            throw new NotImplementedException();
+            Facade.Controller.Register<T>(paramKey);
         }
 
-        public void Remove()
+        public void Remove(string paramKey)
         {
-            throw new NotImplementedException();
+            Facade.Controller.Remove(paramKey);
         }
     }
 }

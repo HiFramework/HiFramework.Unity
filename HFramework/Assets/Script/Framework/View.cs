@@ -2,19 +2,16 @@
 using System.Collections;
 using System;
 
-namespace HFramework
+namespace HiFramework
 {
 
-    public abstract class View : MonoBehaviour, IView
+    public abstract class View : MonoBehaviour, IView, IMessage
     {
-        /// <summary>
-        /// ui to controller
-        /// </summary>
-        /// <param name="paramMessage"></param>
-        public void DispatchMessage(Message paramMessage)
+        public void Dispatch<T>(T paramKey, Message paramMessage)
         {
-            Facade.View.DispatchMessage(this, paramMessage);
+            throw new NotImplementedException();
         }
+
 
         /// <summary>
         /// controller to view
@@ -25,10 +22,13 @@ namespace HFramework
 
         }
 
-        public void Register(IView paramView, Controller paramController)
+        public void Register(IView paramView, IController paramController)
         {
             Facade.View.Register(this, paramController);
-            paramController.viewEventHandler = OnMessage;
+        }
+        public void Remove(IView paramView)
+        {
+            Facade.View.Remove(paramView);
         }
     }
 

@@ -3,36 +3,38 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-namespace HFramework
+namespace HiFramework
 {
-    public class ViewMediator
+    public class ViewMediator : IView, IMessageDispatch
     {
-        private Dictionary<IView, Controller> viewMap;
+        private IDictionary<IView, IController> controllerMap;
         public ViewMediator()
         {
-            viewMap = new Dictionary<IView, Controller>();
+            controllerMap = new Dictionary<IView, IController>();
         }
 
-        public void DispatchMessage(IView paramView, Message paramMessage)
+        public void Dispatch<T>(T paramKey, Message paramMessage)
         {
-            if (viewMap.ContainsKey(paramView))
+            IView key = (IView)Convert.ChangeType(paramKey, typeof(IView));
+            if (controllerMap.ContainsKey(key))
             {
-                Controller controller = viewMap[paramView];
-                controller.OnMessage(paramMessage);
+                IController controller = controllerMap[key];
+                ((Controller)controller).OnMessage(paramMessage);
             }
             else
             {
                 UnityEngine.Debug.LogError("You should register view to controller first");
             }
         }
-        public void Register(IView paramView, Controller paramController)
+
+        public void Register(IView paramView, IController paramController)
         {
-            viewMap[paramView] = paramController;
+            controllerMap[paramView] = paramController;
         }
         public void Remove(IView paramView)
         {
-            if (viewMap.ContainsKey(paramView))
-                viewMap.Remove(paramView);
+            if (controllerMap.ContainsKey(paramView))
+                controllerMap.Remove(paramView);
         }
     }
 }

@@ -1,11 +1,12 @@
 ﻿
-namespace HFramework
+namespace HiFramework
 {
     /// <summary>
     /// ui层的逻辑控制
     /// </summary>
-    public interface IView : IMessage
+    public interface IView
     {
-        void Register(IView paramView, Controller paramController);
+        void Register(IView paramView, IController paramController);
+        void Remove(IView paramView);
     }
 }

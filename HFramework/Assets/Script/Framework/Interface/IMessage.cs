@@ -2,14 +2,13 @@
 using System.Collections;
 using System;
 
-namespace HFramework
+namespace HiFramework
 {
     /// <summary>
     /// 控制逻辑必须继承
     /// </summary>
-    public interface IMessage
+    public interface IMessage : IMessageDispatch
     {
-        void DispatchMessage(Message paramMessage);
         void OnMessage(Message paramMessage);
     }
 }
