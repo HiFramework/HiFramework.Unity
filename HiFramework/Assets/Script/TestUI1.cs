@@ -21,6 +21,6 @@ public class TestUI1 : View
 
     void ControllerEvent(Message msg)
     {
-        Debug.Log(msg.ID);
+        Debug.Log(msg.Data);
     }
 }

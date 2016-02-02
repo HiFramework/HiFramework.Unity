@@ -6,7 +6,7 @@ public class TestUI2 : Controller
 {
     public override void OnMessage(Message paramMessage)
     {
-        Debug.Log(paramMessage.ID);
+        Debug.Log(paramMessage.Data);
 
 
         Message msg = new Message("controller msg");
