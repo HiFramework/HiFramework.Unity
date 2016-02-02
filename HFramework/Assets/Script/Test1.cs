@@ -13,8 +13,8 @@ public class Test1 : MonoBehaviour
         Facade.Controller.Register<Test2>("123");
 
 
-        Message me = new Message("123");
-        Facade.Controller.Dispatch<string>("123", me);
+        Message msg = new Message("123");
+        Facade.Controller.Dispatch<string>("123", msg);
     }
 
     // Update is called once per frame

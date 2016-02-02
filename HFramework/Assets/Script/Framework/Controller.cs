@@ -6,11 +6,11 @@ namespace HiFramework
 {
     public class Controller : IController, IMessage
     {
-        public Action<Message> viewEventHandler;
+        public static Action<Message> viewEventHandler;
 
         public void Dispatch<T>(T paramKey, Message paramMessage)
         {
-
+            Facade.Controller.Dispatch<T>(paramKey, paramMessage);
         }
 
         public virtual void OnMessage(Message paramMessage)

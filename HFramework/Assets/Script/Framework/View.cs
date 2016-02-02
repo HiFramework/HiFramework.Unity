@@ -5,27 +5,18 @@ using System;
 namespace HiFramework
 {
 
-    public abstract class View : MonoBehaviour, IView, IMessage
+    public abstract class View : MonoBehaviour, IView
     {
         public void Dispatch<T>(T paramKey, Message paramMessage)
         {
-            throw new NotImplementedException();
+            Facade.View.Dispatch(this, paramMessage);
         }
 
-
-        /// <summary>
-        /// controller to view
-        /// </summary>
-        /// <param name="paramMessage"></param>
-        public void OnMessage(Message paramMessage)
+        public void Register<T>(IView paramKey)
         {
-
+            Facade.View.Register<T>(paramKey);
         }
 
-        public void Register(IView paramView, IController paramController)
-        {
-            Facade.View.Register(this, paramController);
-        }
         public void Remove(IView paramView)
         {
             Facade.View.Remove(paramView);
