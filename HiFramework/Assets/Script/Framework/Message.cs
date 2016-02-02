@@ -4,15 +4,25 @@ namespace HiFramework
 {
     public class Message
     {
-        public object Data { get; private set; }
-        public Action<Message> EventHandler { get; private set; }
+        public string ID { get; private set; }//消息号
+        public object Body { get; private set; }//消息内容
+        public Action<Message> EventHandler { get; private set; }//慎用回调
 
+        /// <summary>
+        /// 构造消息id
+        /// </summary>
+        /// <param name="paramID"></param>
+        public Message(string paramID) :
+            this(paramID, null)
+        {
+
+        }
         /// <summary>
         /// 构造消息,包含消息内容
         /// </summary>
         /// <param name="paramData"></param>
-        public Message(object paramData)
-            : this(paramData, null)
+        public Message(string paramID, object paramBody)
+            : this(paramID, paramBody, null)
         {
         }
 
@@ -21,9 +31,10 @@ namespace HiFramework
         /// </summary>
         /// <param name="paramData"></param>
         /// <param name="paramHandler"></param>
-        public Message(object paramData, Action<Message> paramHandler)
+        public Message(string paramID, object paramBody, Action<Message> paramHandler)
         {
-            Data = paramData;
+            ID = paramID;
+            Body = paramBody;
             EventHandler = paramHandler;
         }
     }

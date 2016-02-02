@@ -9,7 +9,7 @@ public class TestController : Controller
     public override void OnMessage(Message paramMessage)
     {
 
-        Debug.Log("start game: " + paramMessage.Data);
+        Debug.Log("start game: " + paramMessage.Body);
 
 
 
