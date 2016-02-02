@@ -8,12 +8,14 @@ public class Test2 : Controller
 
     public override void OnMessage(Message paramMessage)
     {
-        Debug.Log(paramMessage.ID);
+
+        Debug.Log("start game: " + paramMessage.ID + paramMessage.Body);
 
 
-        Message msg = new Message("to ui");
 
-        //viewEventHandler(msg);
+
+        //执行回调
+        Message msg = new Message("test2", "test2body", null);
+        paramMessage.EventHandler(msg);
     }
-
 }

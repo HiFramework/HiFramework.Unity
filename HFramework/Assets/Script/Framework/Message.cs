@@ -6,7 +6,7 @@ namespace HiFramework
     {
         public string ID { get; private set; }
         public object Body { get; private set; }
-        public Action EventHandler { get; private set; }
+        public Action<Message> EventHandler { get; private set; }
 
         /// <summary>
         /// 消息名(或ID)
@@ -30,7 +30,7 @@ namespace HiFramework
         /// <param name="paramName"></param>
         /// <param name="paramMessage"></param>
         /// <param name="paramHandler"></param>
-        public Message(string paramID, object paramBody, Action paramHandler)
+        public Message(string paramID, object paramBody, Action<Message> paramHandler)
         {
             ID = paramID;
             Body = paramBody;

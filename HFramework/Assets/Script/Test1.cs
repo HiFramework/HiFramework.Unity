@@ -4,22 +4,23 @@ using HiFramework;
 public class Test1 : MonoBehaviour
 {
 
+    void Awake()
+    {
+        Facade.Controller.Register<Test2>(EnumCommand.StartGame.ToString());
+    }
+
     // Use this for initialization
     void Start()
     {
+        Message msg = new Message("test1", "test1body", CallBack);
 
-
-
-        Facade.Controller.Register<Test2>("123");
-
-
-        Message msg = new Message("123");
-        Facade.Controller.Dispatch<string>("123", msg);
+        Facade.Controller.Dispatch<string>(EnumCommand.StartGame.ToString(), msg);
     }
 
-    // Update is called once per frame
-    void Update()
+    void CallBack(Message paramMessage)
     {
-
+        Debug.Log("call back: " + paramMessage.ID + paramMessage.Body);
     }
+
+
 }
