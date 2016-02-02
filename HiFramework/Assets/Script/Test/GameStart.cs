@@ -1,19 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 using HiFramework;
-public class Test1 : MonoBehaviour
+public class GameStart : MonoBehaviour
 {
-
-    void Awake()
-    {
-        Facade.Controller.Register<Test2>(EnumCommand.StartGame.ToString());
-    }
-
-    // Use this for initialization
     void Start()
     {
-        Message msg = new Message("test1", CallBack);
+        new GameObject(Common.gameworldName).AddComponent<Gameworld>();
 
+
+
+        Facade.Controller.Register<TestController>(EnumCommand.StartGame.ToString());
+
+
+        Message msg = new Message("test1", CallBack);
         Facade.Controller.Dispatch<string>(EnumCommand.StartGame.ToString(), msg);
     }
 
@@ -21,6 +20,4 @@ public class Test1 : MonoBehaviour
     {
         Debug.Log("call back: " + paramMessage.Data);
     }
-
-
 }

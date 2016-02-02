@@ -28,6 +28,7 @@ namespace HiFramework
                 UnityEngine.Debug.LogError("You should register view to controller first");
             }
         }
+
         public void Register<T>(IView paramKey)
         {
             controllerMap[paramKey] = typeof(T);
@@ -37,6 +38,14 @@ namespace HiFramework
         {
             if (controllerMap.ContainsKey(paramView))
                 controllerMap.Remove(paramView);
+        }
+
+        public void OnTick(float paramTime)
+        {
+            foreach (KeyValuePair<IView, Type> param in controllerMap)
+            {
+                param.Key.OnTick(paramTime);
+            }
         }
     }
 }
