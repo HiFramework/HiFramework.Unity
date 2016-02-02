@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using HiFramework;
-public class GameWorld : MonoBehaviour
+public class Test1 : MonoBehaviour
 {
 
     void Awake()
