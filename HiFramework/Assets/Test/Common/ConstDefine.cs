@@ -1,6 +1,6 @@
 ﻿public enum EnumCommand
 {
     StartGame,
-    Download,
-    Enter,
+    DownloadFile,
+    EnterGame
 }

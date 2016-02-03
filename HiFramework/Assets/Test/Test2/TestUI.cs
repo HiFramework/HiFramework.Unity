@@ -4,12 +4,12 @@ using System.Collections;
 
 using HiFramework;
 
-public class TestUI1 : View
+public class TestUI : View
 {
     void Awake()
     {
-        Register<TestUI2>(this);
-        TestUI2.viewEventHandler = ControllerEvent;
+        Register<TestUIController>(this);
+        TestUIController.viewEventHandler = ControllerEvent;
     }
 
     // Use this for initialization
@@ -21,6 +21,6 @@ public class TestUI1 : View
 
     void ControllerEvent(Message msg)
     {
-        Debug.Log(msg.Body);
+        Debug.Log(msg.ID);
     }
 }

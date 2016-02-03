@@ -2,11 +2,11 @@
 using System.Collections;
 using HiFramework;
 
-public class TestUI2 : Controller
+public class TestUIController : Controller
 {
     public override void OnMessage(Message paramMessage)
     {
-        Debug.Log(paramMessage.Body);
+        Debug.Log(paramMessage.ID);
 
 
         Message msg = new Message("controller msg");
