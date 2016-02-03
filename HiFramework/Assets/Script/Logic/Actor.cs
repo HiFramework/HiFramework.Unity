@@ -1,25 +1,20 @@
 ﻿using HiFramework;
 using System;
-public class Actor : View, IDisposable
+
+using UnityEngine;
+public class Actor : MonoBehaviour, IDisposable
 {
     public ActorController Controller { get; protected set; }
     public ActorData Data { get; protected set; }
     public ActorSync Sync { get; protected set; }
+
+    public ActorView View { get; protected set; }
 
     private bool disposed = false;
 
 
 
     protected void Init()
-    {
-
-    }
-
-    /// <summary>
-    /// 此方法替代update
-    /// </summary>
-    /// <param name="paramTime"></param>
-    public override void OnTick(float paramTime)
     {
 
     }
@@ -47,6 +42,7 @@ public class Actor : View, IDisposable
             Controller = null;
             Data = null;
             Sync = null;
+            Destroy(View);
         }
         disposed = true;
     }
