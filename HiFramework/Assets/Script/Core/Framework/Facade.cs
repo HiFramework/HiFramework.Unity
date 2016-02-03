@@ -2,25 +2,14 @@
 {
     public class Facade
     {
-        private static IController controller;
-        public static IController Controller
+        private static ICommand mediator;
+        public static ICommand Mediator
         {
             get
             {
-                if (controller == null)
-                    controller = new ControllerMediator();
-                return controller;
-            }
-        }
-
-        private static IView view;
-        public static IView View
-        {
-            get
-            {
-                if (view == null)
-                    view = new ViewMediator();
-                return view;
+                if (mediator == null)
+                    mediator = new Mediator();
+                return mediator;
             }
         }
     }

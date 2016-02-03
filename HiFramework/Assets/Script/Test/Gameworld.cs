@@ -10,6 +10,6 @@ public class Gameworld : MonoBehaviour
     }
     void Update()
     {
-        Facade.View.OnTick(Time.deltaTime);
+        //Facade.Mediator.OnTick(Time.deltaTime);
     }
 }

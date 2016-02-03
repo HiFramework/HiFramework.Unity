@@ -10,7 +10,7 @@ namespace HiFramework
 
         public void Dispatch<T>(T paramKey, Message paramMessage)
         {
-            Facade.Controller.Dispatch<T>(paramKey, paramMessage);
+            Facade.Mediator.Dispatch<T>(paramKey, paramMessage);
         }
 
         public virtual void OnMessage(Message paramMessage)
@@ -20,12 +20,12 @@ namespace HiFramework
 
         public void Register<T>(string paramKey) where T :IController
         {
-            Facade.Controller.Register<T>(paramKey);
+            Facade.Mediator.Register<T>(paramKey);
         }
 
         public void Remove(string paramKey)
         {
-            Facade.Controller.Remove(paramKey);
+            Facade.Mediator.Remove(paramKey);
         }
     }
 }

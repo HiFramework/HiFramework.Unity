@@ -3,18 +3,19 @@ using System.Collections.Generic;
 
 namespace HiFramework
 {
-    public class ControllerMediator : IController, IMessageDispatch
+    public class Mediator : ICommand, IMessageDispatch
     {
-        private IDictionary<string, object> controllerMap;
+        private IDictionary<object, object> controllerMap;
 
-        public ControllerMediator()
+        public Mediator()
         {
-            controllerMap = new Dictionary<string, object>();
+            controllerMap = new Dictionary<object, object>();
         }
 
         public void Dispatch<T>(T paramKey, Message paramMessage)
         {
-            string key = (string)Convert.ChangeType(paramKey, typeof(string));
+            //IView key = (IView)Convert.ChangeType(paramKey, paramKey.GetType());
+            object key = paramKey;
             if (controllerMap.ContainsKey(key))
             {
                 object obj = controllerMap[key];
@@ -26,7 +27,8 @@ namespace HiFramework
                 UnityEngine.Debug.LogError("You should register key to controller first");
             }
         }
-        public void Register<T>(string paramKey) where T : IController
+
+        public void Register<T>(object paramKey) where T : IController
         {
             if (!controllerMap.ContainsKey(paramKey))
             {
@@ -35,8 +37,7 @@ namespace HiFramework
                 controllerMap[paramKey] = obj;
             }
         }
-
-        public void Remove(string paramKey)
+        public void Remove(object paramKey)
         {
             if (controllerMap.ContainsKey(paramKey))
                 controllerMap.Remove(paramKey);
