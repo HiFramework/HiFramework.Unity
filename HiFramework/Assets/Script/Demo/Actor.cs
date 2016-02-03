@@ -4,10 +4,25 @@ public class Actor : View, IDisposable
 {
     public ActorController Controller { get; protected set; }
     public ActorData Data { get; protected set; }
-    public ActorMove Move { get; protected set; }
     public ActorSync Sync { get; protected set; }
 
     private bool disposed = false;
+
+
+
+    protected void Init()
+    {
+
+    }
+
+    /// <summary>
+    /// 此方法替代update
+    /// </summary>
+    /// <param name="paramTime"></param>
+    public override void OnTick(float paramTime)
+    {
+
+    }
 
     public void OnDestroy()
     {
@@ -31,7 +46,6 @@ public class Actor : View, IDisposable
         {
             Controller = null;
             Data = null;
-            Move = null;
             Sync = null;
         }
         disposed = true;
