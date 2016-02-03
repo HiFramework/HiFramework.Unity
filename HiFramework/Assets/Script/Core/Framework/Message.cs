@@ -6,6 +6,7 @@ namespace HiFramework
     {
         public string ID { get; private set; }//消息号
         public object Body { get; private set; }//消息内容
+        [Obsolete("Be carefull when you use message's callback")]
         public Action<Message> EventHandler { get; private set; }//慎用回调
 
         /// <summary>

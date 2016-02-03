@@ -16,15 +16,16 @@ namespace HiFramework
 
         }
 
-        public void Register<T>(IView paramKey) where T : IController
+        public void Register<T>(object paramKey) where T : IController
         {
             Facade.Mediator.Register<T>(paramKey);
         }
 
-        public void Remove(IView paramView)
+        public void Remove(object paramKey)
         {
-            Facade.Mediator.Remove(paramView);
+            Facade.Mediator.Remove(paramKey);
         }
+
     }
 
 }

@@ -18,12 +18,12 @@ namespace HiFramework
 
         }
 
-        public void Register<T>(string paramKey) where T :IController
+        public void Register<T>(object paramKey) where T : IController
         {
             Facade.Mediator.Register<T>(paramKey);
         }
 
-        public void Remove(string paramKey)
+        public void Remove(object paramKey)
         {
             Facade.Mediator.Remove(paramKey);
         }
