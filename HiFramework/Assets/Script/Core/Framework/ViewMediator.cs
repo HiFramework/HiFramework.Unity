@@ -7,10 +7,10 @@ namespace HiFramework
 {
     public class ViewMediator : IView, IMessageDispatch
     {
-        private IDictionary<IView, Type> controllerMap;
+        private IDictionary<IView, object> controllerMap;
         public ViewMediator()
         {
-            controllerMap = new Dictionary<IView, Type>();
+            controllerMap = new Dictionary<IView, object>();
         }
 
         public void Dispatch<T>(T paramKey, Message paramMessage)
@@ -18,8 +18,7 @@ namespace HiFramework
             IView key = (IView)Convert.ChangeType(paramKey, paramKey.GetType());
             if (controllerMap.ContainsKey(key))
             {
-                Type type = controllerMap[key];
-                object obj = Activator.CreateInstance(type);
+                object obj = controllerMap[key];
                 if (obj is Controller)
                     ((Controller)obj).OnMessage(paramMessage);
             }
@@ -29,9 +28,14 @@ namespace HiFramework
             }
         }
 
-        public void Register<T>(IView paramKey)
+        public void Register<T>(IView paramKey) where T : IController
         {
-            controllerMap[paramKey] = typeof(T);
+            if (!controllerMap.ContainsKey(paramKey))
+            {
+                Type type = typeof(T);
+                object obj = Activator.CreateInstance(type);
+                controllerMap[paramKey] = obj;
+            }
         }
 
         public void Remove(IView paramView)
@@ -42,7 +46,7 @@ namespace HiFramework
 
         public void OnTick(float paramTime)
         {
-            foreach (KeyValuePair<IView, Type> param in controllerMap)
+            foreach (KeyValuePair<IView, object> param in controllerMap)
             {
                 param.Key.OnTick(paramTime);
             }

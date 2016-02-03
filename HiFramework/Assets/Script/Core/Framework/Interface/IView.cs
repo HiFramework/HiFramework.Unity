@@ -6,7 +6,7 @@ namespace HiFramework
     /// </summary>
     public interface IView : IMessageDispatch, ITick
     {
-        void Register<T>(IView paramKey);
+        void Register<T>(IView paramKey) where T : IController;
         void Remove(IView paramView);
     }
 }

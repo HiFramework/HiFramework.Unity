@@ -18,7 +18,7 @@ namespace HiFramework
 
         }
 
-        public void Register<T>(string paramKey)
+        public void Register<T>(string paramKey) where T :IController
         {
             Facade.Controller.Register<T>(paramKey);
         }
