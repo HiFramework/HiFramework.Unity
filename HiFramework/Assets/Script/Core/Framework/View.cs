@@ -4,7 +4,6 @@ using System;
 
 namespace HiFramework
 {
-
     public abstract class View : MonoBehaviour, IView
     {
         public void Dispatch<T>(T paramKey, Message paramMessage)
@@ -12,9 +11,9 @@ namespace HiFramework
             Facade.View.Dispatch(this, paramMessage);
         }
 
-        public void OnTick(float paramTime)
+        public virtual void OnTick(float paramTime)
         {
-            
+
         }
 
         public void Register<T>(IView paramKey)

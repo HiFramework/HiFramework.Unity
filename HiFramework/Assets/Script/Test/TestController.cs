@@ -5,17 +5,14 @@ using System;
 
 public class TestController : Controller
 {
-
     public override void OnMessage(Message paramMessage)
     {
-
         switch (paramMessage.ID)
         {
             case "method1":
                 Test(paramMessage);
                 break;
         }
-
 
     }
     void Test(Message paramMessage)
