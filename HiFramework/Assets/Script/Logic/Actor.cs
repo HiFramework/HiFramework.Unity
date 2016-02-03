@@ -1,14 +1,16 @@
 ﻿using HiFramework;
 using System;
-
 using UnityEngine;
+
+/// <summary>
+/// 组装
+/// </summary>
 public class Actor : MonoBehaviour, IDisposable
 {
-    public ActorController Controller { get; protected set; }
-    public ActorData Data { get; protected set; }
-    public ActorSync Sync { get; protected set; }
-
-    public ActorView View { get; protected set; }
+    public ActorController controller { get; protected set; }
+    public ActorData data { get; protected set; }
+    public ActorSync sync { get; protected set; }
+    public ActorView view { get; protected set; }
 
     private bool disposed = false;
 
@@ -16,7 +18,10 @@ public class Actor : MonoBehaviour, IDisposable
 
     protected void Init()
     {
-
+        controller = new ActorController(this);
+        data = new ActorData(this);
+        sync = new ActorSync(this);
+        view = gameObject.AddComponent<ActorView>();
     }
 
     public void OnDestroy()
@@ -39,10 +44,10 @@ public class Actor : MonoBehaviour, IDisposable
             return;
         if (paramDisposing)
         {
-            Controller = null;
-            Data = null;
-            Sync = null;
-            Destroy(View);
+            controller = null;
+            data = null;
+            sync = null;
+            Destroy(view);
         }
         disposed = true;
     }

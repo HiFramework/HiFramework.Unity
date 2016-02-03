@@ -14,6 +14,6 @@ public class ActorController : Controller
     }
     protected void ProcessDamage()
     {
-        //   Data = (ActorData)DamageHandler.ProcessDamage(Data, Data);
+
     }
 }

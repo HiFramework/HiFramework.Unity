@@ -7,7 +7,7 @@ public class TestController : Controller
 {
     public override void OnMessage(Message paramMessage)
     {
-        switch (paramMessage.ID)
+        switch (paramMessage.id)
         {
             case "method1":
                 Test(paramMessage);
@@ -17,7 +17,7 @@ public class TestController : Controller
     }
     void Test(Message paramMessage)
     {
-        Debug.Log("start game: " + paramMessage.Body);
+        Debug.Log("start game: " + paramMessage.body);
 
 
 
