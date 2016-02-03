@@ -3,25 +3,22 @@ using System;
 using UnityEngine;
 
 /// <summary>
-/// 组装
+/// 负责组装和销毁
 /// </summary>
-public class Actor : MonoBehaviour, IDisposable
+public class Actor : View, IDisposable
 {
     public ActorController controller { get; protected set; }
     public ActorData data { get; protected set; }
     public ActorSync sync { get; protected set; }
-    public ActorView view { get; protected set; }
+
 
     private bool disposed = false;
-
-
 
     protected void Init()
     {
         controller = new ActorController(this);
         data = new ActorData(this);
         sync = new ActorSync(this);
-        view = gameObject.AddComponent<ActorView>();
     }
 
     public void OnDestroy()
@@ -47,7 +44,7 @@ public class Actor : MonoBehaviour, IDisposable
             controller = null;
             data = null;
             sync = null;
-            Destroy(view);
+            Destroy(this);
         }
         disposed = true;
     }
