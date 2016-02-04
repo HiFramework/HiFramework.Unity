@@ -28,4 +28,11 @@ public class ActorTest : Actor
 
         Debug.Log(paramMessage.id + paramMessage.body);
     }
+    public override void OnTick(float paramTime)
+    {
+        base.OnTick(paramTime);
+        Debug.logger.Log(paramTime);
+    }
+
+
 }

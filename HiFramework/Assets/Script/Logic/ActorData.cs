@@ -9,7 +9,6 @@ public class ActorData : Model
     protected float hp;
     protected float attack;
 
-    private bool disposed = false;
 
 
     public ActorData(Actor paramActor)
