@@ -19,6 +19,6 @@ public class GameStart : MonoBehaviour
 
     void CallBack(Message paramMessage)
     {
-        Debug.Log("call back: " + paramMessage.body);
+        Debug.Log("call back: " + paramMessage.id);
     }
 }
