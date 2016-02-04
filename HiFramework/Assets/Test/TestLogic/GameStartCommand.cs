@@ -16,5 +16,6 @@ public class GameStartCommand : Controller
     void TestStart()
     {
         new GameObject("TestActor").AddComponent<ActorTest>();
+        new GameObject("TestActor2").AddComponent<ActorTest2>();
     }
 }

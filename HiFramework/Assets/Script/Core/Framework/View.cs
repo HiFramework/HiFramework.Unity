@@ -7,6 +7,7 @@ namespace HiFramework
     public abstract class View : MonoBehaviour, IView
     {
         private bool disposed = false;
+
         public void Dispatch(object paramKey, Message paramMessage)
         {
             Facade.Mediator.Dispatch(this, paramMessage);
@@ -38,6 +39,7 @@ namespace HiFramework
         public void Remove(object paramKey)
         {
             Facade.Mediator.Remove(paramKey);
+            Facade.GameWorld.RemoveFromTickList((ITick)paramKey);
             Dispose();
         }
         public void Dispose()
@@ -58,6 +60,16 @@ namespace HiFramework
                 Destroy(this);
             }
             disposed = true;
+        }
+
+        public void AddToTickList(ITick paramTick)
+        {
+            Facade.GameWorld.AddToTickList(paramTick);
+        }
+
+        public void RemoveFromTickList(ITick paramTick)
+        {
+            Facade.GameWorld.RemoveFromTickList(paramTick);
         }
     }
 

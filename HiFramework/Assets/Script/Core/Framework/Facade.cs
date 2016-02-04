@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 namespace HiFramework
 {
     public class Facade
     {
-        public static List<IView> tickList = new List<IView>();
         private static ICommand mediator;
         public static ICommand Mediator
         {
@@ -12,6 +12,16 @@ namespace HiFramework
                 if (mediator == null)
                     mediator = new Mediator();
                 return mediator;
+            }
+        }
+        private static ITick gameWorld;
+        public static ITick GameWorld
+        {
+            get
+            {
+                if (gameWorld == null)
+                    gameWorld = new GameTick();
+                return gameWorld;
             }
         }
     }

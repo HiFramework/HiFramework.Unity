@@ -8,7 +8,7 @@ public class ActorTest : Actor
 {
     void Start()
     {
-
+        AddToTickList(this);
 
         Register<ActorControllerTest>();
 

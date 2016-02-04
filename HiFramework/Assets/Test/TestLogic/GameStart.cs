@@ -7,7 +7,7 @@ public class GameStart : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        new GameObject("GameWorld").AddComponent<GameWorld>();
+        new GameObject("GameManager").AddComponent<GameManager>();
         Facade.Mediator.Register<GameStartCommand>(TestCommand.Start);
 
 
