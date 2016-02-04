@@ -31,7 +31,7 @@ namespace HiFramework
         {
 
         }
-        protected void Remove()
+        public void OnDestroy()
         {
             Remove(this);
         }

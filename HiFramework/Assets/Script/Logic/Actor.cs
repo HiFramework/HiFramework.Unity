@@ -12,8 +12,5 @@ public class Actor : View
     {
 
     }
-    public void OnDestroy()
-    {
-        Remove(this);
-    }
+   
 }
