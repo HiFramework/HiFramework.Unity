@@ -3,7 +3,7 @@ using System.Collections;
 using HiFramework;
 using System;
 
-public class TestController : Controller
+public class Controller2 : Controller
 {
     public override void OnMessage(Message paramMessage)
     {

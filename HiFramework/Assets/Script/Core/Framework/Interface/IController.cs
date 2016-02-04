@@ -5,7 +5,7 @@ using System;
 
 namespace HiFramework
 {
-    public interface IController : ICommand, IMessage,IDisposable
+    public interface IController : ICommand, IMessage, IDisposable
     {
 
     }

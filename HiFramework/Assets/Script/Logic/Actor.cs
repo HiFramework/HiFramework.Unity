@@ -7,6 +7,11 @@ using UnityEngine;
 /// </summary>
 public class Actor : View
 {
+
+    protected void Init()
+    {
+
+    }
     public void OnDestroy()
     {
         Remove(this);

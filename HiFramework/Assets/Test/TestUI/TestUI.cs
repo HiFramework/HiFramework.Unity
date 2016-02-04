@@ -8,7 +8,8 @@ public class TestUI : View
 {
     void Awake()
     {
-        Register<TestUIController>(this);
+        Register<TestUIController>();
+
         TestUIController.viewEventHandler = ControllerEvent;
     }
 
@@ -16,7 +17,7 @@ public class TestUI : View
     void Start()
     {
         Message msg = new Message("ui msg");
-        Facade.Mediator.Dispatch(this, msg);
+        Dispatch(msg);
     }
 
     void ControllerEvent(Message msg)

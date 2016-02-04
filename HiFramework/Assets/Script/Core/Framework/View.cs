@@ -11,6 +11,10 @@ namespace HiFramework
         {
             Facade.Mediator.Dispatch(this, paramMessage);
         }
+        protected void Dispatch(Message paramMessage)
+        {
+            Dispatch(this, paramMessage);
+        }
         public void Register<T>(object paramKey) where T : IController
         {
             Facade.Mediator.Register<T>(paramKey);
@@ -23,7 +27,14 @@ namespace HiFramework
         {
 
         }
+        protected virtual void OnMessage(Message paramMessage)
+        {
 
+        }
+        protected void Remove()
+        {
+            Remove(this);
+        }
         public void Remove(object paramKey)
         {
             Facade.Mediator.Remove(paramKey);

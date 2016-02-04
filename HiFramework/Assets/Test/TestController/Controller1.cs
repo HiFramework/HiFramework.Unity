@@ -1,15 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using HiFramework;
-public class GameStart : MonoBehaviour
+public class Controller1 : MonoBehaviour
 {
     void Start()
     {
-        new GameObject(Common.gameworldName).AddComponent<Gameworld>();
 
 
-
-        Facade.Mediator.Register<TestController>(EnumCommand.StartGame);
+        Facade.Mediator.Register<Controller2>(EnumCommand.StartGame);
 
 
 
