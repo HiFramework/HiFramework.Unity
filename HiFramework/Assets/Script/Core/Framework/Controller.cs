@@ -6,9 +6,9 @@ namespace HiFramework
     {
         public static Action<Message> viewEventHandler;
 
-        public void Dispatch<T>(T paramKey, Message paramMessage)
+        public void Dispatch(object paramKey, Message paramMessage)
         {
-            Facade.Mediator.Dispatch<T>(paramKey, paramMessage);
+            Facade.Mediator.Dispatch(paramKey, paramMessage);
         }
 
         public virtual void OnMessage(Message paramMessage)

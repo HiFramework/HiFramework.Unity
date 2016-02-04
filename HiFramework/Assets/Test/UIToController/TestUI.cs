@@ -16,7 +16,7 @@ public class TestUI : View
     void Start()
     {
         Message msg = new Message("ui msg");
-        Facade.Mediator.Dispatch<IView>(this, msg);
+        Facade.Mediator.Dispatch(this, msg);
     }
 
     void ControllerEvent(Message msg)

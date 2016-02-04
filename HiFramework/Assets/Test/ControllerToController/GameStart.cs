@@ -9,12 +9,12 @@ public class GameStart : MonoBehaviour
 
 
 
-        Facade.Mediator.Register<TestController>(EnumCommand.StartGame.ToString());
+        Facade.Mediator.Register<TestController>(EnumCommand.StartGame);
 
 
 
-        Message msg = new Message("method1","test1", CallBack);
-        Facade.Mediator.Dispatch<string>(EnumCommand.StartGame.ToString(), msg);
+        Message msg = new Message("method1", "test1", CallBack);
+        Facade.Mediator.Dispatch(EnumCommand.StartGame, msg);
     }
 
     void CallBack(Message paramMessage)

@@ -6,7 +6,7 @@ namespace HiFramework
 {
     public abstract class View : MonoBehaviour, IView
     {
-        public void Dispatch<T>(T paramKey, Message paramMessage)
+        public void Dispatch(object paramKey, Message paramMessage)
         {
             Facade.Mediator.Dispatch(this, paramMessage);
         }

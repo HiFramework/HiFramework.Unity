@@ -12,13 +12,12 @@ namespace HiFramework
             controllerMap = new Dictionary<object, object>();
         }
 
-        public void Dispatch<T>(T paramKey, Message paramMessage)
+        public void Dispatch(object paramKey, Message paramMessage)
         {
             //IView key = (IView)Convert.ChangeType(paramKey, paramKey.GetType());
-            object key = paramKey;
-            if (controllerMap.ContainsKey(key))
+            if (controllerMap.ContainsKey(paramKey))
             {
-                object obj = controllerMap[key];
+                object obj = controllerMap[paramKey];
                 if (obj is Controller)
                     ((Controller)obj).OnMessage(paramMessage);
             }
