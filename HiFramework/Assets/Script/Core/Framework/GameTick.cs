@@ -8,11 +8,11 @@ namespace HiFramework
     {
         private IList<ITick> tickList = new List<ITick>();
 
-        public void OnTick(float paramTime)
+        public void OnTick()
         {
             for (int i = 0; i < tickList.Count; i++)
             {
-                tickList[i].OnTick(paramTime);
+                tickList[i].OnTick();
             }
         }
 

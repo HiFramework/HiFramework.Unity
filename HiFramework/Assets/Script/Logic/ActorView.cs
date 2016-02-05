@@ -3,19 +3,14 @@ using System.Collections;
 
 public class ActorView
 {
-    private GameObject gameObject;
-
     private Actor actor;
-    public ActorView(Actor paramActor)
+    private GameObject gameObject;
+    public ActorView(Actor paramActor, GameObject paramGo)
     {
         actor = paramActor;
+        gameObject = paramGo;
     }
-
-
-
-
-    public void Test()
+    public virtual void OnTick(float paramTime)
     {
-        gameObject.GetComponent<AudioClip>();
     }
 }

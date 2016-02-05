@@ -7,7 +7,7 @@ public class UI : View, ITick
         Facade.GameTick.AddToTickList(paramTick);
     }
 
-    public virtual void OnTick(float paramTime)
+    public virtual void OnTick()
     {
     }
 

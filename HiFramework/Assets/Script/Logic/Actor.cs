@@ -1,8 +1,5 @@
-﻿using UnityEngine;
-
-
-using HiFramework;
-using System;
+﻿using HiFramework;
+using UnityEngine;
 
 public class Actor : ITick
 {
@@ -11,13 +8,12 @@ public class Actor : ITick
     public ActorSync sync;
     public ActorController controller;
 
-    public Actor()
+    public Actor(GameObject paramGo)
     {
-        view = new ActorView(this);
+        view = new ActorView(this, paramGo);
         data = new ActorData(this);
         sync = new ActorSync(this);
         controller = new ActorController(this);
-
         AddToTickList(this);
     }
 
@@ -31,7 +27,7 @@ public class Actor : ITick
         Facade.GameTick.RemoveFromTickList(this);
     }
 
-    public void OnTick(float paramTime)
+    public virtual void OnTick()
     {
 
     }
