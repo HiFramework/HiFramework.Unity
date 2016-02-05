@@ -2,18 +2,12 @@
 using System.Collections;
 using HiFramework;
 
-
-
-public class NewBehaviourScript : MonoBehaviour
+public class GameWorld : MonoBehaviour
 {
 
     // Use this for initialization
     void Start()
     {
-        GameObject go = new GameObject("Test");
-
-
-        ActorTest test = new ActorTest(go);
 
     }
 

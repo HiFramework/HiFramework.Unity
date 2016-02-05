@@ -4,7 +4,7 @@ using System.Collections;
 public class ActorView
 {
     private Actor actor;
-    private GameObject gameObject;
+    protected GameObject gameObject;
     public ActorView(Actor paramActor, GameObject paramGo)
     {
         actor = paramActor;
@@ -12,5 +12,10 @@ public class ActorView
     }
     public virtual void OnTick(float paramTime)
     {
+    }
+
+    public void Destory()
+    {
+        MonoBehaviour.Destroy(gameObject);
     }
 }

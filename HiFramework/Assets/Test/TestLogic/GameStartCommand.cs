@@ -1,21 +1,30 @@
-﻿//using UnityEngine;
-//using System.Collections;
+﻿using UnityEngine;
+using System.Collections;
 
-//using HiFramework;
+using HiFramework;
 
 
-//public class GameStartCommand : Controller
-//{
-//    public override void OnMessage(Message paramMessage)
-//    {
-//        base.OnMessage(paramMessage);
+public class GameStartCommand : Controller
+{
+    public override void OnMessage(Message paramMessage)
+    {
+        base.OnMessage(paramMessage);
 
-//        TestStart();
-//    }
+        TestStart();
+    }
 
-//    void TestStart()
-//    {
-//        new GameObject("TestActor").AddComponent<ActorTest>();
-//        new GameObject("TestActor2").AddComponent<ActorTest2>();
-//    }
-//}
+    void TestStart()
+    {
+
+        Object obj = Resources.Load("Cube");
+
+
+
+
+
+        GameObject go = MonoBehaviour.Instantiate(obj) as GameObject;
+
+
+        ActorTest test = new ActorTest(go);
+    }
+}

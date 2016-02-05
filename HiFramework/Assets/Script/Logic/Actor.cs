@@ -1,19 +1,17 @@
 ﻿using HiFramework;
+using System;
 using UnityEngine;
 
-public class Actor : ITick
-{
-    public ActorView view;
-    public ActorData data;
-    public ActorSync sync;
-    public ActorController controller;
 
+public abstract class Actor : ITick
+{
+    public ActorView view { get; protected set; }
+    public ActorData data { get; protected set; }
+    public ActorSync sync;
+
+    private bool disposed;
     public Actor(GameObject paramGo)
     {
-        view = new ActorView(this, paramGo);
-        data = new ActorData(this);
-        sync = new ActorSync(this);
-        controller = new ActorController(this);
         AddToTickList(this);
     }
 
@@ -24,11 +22,38 @@ public class Actor : ITick
 
     public void RemoveFromTickList(ITick paramTick)
     {
-        Facade.GameTick.RemoveFromTickList(this);
+        Facade.GameTick.RemoveFromTickList(paramTick);
     }
 
     public virtual void OnTick()
     {
 
+    }
+    public void Destroy()
+    {
+        RemoveFromTickList(this);
+        Dispose();
+    }
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+    ~Actor()
+    {
+        Dispose(false);
+    }
+    protected virtual void Dispose(bool paramDisposing)
+    {
+        if (disposed)
+            return;
+        if (paramDisposing)
+        {
+            view.Destory();
+            view = null;
+            data = null;
+            sync = null;
+        }
+        disposed = true;
     }
 }

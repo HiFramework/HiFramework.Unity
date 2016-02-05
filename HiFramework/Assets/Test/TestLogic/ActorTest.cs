@@ -1,38 +1,28 @@
-﻿//using UnityEngine;
-//using System.Collections;
+﻿using UnityEngine;
+using System.Collections;
 
-//using HiFramework;
-
-
-//public class ActorTest : Actor
-//{
-//    void Start()
-//    {
-//        Init();
-
-//        Register<ActorControllerTest>();
-
-//        ActorControllerTest.viewEventHandler = OnMessage;
+public class ActorTest : Actor
+{
+    public ActorTest(GameObject paramGo) : base(paramGo)
+    {
+        view = new ActorViewTest(this, paramGo);
+        data = new ActorDataTest(this);
 
 
 
-//        Message msg = new Message("test");
-//        Dispatch(msg);
-//    }
 
-//    protected override void OnMessage(Message paramMessage)
-//    {
-//        base.OnMessage(paramMessage);
+        Test();//for test
+    }
 
+    public override void OnTick()
+    {
+        Debug.LogError(Time.deltaTime);
+    }
 
+    void Test()
+    {
 
-//        Debug.Log(paramMessage.id + paramMessage.body);
-//    }
-//    public override void OnTick(float paramTime)
-//    {
-//        base.OnTick(paramTime);
-//        Debug.logger.Log(paramTime);
-//    }
-
-
-//}
+        //基础方法提取到父类view中,比如move
+        ((ActorViewTest)view).Move();
+    }
+}
