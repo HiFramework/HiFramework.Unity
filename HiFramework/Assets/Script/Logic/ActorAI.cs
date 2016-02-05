@@ -1,15 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ActorAI : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+public class ActorAI
+{
+    private Actor actor;
+    public ActorAI(Actor paramAI)
+    {
+        actor = paramAI;
+    }
 }

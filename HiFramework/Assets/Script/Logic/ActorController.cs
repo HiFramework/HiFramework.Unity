@@ -1,5 +1,4 @@
-﻿
-using HiFramework;
+﻿using HiFramework;
 
 public class ActorController : Controller
 {

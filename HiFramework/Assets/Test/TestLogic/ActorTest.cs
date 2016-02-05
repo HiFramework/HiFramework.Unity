@@ -16,7 +16,7 @@ public class ActorTest : Actor
 
     public override void OnTick()
     {
-        Debug.LogError(Time.deltaTime);
+        Debug.Log(Time.deltaTime);
     }
 
     void Test()
