@@ -14,14 +14,14 @@ namespace HiFramework
                 return mediator;
             }
         }
-        private static ITick gameWorld;
-        public static ITick GameWorld
+        private static ITick gameTick;
+        public static ITick GameTick
         {
             get
             {
-                if (gameWorld == null)
-                    gameWorld = new GameTick();
-                return gameWorld;
+                if (gameTick == null)
+                    gameTick = new GameTick();
+                return gameTick;
             }
         }
     }

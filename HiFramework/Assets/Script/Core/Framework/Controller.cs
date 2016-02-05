@@ -2,7 +2,7 @@
 
 namespace HiFramework
 {
-    public class Controller : IController, IMessage
+    public class Controller : IController
     {
         public static Action<Message> viewEventHandler;
         private bool disposed = false;

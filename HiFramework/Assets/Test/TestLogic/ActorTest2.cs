@@ -1,18 +1,19 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿//using UnityEngine;
+//using System.Collections;
 
-public class ActorTest2 : Actor
-{
+//public class ActorTest2 : Actor
+//{
 
-    void Start()
-    {
-        AddToTickList(this);
-        Register<ActorControllerTest>();
-    }
+//    void Start()
+//    {
+//        Init();
+      
+//        Register<ActorControllerTest>();
+//    }
 
-    public override void OnTick(float paramTime)
-    {
-        base.OnTick(paramTime);
-        Debug.Log("from test2--------------" + paramTime);
-    }
-}
+//    public override void OnTick(float paramTime)
+//    {
+//        base.OnTick(paramTime);
+//        Debug.Log("from test2--------------" + paramTime);
+//    }
+//}

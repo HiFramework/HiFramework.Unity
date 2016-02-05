@@ -4,7 +4,9 @@ using HiFramework;
 
 public class ActorControllerTest : ActorController
 {
-
+    public ActorControllerTest(Actor paramActor) : base(paramActor)
+    {
+    }
 
     public override void OnMessage(Message paramMessage)
     {

@@ -3,9 +3,12 @@ using HiFramework;
 
 public class ActorController : Controller
 {
-    public ActorData data;
-    public ActorSync sync;
-    public AI ai;
+    private Actor actor;
+
+    public ActorController(Actor paramActor)
+    {
+        actor = paramActor;
+    }
     public override void OnMessage(Message paramMessage)
     {
         base.OnMessage(paramMessage);

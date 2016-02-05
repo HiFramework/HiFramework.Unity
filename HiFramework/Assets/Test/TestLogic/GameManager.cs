@@ -13,6 +13,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Facade.GameWorld.OnTick(Time.deltaTime);
+        Facade.GameTick.OnTick(Time.deltaTime);
     }
 }

@@ -24,10 +24,6 @@ namespace HiFramework
         {
             Register<T>(this);
         }
-        public virtual void OnTick(float paramTime)
-        {
-
-        }
         protected virtual void OnMessage(Message paramMessage)
         {
 
@@ -39,7 +35,7 @@ namespace HiFramework
         public void Remove(object paramKey)
         {
             Facade.Mediator.Remove(paramKey);
-            Facade.GameWorld.RemoveFromTickList((ITick)paramKey);
+            Facade.GameTick.RemoveFromTickList((ITick)paramKey);
             Dispose();
         }
         public void Dispose()
@@ -61,17 +57,6 @@ namespace HiFramework
             }
             disposed = true;
         }
-
-        public void AddToTickList(ITick paramTick)
-        {
-            Facade.GameWorld.AddToTickList(paramTick);
-        }
-
-        public void RemoveFromTickList(ITick paramTick)
-        {
-            Facade.GameWorld.RemoveFromTickList(paramTick);
-        }
     }
-
 }
 

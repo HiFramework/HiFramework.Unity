@@ -34,18 +34,12 @@ namespace HiFramework
                 Type type = typeof(T);
                 object obj = Activator.CreateInstance(type);
                 controllerMap[paramKey] = obj;
-                //if (paramKey is IView)
-                //    Facade.tickList.Add((IView)paramKey);
             }
         }
         public void Remove(object paramKey)
         {
             if (controllerMap.ContainsKey(paramKey))
-            {
                 controllerMap.Remove(paramKey);
-                //if (paramKey is IView)
-                //    Facade.tickList.Remove((IView)paramKey);
-            }
         }
     }
 }

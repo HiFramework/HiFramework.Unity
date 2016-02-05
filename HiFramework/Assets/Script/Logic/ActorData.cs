@@ -14,9 +14,6 @@ public class ActorData : Model
     public ActorData(Actor paramActor)
     {
         actor = paramActor;
-
-
-        UnityEngine.Debug.Log(actor.GetType());
     }
 
 }
