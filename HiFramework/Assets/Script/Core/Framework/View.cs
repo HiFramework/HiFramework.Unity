@@ -35,7 +35,6 @@ namespace HiFramework
         public void Remove(object paramKey)
         {
             Facade.Mediator.Remove(paramKey);
-            Facade.GameTick.RemoveFromTickList((ITick)paramKey);
             Dispose();
         }
         public void Dispose()
