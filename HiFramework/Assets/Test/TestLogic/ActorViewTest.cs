@@ -11,4 +11,9 @@ public class ActorViewTest : ActorView
     {
         gameObject.transform.position = Vector3.left;
     }
+
+
+    Vector3[] test = new Vector3[] { Vector3.one, Vector3.left, Vector3.right, Vector3.zero };
+
+
 }

@@ -22,9 +22,9 @@ namespace HiFramework
 
         }
 
-        public void Remove(object paramKey)
+        public void Unregister(object paramKey)
         {
-            Facade.Mediator.Remove(paramKey);
+            Facade.Mediator.Unregister(paramKey);
             Dispose();
         }
         public void Dispose()

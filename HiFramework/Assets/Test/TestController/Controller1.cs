@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
-using HiFramework;
+﻿using HiFramework;
+using UnityEngine;
 public class Controller1 : MonoBehaviour
 {
     void Start()

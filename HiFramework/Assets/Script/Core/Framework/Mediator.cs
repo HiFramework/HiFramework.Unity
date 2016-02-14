@@ -36,7 +36,7 @@ namespace HiFramework
                 controllerMap[paramKey] = obj;
             }
         }
-        public void Remove(object paramKey)
+        public void Unregister(object paramKey)
         {
             if (controllerMap.ContainsKey(paramKey))
                 controllerMap.Remove(paramKey);

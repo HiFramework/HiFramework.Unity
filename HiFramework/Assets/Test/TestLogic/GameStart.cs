@@ -11,8 +11,7 @@ public class GameStart : MonoBehaviour
         Facade.Mediator.Register<GameStartCommand>(TestCommand.Start);
 
 
-        Message msg = new Message("Start");
-        Facade.Mediator.Dispatch(TestCommand.Start, msg);
+        Facade.Mediator.Dispatch(TestCommand.Start);
     }
 
     // Update is called once per frame

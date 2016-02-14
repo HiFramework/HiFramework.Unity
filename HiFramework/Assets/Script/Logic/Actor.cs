@@ -8,7 +8,7 @@ public abstract class Actor : ITick
     public ActorView view { get; protected set; }
     public ActorData data { get; protected set; }
     public ActorSync sync;
-    public ActorController controller;//战斗模块派发ui事件时需要实现
+    public ActorController controller;
 
     private bool disposed;
     public Actor(GameObject paramGo)

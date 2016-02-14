@@ -9,20 +9,23 @@ public class ActorTest : Actor
         data = new ActorDataTest(this);
 
 
-
-
-        Test();//for test
     }
 
     public override void OnTick()
     {
-        Debug.Log(Time.deltaTime);
+       // ((ActorViewTest)view).OnTick();
+
+        view.OnTick();
     }
 
     void Test()
     {
 
         //基础方法提取到父类view中,比如move
-        ((ActorViewTest)view).Move();
+        //((ActorViewTest)view).Move();
+
+
+
+        view.OnTick();
     }
 }

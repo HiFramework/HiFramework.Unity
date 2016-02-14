@@ -1,5 +1,8 @@
 ﻿using HiFramework;
 
+/// <summary>
+/// actor派发ui消息需要实现actorcontroller
+/// </summary>
 public class ActorController : Controller
 {
     private Actor actor;

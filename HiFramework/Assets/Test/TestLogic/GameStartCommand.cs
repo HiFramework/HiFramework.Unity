@@ -20,11 +20,11 @@ public class GameStartCommand : Controller
 
 
 
+        for (int i = 0; i < 3; i++)
+        {
+            GameObject go = MonoBehaviour.Instantiate(obj) as GameObject;
+            ActorTest test = new ActorTest(go);
+        }
 
-
-        GameObject go = MonoBehaviour.Instantiate(obj) as GameObject;
-
-
-        ActorTest test = new ActorTest(go);
     }
 }

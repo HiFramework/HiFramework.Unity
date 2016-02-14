@@ -1,7 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
-using HiFramework;
-using System;
+﻿using HiFramework;
+using UnityEngine;
 
 public class Controller2 : Controller
 {
@@ -19,10 +17,7 @@ public class Controller2 : Controller
     {
         Debug.Log("start game: " + paramMessage.body);
 
-
-
-
-        //执行回调
+        
         Message msg = new Message("test2", null);
         paramMessage.EventHandler(msg);
     }
