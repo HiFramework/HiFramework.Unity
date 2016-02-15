@@ -4,7 +4,7 @@ namespace HiFramework
 {
     public abstract class Controller : IController
     {
-        public static Action<Message> viewEventHandler;
+        public Action<Message> viewEventHandler;
         private bool disposed = false;
 
         public void Dispatch(object paramKey, Message paramMessage)

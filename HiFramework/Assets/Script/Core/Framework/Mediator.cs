@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace HiFramework
 {
-    public class Mediator : ICommand, IMessageDispatch
+    public class Mediator : IMediator
     {
-        private IDictionary<object, object> controllerMap;
+        public IDictionary<object, object> controllerMap { get;  set; }
 
         public Mediator()
         {

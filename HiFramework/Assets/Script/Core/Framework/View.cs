@@ -15,6 +15,7 @@ namespace HiFramework
         public void Register<T>(object paramKey) where T : IController
         {
             Facade.Mediator.Register<T>(paramKey);
+            ((Controller)Facade.Mediator.controllerMap[paramKey]).viewEventHandler = ((View)paramKey).OnMessage;
         }
 
         public abstract void OnMessage(Message paramMessage);

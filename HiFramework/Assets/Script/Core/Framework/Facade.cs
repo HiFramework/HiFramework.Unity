@@ -4,8 +4,8 @@ namespace HiFramework
 {
     public class Facade
     {
-        private static ICommand mediator;
-        public static ICommand Mediator
+        private static IMediator mediator;
+        public static IMediator Mediator
         {
             get
             {
