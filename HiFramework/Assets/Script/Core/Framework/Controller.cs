@@ -2,7 +2,7 @@
 
 namespace HiFramework
 {
-    public class Controller : IController
+    public abstract class Controller : IController
     {
         public static Action<Message> viewEventHandler;
         private bool disposed = false;
@@ -17,10 +17,7 @@ namespace HiFramework
             Facade.Mediator.Register<T>(paramKey);
         }
 
-        public virtual void OnMessage(Message paramMessage)
-        {
-
-        }
+        public abstract void OnMessage(Message paramMessage);
 
         public void Unregister(object paramKey)
         {
