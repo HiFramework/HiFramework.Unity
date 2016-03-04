@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿//****************************************************************************
+// Description:
+// Author: hiramtan@qq.com
+//****************************************************************************
+using UnityEngine;
 namespace HiFramework
 {
     public interface ITick

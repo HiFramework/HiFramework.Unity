@@ -1,12 +1,18 @@
-﻿using System;
-
+﻿//****************************************************************************
+// Description:控制逻辑
+// Author: hiramtan@qq.com
+//****************************************************************************
+using System;
 namespace HiFramework
 {
-    public abstract class Controller : IController
+    public abstract class Controller : Manager, IController
     {
-        public Action<Message> viewEventHandler;
         private bool disposed = false;
-
+        public View view { get; private set; }
+        public void Init(View param)
+        {
+            view = param;
+        }
         public void Dispatch(object paramKey, Message paramMessage)
         {
             Facade.Mediator.Dispatch(paramKey, paramMessage);
@@ -22,6 +28,23 @@ namespace HiFramework
         public void Unregister(object paramKey)
         {
             Facade.Mediator.Unregister(paramKey);
+        }
+        public void AddToTickList(ITick paramTick)
+        {
+            Facade.GameTick.AddToTickList(this);
+        }
+
+        public void RemoveFromTickList(ITick paramTick)
+        {
+            Facade.GameTick.AddToTickList(this);
+        }
+
+        public virtual void OnTick()
+        {
+
+        }
+        public void Destroy()
+        {
             Dispose();
         }
         public void Dispose()
@@ -39,7 +62,7 @@ namespace HiFramework
                 return;
             if (paramDisposing)
             {
-                viewEventHandler = null;
+
             }
             disposed = true;
         }

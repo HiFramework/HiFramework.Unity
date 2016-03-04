@@ -5,8 +5,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class AudioManager : Singletont<AudioManager>
+public class IOManager : Singletont<IOManager>
 {
 
-   
 }

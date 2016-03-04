@@ -1,11 +1,12 @@
-﻿using UnityEngine;
-using System.Collections;
-
+﻿//****************************************************************************
+// Description:
+// Author: hiramtan@qq.com
+//****************************************************************************
 using System;
 
 namespace HiFramework
 {
-    public interface IController : ICommand, IMessage, IDisposable
+    public interface IController : ITick, ICommand, IMessage, IDisposable
     {
 
     }

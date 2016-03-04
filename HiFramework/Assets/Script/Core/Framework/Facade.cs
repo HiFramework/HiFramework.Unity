@@ -1,4 +1,8 @@
-﻿using System;
+﻿//****************************************************************************
+// Description:中介,tick管理
+// Author: hiramtan@qq.com
+//****************************************************************************
+using System;
 using System.Collections.Generic;
 namespace HiFramework
 {

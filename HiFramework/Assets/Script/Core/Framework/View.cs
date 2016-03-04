@@ -1,32 +1,52 @@
-﻿using UnityEngine;
+﻿//****************************************************************************
+// Description:从mono拆分,view管理
+// Author: hiramtan@qq.com
+//****************************************************************************
+using UnityEngine;
 using System.Collections;
 using System;
 
 namespace HiFramework
 {
-    public abstract class View : MonoBehaviour, IView
+    public abstract class View : IView
     {
+        public GameObject gameObject { get; private set; }
         private bool disposed = false;
-
-        public void Dispatch(object paramKey, Message paramMessage)
+        private Controller controller;
+        public View(GameObject param)
         {
-            Facade.Mediator.Dispatch(this, paramMessage);
+            gameObject = param;
         }
-        public void Register<T>(object paramKey) where T : IController
+        public void Dispatch(Message paramMessage)
         {
-            Facade.Mediator.Register<T>(paramKey);
-            ((Controller)Facade.Mediator.controllerMap[paramKey]).viewEventHandler = ((View)paramKey).OnMessage;
+            controller.OnMessage(paramMessage);
+        }
+        public void Register<T>() where T : IController
+        {
+            Type type = typeof(T);
+            object obj = Activator.CreateInstance(type);
+            controller = (Controller)obj;
+            controller.Init(this);
         }
 
         public abstract void OnMessage(Message paramMessage);
-
-        public void OnDestroy()
+        public void AddToTickList(ITick paramTick)
         {
-            Unregister(this);
+            Facade.GameTick.AddToTickList(this);
         }
-        public void Unregister(object paramKey)
+
+        public void RemoveFromTickList(ITick paramTick)
         {
-            Facade.Mediator.Unregister(paramKey);
+            Facade.GameTick.AddToTickList(this);
+        }
+
+        public virtual void OnTick()
+        {
+
+        }
+
+        public void Destroy()
+        {
             Dispose();
         }
         public void Dispose()
@@ -44,7 +64,8 @@ namespace HiFramework
                 return;
             if (paramDisposing)
             {
-                Destroy(this);
+                MonoBehaviour.Destroy(gameObject);
+                controller = null;
             }
             disposed = true;
         }

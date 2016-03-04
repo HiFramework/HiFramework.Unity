@@ -1,4 +1,8 @@
-﻿using System;
+﻿//****************************************************************************
+// Description:命令/controller管理
+// Author: hiramtan@qq.com
+//****************************************************************************
+using System;
 using System.Collections.Generic;
 
 namespace HiFramework

@@ -1,4 +1,8 @@
-﻿using System;
+﻿//****************************************************************************
+// Description:派发消息内容
+// Author: hiramtan@qq.com
+//****************************************************************************
+using System;
 
 namespace HiFramework
 {
@@ -6,8 +10,8 @@ namespace HiFramework
     {
         public string id { get; private set; }//消息号
         public object body { get; private set; }//消息内容
-                                                // [Obsolete("Be carefull when you use message's callback")]
-        public Action<Message> EventHandler { get; private set; }//慎用回调
+        //[Obsolete("Be carefull when you use message's callback")]
+        //public Action<Message> EventHandler { get; private set; }//慎用回调
 
         /// <summary>
         /// 构造消息id
@@ -36,7 +40,7 @@ namespace HiFramework
         {
             id = paramID;
             body = paramBody;
-            EventHandler = paramHandler;
+            //EventHandler = paramHandler;
         }
     }
 }
