@@ -45,10 +45,6 @@ namespace HiFramework
 
         }
 
-        public void Destroy()
-        {
-            Dispose();
-        }
         public void Dispose()
         {
             Dispose(true);
