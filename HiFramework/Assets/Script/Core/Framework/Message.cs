@@ -3,44 +3,48 @@
 // Author: hiramtan@qq.com
 //****************************************************************************
 using System;
-
+using System.Collections.Generic;
 namespace HiFramework
 {
-    public class Message
+    public class Message : IDisposable
     {
-        public string id { get; private set; }//消息号
-        public object body { get; private set; }//消息内容
-        //[Obsolete("Be carefull when you use message's callback")]
-        //public Action<Message> EventHandler { get; private set; }//慎用回调
-
-        /// <summary>
-        /// 构造消息id
-        /// </summary>
-        /// <param name="paramID"></param>
-        public Message(string paramID) :
-            this(paramID, null)
+        public List<object> message { get; private set; }
+        private bool disposed = false;
+        public Message(params object[] param)
         {
-
+            message = new List<object>();
+            for (int i = 0, length = param.Length; i < length; i++)
+                message.Add(param[i]);
         }
-        /// <summary>
-        /// 构造消息,包含消息内容
-        /// </summary>
-        /// <param name="paramData"></param>
-        public Message(string paramID, object paramBody)
-            : this(paramID, paramBody, null)
+        public void Dispose()
         {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        ~Message()
+        {
+            Dispose(false);
+        }
+        protected virtual void Dispose(bool paramDisposing)
+        {
+            if (disposed)
+                return;
+            if (paramDisposing)
+            {
+                message = null;
+            }
+            disposed = true;
         }
 
-        /// <summary>
-        /// 构造消息,包含消息内容和回调
-        /// </summary>
-        /// <param name="paramData"></param>
-        /// <param name="paramHandler"></param>
-        public Message(string paramID, object paramBody, Action<Message> paramHandler)
+        #region Be very carefull when you use this method
+        [Obsolete("You should use message dispather instead")]
+        public Action<Message> callBack { get; private set; }
+        public Message(Action<Message> callback, params object[] param)
         {
-            id = paramID;
-            body = paramBody;
-            //EventHandler = paramHandler;
+            message = new List<object>();
+            for (int i = 0, length = param.Length; i < length; i++)
+                message.Add(param[i]);
         }
+        #endregion
     }
 }
