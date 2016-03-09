@@ -31,12 +31,12 @@ namespace HiFramework
         }
         public void AddToTickList(ITick paramTick)
         {
-            Facade.GameTick.AddToTickList(this);
+            Facade.GameTick.AddToTickList(paramTick);
         }
 
         public void RemoveFromTickList(ITick paramTick)
         {
-            Facade.GameTick.AddToTickList(this);
+            Facade.GameTick.AddToTickList(paramTick);
         }
 
         public virtual void OnTick()
