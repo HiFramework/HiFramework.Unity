@@ -36,7 +36,7 @@ namespace HiFramework
 
         public void RemoveFromTickList(ITick paramTick)
         {
-            Facade.GameTick.AddToTickList(paramTick);
+            Facade.GameTick.RemoveFromTickList(paramTick);
         }
 
         public virtual void OnTick()
