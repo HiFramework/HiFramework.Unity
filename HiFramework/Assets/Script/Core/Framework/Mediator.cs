@@ -22,8 +22,8 @@ namespace HiFramework
             if (controllerMap.ContainsKey(paramKey))
             {
                 object obj = controllerMap[paramKey];
-                if (obj is Controller)
-                    ((Controller)obj).OnMessage(paramMessage);
+                if (obj is Logic)
+                    ((Logic)obj).OnMessage(paramMessage);
             }
             else
             {
@@ -31,7 +31,7 @@ namespace HiFramework
             }
         }
 
-        public void Register<T>(object paramKey) where T : IController
+        public void Register<T>(object paramKey) where T : ILogic
         {
             if (!controllerMap.ContainsKey(paramKey))
             {

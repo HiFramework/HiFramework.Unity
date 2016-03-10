@@ -6,7 +6,7 @@ namespace HiFramework
 {
     public interface ICommand : IMessageDispatch
     {
-        void Register<T>(object paramKey) where T : IController;
+        void Register<T>(object paramKey) where T : ILogic;
         void Unregister(object paramKey);
     }
 }

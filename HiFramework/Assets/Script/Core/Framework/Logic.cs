@@ -1,5 +1,5 @@
 ﻿//****************************************************************************
-// Description:从mono拆分,view管理
+// Description:
 // Author: hiramtan@qq.com
 //****************************************************************************
 using UnityEngine;
@@ -8,33 +8,43 @@ using System;
 
 namespace HiFramework
 {
-    public class View : IActor, IView
+    public abstract class Logic : Manager, ILogic
     {
-        public GameObject gameObject { get; private set; }
         private bool disposed = false;
-        public Controller controller;
-        public virtual void OnMessage(Message paramMessage)
+        public void Dispatch(object paramKey, Message paramMessage)
         {
+            Facade.Mediator.Dispatch(paramKey, paramMessage);
+        }
+
+        public void Register<T>(object paramKey) where T : ILogic
+        {
+            Facade.Mediator.Register<T>(paramKey);
+        }
+
+        public abstract void OnMessage(Message paramMessage);
+
+        public void Unregister(object paramKey)
+        {
+            Facade.Mediator.Unregister(paramKey);
         }
         public void AddToTickList(ITick paramTick)
         {
             Facade.GameTick.AddToTickList(paramTick);
         }
+
         public void RemoveFromTickList(ITick paramTick)
         {
-            Facade.GameTick.AddToTickList(paramTick);
+            Facade.GameTick.RemoveFromTickList(paramTick);
         }
 
-        public virtual void OnTick()
-        {
+        public abstract void OnTick();
 
-        }
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-        ~View()
+        ~Logic()
         {
             Dispose(false);
         }
@@ -44,11 +54,9 @@ namespace HiFramework
                 return;
             if (paramDisposing)
             {
-                MonoBehaviour.Destroy(gameObject);
-                controller = null;
+
             }
             disposed = true;
         }
     }
 }
-

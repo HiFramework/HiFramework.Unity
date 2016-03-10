@@ -6,8 +6,8 @@ using System;
 
 namespace HiFramework
 {
-    public interface IController : ITick, ICommand, IMessage, IDisposable
+    public interface IController
     {
-
+        void Dispatch(Message param);
     }
 }
