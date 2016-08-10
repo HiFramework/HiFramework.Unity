@@ -5,7 +5,7 @@
 using System;
 namespace HiFramework
 {
-    public abstract class Controller : Logic, IController
+    public abstract class Controller : Agent, IController
     {
         private IView view;
 

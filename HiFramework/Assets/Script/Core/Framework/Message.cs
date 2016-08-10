@@ -8,15 +8,15 @@ namespace HiFramework
 {
     public class Message : IDisposable
     {
-        public object key { get; private set; }
-        public List<object> message { get; private set; }
+        public object Key { get; private set; }
+        public List<object> Msg { get; private set; }
         private bool disposed;
         public Message(object paramKey = null, params object[] param)
         {
-            key = paramKey;
-            message = new List<object>();
+            Key = paramKey;
+            Msg = new List<object>();
             for (int i = 0, length = param.Length; i < length; i++)
-                message.Add(param[i]);
+                Msg.Add(param[i]);
         }
         public void Dispose()
         {
@@ -33,7 +33,7 @@ namespace HiFramework
                 return;
             if (paramDisposing)
             {
-                message = null;
+                Msg = null;
             }
             disposed = true;
         }
@@ -43,9 +43,9 @@ namespace HiFramework
         public Action<Message> callBack { get; private set; }
         public Message(Action<Message> callback, params object[] param)
         {
-            message = new List<object>();
+            Msg = new List<object>();
             for (int i = 0, length = param.Length; i < length; i++)
-                message.Add(param[i]);
+                Msg.Add(param[i]);
         }
         #endregion
     }
