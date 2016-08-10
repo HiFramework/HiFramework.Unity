@@ -5,9 +5,11 @@
 using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// 提供各种单例的集合,比如audiomanager
+/// </summary>
 public class Manager
 {
-    //提供各种单例的集合,比如audiomanager
 
 
 

@@ -4,9 +4,12 @@
 //****************************************************************************
 using UnityEngine;
 using System.Collections;
+
+using System;
+
 namespace HiFramework
 {
-    public interface ILogic : IActor, ICommand, IMessage
+    public interface ILogic : ITick, IDisposable
     {
 
     }

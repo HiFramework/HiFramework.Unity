@@ -1,5 +1,5 @@
 ﻿//****************************************************************************
-// Description:从mono拆分,view管理
+// Description:
 // Author: hiramtan@qq.com
 //****************************************************************************
 using UnityEngine;
@@ -8,12 +8,14 @@ using System;
 
 namespace HiFramework
 {
-    public class View : IActor, IView
+    public class View : MonoBehaviour, IView
     {
-        public GameObject gameObject { get; private set; }
-        private bool disposed = false;
-        public Controller controller;
-
+        private IController controller;
+        public void Bind<T>() where T : IController, new()
+        {
+            controller = new T();
+            controller.Bind(this);
+        }
         public virtual void OnMessage(Message paramMessage)
         {
         }
@@ -29,26 +31,6 @@ namespace HiFramework
         public virtual void OnTick()
         {
 
-        }
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-        ~View()
-        {
-            Dispose(false);
-        }
-        protected virtual void Dispose(bool paramDisposing)
-        {
-            if (disposed)
-                return;
-            if (paramDisposing)
-            {
-                MonoBehaviour.Destroy(gameObject);
-                controller = null;
-            }
-            disposed = true;
         }
     }
 }

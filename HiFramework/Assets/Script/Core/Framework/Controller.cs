@@ -8,10 +8,10 @@ namespace HiFramework
     public abstract class Controller : Logic, IController
     {
         private View view;
-        public Controller(View param)
+
+        public void Bind(View param)
         {
             view = param;
-            param.controller = this;
         }
 
         public void Dispatch(Message param)
