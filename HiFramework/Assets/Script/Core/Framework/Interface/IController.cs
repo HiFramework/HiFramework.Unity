@@ -13,7 +13,7 @@ namespace HiFramework
         /// bind its view
         /// </summary>
         /// <param name="param"></param>
-        void Bind(View param);
+        void Bind(IView param);
 
         /// <summary>
         /// dispatch message to view

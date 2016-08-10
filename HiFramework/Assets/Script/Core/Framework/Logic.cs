@@ -21,6 +21,8 @@ namespace HiFramework
             Facade.Mediator.Register<T>(paramKey);
         }
 
+        public abstract void OnTick();
+
         public abstract void OnMessage(Message paramMessage);
 
         public void Unregister(object paramKey)
@@ -36,8 +38,6 @@ namespace HiFramework
         {
             Facade.GameTick.RemoveFromTickList(paramTick);
         }
-
-        public abstract void OnTick();
 
         public void Dispose()
         {

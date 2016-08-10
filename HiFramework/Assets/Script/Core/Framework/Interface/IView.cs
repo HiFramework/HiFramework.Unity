@@ -8,7 +8,7 @@ namespace HiFramework
     /// <summary>
     /// 表现层控制逻辑
     /// </summary>
-    public interface IView : ITick
+    public interface IView : ITick, IMessageReceive
     {
         /// <summary>
         /// bind this view to its controller

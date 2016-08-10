@@ -7,9 +7,9 @@ namespace HiFramework
 {
     public abstract class Controller : Logic, IController
     {
-        private View view;
+        private IView view;
 
-        public void Bind(View param)
+        public void Bind(IView param)
         {
             view = param;
         }
