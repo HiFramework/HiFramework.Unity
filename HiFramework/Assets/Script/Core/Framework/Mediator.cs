@@ -50,7 +50,7 @@ namespace HiFramework
                 InstantiationMap.Remove(paramKey);
             else
             {
-                throw new Exception("logic map dont contain this key");
+                throw new Exception("instantiation map dont contain this key");
             }
         }
     }
