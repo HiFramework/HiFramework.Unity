@@ -8,6 +8,6 @@ namespace HiFramework
 {
     public interface IMediator : ICommand
     {
-        IDictionary<object, object> LogicMap { get; set; }
+        IDictionary<object, object> InstantiationMap { get; }
     }
 }

@@ -9,19 +9,19 @@ namespace HiFramework
 {
     public class Mediator : IMediator
     {
-        public IDictionary<object, object> LogicMap { get; set; }
+        public IDictionary<object, object> InstantiationMap { get; private set; }
 
         public Mediator()
         {
-            LogicMap = new Dictionary<object, object>();
+            InstantiationMap = new Dictionary<object, object>();
         }
 
         public void Dispatch(object paramKey, Message paramMessage)
         {
             //IView key = (IView)Convert.ChangeType(paramKey, paramKey.GetType());
-            if (LogicMap.ContainsKey(paramKey))
+            if (InstantiationMap.ContainsKey(paramKey))
             {
-                object obj = LogicMap[paramKey];
+                object obj = InstantiationMap[paramKey];
                 if (obj is ILogic)
                     ((ILogic)obj).OnMessage(paramMessage);
             }
@@ -33,11 +33,11 @@ namespace HiFramework
 
         public void Register<T>(object paramKey) where T : ILogic
         {
-            if (!LogicMap.ContainsKey(paramKey))
+            if (!InstantiationMap.ContainsKey(paramKey))
             {
                 Type type = typeof(T);
                 object obj = Activator.CreateInstance(type);
-                LogicMap[paramKey] = obj;
+                InstantiationMap[paramKey] = obj;
             }
             else
             {
@@ -46,8 +46,8 @@ namespace HiFramework
         }
         public void Unregister(object paramKey)
         {
-            if (LogicMap.ContainsKey(paramKey))
-                LogicMap.Remove(paramKey);
+            if (InstantiationMap.ContainsKey(paramKey))
+                InstantiationMap.Remove(paramKey);
             else
             {
                 throw new Exception("logic map dont contain this key");
