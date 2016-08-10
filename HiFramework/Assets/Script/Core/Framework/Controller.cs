@@ -13,9 +13,14 @@ namespace HiFramework
         {
             view = param;
         }
-
+        /// <summary>
+        /// dispath message to view
+        /// </summary>
+        /// <param name="param"></param>
         public void Dispatch(Message param)
         {
+            if (view == null)
+                throw new Exception("cannt find its bind view");
             view.OnMessage(param);
         }
     }

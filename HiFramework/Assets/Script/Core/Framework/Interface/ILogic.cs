@@ -9,7 +9,7 @@ using System;
 
 namespace HiFramework
 {
-    public interface ILogic : ITick, IDisposable
+    public interface ILogic : ITick, ICommand, IMessage
     {
 
     }

@@ -8,9 +8,9 @@ using System;
 
 namespace HiFramework
 {
-    public class View : MonoBehaviour, IView
+    public abstract class View : MonoBehaviour, IView
     {
-        private IController controller;
+        protected IController controller;
         public void Bind<T>() where T : IController, new()
         {
             controller = new T();

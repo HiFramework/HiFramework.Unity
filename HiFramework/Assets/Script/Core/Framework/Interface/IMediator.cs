@@ -8,6 +8,6 @@ namespace HiFramework
 {
     public interface IMediator : ICommand, IMessageDispatch
     {
-        IDictionary<object, object> controllerMap { get; set; }
+        IDictionary<object, object> LogicMap { get; set; }
     }
 }

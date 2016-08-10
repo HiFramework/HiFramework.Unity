@@ -10,7 +10,7 @@ namespace HiFramework
 {
     public abstract class Logic : Manager, ILogic
     {
-        private bool disposed = false;
+        private bool disposed;
         public void Dispatch(object paramKey, Message paramMessage)
         {
             Facade.Mediator.Dispatch(paramKey, paramMessage);

@@ -8,10 +8,12 @@ namespace HiFramework
 {
     public class Message : IDisposable
     {
+        public object key { get; private set; }
         public List<object> message { get; private set; }
-        private bool disposed = false;
-        public Message(params object[] param)
+        private bool disposed;
+        public Message(object paramKey = null, params object[] param)
         {
+            key = paramKey;
             message = new List<object>();
             for (int i = 0, length = param.Length; i < length; i++)
                 message.Add(param[i]);

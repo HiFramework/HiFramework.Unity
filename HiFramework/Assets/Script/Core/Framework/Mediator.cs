@@ -9,41 +9,49 @@ namespace HiFramework
 {
     public class Mediator : IMediator
     {
-        public IDictionary<object, object> controllerMap { get;  set; }
+        public IDictionary<object, object> LogicMap { get; set; }
 
         public Mediator()
         {
-            controllerMap = new Dictionary<object, object>();
+            LogicMap = new Dictionary<object, object>();
         }
 
         public void Dispatch(object paramKey, Message paramMessage)
         {
             //IView key = (IView)Convert.ChangeType(paramKey, paramKey.GetType());
-            if (controllerMap.ContainsKey(paramKey))
+            if (LogicMap.ContainsKey(paramKey))
             {
-                object obj = controllerMap[paramKey];
-                if (obj is Logic)
-                    ((Logic)obj).OnMessage(paramMessage);
+                object obj = LogicMap[paramKey];
+                if (obj is ILogic)
+                    ((ILogic)obj).OnMessage(paramMessage);
             }
             else
             {
-                UnityEngine.Debug.LogError("You should register key to controller first");
+                throw new Exception("You should register key to controller first");
             }
         }
 
         public void Register<T>(object paramKey) where T : ILogic
         {
-            if (!controllerMap.ContainsKey(paramKey))
+            if (!LogicMap.ContainsKey(paramKey))
             {
                 Type type = typeof(T);
                 object obj = Activator.CreateInstance(type);
-                controllerMap[paramKey] = obj;
+                LogicMap[paramKey] = obj;
+            }
+            else
+            {
+                throw new Exception("Dont need to regist this ilogic again");
             }
         }
         public void Unregister(object paramKey)
         {
-            if (controllerMap.ContainsKey(paramKey))
-                controllerMap.Remove(paramKey);
+            if (LogicMap.ContainsKey(paramKey))
+                LogicMap.Remove(paramKey);
+            else
+            {
+                throw new Exception("logic map dont contain this key");
+            }
         }
     }
 }
