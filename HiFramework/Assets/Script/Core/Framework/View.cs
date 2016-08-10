@@ -13,6 +13,7 @@ namespace HiFramework
         public GameObject gameObject { get; private set; }
         private bool disposed = false;
         public Controller controller;
+
         public virtual void OnMessage(Message paramMessage)
         {
         }

@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="a9e18213-4b83-4653-8dfe-806f92e6f581" name="UMLClassDiagram1" linkedPackageId="821eb4b5-85dd-4938-bba6-937aca133ea8" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="8b0bfc68-5276-4fc3-b6e2-abf5b6043f4c">
+      <profileInstance Id="5548ca67-d251-4df8-91f3-34e6e2ac1d58" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="e29e9dc2-d7fe-4c65-bffb-fd7a0ce14236">
+      <profileInstance Id="717b8daa-3c9f-4dcf-ba09-f1c05858d136" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="9a3ebebd-22f3-4c00-8da5-9a14e8d770e7" name="ITick" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b9f6a4e7-b5d3-4da7-b23f-f8cf6137044b" />
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="509af694-eda2-4b55-8f2b-6de835f1bec3" name="View" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="67b42a39-04da-48ef-817f-9f903e178ebd" />
+        <suppliersInternal>
+          <interfaceRealization Id="ca0a1823-6506-40ed-810b-557e21ca1747">
+            <interfaceMoniker Id="9a3ebebd-22f3-4c00-8da5-9a14e8d770e7" LastKnownName="ITick" />
+            <elementDefinition Id="865e025e-5a89-4bbd-928d-6f4829a73dc4" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <generalsInternal>
+          <generalization Id="d04ee53f-2c10-44d4-8c2c-427499a87e6e" isSubstitutable="false">
+            <classMoniker Id="82bff378-9076-4a82-92bb-515a15e6f1d2" LastKnownName="Monobehavior" />
+            <elementDefinition Id="8d521dfa-05f6-49ad-a7f4-1530a8be01b9" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="82bff378-9076-4a82-92bb-515a15e6f1d2" name="Monobehavior" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="4f145d2c-ebf7-4df3-bb7e-c08e4ccd47bd" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="8d925f91-f99a-4570-9a36-369d6c27036d" name="Logic" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="65177d33-15ff-48e3-b7ba-2c2d88a61171" />
+        <suppliersInternal>
+          <interfaceRealization Id="91bb4fb0-1e19-4f1f-a26b-b3f53443aa01">
+            <interfaceMoniker Id="9a3ebebd-22f3-4c00-8da5-9a14e8d770e7" LastKnownName="ITick" />
+            <elementDefinition Id="1fe3e5b4-6351-48ba-a0a1-6f6c946c3a73" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <generalsInternal>
+          <generalization Id="588ddc16-5984-43a0-9fd9-201c71ff65e7" isSubstitutable="false">
+            <classMoniker Id="32facddc-e61d-40f7-a1bc-2b44b98018fc" LastKnownName="Manager" />
+            <elementDefinition Id="0c5a390b-8aef-40c0-b134-27c612c3181c" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="008ee415-73d2-468d-8ebb-e95f18a8ca20" name="Mediator" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="aa0679e5-9a15-459c-89ac-7217815e7932" />
+        <generalsInternal>
+          <generalization Id="1a142cf6-15a3-42ce-a230-dbac38773565" isSubstitutable="false">
+            <classMoniker Id="8d925f91-f99a-4570-9a36-369d6c27036d" LastKnownName="Logic" />
+            <elementDefinition Id="9de06020-a48c-4d6c-8926-141341499738" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="32facddc-e61d-40f7-a1bc-2b44b98018fc" name="Manager" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="5b24591c-10a9-4726-9dc2-6025fec46299" />
+        <targetEnds>
+          <association Id="5ed6573b-89e2-4284-a6ca-5e1859379da5" isDerived="false" sourceEndRoleName="Manager" targetEndRoleName="IOManager" isLeaf="false" isAbstract="false">
+            <classMoniker Id="175dfd10-5794-4fc9-b180-0139b66a0128" LastKnownName="IOManager" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="74bc0a2b-4c5a-41d3-9a5a-645dad5784a5" name="Manager" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="68327bae-045b-4bb6-8fb8-d6b4589325d7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d2e27f94-05e5-43a8-be4c-4edbef606911" name="IOManager" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="1d419af0-35b3-4569-999a-4ae54f325844" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="e47a345a-7fa4-49b3-8175-3fc99c9c2269" />
+          </association>
+          <association Id="07e47ee9-1bf3-467c-993a-27712869618f" isDerived="false" sourceEndRoleName="Manager" targetEndRoleName="AudioManager" isLeaf="false" isAbstract="false">
+            <classMoniker Id="7c635cee-ae66-4cfe-9930-6bf4e50b0c2f" LastKnownName="AudioManager" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c149f50d-7958-45b1-a799-31cacee3e627" name="Manager" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="3aab1dff-21fc-4d04-a10f-68a628ea8cb5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b32c5548-3568-4a84-a9ab-79e497ee9889" name="AudioManager" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="216ffc86-dec6-4b76-b605-c7507f2e2a31" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="58c07c91-618a-4b9c-a450-d214bfea6e29" />
+          </association>
+        </targetEnds>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="175dfd10-5794-4fc9-b180-0139b66a0128" name="IOManager" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="81b4bb8a-85c2-43a5-88a4-cdebbe650ee0" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="7c635cee-ae66-4cfe-9930-6bf4e50b0c2f" name="AudioManager" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="6c19138b-8207-47c9-b25d-99570247a757" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="821eb4b5-85dd-4938-bba6-937aca133ea8" name="uml">
+    <elementDefinition Id="89136d77-f5cf-4f89-bfd6-e7a9442ccb65" />
+  </package>
+</logicalClassDesignerModel>
