@@ -35,6 +35,24 @@
             <elementDefinition Id="8d521dfa-05f6-49ad-a7f4-1530a8be01b9" />
           </generalization>
         </generalsInternal>
+        <targetEnds>
+          <association Id="05cd7232-52eb-48d2-b66f-c3cb5b61b345" isDerived="false" sourceEndRoleName="View" targetEndRoleName="Controller" isLeaf="false" isAbstract="false">
+            <classMoniker Id="008ee415-73d2-468d-8ebb-e95f18a8ca20" LastKnownName="Controller" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ef8b6598-941e-4229-9584-29f604ae7ace" name="View" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="d9d12ce8-2bc9-41e3-8486-5c2241076e9d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="bca7bad0-1c4e-45ac-bd38-5c4162cb96fc" name="Controller" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="e83ae9e3-8fdc-4aec-9969-04ce908782b4" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="709b41d3-63bb-4cf9-bdd8-b7c56e6ccab9" />
+          </association>
+        </targetEnds>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
@@ -60,7 +78,7 @@
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="008ee415-73d2-468d-8ebb-e95f18a8ca20" name="Mediator" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="008ee415-73d2-468d-8ebb-e95f18a8ca20" name="Controller" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="aa0679e5-9a15-459c-89ac-7217815e7932" />
         <generalsInternal>
           <generalization Id="1a142cf6-15a3-42ce-a230-dbac38773565" isSubstitutable="false">
@@ -68,6 +86,24 @@
             <elementDefinition Id="9de06020-a48c-4d6c-8926-141341499738" />
           </generalization>
         </generalsInternal>
+        <targetEnds>
+          <association Id="a617ff8d-441f-47ac-a138-43e2609552e8" isDerived="false" sourceEndRoleName="Controller" targetEndRoleName="View" isLeaf="false" isAbstract="false">
+            <classMoniker Id="509af694-eda2-4b55-8f2b-6de835f1bec3" LastKnownName="View" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ff1addf4-a690-46e9-ad63-8c70e55bddf2" name="Controller" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="e4d1963b-aef6-44f7-9946-b270dcf9df62" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="185e3d2f-5563-4b31-a10e-947c3fb6aaa4" name="View" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="d794ea09-7580-4b6d-b797-50f33ac235a2" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="1b60804b-1952-4090-b2ef-37c0f7379dd1" />
+          </association>
+        </targetEnds>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
@@ -117,6 +153,40 @@
     <logicalClassDesignerModelHasTypes>
       <class Id="7c635cee-ae66-4cfe-9930-6bf4e50b0c2f" name="AudioManager" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="6c19138b-8207-47c9-b25d-99570247a757" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="3053c4fd-e5da-43e4-8093-1f02da184ea9" name="Test1" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="9ee953e7-dd96-478e-be1c-0144e3713b53" />
+        <generalsInternal>
+          <generalization Id="cb07c171-e7eb-496f-b645-e731ed9b173d" isSubstitutable="false">
+            <classMoniker Id="8d925f91-f99a-4570-9a36-369d6c27036d" LastKnownName="Logic" />
+            <elementDefinition Id="53b769bb-f948-4425-af27-4044aa38b8d1" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="f649852b-a78e-4ce4-b137-5604611af917" name="Mediator" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="55fee352-7a5d-4061-95d5-ca09e2d6abc7" />
+        <targetEnds>
+          <association Id="055e50d4-6017-4b29-9f67-aa8b4fea4a15" isDerived="false" sourceEndRoleName="Mediator" targetEndRoleName="Logic" isLeaf="false" isAbstract="false">
+            <classMoniker Id="8d925f91-f99a-4570-9a36-369d6c27036d" LastKnownName="Logic" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="dd93df0b-a329-4960-9ef6-38fcbc7a0d46" name="Mediator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="741b79b2-cec7-4512-827a-ecf3f8001bf7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c2886ab3-a55a-4c41-a03e-dc4faa42ce91" name="Logic" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="08c8cddb-8254-4621-bc5c-6c9cf57ba9ef" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="d79860ad-dd2d-4172-9dc2-b1d883205bff" />
+          </association>
+        </targetEnds>
       </class>
     </logicalClassDesignerModelHasTypes>
   </packagedElements>

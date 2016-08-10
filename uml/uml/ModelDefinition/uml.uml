@@ -65,6 +65,47 @@
               LastKnownLocation="uml.uml" />
           </generalization>
         </generalsInternal>
+        <targetEnds>
+          <association
+            Id="709b41d3-63bb-4cf9-bdd8-b7c56e6ccab9"
+            isDerived="false"
+            sourceEndRoleName="View"
+            targetEndRoleName="Controller"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="aa0679e5-9a15-459c-89ac-7217815e7932"
+              LastKnownName="Controller"
+              LastKnownLocation="uml.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d9d12ce8-2bc9-41e3-8486-5c2241076e9d"
+                  name="View"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Shared"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e83ae9e3-8fdc-4aec-9969-04ce908782b4"
+                  name="Controller"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -106,7 +147,7 @@
     <packageHasNamedElement>
       <class
         Id="aa0679e5-9a15-459c-89ac-7217815e7932"
-        name="Mediator"
+        name="Controller"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
@@ -120,6 +161,47 @@
               LastKnownLocation="uml.uml" />
           </generalization>
         </generalsInternal>
+        <targetEnds>
+          <association
+            Id="1b60804b-1952-4090-b2ef-37c0f7379dd1"
+            isDerived="false"
+            sourceEndRoleName="Controller"
+            targetEndRoleName="View"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="67b42a39-04da-48ef-817f-9f903e178ebd"
+              LastKnownName="View"
+              LastKnownLocation="uml.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e4d1963b-aef6-44f7-9946-b270dcf9df62"
+                  name="Controller"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d794ea09-7580-4b6d-b797-50f33ac235a2"
+                  name="View"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -226,6 +308,83 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="9ee953e7-dd96-478e-be1c-0144e3713b53"
+        name="Test1"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <generalsInternal>
+          <generalization
+            Id="53b769bb-f948-4425-af27-4044aa38b8d1"
+            isSubstitutable="false">
+            <classMoniker
+              Id="65177d33-15ff-48e3-b7ba-2c2d88a61171"
+              LastKnownName="Logic"
+              LastKnownLocation="uml.uml" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="eb32dbe8-e949-490d-97a9-bcdecd36e489"
+        name="I"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="55fee352-7a5d-4061-95d5-ca09e2d6abc7"
+        name="Mediator"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="d79860ad-dd2d-4172-9dc2-b1d883205bff"
+            isDerived="false"
+            sourceEndRoleName="Mediator"
+            targetEndRoleName="Logic"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="65177d33-15ff-48e3-b7ba-2c2d88a61171"
+              LastKnownName="Logic"
+              LastKnownLocation="uml.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="741b79b2-cec7-4512-827a-ecf3f8001bf7"
+                  name="Mediator"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Shared"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="08c8cddb-8254-4621-bc5c-6c9cf57ba9ef"
+                  name="Logic"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </class>
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType
