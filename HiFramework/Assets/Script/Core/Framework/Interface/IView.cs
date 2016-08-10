@@ -6,7 +6,7 @@ using System;
 namespace HiFramework
 {
     /// <summary>
-    /// ui层的逻辑控制
+    /// 表现层控制逻辑
     /// </summary>
     public interface IView
     {
