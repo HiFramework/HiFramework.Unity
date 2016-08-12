@@ -29,14 +29,14 @@ namespace HiFramework
         {
             Facade.Mediator.Unregister(paramKey);
         }
-        public void AddToTickList()
+        public void AddToTickList(ITick param)
         {
-            Facade.GameTick.AddToTickList(this);
+            Facade.GameTick.AddToTickList(param);
         }
 
-        public void RemoveFromTickList()
+        public void RemoveFromTickList(ITick param)
         {
-            Facade.GameTick.RemoveFromTickList(this);
+            Facade.GameTick.RemoveFromTickList(param);
         }
 
         public void Dispose()
