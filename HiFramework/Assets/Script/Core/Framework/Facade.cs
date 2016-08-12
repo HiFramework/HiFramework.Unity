@@ -8,6 +8,13 @@ namespace HiFramework
 {
     public class Facade
     {
+        public Manager Mgr { get; private set; }
+
+        public Facade()
+        {
+            Mgr = new Manager();
+        }
+
         private static IMediator mediator;
         public static IMediator Mediator
         {
