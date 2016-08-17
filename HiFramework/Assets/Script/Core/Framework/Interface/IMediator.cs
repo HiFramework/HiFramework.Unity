@@ -9,5 +9,6 @@ namespace HiFramework
     public interface IMediator : ICommand
     {
         IDictionary<object, object> InstantiationMap { get; }
+        object GetObj(string paramName);
     }
 }

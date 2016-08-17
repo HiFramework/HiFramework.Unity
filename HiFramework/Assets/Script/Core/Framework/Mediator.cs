@@ -53,5 +53,11 @@ namespace HiFramework
                 throw new Exception("instantiation map dont contain this key");
             }
         }
+
+        public object GetObj(string paramName)
+        {
+            List<object> temp = new List<object>(InstantiationMap.Values);
+            return temp.Find((object param) => { return param.GetType().FullName == paramName; });
+        }
     }
 }
