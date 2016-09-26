@@ -10,7 +10,7 @@ namespace HiFramework
     public class Mediator : IMediator
     {
         public IDictionary<object, object> InstantiationMap { get; private set; }
-
+        private List<object> objectList = new List<object>();
         public Mediator()
         {
             InstantiationMap = new Dictionary<object, object>();
@@ -31,13 +31,14 @@ namespace HiFramework
             }
         }
 
-        public void Register<T>(object paramKey) where T : ILogic
+        public object Register<T>(object paramKey) where T : ILogic
         {
             if (!InstantiationMap.ContainsKey(paramKey))
             {
                 Type type = typeof(T);
                 object obj = Activator.CreateInstance(type);
                 InstantiationMap[paramKey] = obj;
+                return obj;
             }
             else
             {
@@ -56,8 +57,8 @@ namespace HiFramework
 
         public object GetObj(string paramName)
         {
-            List<object> temp = new List<object>(InstantiationMap.Values);
-            return temp.Find((object param) => { return param.GetType().FullName == paramName; });
+            objectList = new List<object>(InstantiationMap.Values);
+            return objectList.Find((object param) => { return param.GetType().FullName == paramName; });
         }
     }
 }

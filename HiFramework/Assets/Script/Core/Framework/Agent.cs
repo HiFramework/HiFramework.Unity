@@ -16,9 +16,9 @@ namespace HiFramework
             Facade.Mediator.Dispatch(paramKey, paramMessage);
         }
 
-        public void Register<T>(object paramKey) where T : ILogic
+        public object Register<T>(object paramKey) where T : ILogic
         {
-            Facade.Mediator.Register<T>(paramKey);
+            return Facade.Mediator.Register<T>(paramKey);
         }
 
         public abstract void OnTick();
