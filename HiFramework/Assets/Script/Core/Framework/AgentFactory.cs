@@ -7,58 +7,50 @@ using System.Collections.Generic;
 
 namespace HiFramework
 {
-    public class Mediator : IMediator
+    public class AgentFactory : IAgentFactory
     {
-        public IDictionary<object, object> InstantiationMap { get; private set; }
-        private List<object> objectList = new List<object>();
-        public Mediator()
+        public IDictionary<object, IAgent> agentMap { get; private set; }
+        public AgentFactory()
         {
-            InstantiationMap = new Dictionary<object, object>();
+            agentMap = new Dictionary<object, IAgent>();
         }
 
         public void Dispatch(object paramKey, Message paramMessage)
         {
             //IView key = (IView)Convert.ChangeType(paramKey, paramKey.GetType());
-            if (InstantiationMap.ContainsKey(paramKey))
+            if (agentMap.ContainsKey(paramKey))
             {
-                object obj = InstantiationMap[paramKey];
-                if (obj is ILogic)
-                    ((ILogic)obj).OnMessage(paramMessage);
+                object obj = agentMap[paramKey];
+                ((IAgent)obj).OnMessage(paramMessage);
             }
             else
-            {
                 throw new Exception("You should register key to controller first");
-            }
         }
 
-        public object Register<T>(object paramKey) where T : ILogic
+        public object Register<T>(object paramKey) where T : IAgent
         {
-            if (!InstantiationMap.ContainsKey(paramKey))
+            if (!agentMap.ContainsKey(paramKey))
             {
                 Type type = typeof(T);
                 object obj = Activator.CreateInstance(type);
-                InstantiationMap[paramKey] = obj;
+                agentMap[paramKey] = (IAgent)obj;
                 return obj;
             }
             else
-            {
                 throw new Exception("Dont need to regist this ilogic again");
-            }
         }
         public void Unregister(object paramKey)
         {
-            if (InstantiationMap.ContainsKey(paramKey))
-                InstantiationMap.Remove(paramKey);
+            if (agentMap.ContainsKey(paramKey))
+                agentMap.Remove(paramKey);
             else
-            {
                 throw new Exception("instantiation map dont contain this key");
-            }
         }
 
-        public object GetObj(string paramName)
+        public IAgent GetAgent(string paramName)
         {
-            objectList = new List<object>(InstantiationMap.Values);
-            return objectList.Find((object param) => { return param.GetType().FullName == paramName; });
+            List<IAgent> objectList = new List<IAgent>(agentMap.Values);
+            return objectList.Find(param => { return param.GetType().FullName == paramName; });
         }
     }
 }

@@ -4,9 +4,9 @@
 //****************************************************************************
 namespace HiFramework
 {
-    public interface ICommand : IMessageDispatch
+    public interface ICommand
     {
-        object Register<T>(object paramKey) where T : ILogic;
+        object Register<T>(object paramKey) where T : IAgent;
         void Unregister(object paramKey);
     }
 }

@@ -8,17 +8,17 @@ using System;
 
 namespace HiFramework
 {
-    public abstract class Agent : Manager, ILogic
+    public abstract class Agent : Manager, IAgent
     {
         private bool disposed;
         public void Dispatch(object paramKey, Message paramMessage)
         {
-            Facade.Mediator.Dispatch(paramKey, paramMessage);
+            Facade.AgentFactory.Dispatch(paramKey, paramMessage);
         }
 
-        public object Register<T>(object paramKey) where T : ILogic
+        public object Register<T>(object paramKey) where T : IAgent
         {
-            return Facade.Mediator.Register<T>(paramKey);
+            return Facade.AgentFactory.Register<T>(paramKey);
         }
 
         public abstract void OnTick();
@@ -27,7 +27,7 @@ namespace HiFramework
 
         public void Unregister(object paramKey)
         {
-            Facade.Mediator.Unregister(paramKey);
+            Facade.AgentFactory.Unregister(paramKey);
         }
         public void AddToTickList(ITick param)
         {

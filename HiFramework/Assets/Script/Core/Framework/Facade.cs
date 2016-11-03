@@ -15,14 +15,14 @@ namespace HiFramework
             Mgr = new Manager();
         }
 
-        private static IMediator mediator;
-        public static IMediator Mediator
+        private static IAgentFactory _agentFactory;
+        public static IAgentFactory AgentFactory
         {
             get
             {
-                if (mediator == null)
-                    mediator = new Mediator();
-                return mediator;
+                if (_agentFactory == null)
+                    _agentFactory = new AgentFactory();
+                return _agentFactory;
             }
         }
         private static ITick gameTick;

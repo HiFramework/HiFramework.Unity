@@ -14,10 +14,10 @@ public class NewBehaviourScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        var tt = Facade.Mediator.Register<tt>("12345");
+        var tt = Facade.AgentFactory.Register<tt>("12345");
 
 
-        tt test = Facade.Mediator.GetObj(typeof(tt).FullName) as tt;
+        tt test = Facade.AgentFactory.GetAgent(typeof(tt).FullName) as tt;
 
         test.Log();
 
@@ -38,6 +38,8 @@ public class tt : Agent
     public void Log()
     {
         Debug.Log("from tt");
+
+
     }
 
     public override void OnTick()

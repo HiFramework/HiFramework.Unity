@@ -2,13 +2,15 @@
 // Description:
 // Author: hiramtan@qq.com
 //****************************************************************************
+using UnityEngine;
+using System.Collections;
+
 using System;
-using System.Collections.Generic;
+
 namespace HiFramework
 {
-    public interface IMediator : ICommand
+    public interface IAgent : ITick, ICommand, IMessage, IDisposable
     {
-        IDictionary<object, object> InstantiationMap { get; }
-        object GetObj(string paramName);
+
     }
 }
