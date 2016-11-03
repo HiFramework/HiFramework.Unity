@@ -21,8 +21,8 @@ namespace HiFramework
             //IView key = (IView)Convert.ChangeType(paramKey, paramKey.GetType());
             if (agentMap.ContainsKey(paramKey))
             {
-                object obj = agentMap[paramKey];
-                ((IAgent)obj).OnMessage(paramMessage);
+                IAgent obj = agentMap[paramKey];
+                obj.OnMessage(paramMessage);
             }
             else
                 throw new Exception("You should register key to controller first");
