@@ -10,7 +10,7 @@ namespace HiFramework
 {
     public abstract class Agent : Manager, IAgent
     {
-        private bool disposed;
+      
         public void Dispatch(object paramKey, Message paramMessage)
         {
             Facade.AgentFactory.Dispatch(paramKey, paramMessage);
@@ -48,6 +48,7 @@ namespace HiFramework
         {
             Dispose(false);
         }
+        private bool disposed;
         protected virtual void Dispose(bool paramDisposing)
         {
             if (disposed)

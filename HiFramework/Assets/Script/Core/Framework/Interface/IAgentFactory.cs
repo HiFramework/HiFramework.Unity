@@ -6,9 +6,10 @@ using System;
 using System.Collections.Generic;
 namespace HiFramework
 {
-    public interface IAgentFactory : ICommand, IMessageDispatch
+    public interface IAgentFactory : ICommand, IMessageDispatch,IDisposable
     {
         IDictionary<object, IAgent> agentMap { get; }
         IAgent GetAgent(string paramName);
+
     }
 }

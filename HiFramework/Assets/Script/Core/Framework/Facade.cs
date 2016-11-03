@@ -15,18 +15,18 @@ namespace HiFramework
             Mgr = new Manager();
         }
 
-        private static IAgentFactory _agentFactory;
+        private static IAgentFactory agentFactory;
         public static IAgentFactory AgentFactory
         {
             get
             {
-                if (_agentFactory == null)
-                    _agentFactory = new AgentFactory();
-                return _agentFactory;
+                if (agentFactory == null)
+                    agentFactory = new AgentFactory();
+                return agentFactory;
             }
         }
-        private static ITick gameTick;
-        public static ITick GameTick
+        private static IGameTick gameTick;
+        public static IGameTick GameTick
         {
             get
             {
@@ -34,6 +34,14 @@ namespace HiFramework
                     gameTick = new GameTick();
                 return gameTick;
             }
+        }
+
+        public static void Dispose()
+        {
+            AgentFactory.Dispose();
+            agentFactory = null;
+            GameTick.Dispose();
+            gameTick = null;
         }
     }
 }

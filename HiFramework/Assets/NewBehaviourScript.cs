@@ -14,6 +14,10 @@ public class NewBehaviourScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+
+        new GameObject("GameTick").AddComponent<GameWorld>();
+
+
         var tt = Facade.AgentFactory.Register<tt>("12345");
 
 
@@ -22,7 +26,7 @@ public class NewBehaviourScript : MonoBehaviour
         test.Log();
 
 
-
+        Facade.Dispose();
 
     }
 

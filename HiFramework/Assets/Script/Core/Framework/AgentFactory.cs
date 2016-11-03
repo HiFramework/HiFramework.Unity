@@ -4,6 +4,7 @@
 //****************************************************************************
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace HiFramework
 {
@@ -51,6 +52,28 @@ namespace HiFramework
         {
             List<IAgent> objectList = new List<IAgent>(agentMap.Values);
             return objectList.Find(param => { return param.GetType().FullName == paramName; });
+        }
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        ~AgentFactory()
+        {
+            Dispose(false);
+        }
+        private bool disposed;
+        void Dispose(bool paramDisposing)
+        {
+            if (disposed)
+                return;
+            if (paramDisposing)
+            {
+                for (int i = 0; i < agentMap.Count; i++)
+                    agentMap.ElementAt(i).Value.Dispose();
+                agentMap = null;
+            }
+            disposed = true;
         }
     }
 }
