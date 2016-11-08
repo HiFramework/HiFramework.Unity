@@ -10,12 +10,12 @@ namespace HiFramework
 {
     public abstract class View : MonoBehaviour, IView
     {
-        protected IController controller;
 
-        public void Bind<T>() where T : IController, new()
+        public IController Bind<T>() where T : IController, new()
         {
-            controller = new T();
+           var controller = new T();
             controller.Bind(this);
+            return controller;
         }
         public abstract void OnTick();
 

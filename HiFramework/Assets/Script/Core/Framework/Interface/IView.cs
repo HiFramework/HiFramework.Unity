@@ -14,6 +14,6 @@ namespace HiFramework
         /// bind this view to its controller
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        void Bind<T>() where T : IController, new();
+        IController Bind<T>() where T : IController, new();
     }
 }
