@@ -1,5 +1,5 @@
 ﻿//****************************************************************************
-// Description:
+// Description: 实例对象,facade维护
 // Author: hiramtan@qq.com
 //****************************************************************************
 using UnityEngine;
@@ -10,7 +10,6 @@ namespace HiFramework
 {
     public abstract class Agent : Manager, IAgent
     {
-      
         public void Dispatch(object paramKey, Message paramMessage)
         {
             Facade.AgentFactory.Dispatch(paramKey, paramMessage);
@@ -58,6 +57,49 @@ namespace HiFramework
 
             }
             disposed = true;
+        }
+    }
+
+    public class Proxy : IAgent
+    {
+        public void AddToTickList(ITick paramTick)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveFromTickList(ITick paramTick)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnTick()
+        {
+            throw new NotImplementedException();
+        }
+
+        public object Register<T>(object paramKey) where T : IAgent
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Unregister(object paramKey)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Dispatch(object paramKey, Message paramMessage = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnMessage(Message paramMessage)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
         }
     }
 }

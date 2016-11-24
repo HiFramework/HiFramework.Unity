@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace HiFramework
 {
-    public interface IController : IAgent
+    public interface IController
     {
         /// <summary>
         /// bind its view

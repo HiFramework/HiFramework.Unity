@@ -1,11 +1,11 @@
 ﻿//****************************************************************************
-// Description:控制逻辑
+// Description:ui控制逻辑
 // Author: hiramtan@qq.com
 //****************************************************************************
 using System;
 namespace HiFramework
 {
-    public abstract class Controller : Agent, IController
+    public abstract class Controller : IController, ITick
     {
         private IView view;
 
@@ -22,6 +22,16 @@ namespace HiFramework
             if (view == null)
                 throw new Exception("cannt find its bind view");
             view.OnMessage(param);
+        }
+
+        public abstract void OnMessage(Message paramMessage);
+        public void AddToTickList(ITick paramTick)
+        {
+            Facade.GameTick.AddToTickList(paramTick);
+        }
+        public void RemoveFromTickList(ITick paramTick)
+        {
+            Facade.GameTick.AddToTickList(paramTick);
         }
     }
 }
