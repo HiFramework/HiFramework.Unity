@@ -11,7 +11,9 @@ namespace HiFramework
         public object Key { get; private set; }
         public List<object> Msg { get; private set; }
         private bool disposed;
-        public Message(object paramKey = null, params object[] param)
+
+        public Message(params object[] param) : this(null, param) { }
+        public Message(object paramKey, params object[] param)
         {
             Key = paramKey;
             Msg = new List<object>();
