@@ -8,11 +8,11 @@ namespace HiFramework
 {
     public class Facade
     {
-        public Manager Mgr { get; private set; }
+        public Manager manager { get; private set; }
 
         public Facade()
         {
-            Mgr = new Manager();
+            manager = new Manager();
         }
 
         private static IAgentFactory agentFactory;
