@@ -15,7 +15,7 @@ public class NewBehaviourScript : MonoBehaviour
     void Start()
     {
 
-        new GameObject("GameTick").AddComponent<GameWorld>();
+        new GameObject("GameTick").AddComponent<GameTick>();
 
 
         var tt = Facade.AgentFactory.Register<tt>("12345");
