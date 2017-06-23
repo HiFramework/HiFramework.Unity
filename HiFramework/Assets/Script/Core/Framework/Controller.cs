@@ -33,5 +33,10 @@ namespace HiFramework
         {
             Facade.GameTick.AddToTickList(paramTick);
         }
+
+        public void OnTick()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

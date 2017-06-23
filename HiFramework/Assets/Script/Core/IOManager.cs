@@ -5,7 +5,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class IOManager : Singletont<IOManager>
+public class IOManager : Singleton<IOManager>
 {
 
 }

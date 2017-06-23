@@ -12,12 +12,12 @@ namespace HiFramework
     {
         public void Dispatch(object paramKey, Message paramMessage)
         {
-            Facade.agentFactory.Dispatch(paramKey, paramMessage);
+            Facade.AgentFactory.Dispatch(paramKey, paramMessage);
         }
 
         public object Register<T>(object paramKey) where T : IAgent
         {
-            return Facade.agentFactory.Register<T>(paramKey);
+            return Facade.AgentFactory.Register<T>(paramKey);
         }
 
         public abstract void OnTick();
@@ -26,7 +26,7 @@ namespace HiFramework
 
         public void Unregister(object paramKey)
         {
-            Facade.agentFactory.Unregister(paramKey);
+            Facade.AgentFactory.Unregister(paramKey);
         }
         public void AddToTickList(ITick param)
         {
