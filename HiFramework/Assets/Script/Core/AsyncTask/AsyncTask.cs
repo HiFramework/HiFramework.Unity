@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace HiFramework
 {
-    public class AsyncTask
+    public abstract class AsyncTask
     {
         private Executer executer;
         protected bool isDone;
@@ -32,13 +32,12 @@ namespace HiFramework
             action = param;
         }
 
-        protected virtual void Update()
-        {
-            //isDone = true;
+        protected abstract void Update();
+        //{
+        //    //isDone = true;
+        //}
 
-        }
-
-        protected virtual void _Complate()
+    protected virtual void _Complate()
         {
             action(null);
         }
@@ -70,10 +69,9 @@ namespace HiFramework
 
             public object Current { get; private set; }
         }
-    }
+        private class AsyncExecuter : MonoBehaviour
+        {
 
-    public class AsyncExecuter : MonoBehaviour
-    {
-
+        }
     }
 }
