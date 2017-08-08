@@ -7,10 +7,10 @@ namespace HiFramework
 {
     public abstract class AsyncTask
     {
-        private Executer executer;
-        protected bool isDone;
-        private Action<object> action;//任务完成后的事件
+        protected bool isDone;//任务是否完成
+        protected Action<object> action;//任务完成后的事件
 
+        private Executer executer;
         private AsyncExecuter asyncExecuter;
         public AsyncTask()
         {
@@ -37,7 +37,7 @@ namespace HiFramework
         //    //isDone = true;
         //}
 
-    protected virtual void _Complate()
+        protected virtual void _Complate()
         {
             action(null);
         }
