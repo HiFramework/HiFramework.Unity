@@ -28,3 +28,23 @@ public class AsyncResourceLoadTask : AsyncTask
         action(resourceRequest.asset);
     }
 }
+
+//public class TestLoad : MonoBehaviour
+//{
+
+//    // Use this for initialization
+//    void Start()
+//    {
+
+//        new AsyncResourceLoadTask("Cube").Start().Finish((p) =>
+//        {
+//            Object temp = (Object)p;
+//            Instantiate(temp);
+//        });
+//    }
+//    // Update is called once per frame
+//    void Update()
+//    {
+
+//    }
+//}

@@ -2,7 +2,6 @@
 using System.Collections;
 using UnityEngine;
 
-
 namespace HiFramework
 {
     public abstract class AsyncTask
