@@ -37,7 +37,7 @@ namespace HiFramework
         //    //isDone = true;
         //}
 
-        protected virtual void _Complate()
+        protected virtual void Complate()
         {
             action(null);
         }
@@ -57,7 +57,7 @@ namespace HiFramework
                     asyncTask.Update();
                     return true;
                 }
-                asyncTask._Complate();
+                asyncTask.Complate();
                 return false;
 
             }

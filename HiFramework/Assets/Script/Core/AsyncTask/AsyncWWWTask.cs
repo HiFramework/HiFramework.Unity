@@ -1,4 +1,5 @@
-﻿using HiFramework;
+﻿using System.Collections;
+using HiFramework;
 using UnityEngine;
 
 public class AsyncWWWTask : AsyncTask
@@ -12,12 +13,11 @@ public class AsyncWWWTask : AsyncTask
     protected override void Update()
     {
         Debug.Log(www.progress);
-
         if (www.isDone)
             isDone = true;
     }
 
-    protected override void _Complate()
+    protected override void Complate()
     {
         action(www);
     }
