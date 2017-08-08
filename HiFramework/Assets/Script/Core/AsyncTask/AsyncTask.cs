@@ -1,4 +1,8 @@
-﻿using System;
+﻿//****************************************************************************
+// Description:
+// Author: hiramtan@live.com
+//****************************************************************************
+using System;
 using System.Collections;
 using UnityEngine;
 

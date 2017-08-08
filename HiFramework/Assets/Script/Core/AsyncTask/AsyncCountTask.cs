@@ -1,18 +1,21 @@
-﻿using HiFramework;
-using UnityEngine;
-
-/// <summary>
-/// 测试逻辑,测试异步计数
-/// </summary>
-public class AsyncCountTask : AsyncTask
-{
-    private int i = 0;
-
-    protected override void Update()
+﻿//****************************************************************************
+// Description:
+// Author: hiramtan@live.com
+//****************************************************************************
+namespace HiFramework
+{/// <summary>
+ /// 测试逻辑,测试异步计数
+ /// </summary>
+    public class AsyncCountTask : AsyncTask
     {
-        i++;
-        if (i > 100)
-            isDone = true;
+        private int i = 0;
+
+        protected override void Update()
+        {
+            i++;
+            if (i > 100)
+                isDone = true;
+        }
     }
 }
 

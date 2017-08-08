@@ -1,6 +1,6 @@
 ﻿//****************************************************************************
 // Description:中介,tick管理
-// Author: hiramtan@qq.com
+// Author: hiramtan@live.com
 //****************************************************************************
 using System;
 using System.Collections.Generic;

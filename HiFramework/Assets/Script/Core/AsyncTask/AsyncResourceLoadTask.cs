@@ -1,33 +1,40 @@
-﻿using HiFramework;
+﻿//****************************************************************************
+// Description:
+// Author: hiramtan@live.com
+//****************************************************************************
 using UnityEngine;
 
-/// <summary>
-/// Resource文件夹下异步加载
-/// </summary>
-public class AsyncResourceLoadTask : AsyncTask
+namespace HiFramework
 {
-    private ResourceRequest resourceRequest;
-
     /// <summary>
-    /// resource文件夹下路径
+    /// Resource文件夹下异步加载
     /// </summary>
-    /// <param name="param"></param>
-    public AsyncResourceLoadTask(string param)
+    public class AsyncResourceLoadTask : AsyncTask
     {
-        resourceRequest = Resources.LoadAsync(param);
-    }
+        private ResourceRequest resourceRequest;
 
-    protected override void Update()
-    {
-        if (resourceRequest.isDone)
-            isDone = true;
-    }
+        /// <summary>
+        /// resource文件夹下路径
+        /// </summary>
+        /// <param name="param"></param>
+        public AsyncResourceLoadTask(string param)
+        {
+            resourceRequest = Resources.LoadAsync(param);
+        }
 
-    protected override void Complate()
-    {
-        action(resourceRequest.asset);
+        protected override void Update()
+        {
+            if (resourceRequest.isDone)
+                isDone = true;
+        }
+
+        protected override void Complate()
+        {
+            action(resourceRequest.asset);
+        }
     }
 }
+
 
 //public class TestLoad : MonoBehaviour
 //{

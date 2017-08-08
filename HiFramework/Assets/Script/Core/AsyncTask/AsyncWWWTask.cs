@@ -1,27 +1,33 @@
-﻿using System.Collections;
-using HiFramework;
+﻿//****************************************************************************
+// Description:
+// Author: hiramtan@live.com
+//****************************************************************************
 using UnityEngine;
 
-public class AsyncWWWTask : AsyncTask
+namespace HiFramework
 {
-    private WWW www;
-    public AsyncWWWTask(string url)
+    public class AsyncWWWTask : AsyncTask
     {
-        www = new WWW(url);
-    }
+        private WWW www;
+        public AsyncWWWTask(string url)
+        {
+            www = new WWW(url);
+        }
 
-    protected override void Update()
-    {
-        Debug.Log(www.progress);
-        if (www.isDone)
-            isDone = true;
-    }
+        protected override void Update()
+        {
+            Debug.Log(www.progress);
+            if (www.isDone)
+                isDone = true;
+        }
 
-    protected override void Complate()
-    {
-        action(www);
+        protected override void Complate()
+        {
+            action(www);
+        }
     }
 }
+
 
 //public class TestAsyncWWWTask : MonoBehaviour
 //{

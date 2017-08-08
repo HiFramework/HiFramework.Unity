@@ -1,6 +1,6 @@
 ﻿//****************************************************************************
 // Description:ui控制逻辑
-// Author: hiramtan@qq.com
+// Author: hiramtan@live.com
 //****************************************************************************
 using System;
 namespace HiFramework

@@ -1,6 +1,6 @@
 ﻿//****************************************************************************
 // Description:命令/controller管理
-// Author: hiramtan@qq.com
+// Author: hiramtan@live.com
 //****************************************************************************
 using System;
 using System.Collections.Generic;

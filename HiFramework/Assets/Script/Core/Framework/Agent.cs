@@ -1,6 +1,6 @@
 ﻿//****************************************************************************
 // Description: 实例对象,facade维护
-// Author: hiramtan@qq.com
+// Author: hiramtan@live.com
 //****************************************************************************
 using UnityEngine;
 using System.Collections;
