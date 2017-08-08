@@ -4,6 +4,7 @@
 //****************************************************************************
 using UnityEngine;
 using System.Collections;
+using HiFramework;
 
 /// <summary>
 /// 提供各种单例的集合,比如audiomanager

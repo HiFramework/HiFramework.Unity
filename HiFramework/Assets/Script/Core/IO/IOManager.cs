@@ -5,7 +5,7 @@
 using System;
 using System.IO;
 using UnityEngine;
-namespace HiIO
+namespace HiFramework
 {
     public class IOManager : Singleton<IOManager>
     {
