@@ -52,21 +52,22 @@ public static class Singleton
     }
 }
 
-public class Test_First : Singleton<Test_First>
-{
-    public void Do() { }
-}
+////example
+//public class Test_First : Singleton<Test_First>
+//{
+//    public void Do() { }
+//}
 
-public class Test_Second
-{
-    public void Do() { }
-}
+//public class Test_Second
+//{
+//    public void Do() { }
+//}
 
-public class Test1
-{
-    void Init()
-    {
-        Test_First.Instance.Do();
-        Singleton.GetInstance<Test_Second>().Do();
-    }
-}
+//public class Test1
+//{
+//    void Init()
+//    {
+//        Test_First.Instance.Do();
+//        Singleton.GetInstance<Test_Second>().Do();
+//    }
+//}
