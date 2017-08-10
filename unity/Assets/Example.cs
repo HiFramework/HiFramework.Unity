@@ -2,12 +2,10 @@
 // Description:
 // Author: hiramtan@live.com
 //*********************************************************************
-using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 using HiFramework;
+using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class Example : MonoBehaviour
 {
 
 
