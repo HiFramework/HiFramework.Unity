@@ -16,6 +16,11 @@ namespace HiFramework
             if (i > 100)
                 isDone = true;
         }
+
+        protected override void Complate()
+        {
+
+        }
     }
 }
 

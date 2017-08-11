@@ -40,10 +40,10 @@ namespace HiFramework
         //    //isDone = true;
         //}
 
-        protected virtual void Complate()
-        {
-            action(null);
-        }
+        protected abstract void Complate();
+        //{
+        //    action(null);
+        //}
 
         private class Executer : IEnumerator
         {
