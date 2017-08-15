@@ -3,6 +3,9 @@
 // 提供两种类型的书写方式,如果类不能继承singleton<T>时,可以使用第二种方式快速提供单例
 // Author: hiramtan@live.com
 //*********************************************************************
+
+using UnityEngine;
+
 public class Singleton<T> where T : new()
 {
     private static T instance;
@@ -51,6 +54,28 @@ public static class Singleton
         internal static volatile T instance = default(T);
     }
 }
+
+public class Singleton_Unity<T> : MonoBehaviour where T : Component
+{
+    private static T instance;
+
+    public static T Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = FindObjectOfType<T>();
+            if (instance == null)
+            {
+                Debug.LogWarning("there is no this componet in scene, we will create one");
+                new GameObject().AddComponent<T>();
+            }
+            return instance;
+        }
+    }
+}
+
+
 
 ////example
 //public class Test_First : Singleton<Test_First>
