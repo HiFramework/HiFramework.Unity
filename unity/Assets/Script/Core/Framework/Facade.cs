@@ -1,32 +1,24 @@
 ﻿//****************************************************************************
-// Description:中介,tick管理
+// Description:静态管理类
+// 对外接口,tick管理
 // Author: hiramtan@live.com
 //****************************************************************************
-using System;
-using System.Collections.Generic;
 namespace HiFramework
 {
     public class Facade
     {
-        public Manager manager { get; private set; }
-
-        public Facade()
-        {
-            manager = new Manager();
-        }
-
-        private static IAgentFactory agentFactory;
-        public static IAgentFactory AgentFactory
+        private static AgentRegister iRegister;
+        public static AgentRegister IRegister
         {
             get
             {
-                if (agentFactory == null)
-                    agentFactory = new AgentFactory();
-                return agentFactory;
+                if (iRegister == null)
+                    iRegister = new AgentRegister();
+                return iRegister;
             }
         }
-        private static IGameTick gameTick;
-        public static IGameTick GameTick
+        private static GameTick gameTick;
+        public static GameTick GameTick
         {
             get
             {
@@ -35,11 +27,10 @@ namespace HiFramework
                 return gameTick;
             }
         }
-
         public static void Dispose()
         {
-            AgentFactory.Dispose();
-            agentFactory = null;
+            IRegister.Dispose();
+            iRegister = null;
             GameTick.Dispose();
             gameTick = null;
         }

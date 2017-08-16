@@ -2,8 +2,6 @@
 // Description:
 // Author: hiramtan@live.com
 //****************************************************************************
-using System;
-using UnityEngine;
 
 namespace HiFramework
 {

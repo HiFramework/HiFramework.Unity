@@ -7,14 +7,9 @@ using System.Collections.Generic;
 
 namespace HiFramework
 {
-    public class GameTick : IGameTick
+    public class GameTick :ObjectBase, ITick
     {
         private IList<ITick> tickList = new List<ITick>();
-
-        public GameTick()
-        {
-            tickList = new List<ITick>();
-        }
 
         public void OnTick()
         {
@@ -33,25 +28,10 @@ namespace HiFramework
                 tickList.Remove(paramTick);
         }
 
-        public void Dispose()
+        protected override void OnDispose()
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-        ~GameTick()
-        {
-            Dispose(false);
-        }
-        private bool disposed;
-        void Dispose(bool paramDisposing)
-        {
-            if (disposed)
-                return;
-            if (paramDisposing)
-            {
-                tickList = null;
-            }
-            disposed = true;
+            tickList.Clear();
+            tickList = null;
         }
     }
 }

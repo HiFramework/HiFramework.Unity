@@ -2,7 +2,6 @@
 // Description:
 // Author: hiramtan@live.com
 //****************************************************************************
-using UnityEngine;
 namespace HiFramework
 {
     public interface ITick

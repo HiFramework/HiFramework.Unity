@@ -4,7 +4,7 @@
 //****************************************************************************
 namespace HiFramework
 {
-    public interface IMessageDispatch
+    public interface IDispatch
     {
         void Dispatch(object paramKey, Message paramMessage = null);
     }

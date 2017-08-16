@@ -2,13 +2,12 @@
 // Description:
 // Author: hiramtan@live.com
 //****************************************************************************
-using System;
 namespace HiFramework
 {
     /// <summary>
     /// 表现层控制逻辑
     /// </summary>
-    public interface IView : ITick, IMessageReceive
+    public interface IView : ITick, IReceive
     {
         /// <summary>
         /// bind this view to its controller

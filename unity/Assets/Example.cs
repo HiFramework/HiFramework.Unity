@@ -13,18 +13,18 @@ public class Example : MonoBehaviour
     void Start()
     {
 
-        new GameObject("GameTick").AddComponent<GameTick>();
+        //new GameObject("GameTick").AddComponent<GameTick>();
 
 
-        var tt = Facade.AgentFactory.Register<tt>("12345");
+        //var tt = Facade.IRegister.Regist<tt>("12345");
 
 
-        tt test = Facade.AgentFactory.GetAgent(typeof(tt).FullName) as tt;
+        //tt test = Facade.IRegister.GetAgent(typeof(tt).FullName) as tt;
 
-        test.Log();
+        //test.Log();
 
 
-        Facade.Dispose();
+        //Facade.Dispose();
 
     }
 

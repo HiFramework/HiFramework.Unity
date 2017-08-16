@@ -1,35 +1,34 @@
 ﻿//****************************************************************************
-// Description:数据模型
+// Description: 非mono组件基类
+// 主要用于通用逻辑及销毁
 // Author: hiramtan@live.com
-//****************************************************************************
+//***************************************************************************
+
 using System;
 
 namespace HiFramework
 {
-    public class Model : IModel
+    public abstract class ObjectBase : IDisposable
     {
-        private bool disposed = false;
-        public void Clear()
-        {
-
-        }
+        protected abstract void OnDispose();
 
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-        ~Model()
+        ~ObjectBase()
         {
             Dispose(false);
         }
-        protected virtual void Dispose(bool paramDisposing)
+        private bool disposed;
+        private void Dispose(bool paramDisposing)
         {
             if (disposed)
                 return;
             if (paramDisposing)
             {
-                Clear();
+                OnDispose();
             }
             disposed = true;
         }
