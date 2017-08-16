@@ -16,15 +16,15 @@ namespace HiFramework
         }
         public object Regist<T>(object paramKey) where T : Agent
         {
-            return Facade.IRegister.Regist<T>(paramKey);
+            return Facade.Register.Regist<T>(paramKey);
         }
         public void Unregist(object paramKey)
         {
-            Facade.IRegister.Unregist(paramKey);
+            Facade.Register.Unregist(paramKey);
         }
         public void Dispatch(object paramKey, IMessage paramMessage = null)
         {
-            Facade.IRegister.Dispatch(paramKey, paramMessage);
+            Facade.Register.Dispatch(paramKey, paramMessage);
         }
         //接收来自对应控制器和Agent的消息
         public abstract void OnMessage(IMessage paramMessage);

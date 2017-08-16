@@ -10,11 +10,7 @@ namespace HiFramework
 {
     public class AgentRegister : ObjectBase, IRegist, IDispatch
     {
-        public IDictionary<object, Agent> agentMap;
-        public AgentRegister()
-        {
-            agentMap = new Dictionary<object, Agent>();
-        }
+        private IDictionary<object, Agent> agentMap = new Dictionary<object, Agent>();
 
         public void Dispatch(object paramKey, IMessage paramMessage = null)
         {
@@ -65,6 +61,7 @@ namespace HiFramework
         {
             for (int i = 0; i < agentMap.Count; i++)
                 agentMap.ElementAt(i).Value.Dispose();
+            agentMap.Clear();
             agentMap = null;
         }
     }

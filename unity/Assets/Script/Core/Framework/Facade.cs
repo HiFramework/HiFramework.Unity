@@ -7,14 +7,14 @@ namespace HiFramework
 {
     public class Facade
     {
-        private static AgentRegister iRegister;
-        public static AgentRegister IRegister
+        private static AgentRegister register;
+        public static AgentRegister Register
         {
             get
             {
-                if (iRegister == null)
-                    iRegister = new AgentRegister();
-                return iRegister;
+                if (register == null)
+                    register = new AgentRegister();
+                return register;
             }
         }
         private static GameTick gameTick;
@@ -29,8 +29,8 @@ namespace HiFramework
         }
         public static void Dispose()
         {
-            IRegister.Dispose();
-            iRegister = null;
+            Register.Dispose();
+            register = null;
             GameTick.Dispose();
             gameTick = null;
         }
