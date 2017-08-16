@@ -16,7 +16,7 @@ namespace HiFramework
             agentMap = new Dictionary<object, Agent>();
         }
 
-        public void Dispatch(object paramKey, Message paramMessage = null)
+        public void Dispatch(object paramKey, IMessage paramMessage = null)
         {
             //IView key = (IView)Convert.ChangeType(paramKey, paramKey.GetType());
             if (agentMap.ContainsKey(paramKey))

@@ -5,7 +5,7 @@
 
 namespace HiFramework
 {
-    public abstract class Agent : ObjectBase, IRegist, IDispatch, IReceive
+    public abstract class Agent : ObjectBase, IRegist, IDispatch, IReceive, ITick
     {
         public object Regist<T>(object paramKey) where T : Agent
         {
@@ -16,11 +16,11 @@ namespace HiFramework
             Facade.IRegister.Unregist(paramKey);
         }
 
-        public void Dispatch(object paramKey, Message paramMessage = null)
+        public void Dispatch(object paramKey, IMessage paramMessage = null)
         {
             Facade.IRegister.Dispatch(paramKey, paramMessage);
         }
-        public abstract void OnMessage(Message paramMessage);
+        public abstract void OnMessage(IMessage paramMessage);
 
         public void AddToTickList(ITick param)
         {

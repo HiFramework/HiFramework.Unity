@@ -49,7 +49,7 @@ public class tt : Agent
         throw new System.NotImplementedException();
     }
 
-    public override void OnMessage(Message paramMessage)
+    public override void OnMessage(IMessage paramMessage)
     {
         Debug.Log("from message");
         // throw new System.NotImplementedException();

@@ -2,7 +2,6 @@
 // Description:派发消息内容
 // Author: hiramtan@live.com
 //****************************************************************************
-using System;
 using System.Collections.Generic;
 namespace HiFramework
 {

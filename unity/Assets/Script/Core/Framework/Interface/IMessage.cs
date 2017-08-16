@@ -3,9 +3,13 @@
 // Author: hiramtan@live.com
 //***************************************************************************
 
-using UnityEngine;
+using System.Collections.Generic;
 
-public abstract class ObjectBase_Mono : MonoBehaviour
+namespace HiFramework
 {
-
+    public interface IMessage
+    {
+        object Key { get; }
+        List<object> Msg { get; }
+    }
 }

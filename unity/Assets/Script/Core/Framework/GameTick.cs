@@ -2,7 +2,6 @@
 // Description:游戏中的tick管理
 // Author: hiramtan@live.com
 //****************************************************************************
-using System;
 using System.Collections.Generic;
 
 namespace HiFramework

@@ -6,6 +6,6 @@ namespace HiFramework
 {
     public interface IDispatch
     {
-        void Dispatch(object paramKey, Message paramMessage = null);
+        void Dispatch(object paramKey, IMessage paramMessage = null);
     }
 }
