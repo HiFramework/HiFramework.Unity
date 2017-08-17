@@ -27,7 +27,9 @@ namespace HiFramework
             Facade.IRegistAndDispatch.Dispatch(paramKey, paramMessage);
         }
         //接收来自对应控制器和Agent的消息
-        public abstract void OnMessage(IMessage paramMessage);
+        public virtual void OnMessage(IMessage paramMessage)
+        {
+        }
 
         public void AddToTickList(ITick param)
         {
@@ -39,6 +41,8 @@ namespace HiFramework
             Facade.GameTick.RemoveFromTickList(param);
         }
 
-        public abstract void OnTick();
+        public virtual void OnTick()
+        {
+        }
     }
 }
