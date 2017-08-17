@@ -16,10 +16,10 @@ public class Example : MonoBehaviour
         //new GameObject("GameTick").AddComponent<GameTick>();
 
 
-        //var tt = Facade.IRegister.Regist<tt>("12345");
+        //var tt = Facade.Map.Regist<tt>("12345");
 
 
-        //tt test = Facade.IRegister.GetAgent(typeof(tt).FullName) as tt;
+        //tt test = Facade.Map.GetAgent(typeof(tt).FullName) as tt;
 
         //test.Log();
 

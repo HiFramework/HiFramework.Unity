@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace HiFramework
 {
-    public class AgentRegister : ObjectBase, IRegist, IDispatch
+    public class AgentMap : ObjectBase, IRegistAndDispatch
     {
         private IDictionary<object, Agent> agentMap = new Dictionary<object, Agent>();
 
@@ -21,7 +21,7 @@ namespace HiFramework
                 obj.OnMessage(paramMessage);
             }
             else
-                throw new Exception("You should register key to controller first");
+                throw new Exception("You should _map key to controller first");
         }
 
         public object Regist<T>(object paramKey) where T : Agent
