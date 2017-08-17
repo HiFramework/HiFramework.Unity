@@ -44,17 +44,20 @@ namespace HiFramework
                 throw new Exception("instantiation map dont contain this key");
         }
 
-        public Agent GetAgentByKey(object key)
+        public T GetAgentByKey<T>(object key) where T : Agent
         {
             if (!agentMap.ContainsKey(key))
                 return null;
-            return agentMap[key];
+            return (T)agentMap[key];
         }
 
-        public Agent GetAgentByType(Type type)
+        public T GetAgentByType<T>(Type type) where T : Agent
         {
             List<Agent> objectList = new List<Agent>(agentMap.Values);
-            return objectList.Find(param => { return param.GetType() == type; });
+            var agent = objectList.Find(param => { return param.GetType() == type; });
+            if (agent == null)
+                return null;
+            return (T)agent;
         }
 
         protected override void OnDispose()
