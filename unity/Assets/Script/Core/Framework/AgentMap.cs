@@ -43,18 +43,10 @@ namespace HiFramework
             else
                 throw new Exception("instantiation map dont contain this key");
         }
-
-        public T GetAgentByKey<T>(object key) where T : Agent
-        {
-            if (!agentMap.ContainsKey(key))
-                return null;
-            return (T)agentMap[key];
-        }
-
-        public T GetAgentByType<T>(Type type) where T : Agent
+        public T GetAgent<T>() where T : Agent
         {
             List<Agent> objectList = new List<Agent>(agentMap.Values);
-            var agent = objectList.Find(param => { return param.GetType() == type; });
+            var agent = objectList.Find(param => { return param.GetType() == typeof(T); });
             if (agent == null)
                 return null;
             return (T)agent;
