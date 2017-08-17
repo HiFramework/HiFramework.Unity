@@ -13,7 +13,7 @@ namespace HiFramework
             get
             {
                 if (iRegistAndDispatch == null)
-                    iRegistAndDispatch = new AgentMap();
+                    iRegistAndDispatch = agentMap = new AgentMap();
                 return iRegistAndDispatch;
             }
         }
@@ -27,6 +27,18 @@ namespace HiFramework
                 return gameTick;
             }
         }
+
+        private static AgentMap agentMap;
+        public static AgentMap AgentMap
+        {
+            get
+            {
+                if (agentMap == null)
+                    iRegistAndDispatch = agentMap = new AgentMap();
+                return agentMap;
+            }
+        }
+
         public static void Dispose()
         {
             ((AgentMap)iRegistAndDispatch).Dispose();
