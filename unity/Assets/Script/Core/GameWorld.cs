@@ -3,12 +3,9 @@
 // Author: hiramtan@live.com
 //***************************************************************************
 
-using System.Collections;
-using System.Collections.Generic;
 using HiFramework;
-using UnityEngine;
 
-public class GameWorld : MonoBehaviour
+public class GameWorld : Singleton_Unity<GameWorld>
 {
     private static bool isExist;
     // Use this for initialization

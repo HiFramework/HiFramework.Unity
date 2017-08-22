@@ -5,12 +5,12 @@
 using System.Collections.Generic;
 namespace HiFramework
 {
-    public class Message : ObjectBase
+    public class Message : ObjectBase, IMessage
     {
         public string Key { get; private set; }
         public List<object> Msg { get; private set; }
 
-        public Message(params object[] param) : this(null, param) { }
+        //public Message(params object[] param) : this(null, param) { }
         public Message(string paramKey, params object[] param)
         {
             Key = paramKey;

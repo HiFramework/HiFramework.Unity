@@ -9,7 +9,7 @@ namespace HiFramework
 {
     public interface IMessage
     {
-        object Key { get; }
+        string Key { get; }
         List<object> Msg { get; }
     }
 }

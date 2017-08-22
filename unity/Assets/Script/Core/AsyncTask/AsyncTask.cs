@@ -14,13 +14,11 @@ namespace HiFramework
         protected Action<object> action;//任务完成后的事件
 
         private Executer executer;
-        private AsyncExecuter asyncExecuter;
+        private MonoBehaviour asyncExecuter;
         public AsyncTask()
         {
             executer = new Executer(this);
-            asyncExecuter = GameObject.FindObjectOfType<AsyncExecuter>();
-            if (asyncExecuter == null)
-                asyncExecuter = new GameObject("AsyncExecuter").AddComponent<AsyncExecuter>();
+            asyncExecuter = GameWorld.Instance;
         }
 
         //任务开始执行
@@ -71,10 +69,6 @@ namespace HiFramework
             }
 
             public object Current { get; private set; }
-        }
-        private class AsyncExecuter : MonoBehaviour
-        {
-
         }
     }
 }
