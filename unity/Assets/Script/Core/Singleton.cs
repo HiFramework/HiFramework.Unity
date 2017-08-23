@@ -55,22 +55,34 @@ public static class Singleton
     }
 }
 
-public class Singleton_Unity<T> : MonoBehaviour where T : Component
+public class Singleton_Mono<T> : MonoBehaviour where T : Component
 {
+    private static object _lock = new object();
     private static T instance;
 
     public static T Instance
     {
         get
         {
-            if (instance == null)
-                instance = FindObjectOfType<T>();
-            if (instance == null)
+            lock (_lock)
             {
-                Debug.LogWarning("there is no this componet in scene, we will create one");
-                new GameObject().AddComponent<T>();
+                if (instance == null)
+                {
+                    instance = FindObjectOfType<T>();
+                    if (FindObjectsOfType(typeof(T)).Length > 1)
+                    {
+                        Debug.LogError("[Singleton] Something went really wrong " +
+                                       " - there should never be more than 1 singleton!" +
+                                       " Reopening the scene might fix it.");
+                    }
+                }
+                if (instance == null)
+                {
+                    Debug.LogWarning("there is no this componet in scene, we will create one");
+                    new GameObject("(singleton) " + typeof(T).ToString()).AddComponent<T>();
+                }
+                return instance;
             }
-            return instance;
         }
     }
 }
