@@ -57,7 +57,10 @@ public class GameWorld : MonoBehaviour
 
     public void RunOnMainThread(Action<object> action, object obj = null)
     {
-        toExecuteQueue.Enqueue(new ToExecute(action, obj));
+        lock (toExecuteQueue)
+        {
+            toExecuteQueue.Enqueue(new ToExecute(action, obj));
+        }
     }
 
     class ToExecute
