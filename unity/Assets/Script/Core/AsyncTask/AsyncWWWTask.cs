@@ -2,29 +2,33 @@
 // Description:
 // Author: hiramtan@live.com
 //****************************************************************************
+
+using System;
 using UnityEngine;
 
 namespace HiFramework
 {
-    public class AsyncWWWTask : AsyncTask
+    public class AsyncWwwTask : AsyncTask
     {
-        private WWW www;
-        public AsyncWWWTask(string url)
+        private WWW _www;
+        public AsyncWwwTask(string url, Action<object> action) : base(action)
         {
-            www = new WWW(url);
+            _www = new WWW(url);
         }
 
-        protected override void Update()
+        protected override void Tick()
         {
-            Debug.Log(www.progress);
-            if (www.isDone)
-                isDone = true;
+            Debug.Log(_www.progress);
+            if (_www.isDone)
+                IsDone = true;
         }
 
         protected override void Complate()
         {
-            action(www);
+            Action(_www);
         }
+
+
     }
 }
 

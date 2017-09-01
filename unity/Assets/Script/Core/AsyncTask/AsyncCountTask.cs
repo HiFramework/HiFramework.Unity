@@ -2,24 +2,32 @@
 // Description:
 // Author: hiramtan@live.com
 //****************************************************************************
+
+using System;
+
 namespace HiFramework
 {/// <summary>
  /// 测试逻辑,测试异步计数
  /// </summary>
     public class AsyncCountTask : AsyncTask
     {
-        private int i = 0;
-
-        protected override void Update()
+        private int _i;
+        private int _total;
+        public AsyncCountTask(int total, Action<object> action) : base(action)
         {
-            i++;
-            if (i > 100)
-                isDone = true;
+            _total = total;
+        }
+
+        protected override void Tick()
+        {
+            _i++;
+            if (_i > _total)
+                IsDone = true;
         }
 
         protected override void Complate()
         {
-
+            Action(null);
         }
     }
 }

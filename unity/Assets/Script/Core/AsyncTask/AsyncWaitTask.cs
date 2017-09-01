@@ -7,26 +7,24 @@ namespace HiFramework
 {
     public class AsyncWaitTask : AsyncTask
     {
-        private object obj;
-        private Action<object> finishAction;
-        private float waitTime;
-        private float startTime;
-        public AsyncWaitTask(object obj, Action<object> finishAction, float waitTime)
+        private object _obj;
+        private float _waitTime;
+        private float _startTime;
+        public AsyncWaitTask(object obj, float waitTime, Action<object> action) : base(action)
         {
-            this.obj = obj;
-            this.waitTime = waitTime;
-            this.finishAction = finishAction;
-            startTime = Time.realtimeSinceStartup;
+            this._obj = obj;
+            this._waitTime = waitTime;
+            _startTime = Time.realtimeSinceStartup;
         }
-        protected override void Update()
+        protected override void Tick()
         {
-            if (Time.realtimeSinceStartup > startTime + waitTime)
-                isDone = true;
+            if (Time.realtimeSinceStartup > _startTime + _waitTime)
+                IsDone = true;
         }
 
         protected override void Complate()
         {
-            finishAction(obj);
+            Action(_obj);
         }
     }
 }

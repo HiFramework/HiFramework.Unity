@@ -10,30 +10,26 @@ namespace HiFramework
 {
     public abstract class AsyncTask
     {
-        protected bool isDone;//任务是否完成
-        protected Action<object> action;//任务完成后的事件
+        protected bool IsDone { private get; set; } //任务是否完成
+        protected Action<object> Action { get; private set; } //任务完成后的事件
 
-        private Executer executer;
-        private MonoBehaviour asyncExecuter;
-        public AsyncTask()
+        private Executer _executer;
+        private MonoBehaviour _asyncExecuter;
+        public AsyncTask(Action<object> action = null)
         {
-            executer = new Executer(this);
-            asyncExecuter = GameWorld.Instance;
+            Action = action;
+            _executer = new Executer(this);
+            _asyncExecuter = GameWorld.Instance;
         }
 
         //任务开始执行
         public AsyncTask Start()
         {
-            asyncExecuter.StartCoroutine(executer);
+            _asyncExecuter.StartCoroutine(_executer);
             return this;
         }
-        //任务结束后执行回调
-        public void Finish(Action<object> param)
-        {
-            action = param;
-        }
-
-        protected abstract void Update();
+       
+        protected abstract void Tick();
         //{
         //    //isDone = true;
         //}
@@ -45,20 +41,20 @@ namespace HiFramework
 
         private class Executer : IEnumerator
         {
-            private AsyncTask asyncTask;
+            private AsyncTask _asyncTask;
             public Executer(AsyncTask param)
             {
-                asyncTask = param;
+                _asyncTask = param;
             }
 
             public bool MoveNext()
             {
-                if (!asyncTask.isDone)
+                if (!_asyncTask.IsDone)
                 {
-                    asyncTask.Update();
+                    _asyncTask.Tick();
                     return true;
                 }
-                asyncTask.Complate();
+                _asyncTask.Complate();
                 return false;
 
             }

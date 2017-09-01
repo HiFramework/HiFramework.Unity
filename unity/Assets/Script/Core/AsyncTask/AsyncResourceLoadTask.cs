@@ -2,6 +2,8 @@
 // Description:
 // Author: hiramtan@live.com
 //****************************************************************************
+
+using System;
 using UnityEngine;
 
 namespace HiFramework
@@ -11,26 +13,25 @@ namespace HiFramework
     /// </summary>
     public class AsyncResourceLoadTask : AsyncTask
     {
-        private ResourceRequest resourceRequest;
-
+        private ResourceRequest _resourceRequest;
         /// <summary>
         /// resource文件夹下路径
         /// </summary>
         /// <param name="param"></param>
-        public AsyncResourceLoadTask(string param)
+        public AsyncResourceLoadTask(string param, Action<object> action) : base(action)
         {
-            resourceRequest = Resources.LoadAsync(param);
+            _resourceRequest = Resources.LoadAsync(param);
         }
 
-        protected override void Update()
+        protected override void Tick()
         {
-            if (resourceRequest.isDone)
-                isDone = true;
+            if (_resourceRequest.isDone)
+                IsDone = true;
         }
 
         protected override void Complate()
         {
-            action(resourceRequest.asset);
+            Action(_resourceRequest.asset);
         }
     }
 }
