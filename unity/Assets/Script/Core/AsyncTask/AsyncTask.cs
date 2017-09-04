@@ -15,17 +15,20 @@ namespace HiFramework
 
         private Executer _executer;
         private MonoBehaviour _asyncExecuter;
+
         public AsyncTask()
         {
             _executer = new Executer(this);
             _asyncExecuter = GameWorld.Instance;
         }
+
         //任务开始执行
         public AsyncTask Start()
         {
             _asyncExecuter.StartCoroutine(_executer);
             return this;
         }
+
         public void OnFinish(Action<object> action = null)
         {
             Action = action;
@@ -44,6 +47,7 @@ namespace HiFramework
         private class Executer : IEnumerator
         {
             private AsyncTask _asyncTask;
+
             public Executer(AsyncTask param)
             {
                 _asyncTask = param;
@@ -68,39 +72,53 @@ namespace HiFramework
 
             public object Current { get; private set; }
         }
-    }
 
 
 
 
 
-
-    public class AsyncMutiTask
-    {
-        private AsyncMutiTask child;
-
-        public AsyncMutiTask SetTask(AsyncMutiTask p)
+        public class AsyncMutiLoad : AsyncTask
         {
-            child = p;
-            return this;
-        }
+            private AsyncMutiLoad _childTask;
+            private readonly string _path;
 
-        void E()
-        {
-            if (child != null)
-                child.E();
-        }
-    }
+            private ResourceRequest _resourceRequest;
 
-
-    public class tttt
-    {
-        void test()
-        {
-            var task = new AsyncMutiTask();
-            for (int i = 0; i < 10; i++)
+            public AsyncMutiLoad(string path)
             {
-                task.SetTask(null);
+                _path = path;
+                _resourceRequest = Resources.LoadAsync(path);
+            }
+
+            public AsyncMutiLoad SetCount(int numb)
+            {
+                if (numb <= 0)
+                    throw new Exception("numb<=0");
+
+                AsyncMutiLoad task = this;
+                for (int i = 0; i < numb; i++)
+                {
+                    task._childTask = new AsyncMutiLoad(_path);
+                    task = task._childTask;
+                }
+                return this;
+            }
+
+            protected override void Tick()
+            {
+                if (_resourceRequest.isDone && _childTask != null)
+                {
+                    _childTask.Start();
+                }
+                else
+                {
+                    IsDone = true;
+                }
+            }
+
+            protected override void Complate()
+            {
+                Action(null);
             }
         }
     }

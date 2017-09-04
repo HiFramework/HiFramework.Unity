@@ -35,7 +35,7 @@ public class Example : MonoBehaviour
     }
 }
 
-public class tt : Agent
+public class Tt : Agent
 {
     public void Log()
     {
