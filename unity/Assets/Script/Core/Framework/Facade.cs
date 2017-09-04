@@ -7,44 +7,44 @@ namespace HiFramework
 {
     public class Facade
     {
-        private static IRegistAndDispatch iRegistAndDispatch;
-        public static IRegistAndDispatch IRegistAndDispatch
+        private static IRegistAndDispatch _iRegistAndDispatch;
+        public static IRegistAndDispatch RegistAndDispatch
         {
             get
             {
-                if (iRegistAndDispatch == null)
-                    iRegistAndDispatch = agentMap = new AgentMap();
-                return iRegistAndDispatch;
+                if (_iRegistAndDispatch == null)
+                    _iRegistAndDispatch = _agentMap = new AgentMap();
+                return _iRegistAndDispatch;
             }
         }
-        private static GameTick gameTick;
+        private static GameTick _gameTick;
         public static GameTick GameTick
         {
             get
             {
-                if (gameTick == null)
-                    gameTick = new GameTick();
-                return gameTick;
+                if (_gameTick == null)
+                    _gameTick = new GameTick();
+                return _gameTick;
             }
         }
 
-        private static AgentMap agentMap;
+        private static AgentMap _agentMap;
         public static AgentMap AgentMap
         {
             get
             {
-                if (agentMap == null)
-                    iRegistAndDispatch = agentMap = new AgentMap();
-                return agentMap;
+                if (_agentMap == null)
+                    _iRegistAndDispatch = _agentMap = new AgentMap();
+                return _agentMap;
             }
         }
 
         public static void Dispose()
         {
-            ((AgentMap)iRegistAndDispatch).Dispose();
-            iRegistAndDispatch = null;
+            ((AgentMap)_iRegistAndDispatch).Dispose();
+            _iRegistAndDispatch = null;
             GameTick.Dispose();
-            gameTick = null;
+            _gameTick = null;
         }
     }
 }

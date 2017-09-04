@@ -5,7 +5,7 @@
 
 using UnityEngine;
 
-public abstract class ObjectBase_Mono : MonoBehaviour
+public abstract class ObjectBaseMono : MonoBehaviour
 {
 
 }

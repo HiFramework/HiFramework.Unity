@@ -9,16 +9,16 @@ namespace HiFramework
     {
         public object Regist<T>(object paramKey) where T : Agent
         {
-            return Facade.IRegistAndDispatch.Regist<T>(paramKey);
+            return Facade.RegistAndDispatch.Regist<T>(paramKey);
         }
         public void Unregist(object paramKey)
         {
-            Facade.IRegistAndDispatch.Unregist(paramKey);
+            Facade.RegistAndDispatch.Unregist(paramKey);
         }
 
         public void Dispatch(object paramKey, IMessage paramMessage = null)
         {
-            Facade.IRegistAndDispatch.Dispatch(paramKey, paramMessage);
+            Facade.RegistAndDispatch.Dispatch(paramKey, paramMessage);
         }
 
         public virtual void OnMessage(IMessage paramMessage)

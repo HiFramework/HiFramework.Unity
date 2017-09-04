@@ -7,11 +7,11 @@ namespace HiFramework
 {
     public abstract class ViewAgent : Agent
     {
-        private View view;
+        private View _view;
 
         public void Bind(View view)
         {
-            this.view = view;
+            this._view = view;
         }
         /// <summary>
         /// dispath message to view
@@ -19,9 +19,9 @@ namespace HiFramework
         /// <param name="param"></param>
         public void Dispatch(IMessage param)
         {
-            if (view == null)
+            if (_view == null)
                 throw new Exception("cannt find its bind view");
-            view.OnMessage(param);
+            _view.OnMessage(param);
         }
     }
 }

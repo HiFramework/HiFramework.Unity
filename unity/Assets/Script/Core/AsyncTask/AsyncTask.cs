@@ -15,20 +15,22 @@ namespace HiFramework
 
         private Executer _executer;
         private MonoBehaviour _asyncExecuter;
-        public AsyncTask(Action<object> action = null)
+        public AsyncTask()
         {
-            Action = action;
             _executer = new Executer(this);
             _asyncExecuter = GameWorld.Instance;
         }
-
         //任务开始执行
         public AsyncTask Start()
         {
             _asyncExecuter.StartCoroutine(_executer);
             return this;
         }
-       
+        public void OnFinish(Action<object> action = null)
+        {
+            Action = action;
+        }
+
         protected abstract void Tick();
         //{
         //    //isDone = true;
@@ -65,6 +67,41 @@ namespace HiFramework
             }
 
             public object Current { get; private set; }
+        }
+    }
+
+
+
+
+
+
+    public class AsyncMutiTask
+    {
+        private AsyncMutiTask child;
+
+        public AsyncMutiTask SetTask(AsyncMutiTask p)
+        {
+            child = p;
+            return this;
+        }
+
+        void E()
+        {
+            if (child != null)
+                child.E();
+        }
+    }
+
+
+    public class tttt
+    {
+        void test()
+        {
+            var task = new AsyncMutiTask();
+            for (int i = 0; i < 10; i++)
+            {
+                task.SetTask(null);
+            }
         }
     }
 }

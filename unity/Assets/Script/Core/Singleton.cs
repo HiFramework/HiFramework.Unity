@@ -8,57 +8,57 @@ using UnityEngine;
 
 public class Singleton<T> where T : new()
 {
-    private static T instance;
-    private static readonly object locker = new object();
+    private static T _instance;
+    private static readonly object Locker = new object();
 
     public static T Instance
     {
         get
         {
-            if (instance == null)
+            if (_instance == null)
             {
-                lock (locker)
+                lock (Locker)
                 {
-                    if (instance == null)
+                    if (_instance == null)
                     {
-                        instance = new T();
+                        _instance = new T();
                     }
                 }
             }
-            return instance;
+            return _instance;
         }
     }
 }
 
 public static class Singleton
 {
-    private static object locker = new object();
+    private static object _locker = new object();
 
     public static T GetInstance<T>() where T : class, new()
     {
-        if (InstanceStorage<T>.instance == null)
+        if (InstanceStorage<T>.Instance == null)
         {
-            lock (locker)
+            lock (_locker)
             {
-                if (InstanceStorage<T>.instance == null)
+                if (InstanceStorage<T>.Instance == null)
                 {
-                    InstanceStorage<T>.instance = new T();
+                    InstanceStorage<T>.Instance = new T();
                 }
             }
         }
-        return InstanceStorage<T>.instance;
+        return InstanceStorage<T>.Instance;
     }
 
     private static class InstanceStorage<T> where T : class, new()
     {
-        internal static volatile T instance = default(T);
+        internal static volatile T Instance = default(T);
     }
 }
 
-public class Singleton_Mono<T> : MonoBehaviour where T : Component
+public class SingletonMono<T> : MonoBehaviour where T : Component
 {
     private static object _lock = new object();
-    private static T instance;
+    private static T _instance;
 
     public static T Instance
     {
@@ -66,9 +66,9 @@ public class Singleton_Mono<T> : MonoBehaviour where T : Component
         {
             lock (_lock)
             {
-                if (instance == null)
+                if (_instance == null)
                 {
-                    instance = FindObjectOfType<T>();
+                    _instance = FindObjectOfType<T>();
                     if (FindObjectsOfType(typeof(T)).Length > 1)
                     {
                         Debug.LogError("[Singleton] Something went really wrong " +
@@ -76,12 +76,12 @@ public class Singleton_Mono<T> : MonoBehaviour where T : Component
                                        " Reopening the scene might fix it.");
                     }
                 }
-                if (instance == null)
+                if (_instance == null)
                 {
                     Debug.LogWarning("there is no this componet in scene, we will create one");
                     new GameObject("(singleton) " + typeof(T).ToString()).AddComponent<T>();
                 }
-                return instance;
+                return _instance;
             }
         }
     }

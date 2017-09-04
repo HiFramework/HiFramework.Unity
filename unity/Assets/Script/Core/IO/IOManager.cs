@@ -7,7 +7,7 @@ using System.IO;
 using UnityEngine;
 namespace HiFramework
 {
-    public class IOManager : Singleton<IOManager>
+    public class IoManager : Singleton<IoManager>
     {
         /// <summary>
         /// 文件夹是否存在
@@ -44,18 +44,18 @@ namespace HiFramework
             }
             CreateFolder(paramDestPath);
             var tempFiles = Directory.GetFiles(paramSourcePath);
-            foreach (var VARIABLE in tempFiles)
+            foreach (var variable in tempFiles)
             {
-                var tempFileName = Path.GetFileName(VARIABLE);
+                var tempFileName = Path.GetFileName(variable);
                 var tempDestName = Path.Combine(paramDestPath, tempFileName);
-                File.Copy(VARIABLE, tempDestName, true);
+                File.Copy(variable, tempDestName, true);
             }
             var tempDirs = Directory.GetDirectories(paramSourcePath);
-            foreach (var VARIABLE in tempDirs)
+            foreach (var variable in tempDirs)
             {
-                string tempDirName = Path.GetFileName(VARIABLE);
+                string tempDirName = Path.GetFileName(variable);
                 string tempDestDirName = Path.Combine(paramDestPath, tempDirName);
-                CopyFolder(VARIABLE, tempDestDirName);
+                CopyFolder(variable, tempDestDirName);
             }
         }
 
@@ -208,16 +208,16 @@ namespace HiFramework
                 File.Delete(param);
         }
 
-        Action<WWW> finishLoadFromStreamingAssetsPathHandler;
+        Action<WWW> _finishLoadFromStreamingAssetsPathHandler;
         public void ReadFileFromStreamingAssetsPath(string paramPath, Action<WWW> paramHandler)
         {
-            finishLoadFromStreamingAssetsPathHandler = paramHandler;
+            _finishLoadFromStreamingAssetsPathHandler = paramHandler;
             paramPath = GetStreamingAssetsPath() + "/" + paramPath;
-            WWWLoader.Instance.Startload(paramPath, FinishLoadFromStreamingAssetsPath);
+            WwwLoader.Instance.Startload(paramPath, FinishLoadFromStreamingAssetsPath);
         }
-        private void FinishLoadFromStreamingAssetsPath(WWW paramWWW)
+        private void FinishLoadFromStreamingAssetsPath(WWW paramWww)
         {
-            finishLoadFromStreamingAssetsPathHandler(paramWWW);
+            _finishLoadFromStreamingAssetsPathHandler(paramWww);
         }
 
         public byte[] ReadFileFromPersistentDataPath(string param)

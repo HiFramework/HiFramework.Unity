@@ -6,16 +6,16 @@ using UnityEngine;
 using System.Collections;
 using System;
 
-public class WWWLoader : MonoBehaviour
+public class WwwLoader : MonoBehaviour
 {
-    private static WWWLoader instance;
-    public static WWWLoader Instance
+    private static WwwLoader _instance;
+    public static WwwLoader Instance
     {
         get
         {
-            if (instance == null)
-                instance = new GameObject("WWWLoader").AddComponent<WWWLoader>();
-            return instance;
+            if (_instance == null)
+                _instance = new GameObject("WWWLoader").AddComponent<WwwLoader>();
+            return _instance;
         }
     }
     public void Startload(string downloadUrl, Action<WWW> callBackHandler = null)

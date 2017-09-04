@@ -3,7 +3,6 @@
 // Author: hiramtan@live.com
 //****************************************************************************
 
-using System;
 
 namespace HiFramework
 {/// <summary>
@@ -13,7 +12,7 @@ namespace HiFramework
     {
         private int _i;
         private int _total;
-        public AsyncCountTask(int total, Action<object> action) : base(action)
+        public AsyncCountTask(int total)
         {
             _total = total;
         }
@@ -38,7 +37,7 @@ namespace HiFramework
 //    void Start()
 //    {
 //        //启动异步计数,不需要回调(比如复制文件,完成后不需要回调)
-//        new AsyncCountTask().Start();
+//        new AsyncCountTask(10).Start();
 //    }
 //}
 
@@ -47,7 +46,7 @@ namespace HiFramework
 //    void Start()
 //    {
 //        //启动异步计数,捕获完成事件
-//        new AsyncCountTask().Start().Finish(Finish);
+//        new AsyncCountTask(10).Start().OnFinish(Finish);
 //    }
 
 //    void Finish(object param)
@@ -56,14 +55,12 @@ namespace HiFramework
 //    }
 //}
 
-
-
 //public class TestAsyncCountTask : MonoBehaviour
 //{
 //    void Start()
 //    {
 //        //启动异步计数,捕获完成事件
-//        new AsyncCountTask().Start().Finish((p) =>
+//        new AsyncCountTask(10).Start().OnFinish((p) =>
 //        {
 //            Debug.Log("finish");
 //        });

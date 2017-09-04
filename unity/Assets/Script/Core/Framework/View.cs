@@ -6,7 +6,7 @@
 
 namespace HiFramework
 {
-    public abstract class View : ObjectBase_Mono, IReceive, IRegistAndDispatch, ITick
+    public abstract class View : ObjectBaseMono, IReceive, IRegistAndDispatch, ITick
     {
         public ViewAgent Bind<T>() where T : ViewAgent, new()
         {
@@ -16,15 +16,15 @@ namespace HiFramework
         }
         public object Regist<T>(object paramKey) where T : Agent
         {
-            return Facade.IRegistAndDispatch.Regist<T>(paramKey);
+            return Facade.RegistAndDispatch.Regist<T>(paramKey);
         }
         public void Unregist(object paramKey)
         {
-            Facade.IRegistAndDispatch.Unregist(paramKey);
+            Facade.RegistAndDispatch.Unregist(paramKey);
         }
         public void Dispatch(object paramKey, IMessage paramMessage = null)
         {
-            Facade.IRegistAndDispatch.Dispatch(paramKey, paramMessage);
+            Facade.RegistAndDispatch.Dispatch(paramKey, paramMessage);
         }
         //接收来自对应控制器和Agent的消息
         public virtual void OnMessage(IMessage paramMessage)

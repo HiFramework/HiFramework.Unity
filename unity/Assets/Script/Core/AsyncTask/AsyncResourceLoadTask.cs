@@ -3,7 +3,6 @@
 // Author: hiramtan@live.com
 //****************************************************************************
 
-using System;
 using UnityEngine;
 
 namespace HiFramework
@@ -18,7 +17,7 @@ namespace HiFramework
         /// resource文件夹下路径
         /// </summary>
         /// <param name="param"></param>
-        public AsyncResourceLoadTask(string param, Action<object> action) : base(action)
+        public AsyncResourceLoadTask(string param)
         {
             _resourceRequest = Resources.LoadAsync(param);
         }
@@ -39,12 +38,11 @@ namespace HiFramework
 
 //public class TestLoad : MonoBehaviour
 //{
-
 //    // Use this for initialization
 //    void Start()
 //    {
 
-//        new AsyncResourceLoadTask("Cube").Start().Finish((p) =>
+//        new AsyncResourceLoadTask("Cube").Start().OnFinish((p) =>
 //        {
 //            Object temp = (Object)p;
 //            Instantiate(temp);

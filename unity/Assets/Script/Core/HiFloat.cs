@@ -7,13 +7,13 @@ using System;
 public struct HiFloat
 {
     /// <summary>
-    /// 保留小数点后6位,第7位四色五入
+    /// 保留小数点后6位,第7位四舍五入
     /// </summary>
-    private const int length = 6;
-    private float value;
+    private const int Length = 6;
+    private float _value;
     private HiFloat(float param)
     {
-        value = (float)Math.Round(param, length);
+        _value = (float)Math.Round(param, Length);
     }
     public static implicit operator HiFloat(float param)
     {
@@ -22,17 +22,17 @@ public struct HiFloat
 
     public static implicit operator float(HiFloat param)
     {
-        return param.value;
+        return param._value;
     }
 
     public static HiFloat operator ++(HiFloat param)
     {
-        return ++param.value;
+        return ++param._value;
     }
 
     public static HiFloat operator --(HiFloat param)
     {
-        return --param.value;
+        return --param._value;
     }
 
     public override bool Equals(object obj)
@@ -42,16 +42,16 @@ public struct HiFloat
             throw new Exception("类型不一致");
         }
         HiFloat temp = (HiFloat)obj;
-        if (temp.value == value)
+        if (temp._value == _value)
             return true;
         return false;
     }
     public override string ToString()
     {
-        return value.ToString();
+        return _value.ToString();
     }
     public override int GetHashCode()
     {
-        return value.GetHashCode();
+        return _value.GetHashCode();
     }
 }

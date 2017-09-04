@@ -21,16 +21,16 @@ namespace HiFramework
         {
             Dispose(false);
         }
-        private bool disposed;
+        private bool _disposed;
         private void Dispose(bool paramDisposing)
         {
-            if (disposed)
+            if (_disposed)
                 return;
             if (paramDisposing)
             {
                 OnDispose();
             }
-            disposed = true;
+            _disposed = true;
         }
     }
 }

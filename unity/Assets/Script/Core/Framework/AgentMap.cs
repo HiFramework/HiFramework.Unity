@@ -10,14 +10,14 @@ namespace HiFramework
 {
     public class AgentMap : ObjectBase, IRegistAndDispatch
     {
-        private IDictionary<object, Agent> agentMap = new Dictionary<object, Agent>();
+        private IDictionary<object, Agent> _agentMap = new Dictionary<object, Agent>();
 
         public void Dispatch(object paramKey, IMessage paramMessage = null)
         {
             //IView key = (IView)Convert.ChangeType(paramKey, paramKey.GetType());
-            if (agentMap.ContainsKey(paramKey))
+            if (_agentMap.ContainsKey(paramKey))
             {
-                Agent obj = agentMap[paramKey];
+                Agent obj = _agentMap[paramKey];
                 obj.OnMessage(paramMessage);
             }
             else
@@ -26,11 +26,11 @@ namespace HiFramework
 
         public object Regist<T>(object paramKey) where T : Agent
         {
-            if (!agentMap.ContainsKey(paramKey))
+            if (!_agentMap.ContainsKey(paramKey))
             {
                 Type type = typeof(T);
                 object obj = Activator.CreateInstance(type);
-                agentMap[paramKey] = (Agent)obj;
+                _agentMap[paramKey] = (Agent)obj;
                 return obj;
             }
             else
@@ -38,14 +38,14 @@ namespace HiFramework
         }
         public void Unregist(object paramKey)
         {
-            if (agentMap.ContainsKey(paramKey))
-                agentMap.Remove(paramKey);
+            if (_agentMap.ContainsKey(paramKey))
+                _agentMap.Remove(paramKey);
             else
                 throw new Exception("instantiation map dont contain this key");
         }
         public T GetAgent<T>() where T : Agent
         {
-            List<Agent> objectList = new List<Agent>(agentMap.Values);
+            List<Agent> objectList = new List<Agent>(_agentMap.Values);
             var agent = objectList.Find(param => { return param.GetType() == typeof(T); });
             if (agent == null)
                 return null;
@@ -54,10 +54,10 @@ namespace HiFramework
 
         protected override void OnDispose()
         {
-            for (int i = 0; i < agentMap.Count; i++)
-                agentMap.ElementAt(i).Value.Dispose();
-            agentMap.Clear();
-            agentMap = null;
+            for (int i = 0; i < _agentMap.Count; i++)
+                _agentMap.ElementAt(i).Value.Dispose();
+            _agentMap.Clear();
+            _agentMap = null;
         }
     }
 }

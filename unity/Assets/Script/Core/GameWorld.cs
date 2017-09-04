@@ -13,9 +13,9 @@ using UnityEngine;
 public class GameWorld : MonoBehaviour
 {
     public static GameWorld Instance;
-    private static bool isExist;
+    private static bool _isExist;
 
-    private Queue<ToExecute> toExecuteQueue = new Queue<ToExecute>();
+    private Queue<ToExecute> _toExecuteQueue = new Queue<ToExecute>();
 
     void Awake()
     {
@@ -25,10 +25,10 @@ public class GameWorld : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        if (!isExist)
+        if (!_isExist)
         {
             DontDestroyOnLoad(gameObject);
-            isExist = true;
+            _isExist = true;
         }
         else
         {
@@ -40,12 +40,12 @@ public class GameWorld : MonoBehaviour
     void Update()
     {
         Facade.GameTick.OnTick();
-        if (toExecuteQueue.Count > 0)
+        if (_toExecuteQueue.Count > 0)
         {
-            lock (toExecuteQueue)
+            lock (_toExecuteQueue)
             {
-                var per = toExecuteQueue.Dequeue();
-                per.action(per.obj);
+                var per = _toExecuteQueue.Dequeue();
+                per.Action(per.Obj);
             }
         }
     }
@@ -57,21 +57,21 @@ public class GameWorld : MonoBehaviour
 
     public void RunOnMainThread(Action<object> action, object obj = null)
     {
-        lock (toExecuteQueue)
+        lock (_toExecuteQueue)
         {
-            toExecuteQueue.Enqueue(new ToExecute(action, obj));
+            _toExecuteQueue.Enqueue(new ToExecute(action, obj));
         }
     }
 
     class ToExecute
     {
-        public Action<object> action { get; private set; }
-        public object obj { get; private set; }
+        public Action<object> Action { get; private set; }
+        public object Obj { get; private set; }
 
         public ToExecute(Action<object> action, object obj)
         {
-            this.action = action;
-            this.obj = obj;
+            this.Action = action;
+            this.Obj = obj;
         }
     }
 }

@@ -3,7 +3,6 @@
 // Author: hiramtan@live.com
 //****************************************************************************
 
-using System;
 using UnityEngine;
 
 namespace HiFramework
@@ -11,7 +10,7 @@ namespace HiFramework
     public class AsyncWwwTask : AsyncTask
     {
         private WWW _www;
-        public AsyncWwwTask(string url, Action<object> action) : base(action)
+        public AsyncWwwTask(string url)
         {
             _www = new WWW(url);
         }
@@ -27,8 +26,6 @@ namespace HiFramework
         {
             Action(_www);
         }
-
-
     }
 }
 
@@ -38,7 +35,7 @@ namespace HiFramework
 //    void Start()
 //    {
 //        string url = "www.g.com";
-//        new AsyncWWWTask(url).Start().Finish((p) =>
+//        new AsyncWwwTask(url).Start().OnFinish((p) =>
 //        {
 //            Debug.Log("download finish:" + ((WWW)p).bytes);
 //        });

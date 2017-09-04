@@ -12,5 +12,5 @@ using HiFramework;
 public class Manager
 {
     protected AudioManager AudioManagerI { get { return AudioManager.Instance; } }
-    protected IOManager IOManagerI { get { return IOManager.Instance; } }
+    protected IoManager IoManagerI { get { return IoManager.Instance; } }
 }
