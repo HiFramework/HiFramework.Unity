@@ -5,26 +5,23 @@
 using HiFramework;
 using UnityEngine;
 
-public class Example : MonoBehaviour
+public class Example : View
 {
-
-
     // Use this for initialization
     void Start()
     {
+        new GameObject("GameWorld").AddComponent<GameWorld>();
 
-        //new GameObject("GameTick").AddComponent<GameTick>();
+        Regist<Test1>("test1");
 
+        Dispatch("test1");
 
-        //var tt = Facade.Map.Regist<tt>("12345");
-
-
-        //tt test = Facade.Map.GetAgent(typeof(tt).FullName) as tt;
-
-        //test.Log();
+        Facade.AgentMap.GetAgent<Test1>().Log();
 
 
-        //Facade.Dispose();
+        AddToTickList(this);
+
+        Facade.Dispose();
 
     }
 
@@ -35,18 +32,16 @@ public class Example : MonoBehaviour
     }
 }
 
-public class Tt : Agent
+public class Test1 : Agent
 {
     public void Log()
     {
-        Debug.Log("from tt");
-
-
+        Debug.Log("from test1");
     }
 
     public override void OnTick()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
     public override void OnMessage(IMessage paramMessage)

@@ -73,53 +73,5 @@ namespace HiFramework
             public object Current { get; private set; }
         }
 
-
-
-
-
-        public class AsyncMutiLoad : AsyncTask
-        {
-            private AsyncMutiLoad _childTask;
-            private readonly string _path;
-
-            private ResourceRequest _resourceRequest;
-
-            public AsyncMutiLoad(string path)
-            {
-                _path = path;
-                _resourceRequest = Resources.LoadAsync(path);
-            }
-
-            public AsyncMutiLoad SetCount(int numb)
-            {
-                if (numb <= 0)
-                    throw new Exception("numb<=0");
-
-                AsyncMutiLoad task = this;
-                for (int i = 0; i < numb; i++)
-                {
-                    task._childTask = new AsyncMutiLoad(_path);
-                    task = task._childTask;
-                }
-                return this;
-            }
-
-            protected override void Tick()
-            {
-                if (_resourceRequest.isDone && _childTask != null)
-                {
-                    _childTask.Start();
-                }
-                else
-                {
-                    IsDone = true;
-                }
-            }
-
-            protected override void Complate()
-            {
-                Action(null);
-            }
-        }
     }
 }

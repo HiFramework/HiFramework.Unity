@@ -2,8 +2,6 @@
 // Description:
 // Author: hiramtan@live.com
 //****************************************************************************
-using UnityEngine;
-using System.Collections;
 using HiFramework;
 
 /// <summary>

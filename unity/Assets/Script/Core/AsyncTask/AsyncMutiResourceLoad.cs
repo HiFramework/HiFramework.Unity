@@ -2,44 +2,41 @@
 // Description:
 // Author: hiramtan@qq.com
 //***************************************************************************
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Assets.Script.Core.AsyncTask;
+using System;
 using UnityEngine;
 
 namespace Assets.Script.Core.AsyncTask
 {
-    public class AsyncMutiLoad : HiFramework.AsyncTask
+    public class AsyncMutiResourceLoad : HiFramework.AsyncTask
     {
-        private AsyncMutiLoad _childTask;
+        private AsyncMutiResourceLoad _childTask;
         private readonly string _path;
         private Action<object> _oneFinishAction;
 
         private ResourceRequest _resourceRequest;
 
-        public AsyncMutiLoad(string path)
+        public AsyncMutiResourceLoad(string path)
         {
             _path = path;
             _resourceRequest = Resources.LoadAsync(path);
         }
 
-        public AsyncMutiLoad SetCount(int numb)
+        public AsyncMutiResourceLoad SetCount(int numb)
         {
             if (numb <= 0)
                 throw new Exception("numb<=0");
 
-            AsyncMutiLoad task = this;
+            AsyncMutiResourceLoad task = this;
             for (int i = 0; i < numb; i++)
             {
-                task._childTask = new AsyncMutiLoad(_path);
+                task._childTask = new AsyncMutiResourceLoad(_path);
                 task = task._childTask;
             }
             return this;
         }
 
-        public AsyncMutiLoad OnOneFinish(Action<object> obj)
+        public AsyncMutiResourceLoad OnOneFinish(Action<object> obj)
         {
             _oneFinishAction = obj;
             return this;
@@ -71,7 +68,7 @@ public class TestAsyncMutiLoad : MonoBehaviour
     void Start()
     {
         //加载10个
-        new AsyncMutiLoad("Resources/xxx").SetCount(10).OnOneFinish(OneFinish).OnFinish(Finish);
+        new AsyncMutiResourceLoad("Resources/xxx").SetCount(10).OnOneFinish(OneFinish).OnFinish(Finish);
     }
 
     void OneFinish(object obj)

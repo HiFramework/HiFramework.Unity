@@ -208,16 +208,11 @@ namespace HiFramework
                 File.Delete(param);
         }
 
-        Action<WWW> _finishLoadFromStreamingAssetsPathHandler;
         public void ReadFileFromStreamingAssetsPath(string paramPath, Action<WWW> paramHandler)
         {
-            _finishLoadFromStreamingAssetsPathHandler = paramHandler;
             paramPath = GetStreamingAssetsPath() + "/" + paramPath;
-            WwwLoader.Instance.Startload(paramPath, FinishLoadFromStreamingAssetsPath);
-        }
-        private void FinishLoadFromStreamingAssetsPath(WWW paramWww)
-        {
-            _finishLoadFromStreamingAssetsPathHandler(paramWww);
+
+            new AsyncWwwTask(paramPath).Start().OnFinish((x) => { paramHandler(x as WWW); });
         }
 
         public byte[] ReadFileFromPersistentDataPath(string param)
