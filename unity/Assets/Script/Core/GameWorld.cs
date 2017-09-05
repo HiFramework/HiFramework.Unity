@@ -3,9 +3,9 @@
 // Author: hiramtan @live.com
 //***************************************************************************
 
-using HiFramework;
 using System;
 using System.Collections.Generic;
+using HiFramework;
 using UnityEngine;
 
 //thread
@@ -15,15 +15,15 @@ public class GameWorld : MonoBehaviour
     public static GameWorld Instance;
     private static bool _isExist;
 
-    private Queue<ToExecute> _toExecuteQueue = new Queue<ToExecute>();
+    private readonly Queue<ToExecute> _toExecuteQueue = new Queue<ToExecute>();
 
-    void Awake()
+    private void Awake()
     {
         Instance = this;
     }
 
     // Use this for initialization
-    void Start()
+    private void Start()
     {
         if (!_isExist)
         {
@@ -37,22 +37,19 @@ public class GameWorld : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         Facade.GameTick.OnTick();
         if (_toExecuteQueue.Count > 0)
-        {
             lock (_toExecuteQueue)
             {
                 var per = _toExecuteQueue.Dequeue();
                 per.Action(per.Obj);
             }
-        }
     }
 
-    void OnApplicationQuit()
+    private void OnApplicationQuit()
     {
-
     }
 
     public void RunOnMainThread(Action<object> action, object obj = null)
@@ -63,16 +60,16 @@ public class GameWorld : MonoBehaviour
         }
     }
 
-    class ToExecute
+    private class ToExecute
     {
-        public Action<object> Action { get; private set; }
-        public object Obj { get; private set; }
-
         public ToExecute(Action<object> action, object obj)
         {
-            this.Action = action;
-            this.Obj = obj;
+            Action = action;
+            Obj = obj;
         }
+
+        public Action<object> Action { get; private set; }
+        public object Obj { get; private set; }
     }
 }
 

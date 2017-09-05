@@ -1,19 +1,22 @@
 ﻿//一定时间后执行某个逻辑
+
 using UnityEngine;
 
-namespace HiFramework
+namespace HiFramework.Core.AsyncTask
 {
     public class AsyncWaitTask : AsyncTask
     {
-        private object _obj;
-        private float _waitTime;
-        private float _startTime;
+        private readonly object _obj;
+        private readonly float _startTime;
+        private readonly float _waitTime;
+
         public AsyncWaitTask(object obj, float waitTime)
         {
-            this._obj = obj;
-            this._waitTime = waitTime;
+            _obj = obj;
+            _waitTime = waitTime;
             _startTime = Time.realtimeSinceStartup;
         }
+
         protected override void Tick()
         {
             if (Time.realtimeSinceStartup > _startTime + _waitTime)

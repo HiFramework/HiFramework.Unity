@@ -2,97 +2,102 @@
 // Description: 文件及文件夹的常用操作
 // Author: hiramtan@live.com
 //****************************************************************************
+
 using System;
 using System.IO;
+using HiFramework.Core.AsyncTask;
 using UnityEngine;
+
 namespace HiFramework
 {
     public class IoManager : Singleton<IoManager>
     {
         /// <summary>
-        /// 文件夹是否存在
+        ///     文件夹是否存在
         /// </summary>
-        /// <param name="param"></param>
+        /// <path name="path"></path>
         /// <returns></returns>
-        public bool IsFolderExist(string param)
+        public bool IsFolderExist(string path)
         {
-            return Directory.Exists(param);
-        }
-        /// <summary>
-        /// 创建文件夹
-        /// 如果文件夹已存在则跳过
-        /// </summary>
-        /// <param name="param"></param>
-        public void CreateFolder(string param)
-        {
-            if (!IsFolderExist(param))
-                Directory.CreateDirectory(param);
+            return Directory.Exists(path);
         }
 
         /// <summary>
-        /// 复制文件夹
-        /// 如果文件存在则覆盖
+        ///     创建文件夹
+        ///     如果文件夹已存在则跳过
         /// </summary>
-        /// <param name="paramSourcePath"></param>
-        /// <param name="paramDestPath"></param>
-        public void CopyFolder(string paramSourcePath, string paramDestPath)
+        /// <path name="path"></path>
+        public void CreateFolder(string path)
         {
-            if (!IsFolderExist(paramSourcePath))
+            if (!IsFolderExist(path))
+                Directory.CreateDirectory(path);
+        }
+
+        /// <summary>
+        ///     复制文件夹
+        ///     如果文件存在则覆盖
+        /// </summary>
+        /// <path name="sourcePath"></path>
+        /// <path name="destinationPath"></path>
+        public void CopyFolder(string sourcePath, string destinationPath)
+        {
+            if (!IsFolderExist(sourcePath))
             {
                 Debug.Log("source folder not exist");
                 return;
             }
-            CreateFolder(paramDestPath);
-            var tempFiles = Directory.GetFiles(paramSourcePath);
+            CreateFolder(destinationPath);
+            var tempFiles = Directory.GetFiles(sourcePath);
             foreach (var variable in tempFiles)
             {
                 var tempFileName = Path.GetFileName(variable);
-                var tempDestName = Path.Combine(paramDestPath, tempFileName);
+                var tempDestName = Path.Combine(destinationPath, tempFileName);
                 File.Copy(variable, tempDestName, true);
             }
-            var tempDirs = Directory.GetDirectories(paramSourcePath);
+            var tempDirs = Directory.GetDirectories(sourcePath);
             foreach (var variable in tempDirs)
             {
-                string tempDirName = Path.GetFileName(variable);
-                string tempDestDirName = Path.Combine(paramDestPath, tempDirName);
+                var tempDirName = Path.GetFileName(variable);
+                var tempDestDirName = Path.Combine(destinationPath, tempDirName);
                 CopyFolder(variable, tempDestDirName);
             }
         }
 
         /// <summary>
-        /// 递归删除文件夹
+        ///     递归删除文件夹
         /// </summary>
-        /// <param name="param"></param>
-        public void DeleteFolder(string param)
+        /// <path name="path"></path>
+        public void DeleteFolder(string path)
         {
-            if (IsFolderExist(param))
-                Directory.Delete(param, true);//第二个参数：删除子目录
+            if (IsFolderExist(path))
+                Directory.Delete(path, true); //第二个参数：删除子目录
         }
 
         /// <summary>
-        /// 文件是否存在
+        ///     文件是否存在
         /// </summary>
-        /// <param name="param"></param>
+        /// <path name="path"></path>
         /// <returns></returns>
-        public bool IsFileExist(string param)
+        public bool IsFileExist(string path)
         {
-            return File.Exists(param);
+            return File.Exists(path);
         }
+
         /// <summary>
-        /// 读取文件
+        ///     读取文件
         /// </summary>
-        /// <param name="param">传入路径及后缀</param>
+        /// <path name="path">传入路径及后缀</path>
         /// <returns></returns>
-        public byte[] ReadFile(string param)
+        public byte[] ReadFile(string path)
         {
             try
             {
-                if (!IsFileExist(param))
+                if (!IsFileExist(path))
                     return null;
-                using (FileStream fs = new FileStream(param, FileMode.Open, FileAccess.Read))
+                using (var fs = new FileStream(path, FileMode.Open, FileAccess.Read))
                 {
-                    byte[] bytes = new byte[fs.Length];
-                    fs.Read(bytes, 0, (int)fs.Length);
+                    var bytes = new byte[fs.Length];
+                    fs.Read(bytes, 0, (int) fs.Length);
                     fs.Close();
                     return bytes;
                 }
@@ -104,22 +109,22 @@ namespace HiFramework
         }
 
         /// <summary>
-        /// 异步读取文件
+        ///     异步读取文件
         /// </summary>
-        /// <param name="param">传入路径及后缀</param>
+        /// <path name="path">传入路径及后缀</path>
         /// <returns></returns>
-        public byte[] ReadFileAsync(string param)
+        public byte[] ReadFileAsync(string path)
         {
             try
             {
-                if (!IsFileExist(param))
+                if (!IsFileExist(path))
                     return null;
-                using (FileStream fs = new FileStream(param, FileMode.Open, FileAccess.Read))
+                using (var fs = new FileStream(path, FileMode.Open, FileAccess.Read))
                 {
-                    byte[] bytes = new byte[fs.Length];
-                    fs.BeginRead(bytes, 0, (int)fs.Length, (temp) =>
+                    var bytes = new byte[fs.Length];
+                    fs.BeginRead(bytes, 0, (int) fs.Length, temp =>
                     {
-                        FileStream tempFileStream = (FileStream)temp.AsyncState;
+                        var tempFileStream = (FileStream) temp.AsyncState;
                         tempFileStream.EndRead(temp);
                         tempFileStream.Close();
                     }, fs);
@@ -133,22 +138,22 @@ namespace HiFramework
         }
 
         /// <summary>
-        /// 写入文件
-        /// 如果文件不存在,创建新文件写入
-        /// 如果文件存在,追加写入
+        ///     写入文件
+        ///     如果文件不存在,创建新文件写入
+        ///     如果文件存在,追加写入
         /// </summary>
-        /// <param name="paramPath">传入路径及后缀</param>
-        /// <param name="paramBytes"></param>
-        public void WriteFile(string paramPath, byte[] paramBytes)
+        /// <path name="path">传入路径及后缀</path>
+        /// <path name="bytes"></path>
+        public void WriteFile(string path, byte[] bytes)
         {
             try
             {
-                string directory = Path.GetDirectoryName(paramPath);
+                var directory = Path.GetDirectoryName(path);
                 CreateFolder(directory);
-                using (FileStream fs = new FileStream(paramPath, FileMode.OpenOrCreate, FileAccess.Write))
+                using (var fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write))
                 {
                     fs.Seek(0, SeekOrigin.End);
-                    fs.Write(paramBytes, 0, paramBytes.Length);
+                    fs.Write(bytes, 0, bytes.Length);
                     fs.Close();
                 }
             }
@@ -158,21 +163,21 @@ namespace HiFramework
             }
         }
 
-        public void WriteFileAsync(string paramPath, byte[] paramBytes)
+        public void WriteFileAsync(string path, byte[] bytes)
         {
             try
             {
-                string directory = Path.GetDirectoryName(paramPath);
+                var directory = Path.GetDirectoryName(path);
                 CreateFolder(directory);
-                using (FileStream fs = new FileStream(paramPath, FileMode.OpenOrCreate, FileAccess.Write))
+                using (var fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write))
                 {
                     fs.Seek(0, SeekOrigin.End);
-                    fs.BeginWrite(paramBytes, 0, paramBytes.Length, (temp) =>
-                          {
-                              FileStream tempFileStream = (FileStream)temp.AsyncState;
-                              tempFileStream.EndWrite(temp);
-                              tempFileStream.Close();
-                          }, fs);
+                    fs.BeginWrite(bytes, 0, bytes.Length, temp =>
+                    {
+                        var tempFileStream = (FileStream) temp.AsyncState;
+                        tempFileStream.EndWrite(temp);
+                        tempFileStream.Close();
+                    }, fs);
                 }
             }
             catch (Exception e)
@@ -182,55 +187,55 @@ namespace HiFramework
         }
 
         /// <summary>
-        /// 复制文件(覆盖的形式)
+        ///     复制文件(覆盖的形式)
         /// </summary>
-        /// <param name="paramSourcePath"></param>
-        /// <param name="paramDestPath"></param>
-        public void CopyFile(string paramSourcePath, string paramDestPath)
+        /// <path name="sourcePath"></path>
+        /// <path name="destinationPath"></path>
+        public void CopyFile(string sourcePath, string destPath)
         {
-            if (!IsFileExist(paramSourcePath))
+            if (!IsFileExist(sourcePath))
             {
                 Debug.Log("source file not exist");
                 return;
             }
-            string directory = Path.GetDirectoryName(paramDestPath);
+            var directory = Path.GetDirectoryName(destPath);
             CreateFolder(directory);
-            File.Copy(paramSourcePath, paramDestPath, true);
+            File.Copy(sourcePath, destPath, true);
         }
 
         /// <summary>
-        /// 删除文件
+        ///     删除文件
         /// </summary>
-        /// <param name="param"></param>
-        public void DeleteFile(string param)
+        /// <path name="path"></path>
+        public void DeleteFile(string path)
         {
-            if (IsFileExist(param))
-                File.Delete(param);
+            if (IsFileExist(path))
+                File.Delete(path);
         }
 
-        public void ReadFileFromStreamingAssetsPath(string paramPath, Action<WWW> paramHandler)
+        public void ReadFileFromStreamingAssetsPath(string path, Action<WWW> handler)
         {
-            paramPath = GetStreamingAssetsPath() + "/" + paramPath;
+            path = GetStreamingAssetsPath() + "/" + path;
 
-            new AsyncWwwTask(paramPath).Start().OnFinish((x) => { paramHandler(x as WWW); });
+            new AsyncWwwTask(path).Start().OnFinish(x => { handler(x as WWW); });
         }
 
-        public byte[] ReadFileFromPersistentDataPath(string param)
+        public byte[] ReadFileFromPersistentDataPath(string path)
         {
-            param = Application.persistentDataPath + "/" + param;
-            return ReadFile(param);
+            path = Application.persistentDataPath + "/" + path;
+            return ReadFile(path);
         }
 
-        public void WriteFileToPersistentDataPath(string paramPath, byte[] paramBytes)
+        public void WriteFileToPersistentDataPath(string path, byte[] bytes)
         {
-            paramPath = Application.persistentDataPath + "/" + paramPath;
-            WriteFile(paramPath, paramBytes);
+            path = Application.persistentDataPath + "/" + path;
+            WriteFile(path, bytes);
         }
 
         private string GetStreamingAssetsPath()
         {
 #if UNITY_EDITOR || UNITY_IPHONE
-            string path = "file://" + Application.streamingAssetsPath;
+            var path = "file://" + Application.streamingAssetsPath;
 #else
                     string path = Application.streamingAssetsPath;
 #endif

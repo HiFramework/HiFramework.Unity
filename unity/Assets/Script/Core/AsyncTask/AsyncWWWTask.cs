@@ -5,11 +5,12 @@
 
 using UnityEngine;
 
-namespace HiFramework
+namespace HiFramework.Core.AsyncTask
 {
     public class AsyncWwwTask : AsyncTask
     {
-        private WWW _www;
+        private readonly WWW _www;
+
         public AsyncWwwTask(string url)
         {
             _www = new WWW(url);

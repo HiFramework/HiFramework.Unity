@@ -7,6 +7,6 @@ namespace HiFramework
 {
     public interface IReceive
     {
-        void OnMessage(IMessage paramMessage);
+        void OnMessage(IMessage message);
     }
 }

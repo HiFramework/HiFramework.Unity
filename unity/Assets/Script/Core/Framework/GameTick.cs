@@ -16,15 +16,15 @@ namespace HiFramework
                 _tickList[i].OnTick();
         }
 
-        public void AddToTickList(ITick paramTick)
+        public void AddToTickList(ITick iTick)
         {
-            if (!_tickList.Contains(paramTick))
-                _tickList.Add(paramTick);
+            if (!_tickList.Contains(iTick))
+                _tickList.Add(iTick);
         }
-        public void RemoveFromTickList(ITick paramTick)
+        public void RemoveFromTickList(ITick iTick)
         {
-            if (_tickList.Contains(paramTick))
-                _tickList.Remove(paramTick);
+            if (_tickList.Contains(iTick))
+                _tickList.Remove(iTick);
         }
 
         protected override void OnDispose()

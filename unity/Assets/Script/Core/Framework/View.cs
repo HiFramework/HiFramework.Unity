@@ -14,31 +14,31 @@ namespace HiFramework
             viewAgent.Bind(this);
             return viewAgent;
         }
-        public object Regist<T>(object paramKey) where T : Agent
+        public object Regist<T>(object key) where T : Agent
         {
-            return Facade.RegistAndDispatch.Regist<T>(paramKey);
+            return Facade.RegistAndDispatch.Regist<T>(key);
         }
-        public void Unregist(object paramKey)
+        public void Unregist(object key)
         {
-            Facade.RegistAndDispatch.Unregist(paramKey);
+            Facade.RegistAndDispatch.Unregist(key);
         }
-        public void Dispatch(object paramKey, IMessage paramMessage = null)
+        public void Dispatch(object key, IMessage message = null)
         {
-            Facade.RegistAndDispatch.Dispatch(paramKey, paramMessage);
+            Facade.RegistAndDispatch.Dispatch(key, message);
         }
         //接收来自对应控制器和Agent的消息
-        public virtual void OnMessage(IMessage paramMessage)
+        public virtual void OnMessage(IMessage message)
         {
         }
 
-        public void AddToTickList(ITick param)
+        public void AddToTickList(ITick iTick)
         {
-            Facade.GameTick.AddToTickList(param);
+            Facade.GameTick.AddToTickList(iTick);
         }
 
-        public void RemoveFromTickList(ITick param)
+        public void RemoveFromTickList(ITick iTick)
         {
-            Facade.GameTick.RemoveFromTickList(param);
+            Facade.GameTick.RemoveFromTickList(iTick);
         }
 
         public virtual void OnTick()

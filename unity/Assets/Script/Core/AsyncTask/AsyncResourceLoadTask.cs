@@ -5,16 +5,17 @@
 
 using UnityEngine;
 
-namespace HiFramework
+namespace HiFramework.Core.AsyncTask
 {
     /// <summary>
-    /// Resource文件夹下异步加载
+    ///     Resource文件夹下异步加载
     /// </summary>
     public class AsyncResourceLoadTask : AsyncTask
     {
-        private ResourceRequest _resourceRequest;
+        private readonly ResourceRequest _resourceRequest;
+
         /// <summary>
-        /// resource文件夹下路径
+        ///     resource文件夹下路径
         /// </summary>
         /// <param name="param"></param>
         public AsyncResourceLoadTask(string param)

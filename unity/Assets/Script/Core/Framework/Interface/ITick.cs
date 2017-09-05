@@ -6,8 +6,8 @@ namespace HiFramework
 {
     public interface ITick
     {
-        void AddToTickList(ITick paramTick);
-        void RemoveFromTickList(ITick paramTick);
+        void AddToTickList(ITick iTick);
+        void RemoveFromTickList(ITick iTick);
         void OnTick();
     }
 }

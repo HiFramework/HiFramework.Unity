@@ -2,19 +2,19 @@
 // Description:
 // Author: hiramtan@qq.com
 //***************************************************************************
-using Assets.Script.Core.AsyncTask;
+
 using System;
 using UnityEngine;
 
-namespace Assets.Script.Core.AsyncTask
+namespace HiFramework.Core.AsyncTask
 {
-    public class AsyncMutiResourceLoad : HiFramework.AsyncTask
+    public class AsyncMutiResourceLoad : AsyncTask
     {
-        private AsyncMutiResourceLoad _childTask;
         private readonly string _path;
+        private AsyncMutiResourceLoad _childTask;
         private Action<object> _oneFinishAction;
 
-        private ResourceRequest _resourceRequest;
+        private readonly ResourceRequest _resourceRequest;
 
         public AsyncMutiResourceLoad(string path)
         {
@@ -27,8 +27,8 @@ namespace Assets.Script.Core.AsyncTask
             if (numb <= 0)
                 throw new Exception("numb<=0");
 
-            AsyncMutiResourceLoad task = this;
-            for (int i = 0; i < numb; i++)
+            var task = this;
+            for (var i = 0; i < numb; i++)
             {
                 task._childTask = new AsyncMutiResourceLoad(_path);
                 task = task._childTask;
@@ -50,9 +50,7 @@ namespace Assets.Script.Core.AsyncTask
                 if (_oneFinishAction != null)
                     _oneFinishAction(_resourceRequest.asset);
                 if (_childTask != null)
-                {
                     _childTask.Start();
-                }
             }
         }
 
@@ -63,21 +61,21 @@ namespace Assets.Script.Core.AsyncTask
     }
 }
 
-public class TestAsyncMutiLoad : MonoBehaviour
-{
-    void Start()
-    {
-        //加载10个
-        new AsyncMutiResourceLoad("Resources/xxx").SetCount(10).OnOneFinish(OneFinish).OnFinish(Finish);
-    }
+//public class TestAsyncMutiLoad : MonoBehaviour
+//{
+//    void Start()
+//    {
+//        //加载10个
+//        new AsyncMutiResourceLoad("Resources/xxx").SetCount(10).OnOneFinish(OneFinish).OnFinish(Finish);
+//    }
 
-    void OneFinish(object obj)
-    {
-        Debug.Log("加载一个完成:" + obj);
-    }
+//    void OneFinish(object obj)
+//    {
+//        Debug.Log("加载一个完成:" + obj);
+//    }
 
-    void Finish(object obj)
-    {
-        Debug.Log("全部加载结束");
-    }
-}
+//    void Finish(object obj)
+//    {
+//        Debug.Log("全部加载结束");
+//    }
+//}

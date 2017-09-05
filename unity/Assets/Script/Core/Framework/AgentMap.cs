@@ -12,34 +12,34 @@ namespace HiFramework
     {
         private IDictionary<object, Agent> _agentMap = new Dictionary<object, Agent>();
 
-        public void Dispatch(object paramKey, IMessage paramMessage = null)
+        public void Dispatch(object key, IMessage message = null)
         {
-            //IView key = (IView)Convert.ChangeType(paramKey, paramKey.GetType());
-            if (_agentMap.ContainsKey(paramKey))
+            //IView key = (IView)Convert.ChangeType(key, key.GetType());
+            if (_agentMap.ContainsKey(key))
             {
-                Agent obj = _agentMap[paramKey];
-                obj.OnMessage(paramMessage);
+                Agent obj = _agentMap[key];
+                obj.OnMessage(message);
             }
             else
                 throw new Exception("You should _map key to controller first");
         }
 
-        public object Regist<T>(object paramKey) where T : Agent
+        public object Regist<T>(object key) where T : Agent
         {
-            if (!_agentMap.ContainsKey(paramKey))
+            if (!_agentMap.ContainsKey(key))
             {
                 Type type = typeof(T);
                 object obj = Activator.CreateInstance(type);
-                _agentMap[paramKey] = (Agent)obj;
+                _agentMap[key] = (Agent)obj;
                 return obj;
             }
             else
                 throw new Exception("Dont need to regist this ilogic again");
         }
-        public void Unregist(object paramKey)
+        public void Unregist(object key)
         {
-            if (_agentMap.ContainsKey(paramKey))
-                _agentMap.Remove(paramKey);
+            if (_agentMap.ContainsKey(key))
+                _agentMap.Remove(key);
             else
                 throw new Exception("instantiation map dont contain this key");
         }

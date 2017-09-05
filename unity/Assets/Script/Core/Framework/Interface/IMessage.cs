@@ -3,6 +3,7 @@
 // Author: hiramtan@live.com
 //***************************************************************************
 
+using System;
 using System.Collections.Generic;
 
 namespace HiFramework
@@ -11,5 +12,7 @@ namespace HiFramework
     {
         string Key { get; }
         List<object> Msg { get; }
+
+        Action<Message> CallBack { get; }
     }
 }

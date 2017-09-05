@@ -2,25 +2,27 @@
 // Description:
 // Author: hiramtan@live.com
 //****************************************************************************
+
 using System;
 using System.Collections;
 using UnityEngine;
 
-namespace HiFramework
+namespace HiFramework.Core.AsyncTask
 {
     public abstract class AsyncTask
     {
-        protected bool IsDone { private get; set; } //任务是否完成
-        protected Action<object> Action { get; private set; } //任务完成后的事件
+        private readonly MonoBehaviour _asyncExecuter;
 
-        private Executer _executer;
-        private MonoBehaviour _asyncExecuter;
+        private readonly Executer _executer;
 
         public AsyncTask()
         {
             _executer = new Executer(this);
             _asyncExecuter = GameWorld.Instance;
         }
+
+        protected bool IsDone { private get; set; } //任务是否完成
+        protected Action<object> Action { get; private set; } //任务完成后的事件
 
         //任务开始执行
         public AsyncTask Start()
@@ -46,7 +48,7 @@ namespace HiFramework
 
         private class Executer : IEnumerator
         {
-            private AsyncTask _asyncTask;
+            private readonly AsyncTask _asyncTask;
 
             public Executer(AsyncTask param)
             {
@@ -62,7 +64,6 @@ namespace HiFramework
                 }
                 _asyncTask.Complate();
                 return false;
-
             }
 
             public void Reset()
@@ -72,6 +73,5 @@ namespace HiFramework
 
             public object Current { get; private set; }
         }
-
     }
 }

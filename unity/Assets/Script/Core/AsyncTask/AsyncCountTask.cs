@@ -3,15 +3,16 @@
 // Author: hiramtan@live.com
 //****************************************************************************
 
-
-namespace HiFramework
-{/// <summary>
- /// 测试逻辑,测试异步计数
- /// </summary>
+namespace HiFramework.Core.AsyncTask
+{
+    /// <summary>
+    ///     测试逻辑,测试异步计数
+    /// </summary>
     public class AsyncCountTask : AsyncTask
     {
+        private readonly int _total;
         private int _i;
-        private int _total;
+
         public AsyncCountTask(int total)
         {
             _total = total;

@@ -2,6 +2,7 @@
 // Description:
 // Author: hiramtan@live.com
 //***************************************************************************
+
 namespace HiFramework
 {
     public interface IRegistAndDispatch
@@ -10,6 +11,6 @@ namespace HiFramework
 
         void Unregist(object key);
 
-        void Dispatch(object paramKey, IMessage paramMessage = null);
+        void Dispatch(object key, IMessage message = null);
     }
 }
