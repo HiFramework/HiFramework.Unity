@@ -16,6 +16,7 @@ public class GameWorld : MonoBehaviour
     private static bool _isExist;
 
     private readonly Queue<ToExecute> _toExecuteQueue = new Queue<ToExecute>();
+    private readonly List<Action> _applicationQuitActionList = new List<Action>();
 
     private void Awake()
     {
@@ -41,18 +42,56 @@ public class GameWorld : MonoBehaviour
     {
         Facade.GameTick.OnTick();
         if (_toExecuteQueue.Count > 0)
+        {
             lock (_toExecuteQueue)
             {
-                var per = _toExecuteQueue.Dequeue();
-                per.Action(per.Obj);
+                for (int i = 0; i < _toExecuteQueue.Count; i++)
+                {
+                    var per = _toExecuteQueue.Peek();
+                    per.Action(per.Obj);
+                }
+                _toExecuteQueue.Clear();
             }
+        }
+
     }
 
     private void OnApplicationQuit()
     {
+        for (int i = 0; i < _applicationQuitActionList.Count; i++)
+        {
+            _applicationQuitActionList[i]();
+        }
     }
 
-    public void RunOnMainThread(Action<object> action, object obj = null)
+    public void OnApplicationQuit(Action action)
+    {
+        _applicationQuitActionList.Add(action);
+    }
+
+    void OnApplicationFocus(bool focus)
+    {
+        //if (focus)//update can process this
+        //{
+        //    lock (_toExecuteQueue)
+        //    {
+        //        for (int i = 0; i < _toExecuteQueue.Count; i++)
+        //        {
+        //            var per = _toExecuteQueue.Peek();
+        //            per.Action(per.Obj);
+        //        }
+        //        _toExecuteQueue.Clear();
+        //    }
+        //}
+    }
+
+    void OnApplicationPause(bool pause)
+    {
+
+    }
+
+
+    public void RunOnMainThread(Action<object> action, object obj)//obj不能可选为空,数据会被线程冲刷,需要传递原有数据
     {
         lock (_toExecuteQueue)
         {

@@ -44,7 +44,7 @@ public class Test1 : Agent
         //throw new System.NotImplementedException();
     }
 
-    public override void OnMessage(IMessage paramMessage)
+    public override void OnMessage(IMessage message)
     {
         Debug.Log("from message");
         // throw new System.NotImplementedException();
