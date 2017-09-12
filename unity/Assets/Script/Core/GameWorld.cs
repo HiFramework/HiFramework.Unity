@@ -47,10 +47,9 @@ public class GameWorld : MonoBehaviour
             {
                 for (int i = 0; i < _toExecuteQueue.Count; i++)
                 {
-                    var per = _toExecuteQueue.Peek();
+                    var per = _toExecuteQueue.Dequeue();
                     per.Action(per.Obj);
                 }
-                _toExecuteQueue.Clear();
             }
         }
 
@@ -71,18 +70,7 @@ public class GameWorld : MonoBehaviour
 
     void OnApplicationFocus(bool focus)
     {
-        //if (focus)//update can process this
-        //{
-        //    lock (_toExecuteQueue)
-        //    {
-        //        for (int i = 0; i < _toExecuteQueue.Count; i++)
-        //        {
-        //            var per = _toExecuteQueue.Peek();
-        //            per.Action(per.Obj);
-        //        }
-        //        _toExecuteQueue.Clear();
-        //    }
-        //}
+
     }
 
     void OnApplicationPause(bool pause)
