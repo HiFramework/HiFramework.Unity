@@ -18,6 +18,7 @@ public class GameWorld : MonoBehaviour
     private readonly Queue<ToExecute> _toExecuteQueue = new Queue<ToExecute>();
     private readonly List<Action> _applicationQuitActionList = new List<Action>();
 
+    private static readonly object _locker = new object();
     private void Awake()
     {
         Instance = this;
@@ -43,9 +44,9 @@ public class GameWorld : MonoBehaviour
         Facade.GameTick.OnTick();
         if (_toExecuteQueue.Count > 0)
         {
-            lock (_toExecuteQueue)
+            lock (_locker)
             {
-                for (int i = 0; i < _toExecuteQueue.Count; i++)
+                while (_toExecuteQueue.Count>0)
                 {
                     var per = _toExecuteQueue.Dequeue();
                     per.Action(per.Obj);
@@ -81,7 +82,7 @@ public class GameWorld : MonoBehaviour
 
     public void RunOnMainThread(Action<object> action, object obj)//obj不能可选为空,数据会被线程冲刷,需要传递原有数据
     {
-        lock (_toExecuteQueue)
+        lock (_locker)
         {
             _toExecuteQueue.Enqueue(new ToExecute(action, obj));
         }
