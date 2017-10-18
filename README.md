@@ -1,5 +1,8 @@
-# HiFramework_unity
+# HiFramework
 尚未完成
+
+
+待完成列表https://trello.com/b/RvqBA6fU/hiframework
 
 添加IO常用操作
 
