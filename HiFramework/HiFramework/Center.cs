@@ -2,16 +2,6 @@
 {
     public static class Center
     {
-        public static void Init()
-        {
-
-        }
-
-        public static void Tick()
-        {
-
-        }
-
         public static T Get<T>()
         {
             //add
