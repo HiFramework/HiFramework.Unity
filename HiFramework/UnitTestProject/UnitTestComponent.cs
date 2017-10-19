@@ -6,25 +6,22 @@ namespace UnitTestProject
     [TestClass]
     public class UnitTestComponent
     {
+        public static bool _isTrue;
         [TestMethod]
         public void TestComponent()
         {
             Framework.Init();
 
             var c = Center.Get<Component>();
-
             Assert.IsNotNull(c);
-
-            Console.WriteLine(c.x);
-
+            Assert.IsTrue(_isTrue);
         }
-
         public class Component : HiFramework.IComponet
         {
             public int x = 10;
             public void Regist()
             {
-                Console.WriteLine("regist");
+                UnitTestComponent._isTrue = true;
             }
 
             public void UnRegist()
