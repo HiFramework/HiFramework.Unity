@@ -6,16 +6,8 @@ using System;
 
 namespace HiFramework
 {
-    internal class Map : IFramework
+    [AttributeUsage(AttributeTargets.Constructor | AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property | AttributeTargets.Field)]
+    public class InjectAttribute : Attribute
     {
-        public void Init()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Tick()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

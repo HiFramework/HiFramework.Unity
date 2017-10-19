@@ -20,5 +20,16 @@ namespace HiFramework
             if (obj == null)
                 throw new Exception("obj is null");
         }
+
+        public static void IsEqual(object o1, object o2)
+        {
+            if (o1 != o2)
+                throw new Exception("not equal");
+        }
+        public static void IsNotEqual(object o1, object o2)
+        {
+            if (o1 == o2)
+                throw new Exception("equal");
+        }
     }
 }
