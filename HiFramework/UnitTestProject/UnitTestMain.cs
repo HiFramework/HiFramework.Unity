@@ -6,7 +6,7 @@ namespace UnitTestProject
     public class UnitTestMain
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestMain()
         {
             Framework.Init();
 
