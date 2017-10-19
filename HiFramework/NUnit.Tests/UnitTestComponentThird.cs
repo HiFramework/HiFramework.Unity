@@ -1,26 +1,30 @@
-﻿using System;
-using System.Threading;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using HiFramework;
-namespace UnitTestProject
+﻿using NUnit.Framework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace NUnit.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class UnitTestComponentThird
     {
+      
         public static bool IsTrue;
 
-        [TestMethod]
+        [Test]
         public void TestComponentThird()
         {
-            Framework.Init();
+          HiFramework.  Framework.Init();
 
-            IComponetLogic c = Center.Get<Component>();
+            IComponetLogic c = HiFramework.Center.Get<Component>();
             Assert.IsNotNull(c);
             c.Log();
             Assert.IsTrue(IsTrue);
         }
 
-        public class Component : IComponet, IComponetLogic
+        public class Component : HiFramework.IComponet, IComponetLogic
         {
             private ComponentThrid _componentThrid;
             public void Regist()

@@ -31,5 +31,10 @@ namespace HiFramework
             if (o1 == o2)
                 throw new Exception("equal");
         }
+
+        public static void isTrue(bool value)
+        {
+
+        }
     }
 }

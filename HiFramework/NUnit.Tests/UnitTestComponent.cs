@@ -1,16 +1,17 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using HiFramework;
-namespace UnitTestProject
+using NUnit.Framework;
+
+namespace NUnit.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class UnitTestComponent
     {
         public static bool _isTrue;
-        [TestMethod]
+        [Test]
         public void TestComponent()
         {
-            Framework.Init();
+            HiFramework.Framework.Init();
 
             var c = Center.Get<Component>();
             Assert.IsNotNull(c);
