@@ -50,7 +50,7 @@
     <Compile Include="Assert.cs" />
     <Compile Include="Center.cs" />
     <Compile Include="Framework.cs" />
-    <Compile Include="IComponet.cs" />
+    <Compile Include="IComponent.cs" />
     <Compile Include="IFramework.cs" />
     <Compile Include="Inject.cs" />
     <Compile Include="IService.cs" />

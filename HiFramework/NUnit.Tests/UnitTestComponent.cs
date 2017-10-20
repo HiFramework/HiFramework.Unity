@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using HiFramework;
 using NUnit.Framework;
 
@@ -17,15 +17,15 @@ namespace NUnit.Tests
             Assert.IsNotNull(c);
             Assert.IsTrue(_isTrue);
         }
-        public class Component : HiFramework.IComponet
+        public class Component : HiFramework.IComponent
         {
             public int x = 10;
-            public void Regist()
+            public void OnRegist()
             {
                 UnitTestComponent._isTrue = true;
             }
 
-            public void UnRegist()
+            public void OnUnRegist()
             {
                 throw new NotImplementedException();
             }

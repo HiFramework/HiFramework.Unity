@@ -1,0 +1,6 @@
+D:\MyGit\HiFramework\HiFramework\.vs\HiFramework\lut\0\b\NUnit.Tests\bin\Debug\NUnit.Tests.dll
+D:\MyGit\HiFramework\HiFramework\.vs\HiFramework\lut\0\b\NUnit.Tests\bin\Debug\NUnit.Tests.pdb
+D:\MyGit\HiFramework\HiFramework\.vs\HiFramework\lut\0\i\NUnit.Tests\Debug\NUnit.Tests.csprojResolveAssemblyReference.cache
+D:\MyGit\HiFramework\HiFramework\.vs\HiFramework\lut\0\i\NUnit.Tests\Debug\NUnit.Tests.csproj.CoreCompileInputs.cache
+D:\MyGit\HiFramework\HiFramework\.vs\HiFramework\lut\0\i\NUnit.Tests\Debug\NUnit.Tests.dll
+D:\MyGit\HiFramework\HiFramework\.vs\HiFramework\lut\0\i\NUnit.Tests\Debug\NUnit.Tests.pdb

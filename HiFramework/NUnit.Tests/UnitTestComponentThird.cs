@@ -24,15 +24,15 @@ namespace NUnit.Tests
             Assert.IsTrue(IsTrue);
         }
 
-        public class Component : HiFramework.IComponet, IComponetLogic
+        public class Component : HiFramework.IComponent, IComponetLogic
         {
             private ComponentThrid _componentThrid;
-            public void Regist()
+            public void OnRegist()
             {
                 _componentThrid = new ComponentThrid();
             }
 
-            public void UnRegist()
+            public void OnUnRegist()
             {
                 throw new NotImplementedException();
             }
