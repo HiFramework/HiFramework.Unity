@@ -10,11 +10,11 @@ namespace NUnit.Tests
         public void TestMethod()
         {
             // TODO: Add your test code here
-            if (!NUnit.isInited)
-            {
-                NUnit.isInited = true;
-                HiFramework.Framework.Init();
-            }
+            //if (!NUnit.isInited)
+            //{
+            //    NUnit.isInited = true;
+            //    HiFramework.Framework.Init();
+            //}
 
             bool isTrue = false;
 

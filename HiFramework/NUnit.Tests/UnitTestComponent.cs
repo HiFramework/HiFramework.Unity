@@ -11,12 +11,6 @@ namespace NUnit.Tests
         [Test]
         public void TestComponent()
         {
-            if (!NUnit.isInited)
-            {
-                NUnit.isInited = true;
-                HiFramework.Framework.Init();
-            }
-
             var c = Center.Get<Component>();
             Assert.IsNotNull(c);
             Assert.IsTrue(IsTrue);

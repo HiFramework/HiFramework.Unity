@@ -16,11 +16,6 @@ namespace NUnit.Tests
         public void TestRegistDispatch()
         {
             _count = 0;
-            if (!NUnit.isInited)
-            {
-                NUnit.isInited = true;
-                HiFramework.Framework.Init();
-            }
             ISignal signal = Center.Get<SignalComponent>();
             signal.Regist("key", TestMethod1);
             signal.Regist("key", TestMethod2);

@@ -1,11 +1,6 @@
-﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HiFramework;
+﻿using HiFramework;
 using HiFramework.Component.MainThread;
+using NUnit.Framework;
 
 namespace NUnit.Tests
 {
@@ -16,13 +11,6 @@ namespace NUnit.Tests
         public void TestMethodMainThread()
         {
             // TODO: Add your test code here
-
-            if (!NUnit.isInited)
-            {
-                NUnit.isInited = true;
-                HiFramework.Framework.Init();
-            }
-
             bool isTrue = false;
 
             IMainThread iMainThread = Center.Get<MainThreadComponent>();
@@ -47,11 +35,6 @@ namespace NUnit.Tests
         [Test]
         public void TestMethodApplicationQuit()
         {
-            if (!NUnit.isInited)
-            {
-                NUnit.isInited = true;
-                HiFramework.Framework.Init();
-            }
 
             bool isTrue = false;
 
