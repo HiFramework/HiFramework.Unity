@@ -32,7 +32,7 @@ namespace HiFramework
                 throw new Exception("equal");
         }
 
-        public static void isTrue(bool value)
+        public static void IsTrue(bool value)
         {
             if (!value)
                 throw new Exception("is not true");

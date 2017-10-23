@@ -15,7 +15,7 @@
         {
             var key = typeof(T).FullName;
             var isNotNull = _container.IsNotNull(key);
-            Assert.isTrue(isNotNull);
+            Assert.IsTrue(isNotNull);
             var component = Get<T>();
             _ticker.UnRegistTick(component);
             _container.Remove(key);

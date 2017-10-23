@@ -53,6 +53,11 @@
     <Compile Include="Component\AsyncTask\IAsyncComponent.cs" />
     <Compile Include="Component\DebugComponent.cs" />
     <Compile Include="Component\IDebug.cs" />
+    <Compile Include="Component\MainThread\IMainThread.cs" />
+ 
+
+
+    <Compile Include="Component\MainThread\MainThreadComponent.cs" />
     <Compile Include="Framework\Assert.cs" />
     <Compile Include="Framework\Center.cs" />
     <Compile Include="Framework\Framework.cs" />

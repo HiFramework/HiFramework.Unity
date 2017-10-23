@@ -7,7 +7,7 @@ namespace NUnit.Tests
     [TestFixture]
     public class UnitTestComponent
     {
-        public static bool _isTrue;
+        public static bool IsTrue;
         [Test]
         public void TestComponent()
         {
@@ -15,14 +15,14 @@ namespace NUnit.Tests
 
             var c = Center.Get<Component>();
             Assert.IsNotNull(c);
-            Assert.IsTrue(_isTrue);
+            Assert.IsTrue(IsTrue);
         }
         public class Component : HiFramework.IComponent
         {
-            public int x = 10;
+            public int X = 10;
             public void OnRegist()
             {
-                UnitTestComponent._isTrue = true;
+                UnitTestComponent.IsTrue = true;
             }
 
             public void OnUnRegist()

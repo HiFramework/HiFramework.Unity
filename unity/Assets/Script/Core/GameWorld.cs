@@ -17,7 +17,6 @@ public class GameWorld : MonoBehaviour
 
     private readonly Queue<ToExecute> _toExecuteQueue = new Queue<ToExecute>();
     private readonly List<Action> _applicationQuitActionList = new List<Action>();
-
     private static readonly object _locker = new object();
     private void Awake()
     {
@@ -46,7 +45,7 @@ public class GameWorld : MonoBehaviour
         {
             lock (_locker)
             {
-                while (_toExecuteQueue.Count>0)
+                while (_toExecuteQueue.Count > 0)
                 {
                     var per = _toExecuteQueue.Dequeue();
                     per.Action(per.Obj);

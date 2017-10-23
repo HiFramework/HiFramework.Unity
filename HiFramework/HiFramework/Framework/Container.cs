@@ -29,7 +29,7 @@ namespace HiFramework
 
         public void Remove(string s)
         {
-            Assert.isTrue(_objects.ContainsKey(s));
+            Assert.IsTrue(_objects.ContainsKey(s));
             _objects.Remove(s);
         }
 

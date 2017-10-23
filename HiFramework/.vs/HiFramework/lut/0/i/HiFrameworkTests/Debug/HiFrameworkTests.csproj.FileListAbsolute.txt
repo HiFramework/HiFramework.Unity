@@ -1,0 +1,12 @@
+D:\MyGit\HiFramework\HiFramework\.vs\HiFramework\lut\0\b\HiFrameworkTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+D:\MyGit\HiFramework\HiFramework\.vs\HiFramework\lut\0\b\HiFrameworkTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+D:\MyGit\HiFramework\HiFramework\.vs\HiFramework\lut\0\b\HiFrameworkTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+D:\MyGit\HiFramework\HiFramework\.vs\HiFramework\lut\0\b\HiFrameworkTests\bin\Debug\zh-Hans\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll
+D:\MyGit\HiFramework\HiFramework\.vs\HiFramework\lut\0\b\HiFrameworkTests\bin\Debug\zh-Hans\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll
+D:\MyGit\HiFramework\HiFramework\.vs\HiFramework\lut\0\b\HiFrameworkTests\bin\Debug\zh-Hans\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
+D:\MyGit\HiFramework\HiFramework\.vs\HiFramework\lut\0\b\HiFrameworkTests\bin\Debug\HiFrameworkTests.dll
+D:\MyGit\HiFramework\HiFramework\.vs\HiFramework\lut\0\b\HiFrameworkTests\bin\Debug\HiFrameworkTests.pdb
+D:\MyGit\HiFramework\HiFramework\.vs\HiFramework\lut\0\i\HiFrameworkTests\Debug\HiFrameworkTests.csprojResolveAssemblyReference.cache
+D:\MyGit\HiFramework\HiFramework\.vs\HiFramework\lut\0\i\HiFrameworkTests\Debug\HiFrameworkTests.csproj.CoreCompileInputs.cache
+D:\MyGit\HiFramework\HiFramework\.vs\HiFramework\lut\0\i\HiFrameworkTests\Debug\HiFrameworkTests.dll
+D:\MyGit\HiFramework\HiFramework\.vs\HiFramework\lut\0\i\HiFrameworkTests\Debug\HiFrameworkTests.pdb

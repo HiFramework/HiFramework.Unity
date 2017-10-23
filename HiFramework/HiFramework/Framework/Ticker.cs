@@ -8,12 +8,12 @@ namespace HiFramework
 {
     class Ticker : ITick
     {
-        private List<ITick> iTicks = new List<ITick>();
+        private List<ITick> _iTicks = new List<ITick>();
         public void Tick()
         {
-            for (int i = 0; i < iTicks.Count; i++)
+            for (int i = 0; i < _iTicks.Count; i++)
             {
-                iTicks[i].Tick();
+                _iTicks[i].Tick();
             }
         }
 
@@ -22,17 +22,17 @@ namespace HiFramework
             var iTick = iComponent as ITick;
             if (iTick == null)
                 return;
-            if (iTicks.Contains(iTick))
+            if (_iTicks.Contains(iTick))
                 return;
-            iTicks.Add(iTick);
+            _iTicks.Add(iTick);
         }
         internal void UnRegistTick(IComponent iComponent)
         {
             var iTick = iComponent as ITick;
             if (iTick == null)
                 return;
-            Assert.isTrue(iTicks.Contains(iTick));
-            iTicks.Remove(iTick);
+            Assert.IsTrue(_iTicks.Contains(iTick));
+            _iTicks.Remove(iTick);
         }
     }
 }
