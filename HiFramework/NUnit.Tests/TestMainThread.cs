@@ -17,7 +17,11 @@ namespace NUnit.Tests
         {
             // TODO: Add your test code here
 
-            HiFramework.Framework.Init();
+            if (!NUnit.isInited)
+            {
+                NUnit.isInited = true;
+                HiFramework.Framework.Init();
+            }
 
             bool isTrue = false;
 
@@ -43,7 +47,11 @@ namespace NUnit.Tests
         [Test]
         public void TestMethodApplicationQuit()
         {
-            HiFramework.Framework.Init();
+            if (!NUnit.isInited)
+            {
+                NUnit.isInited = true;
+                HiFramework.Framework.Init();
+            }
 
             bool isTrue = false;
 
@@ -52,13 +60,7 @@ namespace NUnit.Tests
             iMainThread.RunOnApplicationQuit(() => { isTrue = true; });
 
 
-            int i = 0;
-
-            while (i < 100)
-            {
-                i++;
-                HiFramework.Framework.Tick();
-            }
+            iMainThread.Quit();
 
             Assert.IsTrue(isTrue);
 

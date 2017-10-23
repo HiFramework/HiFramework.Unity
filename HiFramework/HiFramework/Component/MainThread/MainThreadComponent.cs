@@ -27,19 +27,16 @@ namespace HiFramework.Component.MainThread
 
         public void RunOnApplicationQuit(Action action)
         {
-            //this should execute on main thread
-            //lock (_locker)
-            //{
-            for (int i = 0; i < _applicationQuitActionList.Count; i++)
-            {
-                _applicationQuitActionList[i]();
-            }
-            //}
+            Assert.IsFalse(_applicationQuitActionList.Contains(action));
+            _applicationQuitActionList.Add(action);
         }
 
         public void Quit()
         {
-            throw new NotImplementedException();
+            foreach (var variable in _applicationQuitActionList)
+            {
+                variable();
+            }
         }
 
         public void Tick()

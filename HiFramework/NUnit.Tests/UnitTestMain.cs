@@ -13,7 +13,11 @@ namespace NUnit.Tests
         [Test]
         public void TestMain()
         {
-            HiFramework.Framework.Init();
+            if (!NUnit.isInited)
+            {
+                NUnit.isInited = true;
+                HiFramework.Framework.Init();
+            }
 
             int i = 0;
             while (i < 10000)

@@ -16,7 +16,11 @@ namespace NUnit.Tests
         [Test]
         public void TestComponentThird()
         {
-          HiFramework.  Framework.Init();
+            if (!NUnit.isInited)
+            {
+                NUnit.isInited = true;
+                HiFramework.Framework.Init();
+            }
 
             IComponetLogic c = HiFramework.Center.Get<Component>();
             Assert.IsNotNull(c);

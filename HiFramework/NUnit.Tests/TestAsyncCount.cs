@@ -10,7 +10,12 @@ namespace NUnit.Tests
         public void TestMethod()
         {
             // TODO: Add your test code here
-            HiFramework.Framework.Init();
+            if (!NUnit.isInited)
+            {
+                NUnit.isInited = true;
+                HiFramework.Framework.Init();
+            }
+
             bool isTrue = false;
 
             new AsyncCountTask((x) => { isTrue = true; }, 100);

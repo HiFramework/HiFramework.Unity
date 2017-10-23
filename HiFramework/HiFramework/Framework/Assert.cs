@@ -38,6 +38,12 @@ namespace HiFramework
                 throw new Exception("is not true");
         }
 
+        public static void IsFalse(bool value)
+        {
+            if (value)
+                throw new Exception("is true");
+        }
+
         public static void Exception(string s)
         {
             throw new Exception(s);

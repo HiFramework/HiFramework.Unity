@@ -36,8 +36,10 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NUnit.cs" />
     <Compile Include="TestAsyncCount.cs" />
     <Compile Include="TestMainThread.cs" />
+    <Compile Include="TestSignal.cs" />
     <Compile Include="UnitTestComponent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTestComponentThird.cs" />
