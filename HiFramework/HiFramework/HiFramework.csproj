@@ -45,18 +45,22 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\UnityEngine.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Component\AsyncTask\AsyncRepeatingTask.cs" />
+    <Compile Include="Component\AsyncTask\AsyncResourceLoadTask.cs" />
     <Compile Include="Component\AsyncTask\AsyncTask.cs" />
     <Compile Include="Component\AsyncTask\AsyncComponent.cs" />
     <Compile Include="Component\AsyncTask\AsyncCountTask.cs" />
+    <Compile Include="Component\AsyncTask\AsyncTimeTask.cs" />
+    <Compile Include="Component\AsyncTask\AsyncWWWTask.cs" />
     <Compile Include="Component\AsyncTask\IAsyncComponent.cs" />
     <Compile Include="Component\DebugComponent.cs" />
     <Compile Include="Component\IDebug.cs" />
     <Compile Include="Component\MainThread\IMainThread.cs" />
- 
-
-
     <Compile Include="Component\MainThread\MainThreadComponent.cs" />
     <Compile Include="Framework\Assert.cs" />
     <Compile Include="Framework\Center.cs" />

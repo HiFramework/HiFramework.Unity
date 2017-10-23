@@ -3,14 +3,13 @@ using UnityEngine;
 
 namespace HiFramework
 {
-    class AsyncTimeTask : AsyncTask
+    public class AsyncTimeTask : AsyncTask
     {
         private float _time;
         private float _waitTime;
-        public AsyncTimeTask(Action<object> action, object obj, float waitTime)
+        public AsyncTimeTask(Action<object> action, object obj, float waitTime) : base(action)
         {
             _time = Time.realtimeSinceStartup;
-            Action = action;
             Obj = obj;
             _waitTime = waitTime;
         }

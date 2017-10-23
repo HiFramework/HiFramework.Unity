@@ -8,3 +8,4 @@ D:\MyGit\HiFramework\HiFramework\NUnit.Tests\bin\Debug\nunit.framework.xml
 D:\MyGit\HiFramework\HiFramework\NUnit.Tests\obj\Debug\NUnit.Tests.csprojResolveAssemblyReference.cache
 D:\MyGit\HiFramework\HiFramework\NUnit.Tests\obj\Debug\NUnit.Tests.dll
 D:\MyGit\HiFramework\HiFramework\NUnit.Tests\obj\Debug\NUnit.Tests.pdb
+D:\MyGit\HiFramework\HiFramework\NUnit.Tests\bin\Debug\UnityEngine.dll

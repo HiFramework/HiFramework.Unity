@@ -5,11 +5,12 @@ namespace HiFramework
     public abstract class AsyncTask : ITick
     {
         protected Action<object> Action;
-        protected object Obj;
         protected bool IsDone;
+        protected object Obj;//传入
         private readonly IAsyncComponent _iAsyncComponent;
-        protected AsyncTask()
+        protected AsyncTask(Action<object> action)
         {
+            Action = action;
             _iAsyncComponent = Center.Get<AsyncComponent>();
             _iAsyncComponent.RegistTick(this);
         }

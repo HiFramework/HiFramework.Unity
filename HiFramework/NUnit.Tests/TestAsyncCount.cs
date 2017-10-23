@@ -1,4 +1,4 @@
-﻿using HiFramework.Component.AsyncTask;
+﻿using HiFramework;
 using NUnit.Framework;
 
 namespace NUnit.Tests

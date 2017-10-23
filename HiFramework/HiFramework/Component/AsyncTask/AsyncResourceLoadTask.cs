@@ -3,13 +3,12 @@ using UnityEngine;
 
 namespace HiFramework
 {
-    internal class AsyncResourceLoadTask : AsyncTask
+    public class AsyncResourceLoadTask : AsyncTask
     {
         private readonly ResourceRequest _resourceRequest;
 
-        public AsyncResourceLoadTask(Action<object> action, string path)
+        public AsyncResourceLoadTask(Action<object> action, string path) : base(action)
         {
-            Action = action;
             _resourceRequest = Resources.LoadAsync(path);
         }
 

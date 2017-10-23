@@ -3,16 +3,15 @@ using UnityEngine;
 
 namespace HiFramework
 {
-    internal class AsyncRepeatingTask : AsyncTask
+    public class AsyncRepeatingTask : AsyncTask
     {
         private readonly float _repeatingTime;
         private float _timeStart;
 
-        public AsyncRepeatingTask(Action<object> action, object obj, float repeatingTime)
+        public AsyncRepeatingTask(Action<object> action, object obj, float repeatingTime) : base(action)
         {
             _timeStart = Time.realtimeSinceStartup;
             _repeatingTime = repeatingTime;
-            Action = action;
             Obj = obj;
         }
 

@@ -7,9 +7,8 @@ namespace HiFramework
         private readonly int _count;
         private int _i;
 
-        public AsyncCountTask(Action<object> action, int count)
+        public AsyncCountTask(Action<object> action, int count) : base(action)
         {
-            Action = action;
             _count = count;
         }
 
