@@ -66,12 +66,15 @@
     <Compile Include="Component\Signal\SignalComponent.cs" />
     <Compile Include="Framework\Assert.cs" />
     <Compile Include="Framework\Center.cs" />
+    <Compile Include="Framework\Component.cs" />
     <Compile Include="Framework\Framework.cs" />
     <Compile Include="Framework\IComponent.cs" />
+    <Compile Include="Framework\IContainer.cs" />
     <Compile Include="Framework\IFramework.cs" />
     <Compile Include="Framework\Inject.cs" />
     <Compile Include="Framework\Container.cs" />
     <Compile Include="Framework\ITick.cs" />
+    <Compile Include="Framework\ITicker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Framework\Ticker.cs" />
   </ItemGroup>

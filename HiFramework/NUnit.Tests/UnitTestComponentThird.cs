@@ -13,33 +13,33 @@ namespace NUnit.Tests
       
         public static bool IsTrue;
 
-        [Test]
-        public void TestComponentThird()
-        {
-            IComponetLogic c = HiFramework.Center.Get<Component>();
-            Assert.IsNotNull(c);
-            c.Log();
-            Assert.IsTrue(IsTrue);
-        }
+        //[Test]
+        //public void TestComponentThird()
+        //{
+        //    IComponetLogic c = HiFramework.Center.Get<Component>();
+        //    Assert.IsNotNull(c);
+        //    c.Log();
+        //    Assert.IsTrue(IsTrue);
+        //}
 
-        public class Component : HiFramework.IComponent, IComponetLogic
-        {
-            private ComponentThrid _componentThrid;
-            public void OnRegist()
-            {
-                _componentThrid = new ComponentThrid();
-            }
+        //public class Component : HiFramework.IComponent, IComponetLogic
+        //{
+        //    private ComponentThrid _componentThrid;
+        //    public void OnRegist()
+        //    {
+        //        _componentThrid = new ComponentThrid();
+        //    }
 
-            public void OnUnRegist()
-            {
-                throw new NotImplementedException();
-            }
+        //    public void OnUnRegist()
+        //    {
+        //        throw new NotImplementedException();
+        //    }
 
-            public void Log()
-            {
-                _componentThrid.Log();
-            }
-        }
+        //    public void Log()
+        //    {
+        //        _componentThrid.Log();
+        //    }
+        //}
 
         public interface IComponetLogic//自定义第三方逻辑开放接口
         {

@@ -1,4 +1,4 @@
-﻿namespace HiFramework.Component
+﻿namespace HiFramework
 {
     class DebugComponent : IComponent, IDebug
     {
@@ -6,7 +6,7 @@
         {
         }
 
-        public void OnUnRegist()
+        public void UnRegistComponent()
         {
 
         }

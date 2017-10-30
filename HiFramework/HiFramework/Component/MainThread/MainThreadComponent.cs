@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace HiFramework.Component.MainThread
+namespace HiFramework
 {
     public class MainThreadComponent : IComponent, ITick, IMainThread
     {
@@ -13,7 +13,7 @@ namespace HiFramework.Component.MainThread
             //main thread init
         }
 
-        public void OnUnRegist()
+        public void UnRegistComponent()
         {
             //throw new System.NotImplementedException();
         }

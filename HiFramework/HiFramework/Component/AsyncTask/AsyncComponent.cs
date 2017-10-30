@@ -21,7 +21,7 @@ namespace HiFramework
             // async component is ready
         }
 
-        public void OnUnRegist()
+        public void UnRegistComponent()
         {
             _iTicks.Clear();
         }

@@ -1,5 +1,4 @@
 ﻿using HiFramework;
-using HiFramework.Component.MainThread;
 using NUnit.Framework;
 
 namespace NUnit.Tests

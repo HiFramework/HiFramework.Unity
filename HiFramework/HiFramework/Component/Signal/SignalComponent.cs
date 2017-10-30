@@ -64,7 +64,7 @@ namespace HiFramework
             //component is ready
         }
 
-        public void OnUnRegist()
+        public void UnRegistComponent()
         {
             foreach (var variable in _signals)
             {

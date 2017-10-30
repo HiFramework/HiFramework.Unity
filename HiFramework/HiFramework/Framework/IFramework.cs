@@ -5,9 +5,8 @@
 
 namespace HiFramework
 {
-    interface IFramework
+    interface IFramework:ITick
     {
         void Init();
-        void Tick();
     }
 }

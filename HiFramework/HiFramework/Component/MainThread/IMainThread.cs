@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HiFramework.Component.MainThread
+namespace HiFramework
 {
     public interface IMainThread
     {
