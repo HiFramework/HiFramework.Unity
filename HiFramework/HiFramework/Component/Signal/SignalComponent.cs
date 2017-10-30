@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace HiFramework
 {
-    public class SignalComponent : ISignal, IComponent
+    public class SignalComponent : Component, ISignal
     {
         private class SignalInfo
         {
@@ -58,13 +58,12 @@ namespace HiFramework
                 variable.Action(variable.Obj);
             }
         }
-
-        public void OnRegist()
+        
+        public SignalComponent(IContainer iContainer) : base(iContainer)
         {
-            //component is ready
         }
 
-        public void UnRegistComponent()
+        public override void UnRegistComponent()
         {
             foreach (var variable in _signals)
             {

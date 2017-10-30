@@ -2,7 +2,7 @@
 
 namespace HiFramework
 {
-    internal class AsyncComponent : IComponent, ITick, IAsyncComponent
+    internal class AsyncComponent : Component, ITick, IAsyncComponent
     {
         private readonly List<ITick> _iTicks = new List<ITick>();
 
@@ -16,20 +16,21 @@ namespace HiFramework
             _iTicks.Remove(iTick);
         }
 
-        public void OnRegist()
-        {
-            // async component is ready
-        }
-
-        public void UnRegistComponent()
-        {
-            _iTicks.Clear();
-        }
-
         public void Tick()
         {
             for (var i = 0; i < _iTicks.Count; i++)
                 _iTicks[i].Tick();
+        }
+
+        public AsyncComponent(IContainer iContainer) : base(iContainer)
+        {
+            Center.RegistTick(this);
+        }
+
+        public override void UnRegistComponent()
+        {
+            _iTicks.Clear();
+            Center.UnRegistTick(this);
         }
     }
 }

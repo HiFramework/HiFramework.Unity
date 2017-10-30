@@ -61,7 +61,7 @@
     <Compile Include="Component\DebugComponent.cs" />
     <Compile Include="Component\IDebug.cs" />
     <Compile Include="Component\MainThread\IMainThread.cs" />
-    <Compile Include="Component\MainThread\MainThreadComponent.cs" />
+    <Compile Include="Component\MainThread\MainThread.cs" />
     <Compile Include="Component\Signal\ISignal.cs" />
     <Compile Include="Component\Signal\SignalComponent.cs" />
     <Compile Include="Framework\Assert.cs" />
@@ -71,7 +71,7 @@
     <Compile Include="Framework\IComponent.cs" />
     <Compile Include="Framework\IContainer.cs" />
     <Compile Include="Framework\IFramework.cs" />
-    <Compile Include="Framework\Inject.cs" />
+    <Compile Include="Core\Inject.cs" />
     <Compile Include="Framework\Container.cs" />
     <Compile Include="Framework\ITick.cs" />
     <Compile Include="Framework\ITicker.cs" />
@@ -81,8 +81,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Core\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -12,7 +12,7 @@ namespace NUnit.Tests
             // TODO: Add your test code here
             bool isTrue = false;
 
-            IMainThread iMainThread = Center.Get<MainThreadComponent>();
+            IMainThread iMainThread = Center.Get<MainThread>();
 
             iMainThread.RunOnMainThread((x) => { isTrue = true; }, null);
 
@@ -37,7 +37,7 @@ namespace NUnit.Tests
 
             bool isTrue = false;
 
-            IMainThread iMainThread = Center.Get<MainThreadComponent>();
+            IMainThread iMainThread = Center.Get<MainThread>();
 
             iMainThread.RunOnApplicationQuit(() => { isTrue = true; });
 
