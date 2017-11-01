@@ -40,7 +40,7 @@ namespace HiFramework
         {
             if (!(obj is HiFloat))
             {
-                throw new Exception("类型不一致");
+                throw new Exception("type not equal");
             }
             HiFloat temp = (HiFloat)obj;
             if (temp._value == _value)
