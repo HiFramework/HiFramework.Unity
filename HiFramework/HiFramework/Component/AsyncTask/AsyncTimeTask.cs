@@ -5,14 +5,19 @@ namespace HiFramework
 {
     public class AsyncTimeTask : AsyncTask
     {
+        private Action<object> _action;
+        private object _obj;
         private float _time;
         private float _waitTime;
-        public AsyncTimeTask(Action<object> action, object obj, float waitTime) : base(action)
+        public AsyncTimeTask(Action<object> action, object obj, float waitTime)
         {
+            _action = action;
+            _obj = obj;
             _time = Time.realtimeSinceStartup;
-            Obj = obj;
             _waitTime = waitTime;
         }
+
+        protected override bool IsDone { get; set; }
 
         protected override void OnTick()
         {
@@ -22,7 +27,7 @@ namespace HiFramework
 
         protected override void Done()
         {
-            Action(Obj);
+            _action(_obj);
         }
     }
 }

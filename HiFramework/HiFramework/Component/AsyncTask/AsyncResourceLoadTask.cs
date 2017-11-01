@@ -6,11 +6,14 @@ namespace HiFramework
     public class AsyncResourceLoadTask : AsyncTask
     {
         private readonly ResourceRequest _resourceRequest;
-
-        public AsyncResourceLoadTask(Action<object> action, string path) : base(action)
+        private Action<UnityEngine.Object> _action;
+        public AsyncResourceLoadTask(Action<UnityEngine.Object> action, string path)
         {
+            _action = action;
             _resourceRequest = Resources.LoadAsync(path);
         }
+
+        protected override bool IsDone { get; set; }
 
         protected override void OnTick()
         {
@@ -20,7 +23,7 @@ namespace HiFramework
 
         protected override void Done()
         {
-            Action(_resourceRequest.asset);
+            _action(_resourceRequest.asset);
         }
     }
 }

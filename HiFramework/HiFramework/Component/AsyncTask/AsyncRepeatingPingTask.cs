@@ -1,35 +1,37 @@
 ﻿//****************************************************************************
-// Description:
+// Description:get ping time(repeating)
 // Author: hiramtan@qq.com
 //****************************************************************************
-
 using System;
 using UnityEngine;
-
 namespace HiFramework
 {
-    class AsyncPingTask : AsyncTask
+    internal class AsyncRepeatingPingTask : AsyncTask
     {
+        private readonly Action<int> _action;
+        private readonly string _ip; //只包含ip,不包含接口
+        private readonly float _timeOut;
         private float _timeStart;
-        private string _ip;
-        private float _timeOut;
         private Ping ping;
-        public AsyncPingTask(Action<object> action, string ip, float timeOut) : base(action)
+
+        public AsyncRepeatingPingTask(Action<int> action, string ip, float timeOut)
         {
             _timeStart = Time.realtimeSinceStartup;
-            Action = action;
+            _action = action;
             _ip = ip;
             _timeOut = timeOut;
             Assert.IsFalse(ip.Contains(":"));
             ping = new Ping(_ip);
         }
 
+        protected override bool IsDone { get; set; }
+
         protected override void OnTick()
         {
             if (Time.realtimeSinceStartup - _timeStart > _timeOut)
             {
                 _timeStart = Time.realtimeSinceStartup;
-                Action(ping.time);
+                _action(ping.time);
                 ping.DestroyPing();
                 ping = new Ping(_ip);
             }

@@ -1,16 +1,13 @@
-﻿using System;
+﻿using System.ComponentModel;
 
 namespace HiFramework
 {
     public abstract class AsyncTask : ITick
     {
-        protected Action<object> Action;
-        protected bool IsDone;
-        protected object Obj;//传入
+        protected abstract bool IsDone { get; set; }
         private readonly IAsyncComponent _iAsyncComponent;
-        protected AsyncTask(Action<object> action)
+        protected AsyncTask()
         {
-            Action = action;
             _iAsyncComponent = Center.Get<AsyncComponent>();
             _iAsyncComponent.RegistTick(this);
         }

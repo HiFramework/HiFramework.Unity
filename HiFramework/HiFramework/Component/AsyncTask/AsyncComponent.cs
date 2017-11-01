@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿//****************************************************************************
+// Description:
+// Author: hiramtan@qq.com
+//****************************************************************************
+using System.Collections.Generic;
 
 namespace HiFramework
 {
