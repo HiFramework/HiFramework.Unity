@@ -16,3 +16,6 @@
 
 ##### 已完成核心扩:
 - 添加重写Float类型(修改精度)
+
+
+support:hiramtan@qq.com
