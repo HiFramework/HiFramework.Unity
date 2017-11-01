@@ -2,17 +2,15 @@
 // Description:
 // Author: hiramtan@qq.com
 //****************************************************************************
-using System;
 
 namespace HiFramework
 {
-    public interface IMainThread
+    interface IInject
     {
-        void RunOnMainThread(Action<object> action, object obj);
-
-        void RunOnApplicationQuit(Action action);
-
-        void Quit();
-
+        void Init();
+        void Bind();
+        void UnBind();
+        void GetBind();
+        void SetBindInstance(object obj);
     }
 }

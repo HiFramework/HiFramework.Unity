@@ -1,15 +1,19 @@
-﻿using System;
+﻿//****************************************************************************
+// Description:
+// Author: hiramtan@qq.com
+//****************************************************************************
+using System;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace HiFramework
 {
-    public class AsyncResourceLoadTask : AsyncTask
+    public class AsyncResourceLoadTask : AsyncTaskWithParam<Object>
     {
         private readonly ResourceRequest _resourceRequest;
-        private Action<UnityEngine.Object> _action;
-        public AsyncResourceLoadTask(Action<UnityEngine.Object> action, string path)
+
+        public AsyncResourceLoadTask(Action<Object> action, string path) : base(action)
         {
-            _action = action;
             _resourceRequest = Resources.LoadAsync(path);
         }
 
@@ -23,7 +27,7 @@ namespace HiFramework
 
         protected override void Done()
         {
-            _action(_resourceRequest.asset);
+            Action(_resourceRequest.asset);
         }
     }
 }

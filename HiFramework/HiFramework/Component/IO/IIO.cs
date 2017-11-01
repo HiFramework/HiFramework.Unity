@@ -1,4 +1,8 @@
-﻿using System;
+﻿//****************************************************************************
+// Description:
+// Author: hiramtan@qq.com
+//****************************************************************************
+using System;
 using UnityEngine;
 
 namespace HiFramework

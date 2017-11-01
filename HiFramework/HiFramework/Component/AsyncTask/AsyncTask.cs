@@ -1,7 +1,12 @@
-﻿using System.ComponentModel;
-
+﻿//****************************************************************************
+// Description:
+// Author: hiramtan@qq.com
+//****************************************************************************
 namespace HiFramework
 {
+    /// <summary>
+    /// 不带参数的回调
+    /// </summary>
     public abstract class AsyncTask : ITick
     {
         protected abstract bool IsDone { get; set; }

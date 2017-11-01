@@ -1,15 +1,21 @@
-﻿using System;
+﻿//****************************************************************************
+// Description:
+// Author: hiramtan@qq.com
+//****************************************************************************
+using System;
 using UnityEngine;
 
 namespace HiFramework
 {
-    class AsyncWWWTask : AsyncTask
+    class AsyncWWWTask : AsyncTaskWithParam<WWW>
     {
         private WWW _www;
-        public AsyncWWWTask(Action<object> action, string url) : base(action)
+        public AsyncWWWTask(Action<WWW> action, string url) : base(action)
         {
             _www = new WWW(url);
         }
+
+        protected override bool IsDone { get; set; }
 
         protected override void OnTick()
         {

@@ -50,17 +50,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Component\AsyncTask\AsyncPingTask.cs" />
+    <Compile Include="Component\AsyncTask\AsyncRepeatingPingTask.cs" />
     <Compile Include="Component\AsyncTask\AsyncRepeatingTask.cs" />
     <Compile Include="Component\AsyncTask\AsyncResourceLoadTask.cs" />
     <Compile Include="Component\AsyncTask\AsyncTask.cs" />
     <Compile Include="Component\AsyncTask\AsyncComponent.cs" />
-    <Compile Include="Component\AsyncTask\AsyncCountTask.cs" />
+    <Compile Include="Component\AsyncTask\AsyncTaskWithParam.cs" />
     <Compile Include="Component\AsyncTask\AsyncTimeTask.cs" />
     <Compile Include="Component\AsyncTask\AsyncWWWTask.cs" />
     <Compile Include="Component\AsyncTask\IAsyncComponent.cs" />
-    <Compile Include="Component\DebugComponent.cs" />
-    <Compile Include="Component\IDebug.cs" />
+    <Compile Include="Component\Inject\IInject.cs" />
+    <Compile Include="Component\Inject\InjectAttribute.cs" />
+    <Compile Include="Component\Inject\InjectComponent.cs" />
+    <Compile Include="Component\IO\IIO.cs" />
+    <Compile Include="Component\IO\IOComponent.cs" />
     <Compile Include="Component\MainThread\IMainThread.cs" />
     <Compile Include="Component\MainThread\MainThread.cs" />
     <Compile Include="Component\Signal\ISignal.cs" />
@@ -75,7 +78,6 @@
     <Compile Include="Framework\IComponent.cs" />
     <Compile Include="Framework\IContainer.cs" />
     <Compile Include="Framework\IFramework.cs" />
-    <Compile Include="Core\Inject.cs" />
     <Compile Include="Framework\Container.cs" />
     <Compile Include="Framework\ITick.cs" />
     <Compile Include="Framework\ITicker.cs" />

@@ -1,4 +1,8 @@
-﻿namespace HiFramework
+﻿//****************************************************************************
+// Description:
+// Author: hiramtan@qq.com
+//****************************************************************************
+namespace HiFramework
 {
     interface IAsyncComponent
     {

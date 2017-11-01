@@ -6,32 +6,35 @@ using System;
 using UnityEngine;
 namespace HiFramework
 {
-    internal class AsyncRepeatingPingTask : AsyncTask
+    internal class AsyncRepeatingPingTask : AsyncTaskWithParam<int>
     {
-        private readonly Action<int> _action;
         private readonly string _ip; //只包含ip,不包含接口
-        private readonly float _timeOut;
+        private readonly float _rate;//更新频率
         private float _timeStart;
         private Ping ping;
-
-        public AsyncRepeatingPingTask(Action<int> action, string ip, float timeOut)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="action"></param>
+        /// <param name="ip">ip地址</param>
+        /// <param name="rate">多久ping一次</param>
+        public AsyncRepeatingPingTask(Action<int> action, string ip, float rate) : base(action)
         {
             _timeStart = Time.realtimeSinceStartup;
-            _action = action;
+            Action = action;
             _ip = ip;
-            _timeOut = timeOut;
+            _rate = rate;
             Assert.IsFalse(ip.Contains(":"));
             ping = new Ping(_ip);
         }
-
         protected override bool IsDone { get; set; }
 
         protected override void OnTick()
         {
-            if (Time.realtimeSinceStartup - _timeStart > _timeOut)
+            if (Time.realtimeSinceStartup - _timeStart > _rate)
             {
                 _timeStart = Time.realtimeSinceStartup;
-                _action(ping.time);
+                Action(ping.time);
                 ping.DestroyPing();
                 ping = new Ping(_ip);
             }
@@ -39,7 +42,7 @@ namespace HiFramework
 
         protected override void Done()
         {
-            //will not run, because this is instance should always tick run
+            //will not run, because this is repeating
         }
     }
 }
