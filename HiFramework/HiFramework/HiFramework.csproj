@@ -50,6 +50,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Component\AsyncTask\AsyncPingTask.cs" />
     <Compile Include="Component\AsyncTask\AsyncRepeatingTask.cs" />
     <Compile Include="Component\AsyncTask\AsyncResourceLoadTask.cs" />
     <Compile Include="Component\AsyncTask\AsyncTask.cs" />
@@ -64,6 +65,9 @@
     <Compile Include="Component\MainThread\MainThread.cs" />
     <Compile Include="Component\Signal\ISignal.cs" />
     <Compile Include="Component\Signal\SignalComponent.cs" />
+    <Compile Include="Core\HiFloat.cs" />
+    <Compile Include="Core\ObjectBase.cs" />
+    <Compile Include="Core\Singleton.cs" />
     <Compile Include="Framework\Assert.cs" />
     <Compile Include="Framework\Center.cs" />
     <Compile Include="Framework\Component.cs" />

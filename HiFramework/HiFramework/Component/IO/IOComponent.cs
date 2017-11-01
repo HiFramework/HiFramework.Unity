@@ -4,18 +4,8 @@ using UnityEngine;
 
 namespace HiFramework
 {
-    class IOComponent : IComponent, IIO
+    class IOComponent : Component, IIO
     {
-        public void OnRegist()
-        {
-            //component is ready
-        }
-
-        public void OnUnRegist()
-        {
-            throw new NotImplementedException();
-        }
-
         public bool IsFolderExist(string path)
         {
             return Directory.Exists(path);
@@ -156,6 +146,14 @@ namespace HiFramework
             string path = Application.streamingAssetsPath;
 #endif
             return path;
+        }
+
+        public IOComponent(IContainer iContainer) : base(iContainer)
+        {
+        }
+
+        public override void UnRegistComponent()
+        {
         }
     }
 }
