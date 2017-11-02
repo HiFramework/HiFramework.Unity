@@ -5,7 +5,6 @@
 // Author: hiramtan@qq.com
 //****************************************************************************
 
-
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,7 +20,7 @@ namespace HiFramework
             get
             {
                 if (_binding == null)
-                    _binding = new Binding();
+                    _binding = new Binding(_bindContainer);
                 return _binding;
             }
             set { _binding = value; }
@@ -34,7 +33,7 @@ namespace HiFramework
 
         public override void UnRegistComponent()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         #region 绑定类型
@@ -43,37 +42,13 @@ namespace HiFramework
             return this.Binding.Bind<T>();
         }
 
-        public Binding To<T>()
-        {
-            return Binding.To<T>();
-        }
-
-
-        void As()
-        {
-
-        }
-
-        public void AsInstance()
-        {
-
-        }
-        //一个接口可以被多个对象继承,因此类型可以绑定多个对象,key来区分不同对象
-        public void AsNew(string key = null)
-        {
-
-        }
-        //用完卸载
-        public void AsOnce()
-        {
-
-        }
-
+        //public Binding To<T>()
+        //{
+        //    return Binding.To<T>();
+        //}
 
         #endregion
-
     }
-
 
     interface IInject
     {
@@ -89,12 +64,20 @@ namespace HiFramework
     public class Binding
     {
         private List<Type> _types = new List<Type>();
-        private Type _dest = null;
+        public List<Type> Types { get { return _types; } }
+        public Type Dest { get; private set; }
+        public object Obj { get; private set; }
+        private BindContainer _bindContainer;
+        public Binding(BindContainer bindContainer)
+        {
+            _bindContainer = bindContainer;
+        }
+
         public Binding Bind<T>()
         {
-            if (typeof(T).IsSubclassOf(typeof(MonoBehaviour)))
+            if (!typeof(T).IsClass)
             {
-                Assert.Exception("this class is sub from monobehavior, can not bind this, use MonoBase instead");
+                Assert.Exception("type is not class");
             }
             _types.Add(typeof(T));
             return this;
@@ -103,14 +86,50 @@ namespace HiFramework
         {
             if (typeof(T).IsSubclassOf(typeof(MonoBehaviour)))
             {
-                Assert.Exception("this class is sub from monobehavior, can not bind this, use MonoBase instead");
+                Assert.Exception("this class is sub from monobehavior, can not bind this, use MonoBase or value instead");
             }
-            if (_dest != null)
+            if (!typeof(T).IsClass)
+            {
+                Assert.Exception("type is not class");
+            }
+            if (Dest != null)
             {
                 Assert.Exception("只可对应一个实例");
             }
-            _dest = typeof(T);
+            if (Obj != null)
+            {
+                Assert.Exception("已绑定对象");
+            }
+            Dest = typeof(T);
             return this;
+        }
+        public Binding ToValue(object obj)
+        {
+            if (Dest != null)
+            {
+                Assert.Exception("只可对应一个实例");
+            }
+            if (Obj != null)
+            {
+                Assert.Exception("已绑定对象");
+            }
+            Obj = obj;
+            return this;
+        }
+
+        public void AsInstance()
+        {
+            _bindContainer
+        }
+        //一个接口可以被多个对象继承,因此类型可以绑定多个对象,key来区分不同对象
+        public void AsNew(string key = null)
+        {
+
+        }
+        //用完卸载
+        public void AsOnce()
+        {
+
         }
     }
 

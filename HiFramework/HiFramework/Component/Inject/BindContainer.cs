@@ -6,22 +6,16 @@
 
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace HiFramework
 {
-    class BindContainer
+    public class BindContainer
     {
         Dictionary<Type, List<BindInfo>> bindInfos = new Dictionary<Type, List<BindInfo>>();
 
-        public void Bind<T>(Binding binding)
+        public void AsInstance()
         {
-            if (typeof(T).IsSubclassOf(typeof(MonoBehaviour)))
-            {
-                Assert.Exception("this class is sub from monobehavior, can not bind this, use MonoBase instead");
-            }
 
         }
-
     }
 }
