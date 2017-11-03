@@ -5,8 +5,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using UnityEngine;
 
 namespace HiFramework
@@ -55,6 +53,7 @@ namespace HiFramework
                 Assert.Exception("已绑定对象");
             }
             _dest = typeof(T);
+            eBindType = BindingInfo.EBindType.Type;
             return this;
         }
 
@@ -65,6 +64,7 @@ namespace HiFramework
                 Assert.Exception("只可对应一个实例");
             }
             _obj = obj;
+            eBindType = BindingInfo.EBindType.Obj;
             return this;
         }
 
@@ -73,9 +73,8 @@ namespace HiFramework
         //一个接口可以被多个对象继承,因此类型可以绑定多个对象,key来区分不同对象
         public void AsKey(object key = null)
         {
-            new BindingInfo(_types,)
+            _action(new BindingInfo(_types, eBindType, _dest, _obj, key));
         }
         #endregion
     }
-
 }

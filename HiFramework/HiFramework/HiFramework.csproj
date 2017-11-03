@@ -64,6 +64,7 @@
     <Compile Include="Component\Inject\Binding.cs" />
     <Compile Include="Component\Inject\BindingInfo.cs" />
     <Compile Include="Component\Inject\IBinder.cs" />
+    <Compile Include="Component\Inject\IBindInfo.cs" />
     <Compile Include="Component\Inject\IBinding.cs" />
     <Compile Include="Component\Inject\InjectAttribute.cs" />
     <Compile Include="Component\Inject\MonoBase.cs" />

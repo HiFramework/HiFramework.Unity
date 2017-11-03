@@ -5,10 +5,6 @@
 // Author: hiramtan@qq.com
 //****************************************************************************
 
-using System;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace HiFramework
 {
     public class Binder : Component, IBinder
@@ -35,11 +31,6 @@ namespace HiFramework
         {
             _bindContainer.SetBindInfo(info);
         }
-
         #endregion
     }
-
-
-   
-    
 }

@@ -2,14 +2,17 @@
 // Description:
 // Author: hiramtan@qq.com
 //****************************************************************************
-
+using System;
+using System.Collections.Generic;
 
 namespace HiFramework
 {
-    public interface IBinding
+    interface IBindInfo
     {
-        IBinding Bind<T>();
-        IBinding To<T>();
-        IBinding ToValue(object obj);
+        List<Type> Types { get; }
+        BindingInfo.EBindType eBindType { get; }
+        Type Dest { get; }
+        object Obj { get; }
+        object Key { get; }
     }
 }
