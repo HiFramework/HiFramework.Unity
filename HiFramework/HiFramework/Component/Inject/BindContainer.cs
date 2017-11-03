@@ -11,9 +11,14 @@ namespace HiFramework
 {
     public class BindContainer
     {
-        Dictionary<Type, List<BindInfo>> bindInfos = new Dictionary<Type, List<BindInfo>>();
+        Dictionary<Type, List<BindingInfo>> bindInfos = new Dictionary<Type, List<BindingInfo>>();
 
         public void AsInstance()
+        {
+
+        }
+
+        public void SetBindInfo(BindingInfo info)
         {
 
         }

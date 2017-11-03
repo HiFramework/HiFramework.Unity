@@ -59,9 +59,14 @@
     <Compile Include="Component\AsyncTask\AsyncTimeTask.cs" />
     <Compile Include="Component\AsyncTask\AsyncWWWTask.cs" />
     <Compile Include="Component\AsyncTask\IAsyncComponent.cs" />
-    <Compile Include="Component\Inject\IInject.cs" />
+    <Compile Include="Component\Inject\BindContainer.cs" />
+    <Compile Include="Component\Inject\Binder.cs" />
+    <Compile Include="Component\Inject\Binding.cs" />
+    <Compile Include="Component\Inject\BindingInfo.cs" />
+    <Compile Include="Component\Inject\IBinder.cs" />
+    <Compile Include="Component\Inject\IBinding.cs" />
     <Compile Include="Component\Inject\InjectAttribute.cs" />
-    <Compile Include="Component\Inject\InjectComponent.cs" />
+    <Compile Include="Component\Inject\MonoBase.cs" />
     <Compile Include="Component\IO\IIO.cs" />
     <Compile Include="Component\IO\IOComponent.cs" />
     <Compile Include="Component\MainThread\IMainThread.cs" />
