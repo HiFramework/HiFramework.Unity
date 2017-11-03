@@ -20,7 +20,14 @@ namespace HiFramework
 
         public void SetBindInfo(BindingInfo info)
         {
+            if (info.eBindType == BindingInfo.EBindType.Type)
+            {
 
+            }
+            else
+            {
+
+            }
         }
     }
 }
