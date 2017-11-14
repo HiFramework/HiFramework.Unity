@@ -12,13 +12,13 @@ namespace HiFramework
         public static void IsNull(object obj)
         {
             if (obj != null)
-                throw new Exception("obj is not null");
+                throw new Exception("obj is not null:"+obj);
         }
 
         public static void IsNotNull(object obj)
         {
             if (obj == null)
-                throw new Exception("obj is null");
+                throw new Exception("obj is null:"+obj);
         }
 
         public static void IsEqual(object o1, object o2)
