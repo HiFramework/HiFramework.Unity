@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -57,6 +58,7 @@
     <Compile Include="Component\AsyncTask\AsyncComponent.cs" />
     <Compile Include="Component\AsyncTask\AsyncTaskWithParam.cs" />
     <Compile Include="Component\AsyncTask\AsyncTimeTask.cs" />
+    <Compile Include="Component\AsyncTask\AsyncWaitTrueTask.cs" />
     <Compile Include="Component\AsyncTask\AsyncWWWTask.cs" />
     <Compile Include="Component\AsyncTask\IAsyncComponent.cs" />
     <Compile Include="Component\Inject\BindContainer.cs" />
@@ -73,6 +75,8 @@
     <Compile Include="Component\IO\IOComponent.cs" />
     <Compile Include="Component\MainThread\IMainThread.cs" />
     <Compile Include="Component\MainThread\MainThread.cs" />
+    <Compile Include="Component\Network\TcpConnection.cs" />
+    <Compile Include="Component\Network\UdpConnection.cs" />
     <Compile Include="Component\Signal\ISignal.cs" />
     <Compile Include="Component\Signal\SignalComponent.cs" />
     <Compile Include="Core\HiFloat.cs" />
