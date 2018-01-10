@@ -1,6 +1,6 @@
 ﻿//****************************************************************************
 // Description:
-// Author: hiramtan@qq.com
+// Author: hiramtan@live.com
 //****************************************************************************
 using System;
 
@@ -10,6 +10,7 @@ namespace HiFramework
     {
         /// <summary>
         /// 可以多次注册,信号量同时多次触发
+        /// 即便是无参数的回调，也强制采用这种方式
         /// </summary>
         /// <param name="key"></param>
         /// <param name="obj"></param>

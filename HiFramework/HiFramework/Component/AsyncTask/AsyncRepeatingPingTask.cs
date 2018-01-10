@@ -1,6 +1,6 @@
 ﻿//****************************************************************************
 // Description:get ping time(repeating)
-// Author: hiramtan@qq.com
+// Author: hiramtan@live.com
 //****************************************************************************
 using System;
 using UnityEngine;
