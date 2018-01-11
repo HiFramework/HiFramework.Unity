@@ -7,13 +7,18 @@ using System.Collections.Generic;
 
 namespace HiFramework
 {
-    public class MainThread : Component, ITick, IMainThread
+    public class MainThreadComponent : Component, ITick, IMainThread
     {
         private readonly Queue<ToExecute> _toExecuteQueue = new Queue<ToExecute>();
         private readonly List<Action> _applicationQuitActionList = new List<Action>();
         private static readonly object Locker = new object();
 
-        public void RunOnMainThread(Action<object> action, object obj)//obj不能可选为空,数据会被线程冲刷,需要传递原有数据
+        /// <summary>
+        /// obj不能可选为空,数据会被线程冲刷,需要传递原有数据
+        /// </summary>
+        /// <param name="action"></param>
+        /// <param name="obj"></param>
+        public void RunOnMainThread(Action<object> action, object obj)
         {
             lock (Locker)
             {
@@ -61,7 +66,7 @@ namespace HiFramework
             public object Obj { get; private set; }
         }
 
-        public MainThread(IContainer iContainer) : base(iContainer)
+        public MainThreadComponent(IContainer iContainer) : base(iContainer)
         {
             Center.RegistTick(this);
         }
