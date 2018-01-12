@@ -22,7 +22,20 @@ namespace HiFramework
 
         public void GenerateBindInfo()
         {
+            for (int i = 0; i < _iBindings.Count; i++)
+            {
+                
+            }
+        }
+
+        private void ProcessInstance(IBinding iBinding)
+        {
             
+        }
+
+        object GetObjectFromIBindInfos(Type type)
+        {
+            return _iBindInfos.Find((x) => {return x.ToInstance.GetType() == type; });
         }
     }
 }
