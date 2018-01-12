@@ -24,7 +24,7 @@ namespace HiFramework
 
         public void SetUp()
         {
-            throw new NotImplementedException();
+            _iBindContainer.GenerateBindInfo();
         }
 
 

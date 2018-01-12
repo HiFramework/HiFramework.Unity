@@ -8,22 +8,20 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace HiFramework
 {
     internal class BindContainer:IBindContainer
     {
-        private List<IBindInfo> types = new List<IBindInfo>();
+        private List<IBinding> types = new List<IBinding>();
         public void AddBinding(IBinding iBinding)
         {
-            throw new NotImplementedException();
+           types.Add(iBinding);
         }
 
         public void GenerateBindInfo()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
