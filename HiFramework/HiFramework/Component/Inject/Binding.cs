@@ -39,7 +39,7 @@ namespace HiFramework
             var type = typeof(T);
             if (type.IsSubclassOf(typeof(MonoBehaviour)))
             {
-                Assert.Exception("this class is sub from monobehavior, use another api instead");
+                Assert.Exception("this class is sub from monobehavior, use to object instead");
             }
             if (!type.IsClass)
             {

@@ -13,10 +13,11 @@ namespace HiFramework
 {
     internal class BindContainer:IBindContainer
     {
-        private List<IBinding> types = new List<IBinding>();
+        private List<IBinding> _iBindings = new List<IBinding>();
+        private List<IBindInfo> _iBindInfos = new List<IBindInfo>();
         public void AddBinding(IBinding iBinding)
         {
-           types.Add(iBinding);
+           _iBindings.Add(iBinding);
         }
 
         public void GenerateBindInfo()
