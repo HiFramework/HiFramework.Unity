@@ -1,36 +1,53 @@
-﻿//****************************************************************************
-// Description:
-// 多个类型可以绑定同一实例,比如子类父类类型同时绑定子类实例
-// 一个类型可以绑定多个实例,比如接口可以被多个实例继承,通过key来区分
-// Author: hiramtan@live.com
-//****************************************************************************
+﻿/****************************************************************
+ * Description: 
+ * 1.只可绑定类类型(数值类型int不能绑定)
+ * 
+ * Author: hiramtan@live.com
+ *////////////////////////////////////////////////////////////////////////
+
+ using System;
 
 namespace HiFramework
 {
-    public class Binder : Component, IBinder
+    class Binder : Component, IBinder
     {
-        private BindContainer _bindContainer;
-
+        private IBindContainer _iBindContainer;
         public Binder(IContainer iContainer) : base(iContainer)
         {
-            _bindContainer = new BindContainer();
+            _iBindContainer = new BindContainer();
         }
 
         public override void UnRegistComponent()
         {
-            _bindContainer = null;
+            throw new NotImplementedException();
         }
 
-        #region 绑定类型
+        public void SetUp()
+        {
+            throw new NotImplementedException();
+        }
+
+
         public IBinding Bind<T>()
         {
-            return new Binding(OnBindingInfo);
+            IBinding binding = new Binding(_iBindContainer);
+            binding.Bind<T>();
+            return binding;
         }
 
-        private void OnBindingInfo(BindingInfo info)
+        public void UnBind<T>()
         {
-            _bindContainer.SetBindInfo(info);
+            throw new NotImplementedException();
         }
-        #endregion
+
+        public void UnBind(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object GetInstance<T>()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
