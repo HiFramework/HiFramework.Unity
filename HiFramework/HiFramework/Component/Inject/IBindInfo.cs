@@ -10,7 +10,7 @@ namespace HiFramework
     interface IBindInfo
     {
         Type Type { get; }
-        object ToInstance { get; }
+        object ToObj { get; }
         string AsName { get; }
     }
 }

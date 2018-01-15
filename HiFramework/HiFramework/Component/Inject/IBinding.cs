@@ -16,7 +16,7 @@ namespace HiFramework
         List<Type> Types { get; }
         Type ToType { get; }
         object ToObj { get; }
-        string Name { get; set; }
+        string AsName { get; set; }
         IBinding Bind<T>();//可以填充多个类型,绑定同一实例
 
         IBindingAsName To<T>();

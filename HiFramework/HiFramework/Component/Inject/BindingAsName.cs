@@ -15,7 +15,7 @@ namespace HiFramework
         }
         public void AsName(string name)
         {
-            _iBinding.Name = name;
+            _iBinding.AsName = name;
         }
     }
 }

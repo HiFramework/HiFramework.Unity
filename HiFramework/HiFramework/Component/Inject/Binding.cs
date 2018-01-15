@@ -16,7 +16,7 @@ namespace HiFramework
         public List<Type> Types { get; }
         public Type ToType { get; private set; }
         public object ToObj { get; private set; }
-        public string Name { get; set; }
+        public string AsName { get; set; }
 
         public Binding(IBindContainer iBindContainer)
         {
