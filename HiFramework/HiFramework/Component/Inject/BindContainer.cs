@@ -8,6 +8,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace HiFramework
 {
@@ -26,27 +27,50 @@ namespace HiFramework
             {
                 if (_iBindings[i].ToType != null)
                 {
-                    ProcessInstance(_iBindings[i]);
+                    ProcessObj(_iBindings[i]);
                 }
                 else
                 {
                     for (int j = 0; j < _iBindings[i].Types.Count; j++)
                     {
-                        IBindInfo iBindInfo = new BindInfo(_iBindings[i].Types[j].GetType(),_iBindings[i].ToObj,_iBindings[i].AsName);
+                        IBindInfo iBindInfo = new BindInfo(_iBindings[i].Types[j].GetType(), _iBindings[i].ToObj, _iBindings[i].AsName);
                         _iBindInfos.Add(iBindInfo);
                     }
                 }
             }
+            Inject();
         }
-
-        private void ProcessInstance(IBinding iBinding)
+        /// <summary>
+        /// 构造函数无参数
+        /// </summary>
+        /// <param name="iBinding"></param>
+        private void ProcessObj(IBinding iBinding)
         {
-
+            var obj = Activator.CreateInstance(iBinding.ToType);
+            for (int j = 0; j < iBinding.Types.Count; j++)
+            {
+                IBindInfo iBindInfo = new BindInfo(iBinding.Types[j].GetType(), obj, iBinding.AsName);
+                _iBindInfos.Add(iBindInfo);
+            }
         }
+
+        private void Inject()
+        {
+            var types = Assembly.GetExecutingAssembly().GetTypes();
+            for (int i = 0; i < types.Length; i++)
+            {
+                if (types[i].GetInterface(typeof(IInject).FullName) == typeof(IInject))
+                {
+                    var type = types[i];
+                    type.GetFields(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public);
+                }
+            }
+        }
+
 
         object GetObjectFromIBindInfos(Type type)
         {
-            return _iBindInfos.Find((x) => { return x.ToObj.GetType() == type; });
+            return _iBindInfos.Find(x => { return x.ToObj.GetType() == type; });
         }
     }
 }
