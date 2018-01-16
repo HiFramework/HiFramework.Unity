@@ -9,10 +9,10 @@
 
 namespace HiFramework
 {
-    class Binder : Component, IBinder
+    class BinderComponent : Component, IBinder
     {
         private IBindContainer _iBindContainer;
-        public Binder(IContainer iContainer) : base(iContainer)
+        public BinderComponent(IContainer iContainer) : base(iContainer)
         {
             _iBindContainer = new BindContainer();
         }
@@ -46,6 +46,11 @@ namespace HiFramework
         }
 
         public object GetInstance<T>()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Inject(object obj)
         {
             throw new NotImplementedException();
         }

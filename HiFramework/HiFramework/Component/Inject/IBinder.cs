@@ -25,5 +25,11 @@ namespace HiFramework
         void UnBind(object obj);
 
         object GetInstance<T>();
+        /// <summary>
+        /// 执行注入
+        /// 为了不对整体有影响,不强制继承采用手动注入方式
+        /// </summary>
+        /// <param name="obj"></param>
+        void Inject(object obj);
     }
 }

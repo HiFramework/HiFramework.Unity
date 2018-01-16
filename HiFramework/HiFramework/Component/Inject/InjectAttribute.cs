@@ -7,11 +7,17 @@ using System;
 
 namespace HiFramework
 {
-    [AttributeUsage(AttributeTargets.Constructor | AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property | AttributeTargets.Field)]
+    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
     class InjectAttribute : Attribute
     {
+        public string AsName { get; private set; }
+        public InjectAttribute()
+        {
+
+        }
+        public InjectAttribute(string asName)
+        {
+            AsName = asName;
+        }
     }
-
-
-   
 }

@@ -38,7 +38,6 @@ namespace HiFramework
                     }
                 }
             }
-            Inject();
         }
         /// <summary>
         /// 构造函数无参数
@@ -54,23 +53,66 @@ namespace HiFramework
             }
         }
 
-        private void Inject()
+        private void Inject(object obj)
         {
-            var types = Assembly.GetExecutingAssembly().GetTypes();
-            for (int i = 0; i < types.Length; i++)
+            var type = obj.GetType();
+            if (type.GetInterface(typeof(IInject).FullName) == typeof(IInject))
             {
-                if (types[i].GetInterface(typeof(IInject).FullName) == typeof(IInject))
-                {
-                    var type = types[i];
-                    type.GetFields(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public);
-                }
+                InjectFields(obj);
+                InjectProperty(obj);
             }
         }
 
+        void InjectFields(object obj)
+        {
+            var type = obj.GetType();
+            var fields = type.GetFields(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public);
+            for (int i = 0; i < fields.Length; i++)
+            {
+                var attributes = fields[i].GetCustomAttributes(typeof(InjectAttribute), true);
+                if (attributes.Length == 0)//have no inject attribute
+                    continue;
+                if (attributes.Length > 1)
+                {
+                    Assert.Exception("multiple inject attribute");
+                }
+                var injectAttribute = attributes[0] as InjectAttribute;
+                var toObj = string.IsNullOrEmpty(injectAttribute.AsName)
+                    ? GetObjectFromIBindInfos(fields[i].GetType())
+                    : GetObjectWithAsNameFromIBindInfos(fields[i].GetType(), injectAttribute.AsName);
+                fields[i].SetValue(obj, toObj);
+            }
+        }
+
+        void InjectProperty(object obj)
+        {
+            var type = obj.GetType();
+            var propertys = type.GetFields(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public);
+            for (int i = 0; i < propertys.Length; i++)
+            {
+                var attributes = propertys[i].GetCustomAttributes(typeof(InjectAttribute), true);
+                if (attributes.Length == 0)//have no inject attribute
+                    continue;
+                if (attributes.Length > 1)
+                {
+                    Assert.Exception("multiple inject attribute");
+                }
+                var injectAttribute = attributes[0] as InjectAttribute;
+                var toObj = string.IsNullOrEmpty(injectAttribute.AsName)
+                    ? GetObjectFromIBindInfos(propertys[i].GetType())
+                    : GetObjectWithAsNameFromIBindInfos(propertys[i].GetType(), injectAttribute.AsName);
+                propertys[i].SetValue(obj, toObj);
+            }
+        }
 
         object GetObjectFromIBindInfos(Type type)
         {
             return _iBindInfos.Find(x => { return x.ToObj.GetType() == type; });
+        }
+
+        object GetObjectWithAsNameFromIBindInfos(Type type, string asName)
+        {
+            return _iBindInfos.Find(x => { return x.ToObj.GetType() == type && x.AsName == asName; });
         }
     }
 }

@@ -11,7 +11,7 @@ namespace HiFramework
     {
         void Start()
         {
-           var binder =  Center.Get<Binder>();
+           var binder =  Center.Get<BinderComponent>();
 
             binder.Bind<Test1>().To<Test2>().AsName("");
             binder.Bind<Test1>().Bind<Test2>().To<Test2>().AsName("");
