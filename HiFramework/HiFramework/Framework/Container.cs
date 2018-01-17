@@ -10,43 +10,49 @@ namespace HiFramework
 {
     internal class Container : IContainer
     {
-        private readonly Dictionary<string, IComponent> _components = new Dictionary<string, IComponent>();
+        private List<IComponent> _iComponents = new List<IComponent>();
         public void Regist(IComponent obj)
         {
-            var name = obj.GetType().FullName;
-            Assert.IsFalse(HasKey(name));
-            _components.Add(name, obj);
+            Assert.IsFalse(_iComponents.Contains(obj));
+            _iComponents.Add(obj);
         }
-        public void UnRegist(string key)
+
+        public bool HasComPonent<T>()
         {
-            Assert.IsTrue(HasKey(key));
-            _components.Remove(key);
+            for (int i = 0; i < _iComponents.Count; i++)
+            {
+                if (_iComponents[i] is T)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public void UnRegist<T>() where T : class, IComponent
+        {
+            if (HasComPonent<T>())
+            {
+                var obj = Get<T>();
+                _iComponents.Remove(obj);
+            }
         }
         public T Get<T>() where T : class, IComponent
         {
-            var type = typeof(T);
-            var key = type.FullName;
-            IComponent outValue;
-            _components.TryGetValue(key, out outValue);
-            if (outValue != null)
-                return outValue as T;
-            return Construct(type) as T;
+            for (int i = 0; i < _iComponents.Count; i++)
+            {
+                if (_iComponents[i] is T)
+                {
+                    return _iComponents[i] as T;
+                }
+            }
+            return Construct(typeof(T)) as T;
         }
 
-        public bool HasKey(string key)
-        {
-            return _components.ContainsKey(key);
-        }
         object Construct(Type type)
         {
             var iComponent = Activator.CreateInstance(type, this) as IComponent;
             return iComponent;
         }
-        //private ConstructorInfo[] GetConstructionInfos(Type type)
-        //{
-        //    return type.GetConstructors();
-        //    //实例成员,静态成员
-        //    //return type.GetConstructors(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-        //}
     }
 }

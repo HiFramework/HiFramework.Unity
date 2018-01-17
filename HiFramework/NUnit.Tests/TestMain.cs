@@ -10,13 +10,6 @@ namespace NUnit.Tests
         public void OneTimeSetUp()
         {
             HiFramework.Framework.Init();
-
-            int i = 0;
-            while (i < 10000)
-            {
-                i++;
-                HiFramework.Framework.Tick();
-            }
         }
 
         [OneTimeTearDown]

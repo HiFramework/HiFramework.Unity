@@ -36,13 +36,12 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestAsyncCount.cs" />
+    <Compile Include="Component\Inject\TestInject.cs" />
+    <Compile Include="Component\TestAsyncCount.cs" />
     <Compile Include="TestMain.cs" />
-    <Compile Include="TestMainThread.cs" />
-    <Compile Include="TestSignal.cs" />
-    <Compile Include="UnitTestComponent.cs" />
+    <Compile Include="Component\TestMainThread.cs" />
+    <Compile Include="Component\TestSignal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnitTestComponentThird.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -52,6 +51,9 @@
       <Project>{8ced7117-f448-458f-9e71-312bf03fddfb}</Project>
       <Name>HiFramework</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

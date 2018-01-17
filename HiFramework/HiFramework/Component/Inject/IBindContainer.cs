@@ -13,5 +13,6 @@ namespace HiFramework
     {
         void AddBinding(IBinding iBinding);
         void GenerateBindInfo();
+        void Inject(object obj);
     }
 }

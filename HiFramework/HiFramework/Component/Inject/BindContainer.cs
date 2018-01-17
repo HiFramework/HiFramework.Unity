@@ -53,7 +53,7 @@ namespace HiFramework
             }
         }
 
-        private void Inject(object obj)
+        public void Inject(object obj)
         {
             var type = obj.GetType();
             if (type.GetInterface(typeof(IInject).FullName) == typeof(IInject))

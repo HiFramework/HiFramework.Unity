@@ -8,18 +8,14 @@ namespace HiFramework
     {
         private static IContainer _container;
         private static ITicker _ticker;
-        public static T Get<T>() where T : class, IComponent
+        public static T Get<T>() 
         {
             var component = _container.Get<T>();
             return component;
         }
-        public static void Remove<T>() where T : class, IComponent
+        public static void Remove<T>() 
         {
-            var key = typeof(T).FullName;
-            Assert.IsTrue(_container.HasKey(key));
-            var component = Get<T>();
-            _container.UnRegist(key);
-            component.UnRegistComponent();
+            _container.UnRegist<T>();
         }
 
         public static void RegistTick<T>(T t) where T : class, ITick

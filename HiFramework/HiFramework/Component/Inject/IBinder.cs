@@ -5,7 +5,7 @@
 
 namespace HiFramework
 {
-    interface IBinder
+   public interface IBinder
     {
         /// <summary>
         /// 执行绑定

@@ -9,7 +9,7 @@
 
 namespace HiFramework
 {
-    class BinderComponent : Component, IBinder
+  public  class BinderComponent : Component, IBinder
     {
         private IBindContainer _iBindContainer;
         public BinderComponent(IContainer iContainer) : base(iContainer)
@@ -52,7 +52,7 @@ namespace HiFramework
 
         public void Inject(object obj)
         {
-            throw new NotImplementedException();
+            _iBindContainer.Inject(obj);
         }
     }
 }

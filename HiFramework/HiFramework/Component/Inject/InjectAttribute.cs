@@ -8,7 +8,7 @@ using System;
 namespace HiFramework
 {
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
-    class InjectAttribute : Attribute
+    public class InjectAttribute : Attribute
     {
         public string AsName { get; private set; }
         public InjectAttribute()

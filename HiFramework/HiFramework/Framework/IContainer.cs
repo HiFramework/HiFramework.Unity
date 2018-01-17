@@ -12,8 +12,9 @@ namespace HiFramework
         /// </summary>
         /// <param name="obj"></param>
         void Regist(IComponent obj);
-        void UnRegist(string key);
-        bool HasKey(string key);
-        T Get<T>() where T : class, IComponent;
+
+        void UnRegist<T>();
+         bool HasComPonent<T>();
+        T Get<T>();
     }
 }
