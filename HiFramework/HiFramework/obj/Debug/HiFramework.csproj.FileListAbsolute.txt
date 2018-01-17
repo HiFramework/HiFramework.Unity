@@ -1,4 +1,3 @@
-D:\MyGit\HiFramework\HiFramework\HiFramework\obj\Debug\HiFramework.csprojResolveAssemblyReference.cache
 D:\MyGit\HiFramework\HiFramework\HiFramework\obj\Debug\HiFramework.csproj.CoreCompileInputs.cache
 D:\MyGit\HiFramework\HiFramework\HiFramework\bin\Debug\HiFramework.dll
 D:\MyGit\HiFramework\HiFramework\HiFramework\bin\Debug\HiFramework.pdb

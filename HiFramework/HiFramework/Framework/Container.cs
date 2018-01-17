@@ -29,24 +29,25 @@ namespace HiFramework
             return false;
         }
 
-        public void UnRegist<T>() where T : class, IComponent
+        public void UnRegist<T>()
         {
             if (HasComPonent<T>())
             {
                 var obj = Get<T>();
-                _iComponents.Remove(obj);
+                var iComponent = obj as IComponent;
+                _iComponents.Remove(iComponent);
             }
         }
-        public T Get<T>() where T : class, IComponent
+        public T Get<T>()
         {
             for (int i = 0; i < _iComponents.Count; i++)
             {
                 if (_iComponents[i] is T)
                 {
-                    return _iComponents[i] as T;
+                    return (T)_iComponents[i];
                 }
             }
-            return Construct(typeof(T)) as T;
+            return (T)Construct(typeof(T));
         }
 
         object Construct(Type type)

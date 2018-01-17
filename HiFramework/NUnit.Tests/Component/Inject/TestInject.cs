@@ -18,7 +18,7 @@ namespace NUnit.Tests
 
             var i = Center.Get<IBinder>();
             var test = new Test();
-            i.Bind<ITest>().To(test);
+            i.Bind<ITest>().To(test).AsName("one");
             var test1 = new Test1();
             i.Inject(test1);
             Assert.IsTrue(((Test)test1.ITest).x==10);
