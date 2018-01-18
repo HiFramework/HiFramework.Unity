@@ -25,7 +25,7 @@ namespace NUnit.Tests.Component.Inject
             Test3 ttt= new Test3();
             i.Inject(ttt);
             Assert.IsTrue(((Test1)ttt.test1).x==10);
-            Assert.IsTrue(((Test2)ttt.test1).x==20);
+            Assert.IsTrue(((Test2)ttt.test2).x==20);
         }
 
 
