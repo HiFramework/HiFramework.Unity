@@ -17,7 +17,7 @@ namespace HiFramework
             _iComponents.Add(obj);
         }
 
-        public bool HasComPonent<T>()
+        public bool HasComPonent<T>() where T : class, IComponent
         {
             for (int i = 0; i < _iComponents.Count; i++)
             {
@@ -29,7 +29,7 @@ namespace HiFramework
             return false;
         }
 
-        public void UnRegist<T>()
+        public void UnRegist<T>() where T : class, IComponent
         {
             if (HasComPonent<T>())
             {
@@ -38,16 +38,16 @@ namespace HiFramework
                 _iComponents.Remove(iComponent);
             }
         }
-        public T Get<T>()
+        public T Get<T>() where T : class, IComponent
         {
             for (int i = 0; i < _iComponents.Count; i++)
             {
                 if (_iComponents[i] is T)
                 {
-                    return (T)_iComponents[i];
+                    return _iComponents[i] as T;
                 }
             }
-            return (T)Construct(typeof(T));
+            return Construct(typeof(T)) as T;
         }
 
         object Construct(Type type)

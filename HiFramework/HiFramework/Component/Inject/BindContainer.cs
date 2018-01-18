@@ -33,7 +33,7 @@ namespace HiFramework
                 {
                     for (int j = 0; j < _iBindings[i].Types.Count; j++)
                     {
-                        IBindInfo iBindInfo = new BindInfo(_iBindings[i].Types[j].GetType(), _iBindings[i].ToObj, _iBindings[i].AsName);
+                        IBindInfo iBindInfo = new BindInfo(_iBindings[i].Types[j], _iBindings[i].ToObj, _iBindings[i].AsName);
                         _iBindInfos.Add(iBindInfo);
                     }
                 }
@@ -55,12 +55,8 @@ namespace HiFramework
 
         public void Inject(object obj)
         {
-            var type = obj.GetType();
-            if (type.GetInterface(typeof(IInject).FullName) == typeof(IInject))
-            {
-                InjectFields(obj);
-                InjectProperty(obj);
-            }
+            InjectFields(obj);
+            InjectProperty(obj);
         }
 
         void InjectFields(object obj)
@@ -78,8 +74,8 @@ namespace HiFramework
                 }
                 var injectAttribute = attributes[0] as InjectAttribute;
                 var toObj = string.IsNullOrEmpty(injectAttribute.AsName)
-                    ? GetObjectFromIBindInfos(fields[i].GetType())
-                    : GetObjectWithAsNameFromIBindInfos(fields[i].GetType(), injectAttribute.AsName);
+                    ? GetObjectFromIBindInfos(fields[i].FieldType)
+                    : GetObjectWithAsNameFromIBindInfos(fields[i].FieldType, injectAttribute.AsName);
                 fields[i].SetValue(obj, toObj);
             }
         }
@@ -87,7 +83,7 @@ namespace HiFramework
         void InjectProperty(object obj)
         {
             var type = obj.GetType();
-            var propertys = type.GetFields(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public);
+            var propertys = type.GetProperties(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public);
             for (int i = 0; i < propertys.Length; i++)
             {
                 var attributes = propertys[i].GetCustomAttributes(typeof(InjectAttribute), true);
@@ -99,20 +95,20 @@ namespace HiFramework
                 }
                 var injectAttribute = attributes[0] as InjectAttribute;
                 var toObj = string.IsNullOrEmpty(injectAttribute.AsName)
-                    ? GetObjectFromIBindInfos(propertys[i].GetType())
-                    : GetObjectWithAsNameFromIBindInfos(propertys[i].GetType(), injectAttribute.AsName);
-                propertys[i].SetValue(obj, toObj);
+                    ? GetObjectFromIBindInfos(propertys[i].PropertyType)
+                    : GetObjectWithAsNameFromIBindInfos(propertys[i].PropertyType, injectAttribute.AsName);
+                //propertys[i].SetValue(obj, toObj);
             }
         }
 
         object GetObjectFromIBindInfos(Type type)
         {
-            return _iBindInfos.Find(x => { return x.ToObj.GetType() == type; });
+            return _iBindInfos.Find(x => { return x.Type == type; }).ToObj;
         }
 
         object GetObjectWithAsNameFromIBindInfos(Type type, string asName)
         {
-            return _iBindInfos.Find(x => { return x.ToObj.GetType() == type && x.AsName == asName; });
+            return _iBindInfos.Find(x => { return x.Type == type && x.AsName == asName; }).ToObj;
         }
     }
 }

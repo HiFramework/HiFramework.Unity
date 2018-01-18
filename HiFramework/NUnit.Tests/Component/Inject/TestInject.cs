@@ -1,9 +1,4 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using HiFramework;
 namespace NUnit.Tests
 {
@@ -14,11 +9,11 @@ namespace NUnit.Tests
         public void TestMethod()
         {
             // TODO: Add your test code here
-            Assert.Pass("Your first passing test");
-
-            var i = Center.Get<IBinder>();
+            //Assert.Pass("Your first passing test");
+            var i = Center.Get<BinderComponent>();
             var test = new Test();
-            i.Bind<ITest>().To(test).AsName("one");
+            i.Bind<ITest>().To(test);
+            i.SetUp();
             var test1 = new Test1();
             i.Inject(test1);
             Assert.IsTrue(((Test)test1.ITest).x==10);

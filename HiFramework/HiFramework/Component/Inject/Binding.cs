@@ -26,7 +26,7 @@ namespace HiFramework
         public IBinding Bind<T>()
         {
             var type = typeof(T);
-            if (!type.IsClass || !type.IsInterface)
+            if (!type.IsClass && !type.IsInterface)
             {
                 Assert.Exception("T is not class or interface");
             }

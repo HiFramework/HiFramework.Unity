@@ -6,3 +6,4 @@ D:\MyGit\HiFramework\HiFramework\HiFramework\bin\Debug\UnityEngine.dll
 D:\MyGit\HiFramework\HiFramework\HiFramework\bin\Debug\nunit.framework.xml
 D:\MyGit\HiFramework\HiFramework\HiFramework\obj\Debug\HiFramework.dll
 D:\MyGit\HiFramework\HiFramework\HiFramework\obj\Debug\HiFramework.pdb
+D:\MyGit\HiFramework\HiFramework\HiFramework\obj\Debug\HiFramework.csprojResolveAssemblyReference.cache
