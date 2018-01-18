@@ -19,11 +19,8 @@ namespace NUnit.Tests
             Assert.IsTrue(((Test)test1.ITest).x==10);
         }
 
-
-
         public interface ITest
         {
-
         }
         public class Test:ITest
         {
@@ -36,7 +33,4 @@ namespace NUnit.Tests
             public ITest ITest;
         }
     }
-
-
-
 }

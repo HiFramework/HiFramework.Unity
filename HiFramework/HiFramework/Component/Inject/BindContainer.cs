@@ -73,9 +73,7 @@ namespace HiFramework
                     Assert.Exception("multiple inject attribute");
                 }
                 var injectAttribute = attributes[0] as InjectAttribute;
-                var toObj = string.IsNullOrEmpty(injectAttribute.AsName)
-                    ? GetObjectFromIBindInfos(fields[i].FieldType)
-                    : GetObjectWithAsNameFromIBindInfos(fields[i].FieldType, injectAttribute.AsName);
+                var toObj =  GetObjectWithAsNameFromIBindInfos(fields[i].FieldType, injectAttribute.AsName);
                 fields[i].SetValue(obj, toObj);
             }
         }
@@ -94,10 +92,8 @@ namespace HiFramework
                     Assert.Exception("multiple inject attribute");
                 }
                 var injectAttribute = attributes[0] as InjectAttribute;
-                var toObj = string.IsNullOrEmpty(injectAttribute.AsName)
-                    ? GetObjectFromIBindInfos(propertys[i].PropertyType)
-                    : GetObjectWithAsNameFromIBindInfos(propertys[i].PropertyType, injectAttribute.AsName);
-                //propertys[i].SetValue(obj, toObj);
+                var toObj = GetObjectWithAsNameFromIBindInfos(propertys[i].PropertyType, injectAttribute.AsName);
+                propertys[i].SetValue(obj, toObj, null);
             }
         }
 
