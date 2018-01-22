@@ -38,9 +38,7 @@
   <ItemGroup>
     <Compile Include="Component\Inject\TestInject.cs" />
     <Compile Include="Component\Inject\TestInject2.cs" />
-    <Compile Include="Component\TestAsyncCount.cs" />
     <Compile Include="TestMain.cs" />
-    <Compile Include="Component\TestMainThread.cs" />
     <Compile Include="Component\TestSignal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
