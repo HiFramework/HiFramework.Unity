@@ -34,10 +34,15 @@
       <HintPath>..\packages\NUnit.3.6.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\UnityEngine.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Component\Inject\TestInject.cs" />
     <Compile Include="Component\Inject\TestInject2.cs" />
+    <Compile Include="Component\TestPool.cs" />
     <Compile Include="TestMain.cs" />
     <Compile Include="Component\TestSignal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

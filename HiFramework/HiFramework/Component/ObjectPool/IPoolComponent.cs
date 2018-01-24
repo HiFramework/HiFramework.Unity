@@ -9,7 +9,7 @@ using System.Text;
 
 namespace HiFramework
 {
-    interface IPoolComponent
+  public  interface IPoolComponent
     {
         /// <summary>
         /// 创建or获取pool

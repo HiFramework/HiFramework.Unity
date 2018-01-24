@@ -14,7 +14,7 @@ using System.Text;
 
 namespace HiFramework
 {
-    class PoolComponent : Component, IPoolComponent
+    public class PoolComponent : Component, IPoolComponent
     {
         private Hashtable t;
 

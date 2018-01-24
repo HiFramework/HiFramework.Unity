@@ -7,7 +7,7 @@ using System;
 
 namespace HiFramework
 {
-    interface IPool<T>
+    public interface IPool<T>
     {
         T Get();
         void Reclaim(T args);

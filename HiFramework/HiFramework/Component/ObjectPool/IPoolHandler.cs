@@ -6,7 +6,7 @@ using System;
 
 namespace HiFramework
 {
-    interface IPoolHandler<T>
+    public interface IPoolHandler<T>
     {
         /// <summary>
         /// 创建对象
