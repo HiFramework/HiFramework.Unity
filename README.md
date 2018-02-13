@@ -1,6 +1,6 @@
 # HiFramework_unity
 
-This is a framework to manage project's core logic and module, there are already some components built-in framework, and of course you can extend this framework and and your module.
+This is a framework to manage project's core logic and module, there are already some components built-in framework, and of course you can extend and your module in your own project.
 
 ## Finished
 #### Framework
