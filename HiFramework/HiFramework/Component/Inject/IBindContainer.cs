@@ -9,7 +9,7 @@ using System.Text;
 
 namespace HiFramework
 {
-    interface IBindContainer
+   public interface IBindContainer
     {
         void AddBinding(IBinding iBinding);
         void GenerateBindInfo();

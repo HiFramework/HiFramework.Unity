@@ -21,7 +21,7 @@ namespace HiFramework
                 Action = action;
             }
         }
-        private Dictionary<string, List<SignalInfo>> _signals = new Dictionary<string, List<SignalInfo>>();
+        private readonly Dictionary<string, List<SignalInfo>> _signals = new Dictionary<string, List<SignalInfo>>();
 
         public void Regist(string key, Action<object> action, object obj = null)
         {
@@ -62,7 +62,7 @@ namespace HiFramework
                 variable.Action(variable.Obj);
             }
         }
-        
+
         public SignalComponent(IContainer iContainer) : base(iContainer)
         {
         }

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace HiFramework
 {
-    interface IBindInfo
+   public interface IBindInfo
     {
         Type Type { get; }
         object ToObj { get; }

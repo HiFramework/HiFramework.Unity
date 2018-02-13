@@ -5,7 +5,7 @@
 
 namespace HiFramework
 {
-    interface IFramework:ITick
+   public interface IFramework:ITick
     {
         void Init();
     }

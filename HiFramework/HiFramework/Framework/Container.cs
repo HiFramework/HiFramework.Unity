@@ -17,7 +17,7 @@ namespace HiFramework
             _iComponents.Add(obj);
         }
 
-        public bool HasComPonent<T>() where T : class, IComponent
+        public bool HasComponent<T>() where T : class, IComponent
         {
             for (int i = 0; i < _iComponents.Count; i++)
             {
@@ -31,7 +31,7 @@ namespace HiFramework
 
         public void UnRegist<T>() where T : class, IComponent
         {
-            if (HasComPonent<T>())
+            if (HasComponent<T>())
             {
                 var obj = Get<T>();
                 var iComponent = obj as IComponent;

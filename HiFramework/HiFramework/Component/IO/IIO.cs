@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace HiFramework
 {
-    interface IIO
+    public interface IIO
     {
         #region folder
         bool IsFolderExist(string path);
@@ -15,7 +15,7 @@ namespace HiFramework
         void CopyFolder(string sourcePath, string destinationPath);
         void DeleteFolder(string path);
         #endregion
-        
+
         #region file
         bool IsFileExist(string path);
         byte[] ReadFile(string path);
@@ -25,7 +25,7 @@ namespace HiFramework
         void CopyFile(string sourcePath, string destPath);
         void DeleteFile(string path);
         #endregion
-        
+
         #region unity
         void ReadFileFromStreamingAssetsPath(string path, Action<WWW> action);
         byte[] ReadFileFromPersistentDataPath(string path);

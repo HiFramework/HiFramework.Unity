@@ -13,7 +13,7 @@ using System.Text;
 
 namespace HiFramework
 {
-    interface IInject
+   public interface IInject
     {
     }
 }
