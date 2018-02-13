@@ -1,37 +1,23 @@
 # HiFramework_unity
 
-待完成列表https://github.com/hiramtan/HiFramework_unity/projects/1
+This is a framework to manage project's core logic and module, there are already some components built-in framework, and of course you can extend this framework and and your module.
 
-当前版本0.2.0
+## Finished
+#### Framework
+* Component container
+* Ticker
+* Assert
+#### Core
+* Singleton
+* HiFloat(it's a remodified accuracy float type)
+* ObjectBase(it's supply a convenient way to dispose object)
 
-采用组件的形式实现,已完成组件管理逻辑和部分组件
+#### Component
+* Async task
+* Inject
+* IO
+* Main thread
+* Object pool
+* Signal
 
-### 已完成功能:
-
-##### 核心组件管理
-
-##### 核心扩展逻辑:
-- 添加重写Float类型(修改精度)
-
-##### 部分组件:
-- 异步任务
-- IO操作
-- 主线程接收线程事件,顺序轮询
-
-### 待完成:
-
-- 信号组件
-- 调试信息
-- 通信
-- 属性注入(开发中)
-- 事件
-- 命令
-- 对象池
-- assetbundle管理(待导入)
-- ...
-- ...
-
-
-
-
-support:hiramtan@qq.com
+------
