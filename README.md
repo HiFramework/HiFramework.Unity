@@ -4,7 +4,6 @@ This is a framework to manage project's core logic and module, there are already
 
 -----
 
-## Finished
 #### Framework
 * Component container
 * Ticker
@@ -21,5 +20,6 @@ This is a framework to manage project's core logic and module, there are already
 * Main thread
 * Object pool
 * Signal
+* ...
 
 ------
