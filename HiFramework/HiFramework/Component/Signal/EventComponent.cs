@@ -7,73 +7,73 @@ using System.Collections.Generic;
 
 namespace HiFramework
 {
-    public class SignalComponent : Component, ISignal
+    public class EventComponent : Component, IEvent
     {
-        private class SignalInfo
+        private class HandlerInfo
         {
             public object Obj { get; }
 
             public Action<object> Action { get; }
 
-            public SignalInfo(Action<object> action, object obj)
+            public HandlerInfo(Action<object> action, object obj)
             {
                 Obj = obj;
                 Action = action;
             }
         }
-        private readonly Dictionary<string, List<SignalInfo>> _signals = new Dictionary<string, List<SignalInfo>>();
+        private readonly Dictionary<string, List<HandlerInfo>> _handlers = new Dictionary<string, List<HandlerInfo>>();
 
         public void Regist(string key, Action<object> action, object obj = null)
         {
-            if (_signals.ContainsKey(key))
+            if (_handlers.ContainsKey(key))
             {
-                var infos = _signals[key];
-                infos.Add(new SignalInfo(action, obj));
+                var infos = _handlers[key];
+                infos.Add(new HandlerInfo(action, obj));
             }
             else
             {
-                var list = new List<SignalInfo>();
-                list.Add(new SignalInfo(action, obj));
-                _signals.Add(key, list);
+                var list = new List<HandlerInfo>();
+                list.Add(new HandlerInfo(action, obj));
+                _handlers.Add(key, list);
             }
         }
 
         public void Unregist(string key)
         {
-            Assert.IsTrue(_signals.ContainsKey(key));
-            _signals[key].Clear();
-            _signals.Remove(key);
+            Assert.IsTrue(_handlers.ContainsKey(key));
+            _handlers[key].Clear();
+            _handlers.Remove(key);
         }
 
         public void Unregist(string key, Action<object> action)
         {
-            Assert.IsTrue(_signals.ContainsKey(key));
-            var info = _signals[key].Find((x) => { return x.Action == action; });
+            Assert.IsTrue(_handlers.ContainsKey(key));
+            var info = _handlers[key].Find((x) => { return x.Action == action; });
             Assert.IsNotNull(info);
-            _signals[key].Remove(info);
+            _handlers[key].Remove(info);
         }
 
         public void Dispatch(string key)
         {
-            Assert.IsNotNull(_signals.ContainsKey(key));
-            var infos = _signals[key];
+            Assert.IsNotNull(_handlers.ContainsKey(key));
+            var infos = _handlers[key];
             foreach (var variable in infos)
             {
                 variable.Action(variable.Obj);
             }
         }
 
-        public SignalComponent(IContainer iContainer) : base(iContainer)
+        public EventComponent(IContainer iContainer) : base(iContainer)
         {
         }
 
         public override void UnRegistComponent()
         {
-            foreach (var variable in _signals)
+            foreach (var variable in _handlers)
             {
                 variable.Value.Clear();
             }
-            _signals.Clear();
+            _handlers.Clear();
         }
     }
 }

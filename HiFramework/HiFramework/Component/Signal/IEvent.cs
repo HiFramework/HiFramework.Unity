@@ -6,7 +6,7 @@ using System;
 
 namespace HiFramework
 {
-    public interface ISignal
+    public interface IEvent
     {
         /// <summary>
         /// 可以多次注册,信号量同时多次触发
