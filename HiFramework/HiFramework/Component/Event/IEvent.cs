@@ -13,9 +13,8 @@ namespace HiFramework
         /// 即便是无参数的回调，也强制采用这种方式
         /// </summary>
         /// <param name="key"></param>
-        /// <param name="obj"></param>
         /// <param name="action"></param>
-        void Regist(string key, Action<object> action, object obj = null);
+        void Regist(string key, Action<object> action);
         /// <summary>
         /// 取消注册该key下所有
         /// </summary>
@@ -27,6 +26,6 @@ namespace HiFramework
         /// <param name="key"></param>
         /// <param name="action"></param>
         void Unregist(string key, Action<object> action);
-        void Dispatch(string key);
+        void Dispatch(string key, object obj);
     }
 }

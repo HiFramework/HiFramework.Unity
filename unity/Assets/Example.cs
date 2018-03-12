@@ -10,7 +10,7 @@ using HiFramework;
 
 public class Example : MonoBehaviour
 {
-
+    private IIO io;
     // Use this for initialization
     void Start()
     {

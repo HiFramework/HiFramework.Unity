@@ -79,8 +79,8 @@
     <Compile Include="Component\ObjectPool\IPoolHandler.cs" />
     <Compile Include="Component\ObjectPool\Pool.cs" />
     <Compile Include="Component\ObjectPool\PoolComponent.cs" />
-    <Compile Include="Component\Signal\ISignal.cs" />
-    <Compile Include="Component\Signal\SignalComponent.cs" />
+    <Compile Include="Component\Signal\IEvent.cs" />
+    <Compile Include="Component\Signal\EventComponent.cs" />
     <Compile Include="Core\HiFloat.cs" />
     <Compile Include="Core\ObjectBase.cs" />
     <Compile Include="Core\Singleton.cs" />

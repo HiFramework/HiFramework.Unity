@@ -1,31 +1,60 @@
-﻿using HiFramework;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using HiFramework;
 
-namespace NUnit.Tests
+namespace NUnit.Tests.Component
 {
     [TestFixture]
     public class TestSignal
     {
-        private int _count;
         [Test]
-        public void TestRegistDispatch()
+        public void TestMethod()
         {
-            _count = 0;
-            ISignal signal = Center.Get<SignalComponent>();
-            signal.Regist("key", TestMethod1);
-            signal.Regist("key", TestMethod2);
-            signal.Dispatch("key");
-            Assert.IsTrue(_count == 2);
+            // TODO: Add your test code here
+            Assert.Pass("Your first passing test");
+
+            ISignal test = new Signal();
+            test.Regist(Test);
+
+            ISignal<string> test1 = new Signal<string>();
+            test1.Regist(Test1);
+
+            ISignal<int> test2 = new Signal<int>();
+            test2.Regist(Test2);
+
+            ISignal<int, float, string> test3 = new Signal<int, float, string>();
+            test3.Regist(Test3);
+
+
+
+            test.Dispatch();
+            test1.Dispatch("s");
+            test2.Dispatch(1);
+            test3.Dispatch(1, 2.0f, "s");
         }
 
-        void TestMethod1(object obj)
+        void Test()
         {
-            _count++;
+
         }
 
-        void TestMethod2(object obj)
+        void Test1(string args)
         {
-            _count++;
+
+        }
+
+        void Test2(int args)
+        {
+
+        }
+
+        void Test3(int i, float f, string s)
+        {
+
         }
     }
 }
