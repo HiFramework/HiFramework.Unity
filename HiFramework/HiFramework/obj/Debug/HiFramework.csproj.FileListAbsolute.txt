@@ -12,7 +12,6 @@ D:\MyGit\github\HiFramework_unity\HiFramework\HiFramework\bin\Debug\HiFramework.
 D:\MyGit\github\HiFramework_unity\HiFramework\HiFramework\bin\Debug\nunit.framework.dll
 D:\MyGit\github\HiFramework_unity\HiFramework\HiFramework\bin\Debug\UnityEngine.dll
 D:\MyGit\github\HiFramework_unity\HiFramework\HiFramework\bin\Debug\nunit.framework.xml
-D:\MyGit\github\HiFramework_unity\HiFramework\HiFramework\obj\Debug\HiFramework.csprojResolveAssemblyReference.cache
 D:\MyGit\github\HiFramework_unity\HiFramework\HiFramework\obj\Debug\HiFramework.csproj.CoreCompileInputs.cache
 D:\MyGit\github\HiFramework_unity\HiFramework\HiFramework\obj\Debug\HiFramework.dll
 D:\MyGit\github\HiFramework_unity\HiFramework\HiFramework\obj\Debug\HiFramework.pdb
