@@ -15,6 +15,7 @@ This is a framework to manage project's core logic and module, there are already
 
 #### Component
 * Async task
+- Event
 * Inject
 * IO
 * Main thread
