@@ -1,5 +1,0 @@
-D:\MyGit\HiFramework\HiFramework\.vs\HiFramework\lut\0\b\HiFramework\bin\Debug\HiFramework.dll
-D:\MyGit\HiFramework\HiFramework\.vs\HiFramework\lut\0\b\HiFramework\bin\Debug\HiFramework.pdb
-D:\MyGit\HiFramework\HiFramework\.vs\HiFramework\lut\0\i\HiFramework\Debug\HiFramework.csproj.CoreCompileInputs.cache
-D:\MyGit\HiFramework\HiFramework\.vs\HiFramework\lut\0\i\HiFramework\Debug\HiFramework.dll
-D:\MyGit\HiFramework\HiFramework\.vs\HiFramework\lut\0\i\HiFramework\Debug\HiFramework.pdb

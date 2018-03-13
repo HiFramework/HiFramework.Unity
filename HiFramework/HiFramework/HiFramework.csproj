@@ -4,17 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8CED7117-F448-458F-9E71-312BF03FDDFB}</ProjectGuid>
+    <ProjectGuid>{60737016-ACD4-4E98-B86B-7A2B5C8AC71A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HiFramework</RootNamespace>
     <AssemblyName>HiFramework</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -24,7 +20,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -35,70 +30,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=3.8.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.8.1\lib\net35\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="UnityEngine">
-      <HintPath>..\UnityEngine.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Component\AsyncTask\AsyncRepeatingPingTask.cs" />
-    <Compile Include="Component\AsyncTask\AsyncRepeatingTask.cs" />
-    <Compile Include="Component\AsyncTask\AsyncResourceLoadTask.cs" />
-    <Compile Include="Component\AsyncTask\AsyncTask.cs" />
-    <Compile Include="Component\AsyncTask\AsyncComponent.cs" />
-    <Compile Include="Component\AsyncTask\AsyncTaskWithParam.cs" />
-    <Compile Include="Component\AsyncTask\AsyncTimeTask.cs" />
-    <Compile Include="Component\AsyncTask\AsyncWaitTrueTask.cs" />
-    <Compile Include="Component\AsyncTask\AsyncWWWTask.cs" />
-    <Compile Include="Component\AsyncTask\IAsyncComponent.cs" />
-    <Compile Include="Component\Inject\BindContainer.cs" />
-    <Compile Include="Component\Inject\BinderComponent.cs" />
-    <Compile Include="Component\Inject\BindInfo.cs" />
-    <Compile Include="Component\Inject\Binding.cs" />
-    <Compile Include="Component\Inject\BindingAsName.cs" />
-    <Compile Include="Component\Inject\IBindContainer.cs" />
-    <Compile Include="Component\Inject\IBinder.cs" />
-    <Compile Include="Component\Inject\IBindInfo.cs" />
-    <Compile Include="Component\Inject\IBinding.cs" />
-    <Compile Include="Component\Inject\IInject.cs" />
-    <Compile Include="Component\Inject\InjectAttribute.cs" />
-    <Compile Include="Component\IO\IIO.cs" />
-    <Compile Include="Component\IO\IOComponent.cs" />
-    <Compile Include="Component\MainThread\IMainThread.cs" />
-    <Compile Include="Component\MainThread\MainThreadComponent.cs" />
-    <Compile Include="Component\ObjectPool\IPool.cs" />
-    <Compile Include="Component\ObjectPool\IPoolComponent.cs" />
-    <Compile Include="Component\ObjectPool\IPoolHandler.cs" />
-    <Compile Include="Component\ObjectPool\Pool.cs" />
-    <Compile Include="Component\ObjectPool\PoolComponent.cs" />
-    <Compile Include="Component\Signal\IEvent.cs" />
-    <Compile Include="Component\Signal\EventComponent.cs" />
-    <Compile Include="Core\HiFloat.cs" />
-    <Compile Include="Core\ObjectBase.cs" />
-    <Compile Include="Core\Singleton.cs" />
-    <Compile Include="Framework\Assert.cs" />
-    <Compile Include="Framework\Center.cs" />
-    <Compile Include="Framework\Component.cs" />
-    <Compile Include="Framework\Framework.cs" />
-    <Compile Include="Framework\IComponent.cs" />
-    <Compile Include="Framework\IContainer.cs" />
-    <Compile Include="Framework\IFramework.cs" />
-    <Compile Include="Framework\Container.cs" />
-    <Compile Include="Framework\ITick.cs" />
-    <Compile Include="Framework\ITicker.cs" />
+    <Compile Include="Center.cs" />
+    <Compile Include="Component.cs" />
+    <Compile Include="Container.cs" />
+    <Compile Include="Framework.cs" />
+    <Compile Include="IFramework.cs" />
+    <Compile Include="ITick.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Framework\Ticker.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
