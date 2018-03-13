@@ -24,6 +24,7 @@ namespace HiFramework
         public void Unregist(IComponent iComponent)
         {
             Assert.IsTrue(_iComponents.Contains(iComponent));
+            iComponent.OnClose();
             _iComponents.Remove(iComponent);
         }
 
@@ -55,7 +56,9 @@ namespace HiFramework
 
         private T Create<T>() where T : class, IComponent
         {
-            return Activator.CreateInstance(typeof(T), this) as T;
+            var c = Activator.CreateInstance(typeof(T), this) as T;
+            c.OnInit();
+            return c;
         }
     }
 }

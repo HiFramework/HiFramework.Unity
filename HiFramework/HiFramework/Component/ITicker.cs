@@ -1,6 +1,6 @@
 ﻿//---------------------------------------------------------------------------------------------------
-/*Description: 
- * 
+/*Description: ticker组件
+ * 基于组件系统实现,同时tick也作为框架的基础逻辑
  * 
  * Author: hiramtan@live.com
  */
@@ -8,14 +8,12 @@
 
 
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace HiFramework
 {
-    class Ticker
+    interface ITicker : ITick
     {
+        void Regist(IComponent iComponent);
+        void Unregist(IComponent iComponent);
     }
 }

@@ -38,13 +38,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assert.cs" />
     <Compile Include="Center.cs" />
     <Compile Include="Component.cs" />
+    <Compile Include="Component\ITicker.cs" />
     <Compile Include="Container.cs" />
     <Compile Include="Framework.cs" />
+    <Compile Include="IComponent.cs" />
+    <Compile Include="IContainer.cs" />
     <Compile Include="IFramework.cs" />
     <Compile Include="ITick.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Component\Ticker.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
