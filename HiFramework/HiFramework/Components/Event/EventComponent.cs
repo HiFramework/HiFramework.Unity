@@ -11,16 +11,16 @@ namespace HiFramework
     {
         private class HandlerInfo
         {
-            public Action<object> Action { get; }
+            public Action<object[]> Action { get; }
 
-            public HandlerInfo(Action<object> action)
+            public HandlerInfo(Action<object[]> action)
             {
                 Action = action;
             }
         }
         private readonly Dictionary<string, List<HandlerInfo>> _maps = new Dictionary<string, List<HandlerInfo>>();
 
-        public void Regist(string key, Action<object> action)
+        public void Regist(string key, Action<object[]> action)
         {
             if (_maps.ContainsKey(key))
             {
@@ -42,7 +42,7 @@ namespace HiFramework
             _maps.Remove(key);
         }
 
-        public void Unregist(string key, Action<object> action)
+        public void Unregist(string key, Action<object[]> action)
         {
             Assert.IsTrue(_maps.ContainsKey(key));
             var info = _maps[key].Find((x) => { return x.Action == action; });
@@ -50,7 +50,7 @@ namespace HiFramework
             _maps[key].Remove(info);
         }
 
-        public void Dispatch(string key, object obj)
+        public void Dispatch(string key, params object[] obj)
         {
             Assert.IsNotNull(_maps.ContainsKey(key));
             var infos = _maps[key];

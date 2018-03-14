@@ -14,7 +14,7 @@ namespace HiFramework
         /// </summary>
         /// <param name="key"></param>
         /// <param name="action"></param>
-        void Regist(string key, Action<object> action);
+        void Regist(string key, Action<object[]> action);
         /// <summary>
         /// 取消注册该key下所有
         /// </summary>
@@ -25,7 +25,7 @@ namespace HiFramework
         /// </summary>
         /// <param name="key"></param>
         /// <param name="action"></param>
-        void Unregist(string key, Action<object> action);
-        void Dispatch(string key, object obj);
+        void Unregist(string key, Action<object[]> action);
+        void Dispatch(string key, params object[] obj);
     }
 }
