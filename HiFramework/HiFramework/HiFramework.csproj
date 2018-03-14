@@ -76,6 +76,7 @@
     <Compile Include="Components\ObjectPool\Pool.cs" />
     <Compile Include="Components\ObjectPool\PoolComponent.cs" />
     <Compile Include="Components\Signal\ISignal.cs" />
+    <Compile Include="Components\Signal\ISignalComponent.cs" />
     <Compile Include="Components\Signal\Signal.cs" />
     <Compile Include="Components\Signal\SignalComponent.cs" />
     <Compile Include="Components\Socket\SocketComponent.cs" />

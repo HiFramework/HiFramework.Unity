@@ -6,30 +6,32 @@
 
 
 
-using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace HiFramework
 {
-   public interface ISignalComponent
+    
+    internal class SignalComponent : Component, ISignalComponent
     {
-        void AddSignal(SignalBase iSignal);
-        void RemoveSignal(SignalBase iSignal);
-    }
-    class SignalComponent : Component, ISignalComponent
-    {
-        List<SignalBase> _signals = new List<SignalBase>();
+        Dictionary<string, SignalBase> _signals = new Dictionary<string, SignalBase>();
 
-        public void AddSignal(SignalBase iSignal)
+        public void AddSignal(string key, SignalBase iSignal)
         {
-            Assert.IsFalse(_signals.Contains(iSignal));
-            _signals.Add(iSignal);
+            Assert.IsFalse(_signals.Keys.Contains(key));
+            _signals.Add(key, iSignal);
         }
 
-        public void RemoveSignal(SignalBase iSignal)
+        public SignalBase GetSignal(string key)
         {
-            Assert.IsTrue(_signals.Contains(iSignal));
-            _signals.Remove(iSignal);
+            Assert.IsTrue(_signals.Keys.Contains(key));
+            return _signals[key];
+        }
+
+        public void RemoveSignal(string key)
+        {
+            Assert.IsTrue(_signals.Keys.Contains(key));
+            _signals.Remove(key);
         }
         public SignalComponent(IContainer iContainer) : base(iContainer)
         {
