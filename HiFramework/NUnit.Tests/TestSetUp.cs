@@ -2,7 +2,7 @@
 namespace NUnit.Tests
 {
     [SetUpFixture]
-    public class MainTest
+    public class TestSetUp
     {
         [OneTimeSetUp]
         public void OneTimeSetUp()
