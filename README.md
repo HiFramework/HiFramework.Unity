@@ -1,7 +1,7 @@
 #### 项目介绍
 基于组件的项目管理框架,使用如下:
 ```csharp
-        IIO io = Center.Get<IOComponent>();
+        var io = Center.Get<IOComponent>();
         var file = io.ReadFile("path");
 ```
 
@@ -54,3 +54,29 @@
 - OnInit() 在组件初始化时执行.
 - OnClose() 在组件销毁时执行.
 
+support: hiramtan@live.com
+
+
+***********
+
+MIT License
+
+Copyright (c) [2017] [Hiram]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
