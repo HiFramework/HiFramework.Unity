@@ -6,10 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using HiFramework;
 
+/// <summary>
+/// 接口绑定类型
+/// </summary>
 namespace NUnit.Tests.Components
 {
     [TestFixture]
-    public class TestInject
+    public class TestInject3
     {
         [Test]
         public void TestMethod()
@@ -17,11 +20,11 @@ namespace NUnit.Tests.Components
             Test test = new Test();
 
             IBinder i = Center.Get<BinderComponent>();
+            i.Bind<ITest>().To<Test1>();
+            i.SetUp();
 
-            var test1 = new Test1();
-            i.Bind<ITest1>().To(test1);
             i.Inject(test);
-            Assert.IsNotNull(test.test1);
+            Assert.IsTrue(test.test1.GetType().Name == "Test1");
 
             //// TODO: Add your test code here
             //Assert.Pass("Your first passing test");
@@ -30,20 +33,15 @@ namespace NUnit.Tests.Components
         class Test
         {
             [Inject]
-            public ITest1 test1;
+            public ITest test1;
         }
 
 
-        interface ITest1
-        {
-            
-        }
-        class Test1
+        interface ITest
         {
 
         }
-
-        class Test2
+        class Test1 : ITest
         {
 
         }

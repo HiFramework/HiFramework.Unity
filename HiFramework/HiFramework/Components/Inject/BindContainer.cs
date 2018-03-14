@@ -48,7 +48,7 @@ namespace HiFramework
             var obj = Activator.CreateInstance(iBinding.ToType);
             for (int j = 0; j < iBinding.Types.Count; j++)
             {
-                IBindInfo iBindInfo = new BindInfo(iBinding.Types[j].GetType(), obj, iBinding.AsName);
+                IBindInfo iBindInfo = new BindInfo(iBinding.Types[j], obj, iBinding.AsName);
                 _iBindInfos.Add(iBindInfo);
             }
         }
@@ -104,6 +104,7 @@ namespace HiFramework
 
         object GetObjectWithAsNameFromIBindInfos(Type type, string asName)
         {
+            var t = _iBindInfos.Find(x => { return x.Type == type && x.AsName == asName; });
             return _iBindInfos.Find(x => { return x.Type == type && x.AsName == asName; }).ToObj;
         }
     }
