@@ -3,10 +3,8 @@
 // Author: hiramtan@live.com
 //****************************************************************************
 
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using HiFramework;
+using UnityEngine;
 
 public class Example : MonoBehaviour
 {
@@ -15,6 +13,8 @@ public class Example : MonoBehaviour
     {
         Framework.Init();
 
+        IIO io = Center.Get<IOComponent>();
+        var file = io.ReadFile("path");
     }
 
     // Update is called once per frame
@@ -37,6 +37,6 @@ public class Example : MonoBehaviour
             Debug.Log("on event");
         });
 
-        iEvent.Dispatch("hello",null);
+        iEvent.Dispatch("hello", null);
     }
 }

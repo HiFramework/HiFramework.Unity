@@ -1,5 +1,5 @@
 ﻿//****************************************************************************
-// Description: of cource you can use event, but the recommend is use signal.
+// Description: 
 // Author: hiramtan@live.com
 //****************************************************************************
 using System;
