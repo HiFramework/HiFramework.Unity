@@ -68,12 +68,14 @@ namespace HiFramework
 
         public MainThreadComponent(IContainer iContainer) : base(iContainer)
         {
-            Center.RegistTick(this);
         }
 
-        public override void UnRegistComponent()
+        public override void OnInit()
         {
-            Center.UnRegistTick(this);
+        }
+
+        public override void OnClose()
+        {
         }
     }
 }

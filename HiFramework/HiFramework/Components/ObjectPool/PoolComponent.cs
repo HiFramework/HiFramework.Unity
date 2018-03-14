@@ -21,10 +21,7 @@ namespace HiFramework
         public PoolComponent(IContainer iContainer) : base(iContainer)
         {
         }
-
-        public override void UnRegistComponent()
-        {
-        }
+        
 
         //public IPool<T> CreatePool<T>(string name, IPoolHandler iPoolHandler)
         //{
@@ -58,6 +55,14 @@ namespace HiFramework
         {
             iPool.Destory();
             iPool = null;
+        }
+
+        public override void OnInit()
+        {
+        }
+
+        public override void OnClose()
+        {
         }
     }
 }

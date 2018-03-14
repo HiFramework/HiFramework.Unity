@@ -17,10 +17,7 @@ namespace HiFramework
             _iBindContainer = new BindContainer();
         }
 
-        public override void UnRegistComponent()
-        {
-            throw new NotImplementedException();
-        }
+     
 
         public void SetUp()
         {
@@ -53,6 +50,14 @@ namespace HiFramework
         public void Inject(object obj)
         {
             _iBindContainer.Inject(obj);
+        }
+
+        public override void OnInit()
+        {
+        }
+
+        public override void OnClose()
+        {
         }
     }
 }

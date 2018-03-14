@@ -28,13 +28,15 @@ namespace HiFramework
 
         public AsyncComponent(IContainer iContainer) : base(iContainer)
         {
-            Center.RegistTick(this);
         }
 
-        public override void UnRegistComponent()
+        public override void OnInit()
+        {
+        }
+
+        public override void OnClose()
         {
             _iTicks.Clear();
-            Center.UnRegistTick(this);
         }
     }
 }

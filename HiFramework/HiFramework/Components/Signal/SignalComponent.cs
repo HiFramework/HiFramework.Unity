@@ -35,7 +35,11 @@ namespace HiFramework
         {
         }
 
-        public override void UnRegistComponent()
+        public override void OnInit()
+        {
+        }
+
+        public override void OnClose()
         {
             _signals.Clear();
         }

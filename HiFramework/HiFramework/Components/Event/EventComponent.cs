@@ -63,8 +63,11 @@ namespace HiFramework
         public EventComponent(IContainer iContainer) : base(iContainer)
         {
         }
+        public override void OnInit()
+        {
+        }
 
-        public override void UnRegistComponent()
+        public override void OnClose()
         {
             foreach (var variable in _maps)
             {

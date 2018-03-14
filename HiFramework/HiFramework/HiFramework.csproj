@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -28,6 +29,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -41,6 +43,45 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\AsyncTask\AsyncComponent.cs" />
+    <Compile Include="Components\AsyncTask\AsyncRepeatingPingTask.cs" />
+    <Compile Include="Components\AsyncTask\AsyncRepeatingTask.cs" />
+    <Compile Include="Components\AsyncTask\AsyncResourceLoadTask.cs" />
+    <Compile Include="Components\AsyncTask\AsyncTask.cs" />
+    <Compile Include="Components\AsyncTask\AsyncTaskWithParam.cs" />
+    <Compile Include="Components\AsyncTask\AsyncTimeTask.cs" />
+    <Compile Include="Components\AsyncTask\AsyncWaitTrueTask.cs" />
+    <Compile Include="Components\AsyncTask\AsyncWWWTask.cs" />
+    <Compile Include="Components\AsyncTask\IAsyncComponent.cs" />
+    <Compile Include="Components\Event\EventComponent.cs" />
+    <Compile Include="Components\Event\IEvent.cs" />
+    <Compile Include="Components\Inject\BindContainer.cs" />
+    <Compile Include="Components\Inject\BinderComponent.cs" />
+    <Compile Include="Components\Inject\BindInfo.cs" />
+    <Compile Include="Components\Inject\Binding.cs" />
+    <Compile Include="Components\Inject\BindingAsName.cs" />
+    <Compile Include="Components\Inject\IBindContainer.cs" />
+    <Compile Include="Components\Inject\IBinder.cs" />
+    <Compile Include="Components\Inject\IBindInfo.cs" />
+    <Compile Include="Components\Inject\IBinding.cs" />
+    <Compile Include="Components\Inject\IInject.cs" />
+    <Compile Include="Components\Inject\InjectAttribute.cs" />
+    <Compile Include="Components\IO\IIO.cs" />
+    <Compile Include="Components\IO\IOComponent.cs" />
+    <Compile Include="Components\MainThread\IMainThread.cs" />
+    <Compile Include="Components\MainThread\MainThreadComponent.cs" />
+    <Compile Include="Components\Network\TcpConnection.cs" />
+    <Compile Include="Components\Network\UdpConnection.cs" />
+    <Compile Include="Components\ObjectPool\IPool.cs" />
+    <Compile Include="Components\ObjectPool\IPoolComponent.cs" />
+    <Compile Include="Components\ObjectPool\IPoolHandler.cs" />
+    <Compile Include="Components\ObjectPool\Pool.cs" />
+    <Compile Include="Components\ObjectPool\PoolComponent.cs" />
+    <Compile Include="Components\Signal\ISignal.cs" />
+    <Compile Include="Components\Signal\Signal.cs" />
+    <Compile Include="Components\Signal\SignalComponent.cs" />
+    <Compile Include="Components\Socket\SocketComponent.cs" />
+    <Compile Include="Components\Zip\ZipComponent.cs" />
     <Compile Include="Core\Assert.cs" />
     <Compile Include="Core\Center.cs" />
     <Compile Include="Core\Component.cs" />
