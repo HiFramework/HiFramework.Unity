@@ -36,8 +36,9 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\TestInject.cs" />
     <Compile Include="MainTest.cs" />
-    <Compile Include="TestEvent.cs" />
+    <Compile Include="Components\TestEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

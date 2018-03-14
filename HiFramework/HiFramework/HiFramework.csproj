@@ -70,8 +70,6 @@
     <Compile Include="Components\IO\IOComponent.cs" />
     <Compile Include="Components\MainThread\IMainThread.cs" />
     <Compile Include="Components\MainThread\MainThreadComponent.cs" />
-    <Compile Include="Components\Network\TcpConnection.cs" />
-    <Compile Include="Components\Network\UdpConnection.cs" />
     <Compile Include="Components\ObjectPool\IPool.cs" />
     <Compile Include="Components\ObjectPool\IPoolComponent.cs" />
     <Compile Include="Components\ObjectPool\IPoolHandler.cs" />
@@ -81,6 +79,7 @@
     <Compile Include="Components\Signal\Signal.cs" />
     <Compile Include="Components\Signal\SignalComponent.cs" />
     <Compile Include="Components\Socket\SocketComponent.cs" />
+    <Compile Include="Components\Zip\IZip.cs" />
     <Compile Include="Components\Zip\ZipComponent.cs" />
     <Compile Include="Core\Assert.cs" />
     <Compile Include="Core\Center.cs" />

@@ -38,5 +38,6 @@ public class Example : MonoBehaviour
         });
 
         iEvent.Dispatch("hello", null);
+
     }
 }

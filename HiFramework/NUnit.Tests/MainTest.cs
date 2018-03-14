@@ -1,6 +1,4 @@
 ﻿using NUnit.Framework;
-using System;
-using HiFramework;
 namespace NUnit.Tests
 {
     [SetUpFixture]
