@@ -8,7 +8,7 @@
 
 #### 使用方法
 
-下载地址: 
+从此地址下载unitypackage:[![Github Releases](https://img.shields.io/github/downloads/atom/atom/total.svg)](https://github.com/hiramtan/HiFramework_unity/releases) 
 
 -----
 #### 框架介绍
