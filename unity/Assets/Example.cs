@@ -10,7 +10,6 @@ using HiFramework;
 
 public class Example : MonoBehaviour
 {
-    private IIO io;
     // Use this for initialization
     void Start()
     {
@@ -22,5 +21,22 @@ public class Example : MonoBehaviour
     void Update()
     {
         Framework.Tick();
+    }
+
+    void Read()
+    {
+        IIO io = Center.Get<IOComponent>();
+        io.ReadFile("path");
+    }
+
+    void Event()
+    {
+        IEvent iEvent = Center.Get<EventComponent>();
+        iEvent.Regist("hello", x =>
+        {
+            Debug.Log("on event");
+        });
+
+        iEvent.Dispatch("hello",null);
     }
 }

@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace HiFramework
 {
-    class AsyncWWWTask : AsyncTaskWithParam<WWW>
+    public class AsyncWWWTask : AsyncTaskWithParam<WWW>
     {
         private WWW _www;
         public AsyncWWWTask(Action<WWW> action, string url) : base(action)

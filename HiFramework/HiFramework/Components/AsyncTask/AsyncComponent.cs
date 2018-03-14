@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace HiFramework
 {
-    internal class AsyncComponent : Component, ITick, IAsyncComponent
+    public class AsyncComponent : Component, ITick, IAsyncComponent
     {
         private readonly List<ITick> _iTicks = new List<ITick>();
 

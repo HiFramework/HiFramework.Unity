@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace HiFramework
 {
-    class IOComponent : Component, IIO
+    public class IOComponent : Component, IIO
     {
         public bool IsFolderExist(string path)
         {

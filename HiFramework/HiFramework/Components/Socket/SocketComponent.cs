@@ -13,7 +13,7 @@ using System.Text;
 
 namespace HiFramework
 {
-    class SocketComponent
+    public class SocketComponent
     {
     }
 }

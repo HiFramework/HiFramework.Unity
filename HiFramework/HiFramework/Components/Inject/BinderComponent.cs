@@ -5,11 +5,11 @@
  * Author: hiramtan@live.com
  *////////////////////////////////////////////////////////////////////////
 
- using System;
+using System;
 
 namespace HiFramework
 {
-  public  class BinderComponent : Component, IBinder
+    public class BinderComponent : Component, IBinder
     {
         private IBindContainer _iBindContainer;
         public BinderComponent(IContainer iContainer) : base(iContainer)
@@ -17,7 +17,7 @@ namespace HiFramework
             _iBindContainer = new BindContainer();
         }
 
-     
+
 
         public void SetUp()
         {

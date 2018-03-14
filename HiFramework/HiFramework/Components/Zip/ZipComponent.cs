@@ -7,7 +7,7 @@
 
 namespace HiFramework
 {
-    class ZipComponent
+    public class ZipComponent
     {
     }
 }

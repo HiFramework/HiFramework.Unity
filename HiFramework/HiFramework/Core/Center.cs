@@ -11,7 +11,7 @@
 
 namespace HiFramework
 {
-    class Center : IFramework
+    public class Center : IFramework
     {
         static IContainer _iContainer = new Container();
         private static ITicker _iTicker;

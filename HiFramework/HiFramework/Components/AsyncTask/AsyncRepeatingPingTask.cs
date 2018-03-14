@@ -6,7 +6,7 @@ using System;
 using UnityEngine;
 namespace HiFramework
 {
-    internal class AsyncRepeatingPingTask : AsyncTaskWithParam<int>
+    public class AsyncRepeatingPingTask : AsyncTaskWithParam<int>
     {
         private readonly string _ip; //只包含ip,不包含接口
         private readonly float _rate;//更新频率
