@@ -31,7 +31,7 @@
 #### 组件介绍
 ##### 异步任务
     1. 获取网络Ping值
-    ```csharp
+    ``` csharp
      new AsyncRepeatingPingTask(x =>
             {
                 Debug.Log("ping: " + x);
