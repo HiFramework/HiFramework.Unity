@@ -71,9 +71,8 @@
 
 #### 组件扩展
 开发者可以基于框架方便的扩展自己的组件,使用框架维护项目模块.
+
 扩展组件需要继承Component类,并且需要实现OnInit()和OnClose()方法.
-- OnInit() 在组件初始化时执行.
-- OnClose() 在组件销毁时执行.
 
 support: hiramtan@live.com
 
