@@ -10,7 +10,16 @@
 
 #### 使用方法
 
-从此地址下载unitypackage:[![Github Releases](https://img.shields.io/github/downloads/atom/atom/total.svg)](https://github.com/hiramtan/HiFramework_unity/releases) 
+- dll的方式(包含示例)
+
+    从此地址下载unitypackage:[![Github Releases](https://img.shields.io/github/downloads/atom/atom/total.svg)](https://github.com/hiramtan/HiFramework_unity/releases) 
+- 源码的方式
+
+    导入Visual工程源码
+
+
+--unsafe 代码说明--
+
 
 -----
 
