@@ -4,53 +4,26 @@
 * Author: hiramtan @live.com
 ****************************************************************************/
 
-
-
-using System.Collections;
+using System.Collections.Generic;
 
 namespace HiFramework
 {
-    public class PoolComponent : Component, IPoolComponent
+    internal class PoolComponent : Component, IPoolComponent
     {
-        private Hashtable t;
-
+        List<object> _pools = new List<object>();
         public PoolComponent(IContainer iContainer) : base(iContainer)
         {
         }
-        
-
-        //public IPool<T> CreatePool<T>(string name, IPoolHandler iPoolHandler)
-        //{
-        //    if (!_pools.ContainsKey(name))
-        //    {
-        //        Assert.Exception("have no this pool:" + name);
-        //        return null;
-        //    }
-        //    IPool<T> iPool = new Pool<T>(iPoolHandler);
-        //    _pools.Add(name, iPool);
-        //    return iPool;
-        //}
-
-        //public void DeletePool(string name)
-        //{
-        //    if (!_pools.ContainsKey(name))
-        //    {
-        //        Assert.Exception("have no this key:" + name);
-        //        return;
-        //    }
-        //    _pools[name].Destory();
-        //    _pools.Remove(name);
-        //}
-
-        public IPool<T> CreatePool<T>(IPoolHandler<T> iPoolHandler)
+        public void AddPool<T>(IPool<T> iPool)
         {
-            return new Pool<T>(iPoolHandler);
+            Assert.IsFalse(_pools.Contains(iPool));
+            _pools.Add(iPool);
         }
 
-        public void DeletePool<T>(IPool<T> iPool)
+        public void RemovePool<T>(IPool<T> iPool)
         {
-            iPool.Destory();
-            iPool = null;
+            Assert.IsTrue(_pools.Contains(iPool));
+            _pools.Remove(iPool);
         }
 
         public override void OnInit()

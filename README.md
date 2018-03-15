@@ -88,11 +88,11 @@ haven't finish
 ```csharp
         public void TestMethod()
         {
-            Signal noparam = new Signal("firstone");
+            Signal noparam = new Signal();
             noparam.Regist(Hanlder);
             noparam.Dispatch();
 
-            Signal<int, string> withParam = new Signal<int, string>("secondone");
+            Signal<int, string> withParam = new Signal<int, string>();
             withParam.Regist(HandlerWithParam);
             withParam.Dispatch(1, "hello");
         }
@@ -103,6 +103,38 @@ haven't finish
         void HandlerWithParam(int x, string y)
         {
             string log = "execute" + x + y;
+        }
+```
+
+##### 对象池
+```csharp
+        public void TestMethod()
+        {
+            var pool = new Pool<GameObject>(new GameObjectHandler());
+            var go = pool.Get();
+            pool.Reclaim(go);
+        }
+        class GameObjectHandler : IPoolHandler<GameObject>
+        {
+            public GameObject Create()
+            {
+                return UnityEngine.Object.Instantiate(Resources.Load("")) as GameObject;
+            }
+
+            public void Destory(GameObject obj)
+            {
+                Destory(obj);
+            }
+
+            public void InToPool(GameObject args)
+            {
+                args.SetActive(false);
+            }
+
+            public void OutFromPool(GameObject args)
+            {
+                args.SetActive(true);
+            }
         }
 ```
 ----

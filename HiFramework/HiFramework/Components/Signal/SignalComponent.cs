@@ -11,27 +11,19 @@ using System.Linq;
 
 namespace HiFramework
 {
-    
-    internal class SignalComponent : Component, ISignalComponent
+
+    public class SignalComponent : Component, ISignalComponent
     {
-        Dictionary<string, SignalBase> _signals = new Dictionary<string, SignalBase>();
-
-        public void AddSignal(string key, SignalBase iSignal)
+        List<SignalBase> _signals = new List<SignalBase>();
+        public void AddSignal(SignalBase iSignal)
         {
-            Assert.IsFalse(_signals.Keys.Contains(key));
-            _signals.Add(key, iSignal);
+            Assert.IsFalse(_signals.Contains(iSignal));
+            _signals.Add(iSignal);
         }
-
-        public SignalBase GetSignal(string key)
+        public void RemoveSignal(SignalBase iSignal)
         {
-            Assert.IsTrue(_signals.Keys.Contains(key));
-            return _signals[key];
-        }
-
-        public void RemoveSignal(string key)
-        {
-            Assert.IsTrue(_signals.Keys.Contains(key));
-            _signals.Remove(key);
+            Assert.IsTrue(_signals.Contains(iSignal));
+            _signals.Remove(iSignal);
         }
         public SignalComponent(IContainer iContainer) : base(iContainer)
         {

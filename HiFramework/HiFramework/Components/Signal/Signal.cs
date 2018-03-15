@@ -11,22 +11,17 @@ namespace HiFramework
 {
     public class SignalBase
     {
-        public string Key { get; private set; }
         protected ISignalComponent iSignalComponent;
-        internal SignalBase(string key)
+        internal SignalBase()
         {
-            Key = key;
             iSignalComponent = Center.Get<SignalComponent>();
-            iSignalComponent.AddSignal(Key, this);
+            iSignalComponent.AddSignal(this);
         }
     }
 
     public class Signal : SignalBase, ISignal
     {
         List<Action> _handlers = new List<Action>();
-        public Signal(string key) : base(key)
-        {
-        }
         public void Regist(Action handler)
         {
             _handlers.Add(handler);
@@ -43,7 +38,7 @@ namespace HiFramework
         public void UnRegist()
         {
             _handlers.Clear();
-            iSignalComponent.RemoveSignal(Key);
+            iSignalComponent.RemoveSignal(this);
         }
 
         public void UnRegist(Action handler)
@@ -52,15 +47,12 @@ namespace HiFramework
             _handlers.Remove(handler);
         }
 
-  
+
     }
 
     public class Signal<T> : SignalBase, ISignal<T>
     {
         List<Action<T>> _handlers = new List<Action<T>>();
-        public Signal(string key) : base(key)
-        {
-        }
         public void Regist(Action<T> handler)
         {
             _handlers.Add(handler);
@@ -77,7 +69,7 @@ namespace HiFramework
         public void UnRegist()
         {
             _handlers.Clear();
-            iSignalComponent.RemoveSignal(Key);
+            iSignalComponent.RemoveSignal(this);
         }
 
         public void UnRegist(Action<T> handler)
@@ -90,9 +82,6 @@ namespace HiFramework
     public class Signal<T, U> : SignalBase, ISignal<T, U>
     {
         List<Action<T, U>> _handlers = new List<Action<T, U>>();
-        public Signal(string key) : base(key)
-        {
-        }
         public void Regist(Action<T, U> handler)
         {
             _handlers.Add(handler);
@@ -109,7 +98,7 @@ namespace HiFramework
         public void UnRegist()
         {
             _handlers.Clear();
-            iSignalComponent.RemoveSignal(Key);
+            iSignalComponent.RemoveSignal(this);
         }
 
         public void UnRegist(Action<T, U> handler)
@@ -124,9 +113,6 @@ namespace HiFramework
     public class Signal<T, U, V> : SignalBase, ISignal<T, U, V>
     {
         List<Action<T, U, V>> _handlers = new List<Action<T, U, V>>();
-        public Signal(string key) : base(key)
-        {
-        }
         public void Regist(Action<T, U, V> handler)
         {
             _handlers.Add(handler);
@@ -143,7 +129,7 @@ namespace HiFramework
         public void UnRegist()
         {
             _handlers.Clear();
-            iSignalComponent.RemoveSignal(Key);
+            iSignalComponent.RemoveSignal(this);
         }
 
         public void UnRegist(Action<T, U, V> handler)
@@ -152,16 +138,13 @@ namespace HiFramework
             _handlers.Remove(handler);
         }
 
-        
+
     }
 
     public class Signal<T, U, V, W> : SignalBase, ISignal<T, U, V, W>
     {
         List<Action<T, U, V, W>> _handlers = new List<Action<T, U, V, W>>();
 
-        public Signal(string key) : base(key)
-        {
-        }
         public void Regist(Action<T, U, V, W> handler)
         {
             _handlers.Add(handler);
@@ -178,7 +161,7 @@ namespace HiFramework
         public void UnRegist()
         {
             _handlers.Clear();
-            iSignalComponent.RemoveSignal(Key);
+            iSignalComponent.RemoveSignal(this);
         }
 
         public void UnRegist(Action<T, U, V, W> handler)

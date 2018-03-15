@@ -34,13 +34,17 @@
       <HintPath>..\packages\NUnit.3.6.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\UnityEngine.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\TestAsyncRepeatingPingTask.cs" />
-    <Compile Include="Components\TestAsyncRepeatingTask.cs" />
     <Compile Include="Components\TestInject1.cs" />
     <Compile Include="Components\TestInject2.cs" />
     <Compile Include="Components\TestInject3.cs" />
+    <Compile Include="Components\TestPool.cs" />
+    <Compile Include="Components\TestSignal.cs" />
     <Compile Include="TestSetUp.cs" />
     <Compile Include="Components\TestEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

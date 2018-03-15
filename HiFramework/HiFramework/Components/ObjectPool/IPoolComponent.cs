@@ -1,23 +1,14 @@
 ﻿//****************************************************************************
-// Description:
+// Description: 对象池管理组件
 // Author: hiramtan@qq.com
 //****************************************************************************
 
 namespace HiFramework
 {
-    public  interface IPoolComponent
+    internal interface IPoolComponent
     {
-        /// <summary>
-        /// 创建or获取pool
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        IPool<T> CreatePool<T>(IPoolHandler<T> iPoolHandler);
-        /// <summary>
-        /// 删除对象+删除对象池
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="iPool"></param>
-        void DeletePool<T>(IPool<T> iPool);
+        void AddPool<T>(IPool<T> iPool);
+
+        void RemovePool<T>(IPool<T> iPool);
     }
 }

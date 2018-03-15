@@ -4,28 +4,20 @@
 * Author: hiramtan @live.com
 ****************************************************************************/
 
-
-
-using System;
 using System.Collections.Generic;
 
 namespace HiFramework
 {
-    class Pool<T> : IPool<T>
+    public class Pool<T> : IPool<T>
     {
         private readonly IPoolHandler<T> _iPoolHandler;
         private readonly Queue<T> _objects = new Queue<T>();
-
+        private IPoolComponent _iPoolComponent;
         public Pool(IPoolHandler<T> iPoolHandler)
         {
             _iPoolHandler = iPoolHandler;
-        }
-
-        public T Create()
-        {
-            var t = _iPoolHandler.Create();
-            _objects.Enqueue(t);
-            return t;
+             _iPoolComponent = Center.Get<PoolComponent>();
+            _iPoolComponent.AddPool(this);
         }
         public void Destory()
         {
@@ -34,6 +26,7 @@ namespace HiFramework
                 var obj = _objects.Dequeue();
                 _iPoolHandler.Destory(obj);
             }
+            _iPoolComponent.RemovePool(this);
         }
         public T Get()
         {
@@ -45,7 +38,7 @@ namespace HiFramework
             }
             else
             {
-                t = Create();
+                t = _iPoolHandler.Create();
             }
             return t;
         }

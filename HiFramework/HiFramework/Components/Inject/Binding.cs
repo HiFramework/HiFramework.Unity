@@ -12,7 +12,6 @@ namespace HiFramework
 {
     class Binding : IBinding
     {
-        private IBindingAsName iBindingAsName;
         public List<Type> Types { get; }
         public Type ToType { get; private set; }
         public object ToObj { get; private set; }
