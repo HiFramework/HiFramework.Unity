@@ -10,40 +10,32 @@ using System;
 
 namespace HiFramework
 {
-    public unsafe class AsyncWaitTrueTask : AsyncTask
+    public unsafe class AsyncWaitTrueTask : AsyncTaskNoParam
     {
-        private Action _handler;
         private bool* _waitTrue;
-        public AsyncWaitTrueTask(Action handler, ref bool waitTrue)
+        public AsyncWaitTrueTask(Action handler, ref bool waitTrue) : base(handler)
         {
-            _handler = handler;
             fixed (bool* p = &waitTrue)
             {
                 _waitTrue = p;
             }
         }
 
-        protected override bool IsDone { get; set; }
-        protected override void OnTick()
+        public override void Tick()
         {
             if (*_waitTrue)
             {
-                IsDone = true;
+                Done();
             }
         }
-
-        protected override void Done()
-        {
-            _handler();
-        }
     }
 }
 
-public class TestAsyncWaitTrueTask
-{
-    bool test = false;
-    void Main()
-    {
-        new AsyncWaitTrueTask(() => { UnityEngine.Debug.LogError("true"); }, ref test);
-    }
-}
+//public class TestAsyncWaitTrueTask
+//{
+//    bool test = false;
+//    void Main()
+//    {
+//        new AsyncWaitTrueTask(() => { UnityEngine.Debug.LogError("true"); }, ref test);
+//    }
+//}

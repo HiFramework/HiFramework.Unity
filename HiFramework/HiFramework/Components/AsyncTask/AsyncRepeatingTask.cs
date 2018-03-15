@@ -7,31 +7,24 @@ using UnityEngine;
 
 namespace HiFramework
 {
-    public class AsyncRepeatingTask : AsyncTask
+    public class AsyncRepeatingTask : AsyncTaskNoParam
     {
-        private Action _action;
         private readonly float _repeatingTime;
         private float _timeStart;
 
-        public AsyncRepeatingTask(float repeatingTime)
+        public AsyncRepeatingTask(Action action, float repeatingTime) : base(action)
         {
             _timeStart = Time.realtimeSinceStartup;
             _repeatingTime = repeatingTime;
         }
-        protected override bool IsDone { get; set; }
 
-        protected override void OnTick()
+        public override void Tick()
         {
             if (Time.realtimeSinceStartup >= _timeStart + _repeatingTime)
             {
                 _timeStart = Time.realtimeSinceStartup;
-                _action();
+                Action();
             }
-        }
-
-        protected override void Done()
-        {
-            //finish
         }
     }
 }

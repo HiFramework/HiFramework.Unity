@@ -15,16 +15,16 @@ namespace HiFramework
             _www = new WWW(url);
         }
 
-        protected override bool IsDone { get; set; }
 
-        protected override void OnTick()
+        public override void Tick()
         {
             if (_www.isDone)
-                IsDone = true;
+                Done();
         }
 
         protected override void Done()
         {
+            base.Done();
             Action(_www);
         }
     }

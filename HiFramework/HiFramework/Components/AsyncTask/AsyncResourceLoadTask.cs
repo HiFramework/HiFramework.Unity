@@ -17,16 +17,16 @@ namespace HiFramework
             _resourceRequest = Resources.LoadAsync(path);
         }
 
-        protected override bool IsDone { get; set; }
 
-        protected override void OnTick()
+        public override void Tick()
         {
             if (_resourceRequest.isDone)
-                IsDone = true;
+                Done();
         }
 
         protected override void Done()
         {
+            base.Done();
             Action(_resourceRequest.asset);
         }
     }

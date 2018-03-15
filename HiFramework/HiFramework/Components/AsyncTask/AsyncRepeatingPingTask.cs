@@ -1,7 +1,8 @@
-﻿//****************************************************************************
-// Description:每隔一段时间获取当前网络ping值
-// Author: hiramtan@live.com
-//****************************************************************************
+﻿/****************************************************************************
+ * Description:每隔一段时间获取当前网络ping值
+ *
+ * Author: hiramtan@live.com
+ ****************************************************************************/
 using System;
 using UnityEngine;
 namespace HiFramework
@@ -27,9 +28,8 @@ namespace HiFramework
             Assert.IsFalse(ip.Contains(":"));
             ping = new Ping(_ip);
         }
-        protected override bool IsDone { get; set; }
 
-        protected override void OnTick()
+        public override void Tick()
         {
             if (Time.realtimeSinceStartup - _timeStart > _rate)
             {
@@ -39,10 +39,13 @@ namespace HiFramework
                 ping = new Ping(_ip);
             }
         }
-
-        protected override void Done()
-        {
-            //will not run, because this is repeating
-        }
     }
 }
+
+//public void TestMethod()
+//{
+//new AsyncRepeatingPingTask(x =>
+//{
+//    string log = "current ping is: " + x;
+//}, "ip", 1);
+//}

@@ -36,6 +36,8 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\TestAsyncRepeatingPingTask.cs" />
+    <Compile Include="Components\TestAsyncRepeatingTask.cs" />
     <Compile Include="Components\TestInject1.cs" />
     <Compile Include="Components\TestInject2.cs" />
     <Compile Include="Components\TestInject3.cs" />

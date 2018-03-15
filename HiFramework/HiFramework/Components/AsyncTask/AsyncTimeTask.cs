@@ -7,29 +7,21 @@ using UnityEngine;
 
 namespace HiFramework
 {
-    public class AsyncTimeTask : AsyncTask
+    public class AsyncTimeTask : AsyncTaskNoParam
     {
-        private Action _action;
         private float _time;
         private float _waitTime;
-        public AsyncTimeTask(Action action, float waitTime)
+        public AsyncTimeTask(Action action, float waitTime) : base(action)
         {
-            _action = action;
             _time = Time.realtimeSinceStartup;
             _waitTime = waitTime;
         }
 
-        protected override bool IsDone { get; set; }
 
-        protected override void OnTick()
+        public override void Tick()
         {
             if (Time.realtimeSinceStartup - _time >= _waitTime)
-                IsDone = true;
-        }
-
-        protected override void Done()
-        {
-            _action();
+                Done();
         }
     }
 }

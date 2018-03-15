@@ -47,7 +47,7 @@
     <Compile Include="Components\AsyncTask\AsyncRepeatingPingTask.cs" />
     <Compile Include="Components\AsyncTask\AsyncRepeatingTask.cs" />
     <Compile Include="Components\AsyncTask\AsyncResourceLoadTask.cs" />
-    <Compile Include="Components\AsyncTask\AsyncTask.cs" />
+    <Compile Include="Components\AsyncTask\AsyncTaskNoParam.cs" />
     <Compile Include="Components\AsyncTask\AsyncTaskWithParam.cs" />
     <Compile Include="Components\AsyncTask\AsyncTimeTask.cs" />
     <Compile Include="Components\AsyncTask\AsyncWaitTrueTask.cs" />
