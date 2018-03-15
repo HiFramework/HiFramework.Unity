@@ -11,22 +11,8 @@
 从此地址下载unitypackage:[![Github Releases](https://img.shields.io/github/downloads/atom/atom/total.svg)](https://github.com/hiramtan/HiFramework_unity/releases) 
 
 -----
-#### 框架介绍
 
-
-框架分为三层:
-- Core
- 
-    框架基础逻辑,包含组件维护,Tick管理.
-- Extensions
- 
-    常用功能扩展
-- Components
-
-    组件
-    
-组件在初次调用时初始化并缓存供再次使用,组件之间各自独立存在.框架会在组件创建时调用OnInit方法,组件销毁时调用OnClose方法.
-#### 组件介绍
+#### 组件列表
 框架中已封装一部分常用组件,列表如下:
 
 1. 异步任务
@@ -46,8 +32,28 @@
 9. 压缩模块
 10. 加密模块
 
+#### 组件介绍
 
 ----
+
+#### 框架介绍
+
+
+框架分为三层:
+- Core
+ 
+    框架基础逻辑,包含组件维护,Tick管理.
+- Extensions
+ 
+    常用功能扩展
+- Components
+
+    组件
+    
+组件在初次调用时初始化并缓存供再次使用,组件之间各自独立存在.
+
+框架会在组件创建时调用OnInit方法,组件销毁时调用OnClose方法.
+
 #### 组件扩展
 开发者可以基于框架方便的扩展自己的组件,使用框架维护项目模块.
 扩展组件需要继承Component类,并且需要实现OnInit()和OnClose()方法.
