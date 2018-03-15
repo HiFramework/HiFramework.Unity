@@ -19,7 +19,7 @@ haven't finish
     导入Visual工程源码
 
 
---unsafe 代码说明--
+允许工程使用**unsafe**代码(有对指针进行操作).
 
 
 -----
@@ -43,22 +43,47 @@ haven't finish
     1. 获取网络Ping值
 
  ``` csharp
-        new AsyncRepeatingPingTask(x =>
+            new AsyncRepeatingPingTask(x =>
             {
                 string log = "current ping is: " + x;
             }, "ip", 1);
  ```
     2. 定时重复执行
  ```csharp
-        new AsyncRepeatingTask(() =>
+            new AsyncRepeatingTask(() =>
             {
                 string log = "execute";
             }, 1);
  ```
     3. 异步加载
+```csharp
+            new AsyncResourceLoadTask((x)=>
+            {
+               var go= UnityEngine.Object.Instantiate(x) as GameObject;
+            },"path");
+```
     4. 定时执行
+```csharp
+            new AsyncTimeTask(()=>
+            {
+                string log = "execute";
+            },1);
+```
     5. 检测变量值变化
+```csharp
+      bool test = false;
+       void Main()
+       {
+           new AsyncWaitTrueTask(() => { UnityEngine.Debug.LogError("true"); }, ref test);
+       }
+```
     6. WWW下载
+```csharp
+            new AsyncWWWTask((x) =>
+            {
+                string log = x.bytes.ToString();
+            }, "url");
+```
 ##### 事件系统
 ```csharp
         public void TestMethod()

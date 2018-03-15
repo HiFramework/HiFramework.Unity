@@ -27,5 +27,13 @@ namespace HiFramework
             base.Done();
             Action(_www);
         }
+
+        void Test()
+        {
+            new AsyncWWWTask((x) =>
+            {
+                string log = x.bytes.ToString();
+            }, "url");
+        }
     }
 }

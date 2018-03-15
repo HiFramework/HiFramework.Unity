@@ -25,3 +25,10 @@ namespace HiFramework
         }
     }
 }
+//void Test()
+//{
+//new AsyncTimeTask(() =>
+//{
+//    string log = "execute";
+//}, 1);
+//}

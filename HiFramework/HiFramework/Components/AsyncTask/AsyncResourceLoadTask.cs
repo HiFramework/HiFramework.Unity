@@ -29,5 +29,13 @@ namespace HiFramework
             base.Done();
             Action(_resourceRequest.asset);
         }
+
     }
 }
+//void Test()
+//{
+//new AsyncResourceLoadTask((x) =>
+//{
+//    var go = UnityEngine.Object.Instantiate(x) as GameObject;
+//}, "path");
+//}
