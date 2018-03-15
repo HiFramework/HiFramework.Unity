@@ -49,6 +49,27 @@
     4. 定时执行
     5. 检测变量值变化
     6. WWW下载
+##### 事件系统
+```csharp
+        public void TestMethod()
+        {
+            Signal noparam = new Signal("firstone");
+            noparam.Regist(Hanlder);
+            noparam.Dispatch();
+
+            Signal<int, string> withParam = new Signal<int, string>("secondone");
+            withParam.Regist(HandlerWithParam);
+            withParam.Dispatch(1, "hello");
+        }
+        void Hanlder()
+        {
+            string log = "execute";
+        }
+        void HandlerWithParam(int x, string y)
+        {
+            string log = "execute" + x + y;
+        }
+```
 ----
 
 #### 框架介绍
