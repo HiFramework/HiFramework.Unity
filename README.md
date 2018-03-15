@@ -31,13 +31,20 @@
 #### 组件介绍
 ##### 异步任务
     1. 获取网络Ping值
-    ``` csharp
-     new AsyncRepeatingPingTask(x =>
+
+ ``` csharp
+        new AsyncRepeatingPingTask(x =>
             {
-                Debug.Log("ping: " + x);
+                string log = "current ping is: " + x;
             }, "ip", 1);
-    ```
+ ```
     2. 定时重复执行
+ ```csharp
+        new AsyncRepeatingTask(() =>
+            {
+                string log = "execute";
+            }, 1);
+ ```
     3. 异步加载
     4. 定时执行
     5. 检测变量值变化

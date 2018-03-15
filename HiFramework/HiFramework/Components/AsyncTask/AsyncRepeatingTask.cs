@@ -28,3 +28,10 @@ namespace HiFramework
         }
     }
 }
+//void Test()
+//{
+//new AsyncRepeatingTask(() =>
+//{
+//    string log = "execute";
+//}, 1);
+//}
