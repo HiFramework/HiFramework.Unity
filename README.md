@@ -1,6 +1,5 @@
 # HiFramework_unity
 
-haven't finish
 #### 项目介绍
 基于组件的项目管理框架,使用如下:
 ```csharp
@@ -85,27 +84,10 @@ haven't finish
             }, "url");
 ```
 ##### 事件系统
-```csharp
-        public void TestMethod()
-        {
-            Signal noparam = new Signal();
-            noparam.Regist(Hanlder);
-            noparam.Dispatch();
-
-            Signal<int, string> withParam = new Signal<int, string>();
-            withParam.Regist(HandlerWithParam);
-            withParam.Dispatch(1, "hello");
-        }
-        void Hanlder()
-        {
-            string log = "execute";
-        }
-        void HandlerWithParam(int x, string y)
-        {
-            string log = "execute" + x + y;
-        }
-```
-
+##### 属性注入
+##### 文件管理
+##### 主线程切换
+##### 网络模块
 ##### 对象池
 ```csharp
         public void TestMethod()
@@ -137,6 +119,30 @@ haven't finish
             }
         }
 ```
+#### 消息系统
+```csharp
+        public void TestMethod()
+        {
+            Signal noparam = new Signal();
+            noparam.Regist(Hanlder);
+            noparam.Dispatch();
+
+            Signal<int, string> withParam = new Signal<int, string>();
+            withParam.Regist(HandlerWithParam);
+            withParam.Dispatch(1, "hello");
+        }
+        void Hanlder()
+        {
+            string log = "execute";
+        }
+        void HandlerWithParam(int x, string y)
+        {
+            string log = "execute" + x + y;
+        }
+```
+
+
+
 ----
 
 #### 框架介绍
