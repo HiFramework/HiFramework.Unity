@@ -1,6 +1,6 @@
 # HiFramework_unity
 
-haven't finish
+haven't finished yet
 #### 项目介绍
 基于组件的项目管理框架,使用如下:
 ```csharp
