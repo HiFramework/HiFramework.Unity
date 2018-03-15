@@ -98,5 +98,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Core\Component\Ticker.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

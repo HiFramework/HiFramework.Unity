@@ -30,20 +30,6 @@ namespace HiFramework
             return binding;
         }
 
-        public void UnBind<T>()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UnBind(object obj)
-        {
-            throw new NotImplementedException();
-        }
-
-        public object GetInstance<T>()
-        {
-            throw new NotImplementedException();
-        }
 
         public void Inject(object obj)
         {
