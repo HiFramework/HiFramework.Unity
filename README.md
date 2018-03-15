@@ -1,4 +1,5 @@
 # HiFramework_unity
+
 #### 项目介绍
 基于组件的项目管理框架,使用如下:
 ```csharp
@@ -30,7 +31,13 @@
 #### 组件介绍
 ##### 异步任务
     1. 获取网络Ping值
-    2. 定时重复执行
+    ```csharp
+     new AsyncRepeatingPingTask(x =>
+            {
+                Debug.Log("ping: " + x);
+            }, "ip", 1);
+    ```
+    2. 定时重复执行
     3. 异步加载
     4. 定时执行
     5. 检测变量值变化
