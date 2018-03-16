@@ -28,7 +28,7 @@
 
 1. 异步任务   
 2. 事件系统
-3. 属性注入
+3. 依赖注入
 4. 文件管理
 5. 主线程切换
 6. 网络模块
@@ -84,9 +84,156 @@
             }, "url");
 ```
 ##### 事件系统
-##### 属性注入
+```csharp
+        public void TestMethod()
+        {
+            IEvent iEvent = Center.Get<EventComponent>();
+            iEvent.Regist("key", Handler);
+            iEvent.Dispatch("key", 1, "hello");
+        }
+        void Handler(object[] args)
+        {
+            var t = (int)args[0];
+            var tt = (string)args[1];
+            Assert.IsTrue(t == 1);
+            Assert.IsTrue(tt == "hello");
+        }
+```
+##### 依赖注入
+```csharp
+        public void TestMethod()
+        {
+            Test test = new Test();
+
+            IBinder i = Center.Get<BinderComponent>();
+            var test1 = new Test1();
+            i.Bind<ITest>().To(test1).AsName("test1");
+            var test2 = new Test2();
+            i.Bind<ITest>().To(test2).AsName("test2");
+            i.SetUp();
+
+            i.Inject(test);
+            Assert.IsTrue(test.test1.GetType().Name == "Test1");
+            Assert.IsTrue(test.test2.GetType().Name == "Test2");
+        }
+        class Test
+        {
+            [Inject("test1")]
+            public ITest test1;
+
+            [Inject("test2")]
+            public ITest test2;
+        }
+```
 ##### 文件管理
+``` csharp
+        var io = Center.Get<IOComponent>();
+        var file = io.ReadFile("path");
+```
+```csharp
+    public interface IIO
+    {
+        #region folder
+        /// <summary>
+        /// 文件夹是否存在
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        bool IsFolderExist(string path);
+        /// <summary>
+        /// 创建文件夹
+        /// </summary>
+        /// <param name="path"></param>
+        void CreateFolder(string path);
+        /// <summary>
+        /// 复制文件夹
+        /// </summary>
+        /// <param name="sourcePath"></param>
+        /// <param name="destinationPath"></param>
+        void CopyFolder(string sourcePath, string destinationPath);
+        /// <summary>
+        /// 删除文件夹
+        /// </summary>
+        /// <param name="path"></param>
+        void DeleteFolder(string path);
+        #endregion
+
+        #region file
+        /// <summary>
+        /// 文件是否存在
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        bool IsFileExist(string path);
+        /// <summary>
+        /// 读取文件
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        byte[] ReadFile(string path);
+        /// <summary>
+        /// 异步读取文件
+        /// </summary>
+        /// <param name="action"></param>
+        /// <param name="path"></param>
+        void ReadFileAsync(Action<byte[]> action, string path);
+        /// <summary>
+        /// 写入文件
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="bytes"></param>
+        void WriteFile(string path, byte[] bytes);
+        /// <summary>
+        /// 异步写入文件
+        /// </summary>
+        /// <param name="action"></param>
+        /// <param name="path"></param>
+        /// <param name="bytes"></param>
+        void WriteFileAsync(Action action, string path, byte[] bytes);
+        /// <summary>
+        /// 复制文件
+        /// </summary>
+        /// <param name="sourcePath"></param>
+        /// <param name="destPath"></param>
+        void CopyFile(string sourcePath, string destPath);
+        /// <summary>
+        /// 删除文件
+        /// </summary>
+        /// <param name="path"></param>
+        void DeleteFile(string path);
+        #endregion
+
+        #region unity
+        /// <summary>
+        /// 从Streaming目录读取文件
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="action"></param>
+        void ReadFileFromStreamingAssetsPath(string path, Action<WWW> action);
+        /// <summary>
+        /// 从Persistent目录读取文件
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        byte[] ReadFileFromPersistentDataPath(string path);
+        /// <summary>
+        /// 写入文件到Persistent目录
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="bytes"></param>
+        void WriteFileToPersistentDataPath(string path, byte[] bytes);
+        #endregion
+    }
+```
 ##### 主线程切换
+```csharp
+            string ss = "this run on thread";
+            var c = Center.Get<MainThreadComponent>();
+            c.RunOnMainThread(x =>
+            {
+                string s = "this run on main thread";
+            },null);
+```
 ##### 网络模块
 ##### 对象池
 ```csharp

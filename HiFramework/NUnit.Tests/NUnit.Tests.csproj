@@ -43,6 +43,7 @@
     <Compile Include="Components\TestInject1.cs" />
     <Compile Include="Components\TestInject2.cs" />
     <Compile Include="Components\TestInject3.cs" />
+    <Compile Include="Components\TestMainThreadComponent.cs" />
     <Compile Include="Components\TestPool.cs" />
     <Compile Include="Components\TestSignal.cs" />
     <Compile Include="TestSetUp.cs" />

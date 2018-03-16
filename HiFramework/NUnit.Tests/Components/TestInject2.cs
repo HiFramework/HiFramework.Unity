@@ -24,10 +24,7 @@ namespace NUnit.Tests.Components
             i.Inject(test);
             Assert.IsTrue(test.test1.GetType().Name == "Test1");
             Assert.IsTrue(test.test2.GetType().Name == "Test2");
-            //// TODO: Add your test code here
-            //Assert.Pass("Your first passing test");
         }
-
         class Test
         {
             [Inject("test1")]
