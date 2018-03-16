@@ -15,10 +15,10 @@
     从此地址下载unitypackage:[![Github Releases](https://img.shields.io/github/downloads/atom/atom/total.svg)](https://github.com/hiramtan/HiFramework_unity/releases) 
 - 源码的方式
 
-    导入Visual工程源码
+    导入Visual工程源码(此目录下HiFramework_unity\HiFramework\HiFramework)
 
 
-允许工程使用**unsafe**代码(有对指针进行操作).
+ps.允许工程使用**unsafe**代码(项目中有对指针进行操作的逻辑).
 
 
 -----
