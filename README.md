@@ -1,91 +1,94 @@
 # HiFramework_unity
 
-#### 项目介绍
-基于组件的项目管理框架,使用如下:
+## 项目介绍
+基于组件的项目管理框架,组件使用如下:
 ```csharp
         var io = Center.Get<IOComponent>();
         var file = io.ReadFile("path");
 ```
 
 
-#### 使用方法
+## 使用方法
 
 - dll的方式(包含示例)
 
     从此地址下载unitypackage:[![Github Releases](https://img.shields.io/github/downloads/atom/atom/total.svg)](https://github.com/hiramtan/HiFramework_unity/releases) 
 - 源码的方式
 
-    导入Visual工程源码(此目录下HiFramework_unity\HiFramework\HiFramework)
+    导入Visual工程源码(此目录下HiFramework_unity\HiFramework\HiFramework)
 
 
 ps.允许工程使用**unsafe**代码(项目中有对指针进行操作的逻辑).
 
+----
+## 功能列表
+- 组件列表
+    - 异步任务   
+    - 事件系统
+    - 依赖注入
+    - 文件管理
+    - 主线程切换
+    - 网络模块
+    - 对象池
+    - 消息系统
+    - 压缩模块
+    - 加密模块
+
+- 扩展列表
+    - 自定义浮点数
+    - 单例
+    - 对象基类
+
 
 -----
-
-#### 组件列表
-框架中已封装一部分常用组件,列表如下:
-
-1. 异步任务   
-2. 事件系统
-3. 依赖注入
-4. 文件管理
-5. 主线程切换
-6. 网络模块
-7. 对象池
-8. 消息系统
-9. 压缩模块
-10. 加密模块
-
-#### 组件介绍
-##### 异步任务
-    1. 获取网络Ping值
-
- ``` csharp
+## 组件详细功能
+- 异步任务
+    - 获取网络Ping值
+        ``` csharp
             new AsyncRepeatingPingTask(x =>
             {
                 string log = "current ping is: " + x;
             }, "ip", 1);
- ```
-    2. 定时重复执行
- ```csharp
+        ```
+    - 定时重复执行
+        ```csharp
             new AsyncRepeatingTask(() =>
             {
                 string log = "execute";
             }, 1);
- ```
-    3. 异步加载
-```csharp
+        ```
+    - 异步加载
+        ```csharp
             new AsyncResourceLoadTask((x)=>
             {
                var go= UnityEngine.Object.Instantiate(x) as GameObject;
             },"path");
-```
-    4. 定时执行
-```csharp
+        ```
+    - 定时执行
+        ```csharp
             new AsyncTimeTask(()=>
             {
                 string log = "execute";
             },1);
-```
-    5. 检测变量值变化
-```csharp
-      bool test = false;
-       void Main()
-       {
-           new AsyncWaitTrueTask(() => { UnityEngine.Debug.LogError("true"); }, ref test);
-       }
-```
-    6. WWW下载
-```csharp
+        ```
+    - 检测变量值变化
+        ```csharp
+            bool test = false;
+            void Main()
+            {
+              new AsyncWaitTrueTask(() => { UnityEngine.Debug.LogError("true"); }, ref test);
+            }
+        ```
+    - WWW下载
+        ```csharp
             new AsyncWWWTask((x) =>
             {
                 string log = x.bytes.ToString();
             }, "url");
-```
-##### 事件系统
-```csharp
-        public void TestMethod()
+        ```
+- 事件系统
+    ```csharp
+            public void TestMethod()
         {
             IEvent iEvent = Center.Get<EventComponent>();
             iEvent.Regist("key", Handler);
@@ -98,9 +101,9 @@ ps.允许工程使用**unsafe**代码(项目中有对指针进行操作的逻辑
             Assert.IsTrue(t == 1);
             Assert.IsTrue(tt == "hello");
         }
-```
-##### 依赖注入
-```csharp
+    ```
+- 依赖注入
+    ```csharp
         public void TestMethod()
         {
             Test test = new Test();
@@ -124,13 +127,13 @@ ps.允许工程使用**unsafe**代码(项目中有对指针进行操作的逻辑
             [Inject("test2")]
             public ITest test2;
         }
-```
-##### 文件管理
-``` csharp
+    ```
+- 文件管理
+    ``` csharp
         var io = Center.Get<IOComponent>();
         var file = io.ReadFile("path");
-```
-```csharp
+    ```
+    ```csharp
     public interface IIO
     {
         #region folder
@@ -224,19 +227,19 @@ ps.允许工程使用**unsafe**代码(项目中有对指针进行操作的逻辑
         void WriteFileToPersistentDataPath(string path, byte[] bytes);
         #endregion
     }
-```
-##### 主线程切换
-```csharp
+    ```
+- 主线程切换
+    ```csharp
             string ss = "this run on thread";
             var c = Center.Get<MainThreadComponent>();
             c.RunOnMainThread(x =>
             {
                 string s = "this run on main thread";
             },null);
-```
-##### 网络模块
-##### 对象池
-```csharp
+    ```
+- 网络模块
+- 对象池
+    ```csharp
         public void TestMethod()
         {
             var pool = new Pool<GameObject>(new GameObjectHandler());
@@ -265,9 +268,9 @@ ps.允许工程使用**unsafe**代码(项目中有对指针进行操作的逻辑
                 args.SetActive(true);
             }
         }
-```
-#### 消息系统
-```csharp
+    ```
+- 消息系统
+    ```csharp
         public void TestMethod()
         {
             Signal noparam = new Signal();
@@ -286,22 +289,25 @@ ps.允许工程使用**unsafe**代码(项目中有对指针进行操作的逻辑
         {
             string log = "execute" + x + y;
         }
-```
+    ```
 
+## 扩展详细功能
+- 自定义浮点数
 
+    xxx
 
 ----
 
-#### 框架介绍
+## 框架介绍
 
 
-框架分为三层:
+#### 框架分为三层:
 - Core
  
-    框架基础逻辑,包含组件维护,Tick管理.
+    框架基础逻辑,组件维护,Tick管理,Ticker组件,断言.
 - Extensions
  
-    常用功能扩展
+    扩展
 - Components
 
     组件
@@ -314,6 +320,8 @@ ps.允许工程使用**unsafe**代码(项目中有对指针进行操作的逻辑
 开发者可以基于框架方便的扩展自己的组件,使用框架维护项目模块.
 
 扩展组件需要继承Component类,并且需要实现OnInit()和OnClose()方法.
+
+继承ITick接口,实现Tick()方法后自动获得Tick功能.
 
 support: hiramtan@live.com
 
