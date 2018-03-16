@@ -13,8 +13,8 @@ public class Example : MonoBehaviour
     {
         Framework.Init();
 
-        IIO io = Center.Get<IOComponent>();
-        var file = io.ReadFile("path");
+        Read();
+        Event();
     }
 
     // Update is called once per frame
@@ -38,6 +38,5 @@ public class Example : MonoBehaviour
         });
 
         iEvent.Dispatch("hello", null);
-
     }
 }
