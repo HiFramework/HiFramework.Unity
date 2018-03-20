@@ -10,7 +10,7 @@
 
 ## 使用方法
 
-    从此地址下载unitypackage:[![Github Releases](https://img.shields.io/github/downloads/atom/atom/total.svg)](https://github.com/hiramtan/HiFramework_unity/releases) 
+从此地址下载unitypackage:[![Github Releases](https://img.shields.io/github/downloads/atom/atom/total.svg)](https://github.com/hiramtan/HiFramework_unity/releases) 
 
 ps.允许工程使用**unsafe**代码(项目中有对指针进行操作的逻辑).
 
