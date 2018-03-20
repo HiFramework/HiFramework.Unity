@@ -1,10 +1,5 @@
-﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HiFramework;
+﻿using HiFramework;
+using NUnit.Framework;
 
 /// <summary>
 /// 接口绑定类型

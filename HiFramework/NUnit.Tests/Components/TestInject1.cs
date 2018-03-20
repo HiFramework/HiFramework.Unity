@@ -1,5 +1,4 @@
-﻿using System;
-using HiFramework;
+﻿using HiFramework;
 using NUnit.Framework;
 
 /// <summary>
