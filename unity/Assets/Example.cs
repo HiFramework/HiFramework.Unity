@@ -14,7 +14,6 @@ public class Example : MonoBehaviour
         Framework.Init();
 
         Read();
-        Event();
     }
 
     // Update is called once per frame
@@ -27,16 +26,5 @@ public class Example : MonoBehaviour
     {
         IIO io = Center.Get<IOComponent>();
         io.ReadFile("path");
-    }
-
-    void Event()
-    {
-        IEvent iEvent = Center.Get<EventComponent>();
-        iEvent.Regist("hello", x =>
-        {
-            Debug.Log("on event");
-        });
-
-        iEvent.Dispatch("hello", null);
     }
 }
