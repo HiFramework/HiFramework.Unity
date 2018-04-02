@@ -14,6 +14,8 @@
 
 ps.允许工程使用**unsafe**代码(项目中有对指针进行操作的逻辑).
 
+## Wiki
+wiki is here[wiki](https://github.com/hiramtan/HiFramework_unity/wiki)
 ----
 
 点击链接加入QQ群【83596104】：https://jq.qq.com/?_wv=1027&k=5l6rZEr
