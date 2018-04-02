@@ -1,12 +1,11 @@
 # HiFramework_unity
 
 ## 项目介绍
-基于组件的项目管理框架,组件使用如下:
+基于组件的项目管理框架,组件使用如下(更多文档查看[wiki](https://github.com/hiramtan/HiFramework_unity/wiki)):
 ```csharp
         var io = Center.Get<IOComponent>();
         var file = io.ReadFile("path");
 ```
-wiki is here: [wiki](https://github.com/hiramtan/HiFramework_unity/wiki)
 
 ## 使用方法
 
