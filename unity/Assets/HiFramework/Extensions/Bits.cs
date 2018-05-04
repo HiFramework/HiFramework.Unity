@@ -127,3 +127,24 @@ public class Bits
         return s;
     }
 }
+
+    //void Start()
+    //{
+    //    Bits bits = new Bits(10);
+    //    bits.SetBit(3, true);
+    //    Debug.Log("初始化: " + bits.GetString());
+    //    bits.MoveLeft(5);
+    //    Debug.Log("向左移5位: " + bits.GetString());
+    //    bits.MoveRight(5);
+    //    Debug.Log("向右移5位: " + bits.GetString());
+
+    //    Debug.LogError("开始与或运算");
+    //    var test = new Bits(10);
+    //    test.SetBit(5, true);
+    //    Debug.Log("初始化: " + test.GetString());
+    //    test.And(bits);
+    //    Debug.Log("与运算:" + test.GetString());
+    //    test.SetBit(5, true);
+    //    test.Or(bits);
+    //    Debug.Log("或运算:" + test.GetString());
+    //}
