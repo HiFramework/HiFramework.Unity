@@ -1,11 +1,12 @@
 # HiFramework_unity
 
+havent finish
+
+未完成
+
 ## 项目介绍
 基于组件的项目管理框架,组件使用如下(更多文档查看wiki: [https://github.com/hiramtan/HiFramework_unity/wiki](https://github.com/hiramtan/HiFramework_unity/wiki) ):
-```csharp
-        var io = Center.Get<IOComponent>();
-        var file = io.ReadFile("path");
-```
+
 
 ## 使用方法
 
