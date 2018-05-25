@@ -1,7 +1,9 @@
-﻿//****************************************************************************
-// Description: 
-// Author: hiramtan@live.com
-//****************************************************************************
+﻿/***************************************************************
+ * Description: 
+ *
+ * Documents: 
+ * Author: hiramtan@live.com
+***************************************************************/
 using System;
 using System.Collections.Generic;
 
@@ -32,7 +34,7 @@ namespace HiFramework
         /// <param name="action"></param>
         public void Regist(string key, Action<object[]> action)
         {
-            var handler = new Action_objects(action);
+            var handler = new Action_ObjectArray(action);
             RegistHandler(key, handler);
         }
 
@@ -45,6 +47,23 @@ namespace HiFramework
         public void Regist<T>(string key, Action<T> action)
         {
             var handler = new Action_1<T>(action);
+            RegistHandler(key, handler);
+        }
+        public void Regist<T, U>(string key, Action<T, U> action)
+        {
+            var handler = new Action_2<T, U>(action);
+            RegistHandler(key, handler);
+        }
+
+        public void Regist<T, U, V>(string key, Action<T, U, V> action)
+        {
+            var handler = new Action_3<T, U, V>(action);
+            RegistHandler(key, handler);
+        }
+
+        public void Regist<T, U, V, W>(string key, Action<T, U, V, W> action)
+        {
+            var handler = new Action_4<T, U, V, W>(action);
             RegistHandler(key, handler);
         }
 

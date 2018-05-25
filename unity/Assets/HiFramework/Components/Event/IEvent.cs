@@ -1,8 +1,9 @@
-﻿//****************************************************************************
-// Description:
-// of cource you can use event, but the recommend is use signal.
-// Author: hiramtan@live.com
-//****************************************************************************
+﻿/***************************************************************
+ * Description: 
+ * You can regist actions with same key, and this action will execute when this key dispatch.
+ * Documents: 
+ * Author: hiramtan@live.com
+***************************************************************/
 using System;
 
 namespace HiFramework
@@ -10,21 +11,65 @@ namespace HiFramework
     public interface IEvent
     {
         /// <summary>
-        /// 可以多次注册,信号量同时多次触发
-        /// 即便是无参数的回调，也强制采用这种方式
+        /// This is common use for five,six...even more param method, but you have to transfer param type by yourself
         /// </summary>
         /// <param name="key"></param>
         /// <param name="action"></param>
         void Regist(string key, Action<object[]> action);
 
         /// <summary>
-        /// 取消注册事件
+        /// Regist with no param action
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="action"></param>
+        void Regist(string key, Action action);
+
+        /// <summary>
+        /// Regist with one param action
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key"></param>
+        /// <param name="action"></param>
+        void Regist<T>(string key, Action<T> action);
+
+        /// <summary>
+        /// Regist with two params action
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="U"></typeparam>
+        /// <param name="key"></param>
+        /// <param name="action"></param>
+        void Regist<T, U>(string key, Action<T, U> action);
+
+        /// <summary>
+        /// Regist with three params action
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="U"></typeparam>
+        /// <typeparam name="V"></typeparam>
+        /// <param name="key"></param>
+        /// <param name="action"></param>
+        void Regist<T, U, V>(string key, Action<T, U, V> action);
+
+        /// <summary>
+        /// Regist with four params action
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="U"></typeparam>
+        /// <typeparam name="V"></typeparam>
+        /// <typeparam name="W"></typeparam>
+        /// <param name="key"></param>
+        /// <param name="action"></param>
+        void Regist<T, U, V, W>(string key, Action<T, U, V, W> action);
+
+        /// <summary>
+        /// Unregist key
         /// </summary>
         /// <param name="key"></param>
         void Unregist(string key);
 
         /// <summary>
-        /// 派发事件
+        /// Dispatch key and its action will execute
         /// </summary>
         /// <param name="key"></param>
         /// <param name="obj"></param>
