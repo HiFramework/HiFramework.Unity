@@ -9,56 +9,106 @@ namespace HiFramework
 {
     public class EventComponent : Component, IEvent
     {
-        private class HandlerInfo
+        /// <summary>
+        /// Hold the events user registed
+        /// </summary>
+        private readonly Dictionary<string, List<ActionBase>> _container = new Dictionary<string, List<ActionBase>>();
+
+        /// <summary>
+        /// Regist event with no param
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="action"></param>
+        public void Regist(string key, Action action)
         {
-            public Action<object[]> Action { get; }
-
-            public HandlerInfo(Action<object[]> action)
-            {
-                Action = action;
-            }
+            var handler = new Action_0(action);
+            RegistHandler(key, handler);
         }
-        private readonly Dictionary<string, List<HandlerInfo>> _maps = new Dictionary<string, List<HandlerInfo>>();
 
+        /// <summary>
+        /// Regist event with object array param, user should transform type by itself
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="action"></param>
         public void Regist(string key, Action<object[]> action)
         {
-            if (_maps.ContainsKey(key))
+            var handler = new Action_objects(action);
+            RegistHandler(key, handler);
+        }
+
+        /// <summary>
+        /// Regist one param event
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key"></param>
+        /// <param name="action"></param>
+        public void Regist<T>(string key, Action<T> action)
+        {
+            var handler = new Action_1<T>(action);
+            RegistHandler(key, handler);
+        }
+
+        /// <summary>
+        /// This method handle one key with multiple action
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="handler"></param>
+        private void RegistHandler(string key, ActionBase handler)
+        {
+            if (_container.ContainsKey(key))
             {
-                var infos = _maps[key];
-                infos.Add(new HandlerInfo(action));
+                _container[key].Add(handler);
             }
             else
             {
-                var list = new List<HandlerInfo>();
-                list.Add(new HandlerInfo(action));
-                _maps.Add(key, list);
+                var list = new List<ActionBase>();
+                list.Add(handler);
+                _container.Add(key, list);
             }
         }
 
-        public void Unregist(string key)
+        public void Dispatch(string key)
         {
-            Assert.IsTrue(_maps.ContainsKey(key));
-            _maps[key].Clear();
-            _maps.Remove(key);
-        }
-
-        public void Unregist(string key, Action<object[]> action)
-        {
-            Assert.IsTrue(_maps.ContainsKey(key));
-            var info = _maps[key].Find((x) => { return x.Action == action; });
-            Assert.IsNotNull(info);
-            _maps[key].Remove(info);
+            Assert.IsNotNull(_container.ContainsKey(key));
+            var infos = _container[key];
+            foreach (var variable in infos)
+            {
+                variable.Dispatch();
+            }
         }
 
         public void Dispatch(string key, params object[] obj)
         {
-            Assert.IsNotNull(_maps.ContainsKey(key));
-            var infos = _maps[key];
+            Assert.IsNotNull(_container.ContainsKey(key));
+            var infos = _container[key];
             foreach (var variable in infos)
             {
-                variable.Action(obj);
+                variable.Dispatch(obj);
             }
         }
+
+        public void Dispatch<T>(string key, T t)
+        {
+            Assert.IsNotNull(_container.ContainsKey(key));
+            var infos = _container[key];
+            foreach (var variable in infos)
+            {
+                variable.Dispatch(t);
+            }
+        }
+
+        /// <summary>
+        /// Remove key and all its actions
+        /// </summary>
+        /// <param name="key"></param>
+        public void Unregist(string key)
+        {
+            Assert.IsTrue(_container.ContainsKey(key));
+            _container[key].Clear();
+            _container.Remove(key);
+        }
+
+
 
         public EventComponent(IContainer iContainer) : base(iContainer)
         {
@@ -69,11 +119,11 @@ namespace HiFramework
 
         public override void OnClose()
         {
-            foreach (var variable in _maps)
+            foreach (var variable in _container)
             {
                 variable.Value.Clear();
             }
-            _maps.Clear();
+            _container.Clear();
         }
     }
 }

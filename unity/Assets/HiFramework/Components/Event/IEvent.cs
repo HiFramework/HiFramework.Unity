@@ -16,17 +16,18 @@ namespace HiFramework
         /// <param name="key"></param>
         /// <param name="action"></param>
         void Regist(string key, Action<object[]> action);
+
         /// <summary>
-        /// 取消注册该key下所有
+        /// 取消注册事件
         /// </summary>
         /// <param name="key"></param>
         void Unregist(string key);
+
         /// <summary>
-        /// 取消该key下某个action
+        /// 派发事件
         /// </summary>
         /// <param name="key"></param>
-        /// <param name="action"></param>
-        void Unregist(string key, Action<object[]> action);
+        /// <param name="obj"></param>
         void Dispatch(string key, params object[] obj);
     }
 }

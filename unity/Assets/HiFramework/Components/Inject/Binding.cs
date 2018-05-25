@@ -12,7 +12,7 @@ namespace HiFramework
 {
     class Binding : IBinding
     {
-        public List<Type> Types { get; }
+        public List<Type> Types { get; private set; }
         public Type ToType { get; private set; }
         public object ToObj { get; private set; }
         public string AsName { get; set; }

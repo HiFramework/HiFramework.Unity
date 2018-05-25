@@ -14,9 +14,9 @@ namespace HiFramework
 {
     class BindInfo : IBindInfo
     {
-        public Type Type { get; }
-        public object ToObj { get; }
-        public string AsName { get; }
+        public Type Type { get; private set; }
+        public object ToObj { get; private set; }
+        public string AsName { get; private set; }
 
         public BindInfo(Type type,object toObj,string asName)
         {
