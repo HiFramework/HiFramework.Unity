@@ -34,7 +34,7 @@ namespace HiFramework
         /// <param name="action"></param>
         public void Regist(string key, Action<object[]> action)
         {
-            var handler = new Action_ObjectArray(action);
+            var handler = new Action_Objects(action);
             RegistHandler(key, handler);
         }
 

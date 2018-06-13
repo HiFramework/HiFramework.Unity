@@ -21,12 +21,12 @@ namespace HiFramework
                 throw new Exception("obj is null:" + obj);
         }
 
-        public static void IsEqual(object o1, object o2)
+        public static void AreEqual(object o1, object o2)
         {
             if (o1 != o2)
                 throw new Exception("not equal");
         }
-        public static void IsNotEqual(object o1, object o2)
+        public static void AreNotEqual(object o1, object o2)
         {
             if (o1 == o2)
                 throw new Exception("equal");
