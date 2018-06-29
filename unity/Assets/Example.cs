@@ -11,20 +11,19 @@ public class Example : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Framework.Init();
-
-        Read();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        Framework.Tick();
+        var tick = Center.Get<TickComponent>();
+        tick.Tick();
     }
 
     void Read()
     {
-        IIO io = Center.Get<IOComponent>();
+        var io = Center.Get<IOComponent>();
         io.ReadFile("path");
     }
 }

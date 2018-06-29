@@ -8,12 +8,10 @@ using System.Collections.Generic;
 
 namespace HiFramework
 {
-    internal class PoolComponent : Component, IPoolComponent
+    internal class PoolComponent : Component
     {
         List<object> _pools = new List<object>();
-        public PoolComponent(IContainer iContainer) : base(iContainer)
-        {
-        }
+
         public void AddPool<T>(IPool<T> iPool)
         {
             Assert.IsFalse(_pools.Contains(iPool));
@@ -26,11 +24,11 @@ namespace HiFramework
             _pools.Remove(iPool);
         }
 
-        public override void OnInit()
+        public override void OnCreated()
         {
         }
 
-        public override void OnClose()
+        public override void OnRemoved()
         {
         }
     }

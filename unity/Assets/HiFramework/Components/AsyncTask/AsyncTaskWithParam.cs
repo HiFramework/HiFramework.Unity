@@ -7,7 +7,7 @@ namespace HiFramework
 {
     public abstract class AsyncTaskWithParam<T> : ITick
     {
-        private readonly IAsyncComponent _iAsyncComponent;
+        private readonly AsyncComponent _iAsyncComponent;
         protected Action<T> Action;
         protected AsyncTaskWithParam(Action<T> action)
         {

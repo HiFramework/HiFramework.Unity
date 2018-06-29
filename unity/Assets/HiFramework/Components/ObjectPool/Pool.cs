@@ -12,7 +12,7 @@ namespace HiFramework
     {
         private readonly IPoolHandler<T> _iPoolHandler;
         private readonly Queue<T> _objects = new Queue<T>();
-        private IPoolComponent _iPoolComponent;
+        private PoolComponent _iPoolComponent;
         public Pool(IPoolHandler<T> iPoolHandler)
         {
             _iPoolHandler = iPoolHandler;

@@ -25,15 +25,12 @@ namespace HiFramework
             Assert.IsTrue(_signals.Contains(iSignal));
             _signals.Remove(iSignal);
         }
-        public SignalComponent(IContainer iContainer) : base(iContainer)
+
+        public override void OnCreated()
         {
         }
 
-        public override void OnInit()
-        {
-        }
-
-        public override void OnClose()
+        public override void OnRemoved()
         {
             _signals.Clear();
         }

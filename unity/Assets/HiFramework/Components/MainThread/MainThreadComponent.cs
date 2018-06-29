@@ -65,16 +65,11 @@ namespace HiFramework
             public Action<object> Action { get; private set; }
             public object Obj { get; private set; }
         }
-
-        public MainThreadComponent(IContainer iContainer) : base(iContainer)
+        public override void OnCreated()
         {
         }
 
-        public override void OnInit()
-        {
-        }
-
-        public override void OnClose()
+        public override void OnRemoved()
         {
         }
     }

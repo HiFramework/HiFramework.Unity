@@ -10,12 +10,6 @@ namespace HiFramework
     public class BinderComponent : Component, IBinder
     {
         private IBindContainer _iBindContainer;
-        public BinderComponent(IContainer iContainer) : base(iContainer)
-        {
-            _iBindContainer = new BindContainer();
-        }
-
-
 
         public void SetUp()
         {
@@ -36,11 +30,12 @@ namespace HiFramework
             _iBindContainer.Inject(obj);
         }
 
-        public override void OnInit()
+        public override void OnCreated()
         {
+            _iBindContainer = new BindContainer();
         }
 
-        public override void OnClose()
+        public override void OnRemoved()
         {
         }
     }

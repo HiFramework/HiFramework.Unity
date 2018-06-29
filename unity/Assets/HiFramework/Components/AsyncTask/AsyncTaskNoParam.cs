@@ -9,7 +9,7 @@ namespace HiFramework
 {
     public abstract class AsyncTaskNoParam : ITick
     {
-        private readonly IAsyncComponent _iAsyncComponent;
+        private readonly AsyncComponent _iAsyncComponent;
         protected Action Action;
         protected AsyncTaskNoParam(Action action)
         {

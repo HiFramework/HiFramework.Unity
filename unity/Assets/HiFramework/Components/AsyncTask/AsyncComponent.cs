@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace HiFramework
 {
-    public class AsyncComponent : Component, ITick, IAsyncComponent
+    public class AsyncComponent : Component, ITick
     {
         private readonly List<ITick> _iTicks = new List<ITick>();
 
@@ -27,15 +27,12 @@ namespace HiFramework
                 _iTicks[i].Tick();
         }
 
-        public AsyncComponent(IContainer iContainer) : base(iContainer)
+        public override void OnCreated()
         {
+            Center.Get<TickComponent>().Regist(this);
         }
 
-        public override void OnInit()
-        {
-        }
-
-        public override void OnClose()
+        public override void OnRemoved()
         {
             _iTicks.Clear();
         }

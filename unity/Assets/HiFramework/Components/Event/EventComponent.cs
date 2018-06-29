@@ -129,14 +129,12 @@ namespace HiFramework
 
 
 
-        public EventComponent(IContainer iContainer) : base(iContainer)
-        {
-        }
-        public override void OnInit()
+
+        public override void OnCreated()
         {
         }
 
-        public override void OnClose()
+        public override void OnRemoved()
         {
             foreach (var variable in _container)
             {
