@@ -16,6 +16,7 @@ namespace HiFramework.Tests
         {
             var c = Center.Get<TickComponent>();
             Assert.IsNotNull(c);
+            Assert.IsTrue(c is TickComponent);
         }
 
         [TestMethod()]
