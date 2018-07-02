@@ -11,7 +11,7 @@ namespace HiFramework
     /// <summary>
     /// 
     /// </summary>
-    public class Ticker : Component
+    public class TickComponent : Component
     {
         /// <summary>
         /// Component Inherited from ITick

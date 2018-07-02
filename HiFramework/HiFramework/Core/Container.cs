@@ -28,6 +28,7 @@ namespace HiFramework
             Assert.IsTrue(_iComponents.Contains(iComponent));
             _iComponents.Remove(iComponent);
             iComponent.OnRemoved();
+            iComponent = null;
         }
 
         /// <summary>

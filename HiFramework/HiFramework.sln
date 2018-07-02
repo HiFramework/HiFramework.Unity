@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HiFramework", "HiFramework\HiFramework.csproj", "{F50D5E25-AD36-4B6B-8CFD-F2BCE6D84AEB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HiFramework.Test", "HiFramework.Test\HiFramework.Test.csproj", "{8A41306F-0180-41C5-945E-C10E8DCC8E86}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F50D5E25-AD36-4B6B-8CFD-F2BCE6D84AEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F50D5E25-AD36-4B6B-8CFD-F2BCE6D84AEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F50D5E25-AD36-4B6B-8CFD-F2BCE6D84AEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A41306F-0180-41C5-945E-C10E8DCC8E86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A41306F-0180-41C5-945E-C10E8DCC8E86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A41306F-0180-41C5-945E-C10E8DCC8E86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A41306F-0180-41C5-945E-C10E8DCC8E86}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
