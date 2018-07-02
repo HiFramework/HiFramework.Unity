@@ -69,7 +69,7 @@ namespace HiFramework
                     continue;
                 if (attributes.Length > 1)
                 {
-                    Assert.Fail("multiple inject attribute");
+                    HiAssert.Fail("multiple inject attribute");
                 }
                 var injectAttribute = attributes[0] as InjectAttribute;
                 var toObj =  GetObjectWithAsNameFromIBindInfos(fields[i].FieldType, injectAttribute.AsName);
@@ -88,7 +88,7 @@ namespace HiFramework
                     continue;
                 if (attributes.Length > 1)
                 {
-                    Assert.Fail("multiple inject attribute");
+                    HiAssert.Fail("multiple inject attribute");
                 }
                 var injectAttribute = attributes[0] as InjectAttribute;
                 var toObj = GetObjectWithAsNameFromIBindInfos(propertys[i].PropertyType, injectAttribute.AsName);

@@ -88,7 +88,7 @@ namespace HiFramework
 
         public void Dispatch(string key)
         {
-            Assert.IsNotNull(_container.ContainsKey(key));
+            HiAssert.IsNotNull(_container.ContainsKey(key));
             var infos = _container[key];
             foreach (var variable in infos)
             {
@@ -98,7 +98,7 @@ namespace HiFramework
 
         public void Dispatch(string key, params object[] obj)
         {
-            Assert.IsNotNull(_container.ContainsKey(key));
+            HiAssert.IsNotNull(_container.ContainsKey(key));
             var infos = _container[key];
             foreach (var variable in infos)
             {
@@ -108,7 +108,7 @@ namespace HiFramework
 
         public void Dispatch<T>(string key, T t)
         {
-            Assert.IsNotNull(_container.ContainsKey(key));
+            HiAssert.IsNotNull(_container.ContainsKey(key));
             var infos = _container[key];
             foreach (var variable in infos)
             {
@@ -122,7 +122,7 @@ namespace HiFramework
         /// <param name="key"></param>
         public void Unregist(string key)
         {
-            Assert.IsTrue(_container.ContainsKey(key));
+            HiAssert.IsTrue(_container.ContainsKey(key));
             _container[key].Clear();
             _container.Remove(key);
         }

@@ -14,13 +14,13 @@ namespace HiFramework
 
         public void AddPool<T>(IPool<T> iPool)
         {
-            Assert.IsFalse(_pools.Contains(iPool));
+            HiAssert.IsFalse(_pools.Contains(iPool));
             _pools.Add(iPool);
         }
 
         public void RemovePool<T>(IPool<T> iPool)
         {
-            Assert.IsTrue(_pools.Contains(iPool));
+            HiAssert.IsTrue(_pools.Contains(iPool));
             _pools.Remove(iPool);
         }
 

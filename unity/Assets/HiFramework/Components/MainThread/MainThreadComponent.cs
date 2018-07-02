@@ -28,7 +28,7 @@ namespace HiFramework
 
         public void RunOnApplicationQuit(Action action)
         {
-            Assert.IsFalse(_applicationQuitActionList.Contains(action));
+            HiAssert.IsFalse(_applicationQuitActionList.Contains(action));
             _applicationQuitActionList.Add(action);
         }
 

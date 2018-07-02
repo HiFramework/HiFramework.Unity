@@ -27,7 +27,7 @@ namespace HiFramework
             var type = typeof(T);
             if (!type.IsClass && !type.IsInterface)
             {
-                Assert.Fail("T is not class or interface");
+                HiAssert.Fail("T is not class or interface");
             }
             Types.Add(type);
             return this;
@@ -38,11 +38,11 @@ namespace HiFramework
             var type = typeof(T);
             if (type.IsSubclassOf(typeof(MonoBehaviour)))
             {
-                Assert.Fail("this class is sub from monobehavior, use to object instead");
+                HiAssert.Fail("this class is sub from monobehavior, use to object instead");
             }
             if (!type.IsClass)
             {
-                Assert.Fail("type is not class");
+                HiAssert.Fail("type is not class");
             }
             ToType = typeof(T);
             return new BindingAsName(this);
@@ -52,7 +52,7 @@ namespace HiFramework
         {
             if (!obj.GetType().IsClass)
             {
-                Assert.Fail("type is not class");
+                HiAssert.Fail("type is not class");
             }
             ToObj = obj;
             return new BindingAsName(this);

@@ -17,12 +17,12 @@ namespace HiFramework
         List<SignalBase> _signals = new List<SignalBase>();
         public void AddSignal(SignalBase iSignal)
         {
-            Assert.IsFalse(_signals.Contains(iSignal));
+            HiAssert.IsFalse(_signals.Contains(iSignal));
             _signals.Add(iSignal);
         }
         public void RemoveSignal(SignalBase iSignal)
         {
-            Assert.IsTrue(_signals.Contains(iSignal));
+            HiAssert.IsTrue(_signals.Contains(iSignal));
             _signals.Remove(iSignal);
         }
 

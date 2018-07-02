@@ -43,7 +43,7 @@ namespace HiFramework
 
         public void UnRegist(Action handler)
         {
-            Assert.IsTrue(_handlers.Contains(handler));
+            HiAssert.IsTrue(_handlers.Contains(handler));
             _handlers.Remove(handler);
         }
 
@@ -74,7 +74,7 @@ namespace HiFramework
 
         public void UnRegist(Action<T> handler)
         {
-            Assert.IsTrue(_handlers.Contains(handler));
+            HiAssert.IsTrue(_handlers.Contains(handler));
             _handlers.Remove(handler);
         }
     }
@@ -103,7 +103,7 @@ namespace HiFramework
 
         public void UnRegist(Action<T, U> handler)
         {
-            Assert.IsTrue(_handlers.Contains(handler));
+            HiAssert.IsTrue(_handlers.Contains(handler));
             _handlers.Remove(handler);
         }
 
@@ -134,7 +134,7 @@ namespace HiFramework
 
         public void UnRegist(Action<T, U, V> handler)
         {
-            Assert.IsTrue(_handlers.Contains(handler));
+            HiAssert.IsTrue(_handlers.Contains(handler));
             _handlers.Remove(handler);
         }
 
@@ -166,7 +166,7 @@ namespace HiFramework
 
         public void UnRegist(Action<T, U, V, W> handler)
         {
-            Assert.IsTrue(_handlers.Contains(handler));
+            HiAssert.IsTrue(_handlers.Contains(handler));
             _handlers.Remove(handler);
         }
 
