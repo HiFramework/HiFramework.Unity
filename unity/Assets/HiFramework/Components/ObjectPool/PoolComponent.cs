@@ -10,18 +10,18 @@ namespace HiFramework
 {
     internal class PoolComponent : Component
     {
-        List<object> _pools = new List<object>();
+        private List<object> pools = new List<object>();
 
         public void AddPool<T>(IPool<T> iPool)
         {
-            HiAssert.IsFalse(_pools.Contains(iPool));
-            _pools.Add(iPool);
+            HiAssert.IsFalse(pools.Contains(iPool));
+            pools.Add(iPool);
         }
 
         public void RemovePool<T>(IPool<T> iPool)
         {
-            HiAssert.IsTrue(_pools.Contains(iPool));
-            _pools.Remove(iPool);
+            HiAssert.IsTrue(pools.Contains(iPool));
+            pools.Remove(iPool);
         }
     }
 }

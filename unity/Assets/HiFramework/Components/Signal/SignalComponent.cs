@@ -4,14 +4,10 @@
  * Author: hiramtan@live.com
  ****************************************************************************/
 
-
-
 using System.Collections.Generic;
-using System.Linq;
 
 namespace HiFramework
 {
-
     public class SignalComponent : Component, ISignalComponent
     {
         List<SignalBase> _signals = new List<SignalBase>();

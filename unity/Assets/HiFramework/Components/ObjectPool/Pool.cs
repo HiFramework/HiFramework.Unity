@@ -10,42 +10,42 @@ namespace HiFramework
 {
     public class Pool<T> : IPool<T>
     {
-        private readonly IPoolHandler<T> _iPoolHandler;
-        private readonly Queue<T> _objects = new Queue<T>();
-        private PoolComponent _iPoolComponent;
-        public Pool(IPoolHandler<T> iPoolHandler)
+        private readonly IPoolHandler<T> poolHandler;
+        private readonly Queue<T> objects = new Queue<T>();
+        private readonly PoolComponent poolComponent;
+        public Pool(IPoolHandler<T> poolHandler)
         {
-            _iPoolHandler = iPoolHandler;
-             _iPoolComponent = Center.Get<PoolComponent>();
-            _iPoolComponent.AddPool(this);
+            this.poolHandler = poolHandler;
+            poolComponent = Center.Get<PoolComponent>();
+            poolComponent.AddPool(this);
         }
         public void Destory()
         {
-            while (_objects.Count > 0)
+            while (objects.Count > 0)
             {
-                var obj = _objects.Dequeue();
-                _iPoolHandler.Destory(obj);
+                var obj = objects.Dequeue();
+                poolHandler.Destory(obj);
             }
-            _iPoolComponent.RemovePool(this);
+            poolComponent.RemovePool(this);
         }
         public T Get()
         {
             T t = default(T);
-            if (_objects.Count > 0)
+            if (objects.Count > 0)
             {
-                t = _objects.Dequeue();
-                _iPoolHandler.OutFromPool(t);
+                t = objects.Dequeue();
+                poolHandler.OutFromPool(t);
             }
             else
             {
-                t = _iPoolHandler.Create();
+                t = poolHandler.Create();
             }
             return t;
         }
         public void Reclaim(T args)
         {
-            _iPoolHandler.InToPool(args);
-            _objects.Enqueue(args);
+            poolHandler.InToPool(args);
+            objects.Enqueue(args);
         }
     }
 }
