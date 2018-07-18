@@ -23,13 +23,5 @@ namespace HiFramework
             HiAssert.IsTrue(_pools.Contains(iPool));
             _pools.Remove(iPool);
         }
-
-        public override void OnCreated()
-        {
-        }
-
-        public override void OnRemoved()
-        {
-        }
     }
 }

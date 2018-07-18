@@ -127,15 +127,9 @@ namespace HiFramework
             _container.Remove(key);
         }
 
-
-
-
-        public override void OnCreated()
+        public override void OnDestory()
         {
-        }
-
-        public override void OnRemoved()
-        {
+            base.OnDestory();
             foreach (var variable in _container)
             {
                 variable.Value.Clear();

@@ -152,13 +152,6 @@ namespace HiFramework
 #endif
             return path;
         }
-
-        public override void OnCreated()
-        {
-        }
-
-        public override void OnRemoved()
-        {
-        }
+        
     }
 }

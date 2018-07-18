@@ -25,13 +25,9 @@ namespace HiFramework
             HiAssert.IsTrue(_signals.Contains(iSignal));
             _signals.Remove(iSignal);
         }
-
-        public override void OnCreated()
+        public override void OnDestory()
         {
-        }
-
-        public override void OnRemoved()
-        {
+            base.OnDestory();
             _signals.Clear();
         }
     }

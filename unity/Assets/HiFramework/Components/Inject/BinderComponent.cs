@@ -32,11 +32,8 @@ namespace HiFramework
 
         public override void OnCreated()
         {
+            base.OnCreated();
             _iBindContainer = new BindContainer();
-        }
-
-        public override void OnRemoved()
-        {
         }
     }
 }

@@ -65,12 +65,5 @@ namespace HiFramework
             public Action<object> Action { get; private set; }
             public object Obj { get; private set; }
         }
-        public override void OnCreated()
-        {
-        }
-
-        public override void OnRemoved()
-        {
-        }
     }
 }
