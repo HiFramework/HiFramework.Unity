@@ -16,22 +16,22 @@ namespace HiFramework
         /// <summary>
         /// Component Inherited from ITick
         /// </summary>
-        private List<ITick> _iTicks = new List<ITick>();
+        private List<ITick> ticks = new List<ITick>();
 
         /// <summary>
         /// When component created
         /// </summary>
         public override void OnCreated()
         {
-            _iTicks = new List<ITick>();
+            ticks = new List<ITick>();
         }
 
         /// <summary>
         /// When component removed
         /// </summary>
-        public override void OnRemoved()
+        public override void OnDestory()
         {
-            _iTicks.Clear();
+            ticks.Clear();
         }
 
         /// <summary>
@@ -43,8 +43,8 @@ namespace HiFramework
             if (iComponent is ITick)
             {
                 var iTick = iComponent as ITick;
-                HiAssert.IsFalse(_iTicks.Contains(iTick));
-                _iTicks.Add(iTick);
+                HiAssert.IsFalse(ticks.Contains(iTick));
+                ticks.Add(iTick);
             }
         }
 
@@ -57,8 +57,8 @@ namespace HiFramework
             if (iComponent is ITick)
             {
                 var iTick = iComponent as ITick;
-                HiAssert.IsTrue(_iTicks.Contains(iTick));
-                _iTicks.Remove(iTick);
+                HiAssert.IsTrue(ticks.Contains(iTick));
+                ticks.Remove(iTick);
             }
         }
 
@@ -67,9 +67,9 @@ namespace HiFramework
         /// </summary>
         public void Tick()
         {
-            for (int i = 0; i < _iTicks.Count; i++)
+            for (int i = 0; i < ticks.Count; i++)
             {
-                _iTicks[i].Tick();
+                ticks[i].Tick();
             }
         }
     }

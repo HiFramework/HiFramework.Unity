@@ -16,6 +16,6 @@ namespace HiFramework
         /// <summary>
         /// When component removed
         /// </summary>
-        void OnRemoved();
+        void OnDestory();
     }
 }

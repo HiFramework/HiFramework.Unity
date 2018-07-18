@@ -9,12 +9,17 @@ namespace HiFramework
     /// <summary>
     /// Main interface for user to get/remove component
     /// </summary>
-    public static class Center
+    public class Center : IFramework
     {
         /// <summary>
         /// To hold all component
         /// </summary>
         private static readonly IContainer Container = new Container();
+
+        /// <summary>
+        /// Tick component to tick all components
+        /// </summary>
+        private TickComponent tickComponent;
 
         /// <summary>
         /// Get component
@@ -38,13 +43,53 @@ namespace HiFramework
         }
 
         /// <summary>
-        /// Remove component
+        /// Remove component by type
         /// </summary>
         /// <typeparam name="T"></typeparam>
         public static void Remove<T>() where T : class, IComponent
         {
             var c = Container.Get<T>();
             Container.Remove(c);
+        }
+
+        /// <summary>
+        /// Remove component by instance
+        /// </summary>
+        /// <param name="component"></param>
+        public static void Remove(IComponent component)
+        {
+            HiAssert.IsNotNull(component);
+            Container.Remove(component);
+        }
+
+        /// <summary>
+        /// Init framework
+        /// </summary>
+        public void Init()
+        {
+            tickComponent = Get<TickComponent>();
+        }
+
+        /// <summary>
+        /// Tick all component
+        /// </summary>
+        public void Tick()
+        {
+            tickComponent.Tick();
+        }
+
+        /// <summary>
+        /// Destory framework(destory every component)
+        /// </summary>
+        public void Destory()
+        {
+            var container = Container as Container;
+            HiAssert.IsNotNull(container);
+            var components = container.components;
+            for (int i = 0; i < components.Count; i++)
+            {
+                Remove(components[i]);
+            }
         }
     }
 }

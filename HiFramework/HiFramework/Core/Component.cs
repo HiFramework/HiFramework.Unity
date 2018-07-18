@@ -11,14 +11,22 @@ namespace HiFramework
     /// </summary>
     public abstract class Component : IComponent
     {
+        private TickComponent tickComponent;
         /// <summary>
         /// When this component created
         /// </summary>
-        public abstract void OnCreated();
+        public virtual void OnCreated()
+        {
+            tickComponent = Center.Get<TickComponent>();
+            tickComponent.Regist(this);
+        }
 
         /// <summary>
         /// When this component removed
         /// </summary>
-        public abstract void OnRemoved();
+        public virtual void OnDestory()
+        {
+            tickComponent.Unregist(this);
+        }
     }
 }

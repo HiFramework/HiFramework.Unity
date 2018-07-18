@@ -17,7 +17,7 @@ namespace HiFramework
         /// <summary>
         /// Component list
         /// </summary>
-        private readonly List<IComponent> _iComponents = new List<IComponent>();
+        internal readonly List<IComponent> components = new List<IComponent>();
 
         /// <summary>
         /// Remove component
@@ -25,9 +25,10 @@ namespace HiFramework
         /// <param name="iComponent"></param>
         public void Remove(IComponent iComponent)
         {
-            HiAssert.IsTrue(_iComponents.Contains(iComponent));
-            _iComponents.Remove(iComponent);
-            iComponent.OnRemoved();
+
+            HiAssert.IsTrue(components.Contains(iComponent));
+            components.Remove(iComponent);
+            iComponent.OnDestory();
             iComponent = null;
         }
 
@@ -64,11 +65,11 @@ namespace HiFramework
         private T GetFromList<T>() where T : class, IComponent
         {
             IComponent iComponent = null;
-            for (int i = 0; i < _iComponents.Count; i++)
+            for (int i = 0; i < components.Count; i++)
             {
-                if (_iComponents[i] is T)
+                if (components[i] is T)
                 {
-                    iComponent = _iComponents[i];
+                    iComponent = components[i];
                     break;
                 }
             }
@@ -82,8 +83,8 @@ namespace HiFramework
         private void AddToList(IComponent component)
         {
             HiAssert.IsNotNull(component);
-            HiAssert.IsFalse(_iComponents.Contains(component));
-            _iComponents.Add(component);
+            HiAssert.IsFalse(components.Contains(component));
+            components.Add(component);
         }
 
         /// <summary>
