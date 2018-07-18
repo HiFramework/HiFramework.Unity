@@ -11,7 +11,11 @@ namespace HiFramework
     /// </summary>
     public abstract class Component : IComponent
     {
+        /// <summary>
+        /// Framework's tick component
+        /// </summary>
         private TickComponent tickComponent;
+
         /// <summary>
         /// When this component created
         /// </summary>

@@ -1,5 +1,5 @@
 ﻿/****************************************************************************
- * Description: To get and remove component
+ * Description: Framework main entry
  *
  * Author: hiramtan@live.com
  ****************************************************************************/
