@@ -9,7 +9,7 @@ using System;
 
 namespace HiFramework
 {
-    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
+    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false, Inherited = true)]
     public class InjectAttribute : Attribute
     {
         /// <summary>
