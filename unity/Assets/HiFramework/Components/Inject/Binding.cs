@@ -1,61 +1,49 @@
-﻿/****************************************************************************
-* Description:
-*
-* Author: hiramtan @live.com
-****************************************************************************/
+﻿/***************************************************************
+ * Description: 
+ *
+ * Documents: 
+ * Author: hiramtan@live.com
+***************************************************************/
 
 using System;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace HiFramework
 {
-    class Binding : IBinding
+    /// <summary>
+    /// 正在执行绑定对象
+    /// </summary>
+    public class Binding : IBinding
     {
-        public List<Type> Types { get; private set; }
-        public Type ToType { get; private set; }
-        public object ToObj { get; private set; }
-        public string AsName { get; set; }
+        /// <summary>
+        /// 绑定to结束后的相应回调
+        /// </summary>
+        private Action<BindInfo> BindToFinishHandler;
 
-        public Binding(IBindContainer iBindContainer)
-        {
-            Types = new List<Type>();
-            iBindContainer.AddBinding(this);
-        }
-        public IBinding Bind<T>()
-        {
-            var type = typeof(T);
-            if (!type.IsClass && !type.IsInterface)
-            {
-                AssertThat.Fail("T is not class or interface");
-            }
-            Types.Add(type);
-            return this;
-        }
+        /// <summary>
+        /// 绑定信息
+        /// </summary>
+        private BindInfo bindInfo = new BindInfo();
 
-        public IBindingAsName To<T>()
+        /// <summary>
+        /// 构造函数，绑定类型
+        /// </summary>
+        /// <param name="type"></param>
+        public Binding(Type type, Action<BindInfo> action)
         {
-            var type = typeof(T);
-            if (type.IsSubclassOf(typeof(MonoBehaviour)))
-            {
-                AssertThat.Fail("this class is sub from monobehavior, use to object instead");
-            }
-            if (!type.IsClass)
-            {
-                AssertThat.Fail("type is not class");
-            }
-            ToType = typeof(T);
-            return new BindingAsName(this);
+            bindInfo.SetType(type);
+            BindToFinishHandler = action;
         }
 
-        public IBindingAsName To(object obj)
+        /// <summary>
+        /// Bind to a instance 
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
+        public IBindAsName To(object args)
         {
-            if (!obj.GetType().IsClass)
-            {
-                AssertThat.Fail("type is not class");
-            }
-            ToObj = obj;
-            return new BindingAsName(this);
+            bindInfo.SetObject(args);
+            BindToFinishHandler(bindInfo);
+            return new BindAsName(bindInfo);
         }
     }
 }

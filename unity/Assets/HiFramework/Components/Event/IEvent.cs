@@ -15,44 +15,44 @@ namespace HiFramework
         /// </summary>
         /// <param name="key"></param>
         /// <param name="action"></param>
-        void AddListener(string key, Action<object[]> action);
+        void Subscribe(string key, Action<object[]> action);
 
         /// <summary>
-        /// AddListener with no param action
+        /// Subscribe with no param action
         /// </summary>
         /// <param name="key"></param>
         /// <param name="action"></param>
-        void AddListener(string key, Action action);
+        void Subscribe(string key, Action action);
 
         /// <summary>
-        /// AddListener with one param action
+        /// Subscribe with one param action
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="key"></param>
         /// <param name="action"></param>
-        void AddListener<T>(string key, Action<T> action);
+        void Subscribe<T>(string key, Action<T> action);
 
         /// <summary>
-        /// AddListener with two params action
+        /// Subscribe with two params action
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <typeparam name="U"></typeparam>
         /// <param name="key"></param>
         /// <param name="action"></param>
-        void AddListener<T, U>(string key, Action<T, U> action);
+        void Subscribe<T, U>(string key, Action<T, U> action);
 
         /// <summary>
-        /// AddListener with three params action
+        /// Subscribe with three params action
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <typeparam name="U"></typeparam>
         /// <typeparam name="V"></typeparam>
         /// <param name="key"></param>
         /// <param name="action"></param>
-        void AddListener<T, U, V>(string key, Action<T, U, V> action);
+        void Subscribe<T, U, V>(string key, Action<T, U, V> action);
 
         /// <summary>
-        /// AddListener with four params action
+        /// Subscribe with four params action
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <typeparam name="U"></typeparam>
@@ -60,7 +60,7 @@ namespace HiFramework
         /// <typeparam name="W"></typeparam>
         /// <param name="key"></param>
         /// <param name="action"></param>
-        void AddListener<T, U, V, W>(string key, Action<T, U, V, W> action);
+        void Subscribe<T, U, V, W>(string key, Action<T, U, V, W> action);
 
         /// <summary>
         /// RemoveListener key

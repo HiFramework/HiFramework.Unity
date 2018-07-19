@@ -21,10 +21,10 @@ public class Example_Event : MonoBehaviour
     void Init()
     {
         var events = Center.Get<EventComponent>();
-        events.AddListener("key1", () => { Debug.Log("key1 event"); });
-        events.AddListener("key2", (int x) => { Debug.Log("key2 event" + x); });
-        events.AddListener("key3", (int x, int y) => { Debug.Log("key3 event" + x + y); });
-        events.AddListener<int, int>("key4", OnTest);
+        events.Subscribe("key1", () => { Debug.Log("key1 event"); });
+        events.Subscribe("key2", (int x) => { Debug.Log("key2 event" + x); });
+        events.Subscribe("key3", (int x, int y) => { Debug.Log("key3 event" + x + y); });
+        events.Subscribe<int, int>("key4", OnTest);
 
         events.Dispatch("key1");
         events.Dispatch("key2", 10);

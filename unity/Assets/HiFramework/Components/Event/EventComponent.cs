@@ -17,47 +17,47 @@ namespace HiFramework
         private readonly Dictionary<string, List<ActionBase>> container = new Dictionary<string, List<ActionBase>>();
 
         /// <summary>
-        /// AddListener event with no param
+        /// Subscribe event with no param
         /// </summary>
         /// <param name="key"></param>
         /// <param name="action"></param>
-        public void AddListener(string key, Action action)
+        public void Subscribe(string key, Action action)
         {
             var handler = new Action_0(action);
             RegistHandler(key, handler);
         }
 
         /// <summary>
-        /// AddListener event with object array param, user should transform type by itself
+        /// Subscribe event with object array param, user should transform type by itself
         /// </summary>
         /// <param name="key"></param>
         /// <param name="action"></param>
-        public void AddListener(string key, Action<object[]> action)
+        public void Subscribe(string key, Action<object[]> action)
         {
             var handler = new Action_Objects(action);
             RegistHandler(key, handler);
         }
 
         /// <summary>
-        /// AddListener one param event
+        /// Subscribe one param event
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="key"></param>
         /// <param name="action"></param>
-        public void AddListener<T>(string key, Action<T> action)
+        public void Subscribe<T>(string key, Action<T> action)
         {
             var handler = new Action_1<T>(action);
             RegistHandler(key, handler);
         }
 
         /// <summary>
-        /// AddListener two param event
+        /// Subscribe two param event
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <typeparam name="U"></typeparam>
         /// <param name="key"></param>
         /// <param name="action"></param>
-        public void AddListener<T, U>(string key, Action<T, U> action)
+        public void Subscribe<T, U>(string key, Action<T, U> action)
         {
             var handler = new Action_2<T, U>(action);
             RegistHandler(key, handler);
@@ -71,7 +71,7 @@ namespace HiFramework
         /// <typeparam name="V"></typeparam>
         /// <param name="key"></param>
         /// <param name="action"></param>
-        public void AddListener<T, U, V>(string key, Action<T, U, V> action)
+        public void Subscribe<T, U, V>(string key, Action<T, U, V> action)
         {
             var handler = new Action_3<T, U, V>(action);
             RegistHandler(key, handler);
@@ -86,7 +86,7 @@ namespace HiFramework
         /// <typeparam name="W"></typeparam>
         /// <param name="key"></param>
         /// <param name="action"></param>
-        public void AddListener<T, U, V, W>(string key, Action<T, U, V, W> action)
+        public void Subscribe<T, U, V, W>(string key, Action<T, U, V, W> action)
         {
             var handler = new Action_4<T, U, V, W>(action);
             RegistHandler(key, handler);

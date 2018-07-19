@@ -4,16 +4,15 @@
  * Documents: 
  * Author: hiramtan@live.com
 ***************************************************************/
-
 namespace HiFramework
 {
-    public interface IBinding
+    public interface IBindAsName
     {
         /// <summary>
-        /// Bind to a instance 
+        /// This interface is opertional
+        /// Bind type to a instance with a name
         /// </summary>
-        /// <param name="args"></param>
-        /// <returns></returns>
-        IBindAsName To(object args);
+        /// <param name="name"></param>
+        void AsName(string name);
     }
 }

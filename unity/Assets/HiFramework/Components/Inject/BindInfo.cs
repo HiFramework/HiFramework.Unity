@@ -1,27 +1,58 @@
-﻿/****************************************************************************
-* Description:
-*
-* Author: hiramtan @live.com
-****************************************************************************/
-
+﻿/***************************************************************
+ * Description: 
+ *
+ * Documents: 
+ * Author: hiramtan@live.com
+***************************************************************/
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace HiFramework
 {
-    class BindInfo : IBindInfo
+    /// <summary>
+    /// 绑定信息
+    /// </summary>
+    public class BindInfo
     {
+        /// <summary>
+        /// 类型
+        /// </summary>
         public Type Type { get; private set; }
-        public object ToObj { get; private set; }
+
+        /// <summary>
+        /// 实例
+        /// </summary>
+        public object Obj { get; private set; }
+
+        /// <summary>
+        /// 别名
+        /// </summary>
         public string AsName { get; private set; }
 
-        public BindInfo(Type type,object toObj,string asName)
+        /// <summary>
+        /// 设置类型
+        /// </summary>
+        /// <param name="type"></param>
+        public void SetType(Type type)
         {
             Type = type;
-            ToObj = toObj;
+        }
+
+        /// <summary>
+        /// 设置实例
+        /// </summary>
+        /// <param name="obj"></param>
+        public void SetObject(object obj)
+        {
+            Obj = obj;
+        }
+
+        /// <summary>
+        /// 设置别名
+        /// </summary>
+        /// <param name="asName"></param>
+        public void SetAsName(string asName)
+        {
             AsName = asName;
         }
     }

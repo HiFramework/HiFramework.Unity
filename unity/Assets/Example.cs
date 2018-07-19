@@ -34,6 +34,6 @@ public class Example : MonoBehaviour
     void Event()
     {
         var events = Center.Get<EventComponent>();
-        events.AddListener("key", () => { });
+        events.Subscribe("key", () => { });
     }
 }

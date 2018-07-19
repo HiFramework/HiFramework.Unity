@@ -7,13 +7,18 @@
 
 namespace HiFramework
 {
-    public interface IBinding
+    /// <summary>
+    /// 绑定信息维护
+    /// </summary>
+    public class BindInfoContainer
     {
         /// <summary>
-        /// Bind to a instance 
+        /// 添加绑定信息
         /// </summary>
-        /// <param name="args"></param>
-        /// <returns></returns>
-        IBindAsName To(object args);
+        /// <param name="bindInfo"></param>
+        public void Add(BindInfo bindInfo)
+        {
+
+        }
     }
 }
