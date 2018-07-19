@@ -14,7 +14,7 @@ namespace HiFramework
         /// <summary>
         /// Hold the events user registed
         /// </summary>
-        private readonly Dictionary<string, List<ActionBase>> _container = new Dictionary<string, List<ActionBase>>();
+        private readonly Dictionary<string, List<ActionBase>> container = new Dictionary<string, List<ActionBase>>();
 
         /// <summary>
         /// Regist event with no param
@@ -74,22 +74,22 @@ namespace HiFramework
         /// <param name="handler"></param>
         private void RegistHandler(string key, ActionBase handler)
         {
-            if (_container.ContainsKey(key))
+            if (container.ContainsKey(key))
             {
-                _container[key].Add(handler);
+                container[key].Add(handler);
             }
             else
             {
                 var list = new List<ActionBase>();
                 list.Add(handler);
-                _container.Add(key, list);
+                container.Add(key, list);
             }
         }
 
         public void Dispatch(string key)
         {
-            HiAssert.IsNotNull(_container.ContainsKey(key));
-            var infos = _container[key];
+            HiAssert.IsNotNull(container.ContainsKey(key));
+            var infos = container[key];
             foreach (var variable in infos)
             {
                 variable.Dispatch();
@@ -98,8 +98,8 @@ namespace HiFramework
 
         public void Dispatch(string key, params object[] obj)
         {
-            HiAssert.IsNotNull(_container.ContainsKey(key));
-            var infos = _container[key];
+            HiAssert.IsNotNull(container.ContainsKey(key));
+            var infos = container[key];
             foreach (var variable in infos)
             {
                 variable.Dispatch(obj);
@@ -108,8 +108,8 @@ namespace HiFramework
 
         public void Dispatch<T>(string key, T t)
         {
-            HiAssert.IsNotNull(_container.ContainsKey(key));
-            var infos = _container[key];
+            HiAssert.IsNotNull(container.ContainsKey(key));
+            var infos = container[key];
             foreach (var variable in infos)
             {
                 variable.Dispatch(t);
@@ -122,19 +122,19 @@ namespace HiFramework
         /// <param name="key"></param>
         public void Unregist(string key)
         {
-            HiAssert.IsTrue(_container.ContainsKey(key));
-            _container[key].Clear();
-            _container.Remove(key);
+            HiAssert.IsTrue(container.ContainsKey(key));
+            container[key].Clear();
+            container.Remove(key);
         }
 
         public override void OnDestory()
         {
             base.OnDestory();
-            foreach (var variable in _container)
+            foreach (var variable in container)
             {
                 variable.Value.Clear();
             }
-            _container.Clear();
+            container.Clear();
         }
     }
 }
