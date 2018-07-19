@@ -42,9 +42,9 @@ namespace HiFramework
 
         public void Tick()
         {
-            if (toExecuteQueue.Count > 0)
+            lock (Locker)
             {
-                lock (Locker)
+                if (toExecuteQueue.Count > 0)
                 {
                     while (toExecuteQueue.Count > 0)
                     {

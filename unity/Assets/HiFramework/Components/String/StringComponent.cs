@@ -1,16 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿/****************************************************************************
+ * Description:
+ *
+ * Author: hiramtan@live.com
+ ****************************************************************************/
 
-public class StringComponent : MonoBehaviour {
+using System;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+namespace HiFramework
+{
+    public class StringComponent : Component
+    {
+        public static string FormatInfo(string info)
+        {
+            if (info == null)
+            {
+                throw new ArgumentNullException("info is null");
+            }
+            return string.Format("[{0}]", info);
+        }
+    }
 }
