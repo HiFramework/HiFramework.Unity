@@ -9,28 +9,28 @@ namespace HiFramework
 {
     public class AsyncComponent : Component, ITick
     {
-        private readonly List<ITick> _iTicks = new List<ITick>();
+        private readonly List<ITick> ticks = new List<ITick>();
 
         public void RegistTick(ITick iTick)
         {
-            _iTicks.Add(iTick);
+            ticks.Add(iTick);
         }
 
         public void UnRegistTick(ITick iTick)
         {
-            _iTicks.Remove(iTick);
+            ticks.Remove(iTick);
         }
 
         public void Tick()
         {
-            for (var i = 0; i < _iTicks.Count; i++)
-                _iTicks[i].Tick();
+            for (var i = 0; i < ticks.Count; i++)
+                ticks[i].Tick();
         }
 
         public override void OnDestory()
         {
             base.OnDestory();
-            _iTicks.Clear();
+            ticks.Clear();
         }
     }
 }
