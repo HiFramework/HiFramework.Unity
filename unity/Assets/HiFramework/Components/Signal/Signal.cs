@@ -6,167 +6,203 @@
 
 using System;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 
 namespace HiFramework
 {
-    public class SignalBase
+    public abstract class SignalBase : IDisposable
     {
-        protected ISignalComponent iSignalComponent;
-        internal SignalBase()
-        {
-            iSignalComponent = Center.Get<SignalComponent>();
-            iSignalComponent.AddSignal(this);
-        }
+        /// <summary>执行与释放或重置非托管资源关联的应用程序定义的任务。</summary>
+        public abstract void Dispose();
     }
 
     public class Signal : SignalBase, ISignal
     {
-        List<Action> _handlers = new List<Action>();
-        public void Regist(Action handler)
+        private event Action OnEvent;
+        /// <summary>执行与释放或重置非托管资源关联的应用程序定义的任务。</summary>
+        public override void Dispose()
         {
-            _handlers.Add(handler);
+            OnEvent = null;
         }
 
-        public void Dispatch()
+        /// <summary>
+        /// Add listener to monitor event
+        /// </summary>
+        /// <param name="action"></param>
+        public void AddListener(Action action)
         {
-            foreach (var handler in _handlers)
-            {
-                handler();
-            }
+            OnEvent += action;
         }
 
-        public void UnRegist()
+        /// <summary>
+        /// Remove listener
+        /// </summary>
+        /// <param name="action"></param>
+        public void RemoveListener(Action action)
         {
-            _handlers.Clear();
-            iSignalComponent.RemoveSignal(this);
+            OnEvent -= action;
         }
 
-        public void UnRegist(Action handler)
+        /// <summary>
+        /// Fire the signal
+        /// </summary>
+        public void Fire()
         {
-            AssertThat.IsTrue(_handlers.Contains(handler));
-            _handlers.Remove(handler);
+            OnEvent();
         }
     }
 
     public class Signal<T> : SignalBase, ISignal<T>
     {
-        List<Action<T>> _handlers = new List<Action<T>>();
-        public void Regist(Action<T> handler)
+        private event Action<T> OnEvent;
+        /// <summary>执行与释放或重置非托管资源关联的应用程序定义的任务。</summary>
+        public override void Dispose()
         {
-            _handlers.Add(handler);
+            OnEvent = null;
         }
 
-        public void Dispatch(T t)
+        /// <summary>
+        /// Add listener to monitor event
+        /// </summary>
+        /// <param name="action"></param>
+        public void AddListener(Action<T> action)
         {
-            foreach (var handler in _handlers)
-            {
-                handler(t);
-            }
+            OnEvent += action;
         }
 
-        public void UnRegist()
+        /// <summary>
+        /// Remove listener
+        /// </summary>
+        /// <param name="action"></param>
+        public void RemoveListener(Action<T> action)
         {
-            _handlers.Clear();
-            iSignalComponent.RemoveSignal(this);
+            OnEvent -= action;
         }
 
-        public void UnRegist(Action<T> handler)
+        /// <summary>
+        /// Fire the signal
+        /// </summary>
+        /// <param name="args"></param>
+        public void Fire(T args)
         {
-            AssertThat.IsTrue(_handlers.Contains(handler));
-            _handlers.Remove(handler);
+            OnEvent(args);
         }
     }
 
-    public class Signal<T, U> : SignalBase, ISignal<T, U>
+    public class Signal<T1, T2> : SignalBase, ISignal<T1, T2>
     {
-        List<Action<T, U>> _handlers = new List<Action<T, U>>();
-        public void Regist(Action<T, U> handler)
+        private event Action<T1, T2> OnEvent;
+        /// <summary>执行与释放或重置非托管资源关联的应用程序定义的任务。</summary>
+        public override void Dispose()
         {
-            _handlers.Add(handler);
+            OnEvent = null;
         }
 
-        public void Dispatch(T t, U u)
+        /// <summary>
+        /// Add listener to monitor event
+        /// </summary>
+        /// <param name="action"></param>
+        public void AddListener(Action<T1, T2> action)
         {
-            foreach (var handler in _handlers)
-            {
-                handler(t, u);
-            }
+            OnEvent += action;
         }
 
-        public void UnRegist()
+        /// <summary>
+        /// Remove listener
+        /// </summary>
+        /// <param name="action"></param>
+        public void RemoveListener(Action<T1, T2> action)
         {
-            _handlers.Clear();
-            iSignalComponent.RemoveSignal(this);
+            OnEvent -= action;
         }
 
-        public void UnRegist(Action<T, U> handler)
+        /// <summary>
+        /// Fire the signal
+        /// </summary>
+        /// <param name="t1"></param>
+        /// <param name="t2"></param>
+        public void Fire(T1 t1, T2 t2)
         {
-            AssertThat.IsTrue(_handlers.Contains(handler));
-            _handlers.Remove(handler);
+            OnEvent(t1, t2);
         }
-
-
     }
 
-    public class Signal<T, U, V> : SignalBase, ISignal<T, U, V>
+    public class Signal<T1, T2, T3> : SignalBase, ISignal<T1, T2, T3>
     {
-        List<Action<T, U, V>> _handlers = new List<Action<T, U, V>>();
-        public void Regist(Action<T, U, V> handler)
+        private event Action<T1, T2, T3> OnEvent;
+        /// <summary>执行与释放或重置非托管资源关联的应用程序定义的任务。</summary>
+        public override void Dispose()
         {
-            _handlers.Add(handler);
+            OnEvent = null;
         }
 
-        public void Dispatch(T t, U u, V v)
+        /// <summary>
+        /// Add listener to monitor event
+        /// </summary>
+        /// <param name="action"></param>
+        public void AddListener(Action<T1, T2, T3> action)
         {
-            foreach (var handler in _handlers)
-            {
-                handler(t, u, v);
-            }
+            OnEvent += action;
         }
 
-        public void UnRegist()
+        /// <summary>
+        /// Remove listener
+        /// </summary>
+        /// <param name="action"></param>
+        public void RemoveListener(Action<T1, T2, T3> action)
         {
-            _handlers.Clear();
-            iSignalComponent.RemoveSignal(this);
+            OnEvent -= action;
         }
 
-        public void UnRegist(Action<T, U, V> handler)
+        /// <summary>
+        /// Fire the signal
+        /// </summary>
+        /// <param name="t1"></param>
+        /// <param name="t2"></param>
+        /// <param name="t3"></param>
+        public void Fire(T1 t1, T2 t2, T3 t3)
         {
-            AssertThat.IsTrue(_handlers.Contains(handler));
-            _handlers.Remove(handler);
+            OnEvent(t1, t2, t3);
         }
-
-
     }
 
-    public class Signal<T, U, V, W> : SignalBase, ISignal<T, U, V, W>
+    public class Signal<T1, T2, T3, T4> : SignalBase, ISignal<T1, T2, T3, T4>
     {
-        List<Action<T, U, V, W>> _handlers = new List<Action<T, U, V, W>>();
-
-        public void Regist(Action<T, U, V, W> handler)
+        private event Action<T1, T2, T3, T4> OnEvent;
+        /// <summary>执行与释放或重置非托管资源关联的应用程序定义的任务。</summary>
+        public override void Dispose()
         {
-            _handlers.Add(handler);
+            OnEvent = null;
         }
 
-        public void Dispatch(T t, U u, V v, W w)
+        /// <summary>
+        /// Add listener to monitor event
+        /// </summary>
+        /// <param name="action"></param>
+        public void AddListener(Action<T1, T2, T3, T4> action)
         {
-            foreach (var handler in _handlers)
-            {
-                handler(t, u, v, w);
-            }
+            OnEvent += action;
         }
 
-        public void UnRegist()
+        /// <summary>
+        /// Remove listener
+        /// </summary>
+        /// <param name="action"></param>
+        public void RemoveListener(Action<T1, T2, T3, T4> action)
         {
-            _handlers.Clear();
-            iSignalComponent.RemoveSignal(this);
+            OnEvent -= action;
         }
 
-        public void UnRegist(Action<T, U, V, W> handler)
+        /// <summary>
+        /// Fire the signal
+        /// </summary>
+        /// <param name="t1"></param>
+        /// <param name="t2"></param>
+        /// <param name="t3"></param>
+        /// <param name="t4"></param>
+        public void Fire(T1 t1, T2 t2, T3 t3, T4 t4)
         {
-            AssertThat.IsTrue(_handlers.Contains(handler));
-            _handlers.Remove(handler);
+            OnEvent(t1, t2, t3, t4);
         }
-
     }
 }

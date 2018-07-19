@@ -76,7 +76,7 @@ namespace HiFramework
         void RemoveListener(string key, ActionBase action);
 
         /// <summary>
-        /// Dispatch key and its action will execute
+        /// Fire key and its action will execute
         /// </summary>
         /// <param name="key"></param>
         /// <param name="obj"></param>

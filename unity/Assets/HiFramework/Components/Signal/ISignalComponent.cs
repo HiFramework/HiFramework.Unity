@@ -9,16 +9,23 @@ namespace HiFramework
     public interface ISignalComponent
     {
         /// <summary>
-        /// 注册事件
+        /// Add signal to container
         /// </summary>
         /// <param name="key"></param>
-        /// <param name="iSignal"></param>
-        void AddSignal(SignalBase iSignal);
+        /// <param name="signal"></param>
+        void AddSignal(string key, SignalBase signal);
 
         /// <summary>
-        /// 移除事件
+        /// Get signal 
         /// </summary>
-        /// <param name="iSignal"></param>
-        void RemoveSignal(SignalBase iSignal);
+        /// <param name="key"></param>
+        /// <returns></returns>
+        SignalBase GetSignal(string key);
+
+        /// <summary>
+        /// Remove signal from container
+        /// </summary>
+        /// <param name="key"></param>
+        void RemoveSignal(string key);
     }
 }

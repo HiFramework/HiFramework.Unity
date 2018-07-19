@@ -10,21 +10,38 @@ namespace HiFramework
 {
     public class SignalComponent : Component, ISignalComponent
     {
-        List<SignalBase> _signals = new List<SignalBase>();
-        public void AddSignal(SignalBase iSignal)
+        Dictionary<string, SignalBase> signals = new Dictionary<string, SignalBase>();
+
+
+        /// <summary>
+        /// Add signal to container
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="signal"></param>
+        public void AddSignal(string key, SignalBase signal)
         {
-            AssertThat.IsFalse(_signals.Contains(iSignal));
-            _signals.Add(iSignal);
+            signals.Add(key, signal);
         }
-        public void RemoveSignal(SignalBase iSignal)
+
+        /// <summary>
+        /// Get signal 
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public SignalBase GetSignal(string key)
         {
-            AssertThat.IsTrue(_signals.Contains(iSignal));
-            _signals.Remove(iSignal);
+            return signals[key];
         }
-        public override void OnDestory()
+
+        /// <summary>
+        /// Remove signal from container
+        /// </summary>
+        /// <param name="key"></param>
+        public void RemoveSignal(string key)
         {
-            base.OnDestory();
-            _signals.Clear();
+            var signal = signals[key];
+            signal.Dispose();
+            signals.Remove(key);
         }
     }
 }
