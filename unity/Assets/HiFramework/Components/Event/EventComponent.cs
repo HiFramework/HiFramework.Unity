@@ -17,47 +17,47 @@ namespace HiFramework
         private readonly Dictionary<string, List<ActionBase>> container = new Dictionary<string, List<ActionBase>>();
 
         /// <summary>
-        /// Regist event with no param
+        /// AddListener event with no param
         /// </summary>
         /// <param name="key"></param>
         /// <param name="action"></param>
-        public void Regist(string key, Action action)
+        public void AddListener(string key, Action action)
         {
             var handler = new Action_0(action);
             RegistHandler(key, handler);
         }
 
         /// <summary>
-        /// Regist event with object array param, user should transform type by itself
+        /// AddListener event with object array param, user should transform type by itself
         /// </summary>
         /// <param name="key"></param>
         /// <param name="action"></param>
-        public void Regist(string key, Action<object[]> action)
+        public void AddListener(string key, Action<object[]> action)
         {
             var handler = new Action_Objects(action);
             RegistHandler(key, handler);
         }
 
         /// <summary>
-        /// Regist one param event
+        /// AddListener one param event
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="key"></param>
         /// <param name="action"></param>
-        public void Regist<T>(string key, Action<T> action)
+        public void AddListener<T>(string key, Action<T> action)
         {
             var handler = new Action_1<T>(action);
             RegistHandler(key, handler);
         }
 
         /// <summary>
-        /// Regist two param event
+        /// AddListener two param event
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <typeparam name="U"></typeparam>
         /// <param name="key"></param>
         /// <param name="action"></param>
-        public void Regist<T, U>(string key, Action<T, U> action)
+        public void AddListener<T, U>(string key, Action<T, U> action)
         {
             var handler = new Action_2<T, U>(action);
             RegistHandler(key, handler);
@@ -71,7 +71,7 @@ namespace HiFramework
         /// <typeparam name="V"></typeparam>
         /// <param name="key"></param>
         /// <param name="action"></param>
-        public void Regist<T, U, V>(string key, Action<T, U, V> action)
+        public void AddListener<T, U, V>(string key, Action<T, U, V> action)
         {
             var handler = new Action_3<T, U, V>(action);
             RegistHandler(key, handler);
@@ -86,7 +86,7 @@ namespace HiFramework
         /// <typeparam name="W"></typeparam>
         /// <param name="key"></param>
         /// <param name="action"></param>
-        public void Regist<T, U, V, W>(string key, Action<T, U, V, W> action)
+        public void AddListener<T, U, V, W>(string key, Action<T, U, V, W> action)
         {
             var handler = new Action_4<T, U, V, W>(action);
             RegistHandler(key, handler);
@@ -130,7 +130,7 @@ namespace HiFramework
         /// Remove key and all its actions
         /// </summary>
         /// <param name="key"></param>
-        public void Unregist(string key)
+        public void RemoveListener(string key)
         {
             AssertThat.IsTrue(container.ContainsKey(key));
             container[key].Clear();
@@ -142,7 +142,7 @@ namespace HiFramework
         /// </summary>
         /// <param name="key"></param>
         /// <param name="action"></param>
-        public void Unregist(string key, ActionBase action)
+        public void RemoveListener(string key, ActionBase action)
         {
             AssertThat.IsTrue(container.ContainsKey(key));
             var actions = container[key];

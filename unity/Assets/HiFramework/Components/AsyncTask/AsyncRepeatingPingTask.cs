@@ -25,7 +25,7 @@ namespace HiFramework
             Action = action;
             _ip = ip;
             _rate = rate;
-            HiAssert.IsFalse(ip.Contains(":"));
+            AssertThat.IsFalse(ip.Contains(":"));
             ping = new Ping(_ip);
         }
 

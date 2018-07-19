@@ -15,44 +15,44 @@ namespace HiFramework
         /// </summary>
         /// <param name="key"></param>
         /// <param name="action"></param>
-        void Regist(string key, Action<object[]> action);
+        void AddListener(string key, Action<object[]> action);
 
         /// <summary>
-        /// Regist with no param action
+        /// AddListener with no param action
         /// </summary>
         /// <param name="key"></param>
         /// <param name="action"></param>
-        void Regist(string key, Action action);
+        void AddListener(string key, Action action);
 
         /// <summary>
-        /// Regist with one param action
+        /// AddListener with one param action
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="key"></param>
         /// <param name="action"></param>
-        void Regist<T>(string key, Action<T> action);
+        void AddListener<T>(string key, Action<T> action);
 
         /// <summary>
-        /// Regist with two params action
+        /// AddListener with two params action
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <typeparam name="U"></typeparam>
         /// <param name="key"></param>
         /// <param name="action"></param>
-        void Regist<T, U>(string key, Action<T, U> action);
+        void AddListener<T, U>(string key, Action<T, U> action);
 
         /// <summary>
-        /// Regist with three params action
+        /// AddListener with three params action
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <typeparam name="U"></typeparam>
         /// <typeparam name="V"></typeparam>
         /// <param name="key"></param>
         /// <param name="action"></param>
-        void Regist<T, U, V>(string key, Action<T, U, V> action);
+        void AddListener<T, U, V>(string key, Action<T, U, V> action);
 
         /// <summary>
-        /// Regist with four params action
+        /// AddListener with four params action
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <typeparam name="U"></typeparam>
@@ -60,20 +60,20 @@ namespace HiFramework
         /// <typeparam name="W"></typeparam>
         /// <param name="key"></param>
         /// <param name="action"></param>
-        void Regist<T, U, V, W>(string key, Action<T, U, V, W> action);
+        void AddListener<T, U, V, W>(string key, Action<T, U, V, W> action);
 
         /// <summary>
-        /// Unregist key
+        /// RemoveListener key
         /// </summary>
         /// <param name="key"></param>
-        void Unregist(string key);
+        void RemoveListener(string key);
 
         /// <summary>
         /// Remove one special event with same key
         /// </summary>
         /// <param name="key"></param>
         /// <param name="action"></param>
-        void Unregist(string key, ActionBase action);
+        void RemoveListener(string key, ActionBase action);
 
         /// <summary>
         /// Dispatch key and its action will execute

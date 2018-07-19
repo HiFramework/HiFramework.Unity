@@ -43,11 +43,9 @@ namespace HiFramework
 
         public void UnRegist(Action handler)
         {
-            HiAssert.IsTrue(_handlers.Contains(handler));
+            AssertThat.IsTrue(_handlers.Contains(handler));
             _handlers.Remove(handler);
         }
-
-
     }
 
     public class Signal<T> : SignalBase, ISignal<T>
@@ -74,7 +72,7 @@ namespace HiFramework
 
         public void UnRegist(Action<T> handler)
         {
-            HiAssert.IsTrue(_handlers.Contains(handler));
+            AssertThat.IsTrue(_handlers.Contains(handler));
             _handlers.Remove(handler);
         }
     }
@@ -103,7 +101,7 @@ namespace HiFramework
 
         public void UnRegist(Action<T, U> handler)
         {
-            HiAssert.IsTrue(_handlers.Contains(handler));
+            AssertThat.IsTrue(_handlers.Contains(handler));
             _handlers.Remove(handler);
         }
 
@@ -134,7 +132,7 @@ namespace HiFramework
 
         public void UnRegist(Action<T, U, V> handler)
         {
-            HiAssert.IsTrue(_handlers.Contains(handler));
+            AssertThat.IsTrue(_handlers.Contains(handler));
             _handlers.Remove(handler);
         }
 
@@ -166,7 +164,7 @@ namespace HiFramework
 
         public void UnRegist(Action<T, U, V, W> handler)
         {
-            HiAssert.IsTrue(_handlers.Contains(handler));
+            AssertThat.IsTrue(_handlers.Contains(handler));
             _handlers.Remove(handler);
         }
 
