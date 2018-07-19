@@ -35,7 +35,7 @@ namespace HiFramework
         /// <param name="type"></param>
         /// <param name="asName"></param>
         /// <returns></returns>
-        public object GetObject(Type type, string asName)
+        public BindInfo GetBindInfo(Type type, string asName)
         {
             return bindInfos.Find((x) => { return (x.Type == type && x.AsName == asName); });
         }

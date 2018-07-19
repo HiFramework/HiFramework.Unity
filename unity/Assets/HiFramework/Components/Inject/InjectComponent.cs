@@ -10,7 +10,7 @@ using System.Reflection;
 
 namespace HiFramework
 {
-    public class InjectComponent : IInject
+    public class InjectComponent : Component, IInject
     {
         private readonly BindInfoContainer bindInfoContainer = new BindInfoContainer();
         /// <summary>
@@ -66,9 +66,9 @@ namespace HiFramework
                         break;
                     }
                 }
-                var toObj = bindInfoContainer.GetObject(fields[i].FieldType, injectAttribute.AsName);
-                AssertThat.IsNotNull(toObj, "Bind to object is null");
-                fields[i].SetValue(obj, toObj);
+                var bindInfo = bindInfoContainer.GetBindInfo(fields[i].FieldType, injectAttribute.AsName);
+                AssertThat.IsNotNull(bindInfo, "Bind to object is null");
+                fields[i].SetValue(obj, bindInfo.Obj);
             }
         }
 
@@ -94,9 +94,9 @@ namespace HiFramework
                         break;
                     }
                 }
-                var toObj = bindInfoContainer.GetObject(propertys[i].PropertyType, injectAttribute.AsName);
-                AssertThat.IsNotNull(toObj, "Bind to object is null");
-                propertys[i].SetValue(obj, toObj, null);
+                var bindInfo = bindInfoContainer.GetBindInfo(propertys[i].PropertyType, injectAttribute.AsName);
+                AssertThat.IsNotNull(bindInfo, "Bind to object is null");
+                propertys[i].SetValue(obj, bindInfo.Obj, null);
             }
         }
     }
