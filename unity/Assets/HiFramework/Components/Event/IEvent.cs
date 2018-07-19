@@ -69,6 +69,13 @@ namespace HiFramework
         void Unregist(string key);
 
         /// <summary>
+        /// Remove one special event with same key
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="action"></param>
+        void Unregist(string key, ActionBase action);
+
+        /// <summary>
         /// Dispatch key and its action will execute
         /// </summary>
         /// <param name="key"></param>

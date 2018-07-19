@@ -118,7 +118,7 @@ namespace HiFramework
         /// <param name="obj"></param>
         public void Dispatch(string key, params object[] obj)
         {
-            HiAssert.IsNotNull(container.ContainsKey(key));
+            AssertThat.IsNotNull(container.ContainsKey(key));
             var infos = container[key];
             foreach (var variable in infos)
             {
@@ -132,7 +132,7 @@ namespace HiFramework
         /// <param name="key"></param>
         public void Unregist(string key)
         {
-            HiAssert.IsTrue(container.ContainsKey(key));
+            AssertThat.IsTrue(container.ContainsKey(key));
             container[key].Clear();
             container.Remove(key);
         }
@@ -144,9 +144,9 @@ namespace HiFramework
         /// <param name="action"></param>
         public void Unregist(string key, ActionBase action)
         {
-            HiAssert.IsTrue(container.ContainsKey(key));
+            AssertThat.IsTrue(container.ContainsKey(key));
             var actions = container[key];
-            HiAssert.IsTrue(actions.Contains(action));
+            AssertThat.IsTrue(actions.Contains(action));
             actions.Remove(action);
         }
 
