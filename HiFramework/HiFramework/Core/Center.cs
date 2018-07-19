@@ -58,7 +58,7 @@ namespace HiFramework
         /// <param name="component"></param>
         public static void Remove(IComponent component)
         {
-            HiAssert.IsNotNull(component);
+            AssertThat.IsNotNull(component);
             Container.Remove(component);
         }
 
@@ -84,7 +84,7 @@ namespace HiFramework
         public void Destory()
         {
             var container = Container as Container;
-            HiAssert.IsNotNull(container);
+            AssertThat.IsNotNull(container);
             var components = container.components;
             for (int i = 0; i < components.Count; i++)
             {

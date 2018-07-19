@@ -31,11 +31,12 @@
 //    }
 //}
 
-////public class TestAsyncWaitTrueTask
-////{
-////    bool test = false;
-////    void Main()
-////    {
-////        new AsyncWaitTrueTask(() => { UnityEngine.Debug.LogError("true"); }, ref test);
-////    }
-////}
+//public class TestAsyncWaitTrueTask
+//{
+//    bool test = false;
+//    void Main()
+//    {
+//        //Log will print if test's value change to true
+//        new AsyncWaitTrueTask(() => { UnityEngine.Debug.Log("true"); }, ref test);
+//    }
+//}

@@ -1,6 +1,6 @@
 ﻿/***************************************************************
  * Description: This is assert logic
- * (ps. why not name as asset, because when do unit test, this will conflict with unit test assert)
+ * (ps. why not name as Asset, because when do unit test, this will conflict with unit test's Assert)
  * Author: hiramtan@live.com
 ***************************************************************/
 
@@ -8,7 +8,7 @@ using System;
 
 namespace HiFramework
 {
-    public static class HiAssert
+    public static class AssertThat
     {
         /// <summary>
         /// Make sure args is true

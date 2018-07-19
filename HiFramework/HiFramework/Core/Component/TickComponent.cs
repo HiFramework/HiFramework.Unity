@@ -43,7 +43,7 @@ namespace HiFramework
             if (iComponent is ITick)
             {
                 var iTick = iComponent as ITick;
-                HiAssert.IsFalse(ticks.Contains(iTick));
+                AssertThat.IsFalse(ticks.Contains(iTick));
                 ticks.Add(iTick);
             }
         }
@@ -57,7 +57,7 @@ namespace HiFramework
             if (iComponent is ITick)
             {
                 var iTick = iComponent as ITick;
-                HiAssert.IsTrue(ticks.Contains(iTick));
+                AssertThat.IsTrue(ticks.Contains(iTick));
                 ticks.Remove(iTick);
             }
         }

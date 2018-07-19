@@ -17,7 +17,7 @@ namespace HiFramework
         /// </summary>
         public static void Init()
         {
-            HiAssert.IsNull(center);
+            AssertThat.IsNull(center);
             center = new Center();
             center.Init();
         }
@@ -27,7 +27,7 @@ namespace HiFramework
         /// </summary>
         public static void Tick()
         {
-            HiAssert.IsNotNull(center);
+            AssertThat.IsNotNull(center);
             center.Tick();
         }
 
@@ -36,7 +36,7 @@ namespace HiFramework
         /// </summary>
         public static void Destory()
         {
-            HiAssert.IsNotNull(center);
+            AssertThat.IsNotNull(center);
             center.Destory();
         }
     }

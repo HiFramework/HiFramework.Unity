@@ -26,7 +26,7 @@ namespace HiFramework
         public void Remove(IComponent iComponent)
         {
 
-            HiAssert.IsTrue(components.Contains(iComponent));
+            AssertThat.IsTrue(components.Contains(iComponent));
             components.Remove(iComponent);
             iComponent.OnDestory();
             iComponent = null;
@@ -82,8 +82,8 @@ namespace HiFramework
         /// <param name="component"></param>
         private void AddToList(IComponent component)
         {
-            HiAssert.IsNotNull(component);
-            HiAssert.IsFalse(components.Contains(component));
+            AssertThat.IsNotNull(component);
+            AssertThat.IsFalse(components.Contains(component));
             components.Add(component);
         }
 
