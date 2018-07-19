@@ -11,7 +11,11 @@ namespace HiFramework
 
     public class Signal<T> : SignalBase, ISignal<T>
     {
+        /// <summary>
+        /// Event
+        /// </summary>
         private event Action<T> OnEvent;
+
         /// <summary>执行与释放或重置非托管资源关联的应用程序定义的任务。</summary>
         public override void Dispose()
         {
