@@ -261,3 +261,6 @@ __pycache__/
 *.pyc
 Library
 Temp
+/unity/unity.sln
+/unity/Assembly-CSharp.csproj
+/unity/Assembly-CSharp-Editor.csproj
