@@ -9,9 +9,12 @@ namespace HiFramework
 {
     public class MainThreadComponent : Component, ITick, IMainThread
     {
-        private readonly Queue<ToExecute> toExecuteQueue = new Queue<ToExecute>();
-        private readonly List<Action> applicationQuitActionList = new List<Action>();
-        private static readonly object Locker = new object();
+        /// <summary>
+        /// 待执行列表
+        /// </summary>
+        private readonly Queue<ToExecute> toWaitRunOnMainThread = new Queue<ToExecute>();
+
+        private readonly object locker = new object();
 
         /// <summary>
         /// obj不能可选为空,数据会被线程冲刷,需要传递原有数据
@@ -20,50 +23,43 @@ namespace HiFramework
         /// <param name="obj"></param>
         public void RunOnMainThread(Action<object> action, object obj)
         {
-            lock (Locker)
+            lock (locker)
             {
-                toExecuteQueue.Enqueue(new ToExecute(action, obj));
-            }
-        }
-
-        public void RunOnApplicationQuit(Action action)
-        {
-            AssertThat.IsFalse(applicationQuitActionList.Contains(action));
-            applicationQuitActionList.Add(action);
-        }
-
-        public void Quit()
-        {
-            foreach (var variable in applicationQuitActionList)
-            {
-                variable();
+                toWaitRunOnMainThread.Enqueue(new ToExecute(action, obj));
             }
         }
 
         public void Tick()
         {
-            lock (Locker)
+            lock (locker)
             {
-                if (toExecuteQueue.Count > 0)
+                while (toWaitRunOnMainThread.Count > 0)
                 {
-                    while (toExecuteQueue.Count > 0)
-                    {
-                        var per = toExecuteQueue.Dequeue();
-                        per.Action(per.Obj);
-                    }
+                    var per = toWaitRunOnMainThread.Dequeue();
+                    per.Action(per.Args);
+                    per.Dispose();
                 }
             }
         }
-        private class ToExecute
+        /// <summary>
+        /// 待执逻辑
+        /// </summary>
+        private class ToExecute : IDisposable
         {
-            public ToExecute(Action<object> action, object obj)
+            public Action<object> Action { get; private set; }
+            public object Args { get; private set; }
+
+            public ToExecute(Action<object> action, object args)
             {
                 Action = action;
-                Obj = obj;
+                Args = args;
             }
-
-            public Action<object> Action { get; private set; }
-            public object Obj { get; private set; }
+            /// <summary>执行与释放或重置非托管资源关联的应用程序定义的任务。</summary>
+            public void Dispose()
+            {
+                Action = null;
+                Args = null;
+            }
         }
     }
 }
