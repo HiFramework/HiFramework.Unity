@@ -20,7 +20,7 @@ namespace HiFramework
         /// <typeparam name="T"></typeparam>
         /// <param name="key"></param>
         /// <returns></returns>
-        T GetPool<T>(string key);
+        IPool<T> GetPool<T>(string key);
 
         /// <summary>
         /// 删除对象池,并销毁池内对象
@@ -28,12 +28,5 @@ namespace HiFramework
         /// <typeparam name="T"></typeparam>
         /// <param name="iPool"></param>
         void RemovePool(string key);
-
-        /// <summary>
-        /// 删除对象池,并销毁池内对象
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="pool"></param>
-        void RemovePool<T>(IPool<T> pool);
     }
 }

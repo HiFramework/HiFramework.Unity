@@ -9,7 +9,17 @@ using System;
 
 namespace HiFramework
 {
-    public interface IPool<T> : IDisposable
+    /// <summary>
+    /// 
+    /// </summary>
+    public interface IPool
+    {
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public interface IPool<T> : IPool, IDisposable
     {
         /// <summary>
         /// 对象池内对象数量
@@ -27,10 +37,5 @@ namespace HiFramework
         /// </summary>
         /// <param name="args"></param>
         void Reclaim(T args);
-
-        /// <summary>
-        /// 清空对象池
-        /// </summary>
-        void ClearPool();
     }
 }

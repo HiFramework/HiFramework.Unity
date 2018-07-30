@@ -36,7 +36,11 @@ namespace HiFramework
         /// <summary>执行与释放或重置非托管资源关联的应用程序定义的任务。</summary>
         public void Dispose()
         {
-            ClearPool();
+            while (objects.Count > 0)
+            {
+                var obj = objects.Dequeue();
+                objectHandler.OnDestory(obj);
+            }
             objectHandler = null;
         }
 
@@ -70,18 +74,6 @@ namespace HiFramework
         {
             objectHandler.OnInToPool(args);
             objects.Enqueue(args);
-        }
-
-        /// <summary>
-        /// 清空对象池
-        /// </summary>
-        public void ClearPool()
-        {
-            while (objects.Count > 0)
-            {
-                var obj = objects.Dequeue();
-                objectHandler.OnDestory(obj);
-            }
         }
     }
 }
