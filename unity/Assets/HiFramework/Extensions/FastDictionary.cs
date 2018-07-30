@@ -5,6 +5,7 @@
  ****************************************************************************/
 
 using System.Collections.Generic;
+using System.Xml;
 
 namespace HiFramework
 {
@@ -62,8 +63,45 @@ namespace HiFramework
             return valueKey[value];
         }
 
+        /// <summary>
+        /// Try Get Value
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool TryGetValue(T1 key, out T2 value)
+        {
+            return keyValue.TryGetValue(key, out value);
+        }
 
+        /// <summary>
+        /// If contain
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public bool ContainsKey(T1 key)
+        {
+            return keyValue.ContainsKey(key);
+        }
 
+        /// <summary>
+        /// If contain
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool ContainsValue(T2 value)
+        {
+            return keyValue.ContainsValue(value);
+        }
+
+        /// <summary>
+        /// Clear the dictionary
+        /// </summary>
+        public void Clear()
+        {
+            keyValue.Clear();
+            valueKey.Clear();
+        }
 
         class Example
         {
