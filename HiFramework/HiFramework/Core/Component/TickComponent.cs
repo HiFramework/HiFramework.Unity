@@ -1,6 +1,7 @@
 ﻿/****************************************************************************
  * Description: Manage tick logic 
  * 
+ * Document: https://github.com/hiramtan/HiFramework_unity
  * Author: hiramtan@live.com
  ****************************************************************************/
 
@@ -11,12 +12,12 @@ namespace HiFramework
     /// <summary>
     /// 
     /// </summary>
-    public class TickComponent : Component
+    public class TickComponent : Component, ITick
     {
         /// <summary>
         /// Component Inherited from ITick
         /// </summary>
-        private List<ITick> ticks = new List<ITick>();
+        private List<ITick> ticks;
 
         /// <summary>
         /// When component created
@@ -26,10 +27,8 @@ namespace HiFramework
             ticks = new List<ITick>();
         }
 
-        /// <summary>
-        /// When component removed
-        /// </summary>
-        public override void OnDestory()
+        /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
+        public override void Dispose()
         {
             ticks.Clear();
         }
@@ -63,13 +62,13 @@ namespace HiFramework
         }
 
         /// <summary>
-        /// Run all tick
+        /// Tick method to run all tick Components
         /// </summary>
-        public void Tick()
+        public void Tick(float deltaTime)
         {
             for (int i = 0; i < ticks.Count; i++)
             {
-                ticks[i].Tick();
+                ticks[i].Tick(deltaTime);
             }
         }
     }

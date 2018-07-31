@@ -1,95 +1,85 @@
 ﻿/****************************************************************************
- * Description: To get and remove component
- *
+ * Description: 外部交互接口，初始化，tick
+ * 通过该接口访问，创建，移除组件
+ * 
+ * Document: https://github.com/hiramtan/HiFramework_unity
  * Author: hiramtan@live.com
  ****************************************************************************/
 
 namespace HiFramework
 {
     /// <summary>
-    /// Main interface for user to get/remove component
+    /// 框架对外接口静态类
     /// </summary>
-    public class Center : IFramework
+    public static class Center
     {
+        private static IContainer container;
         /// <summary>
-        /// To hold all component
+        /// 框架初始化
         /// </summary>
-        private static readonly IContainer Container = new Container();
+        public static void Init()
+        {
+            AssertThat.IsNull(container, "Container is not null");
+            container = new Container();
+            container.Init();
+        }
 
         /// <summary>
-        /// Tick component to tick all components
+        /// Tick维护
         /// </summary>
-        private TickComponent tickComponent;
+        public static void Tick(float deltaTime)
+        {
+            AssertThat.IsNotNull(container, "Container is null");
+            container.Tick(deltaTime);
+        }
 
         /// <summary>
-        /// Get component
+        /// 组建是否存在
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        public static bool IsComponentExist<T>(T t) where T : class, IComponent
+        {
+            return container.IsComponentExist(t);
+        }
+
+        /// <summary>
+        /// 获取组建（自动创建）
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         public static T Get<T>() where T : class, IComponent
         {
-            var c = Container.Get<T>();
-            return c;
+            return container.Get<T>();
         }
 
         /// <summary>
-        /// If component exist
+        /// 移除组件
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        public static bool IsExist<T>() where T : class, IComponent
+        /// <param name="t"></param>
+        public static void Remove<T>(T t) where T : class, IComponent
         {
-            return Container.IsExist<T>();
+            container.Remove(t);
         }
 
         /// <summary>
-        /// Remove component by type
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        public static void Remove<T>() where T : class, IComponent
-        {
-            var c = Container.Get<T>();
-            Container.Remove(c);
-        }
-
-        /// <summary>
-        /// Remove component by instance
+        /// 移除组件
         /// </summary>
         /// <param name="component"></param>
         public static void Remove(IComponent component)
         {
-            AssertThat.IsNotNull(component);
-            Container.Remove(component);
+            container.Remove(component);
         }
 
         /// <summary>
-        /// Init framework
+        /// 销毁框架（移除组件）
         /// </summary>
-        public void Init()
+        public static void Dispose()
         {
-            tickComponent = Get<TickComponent>();
-        }
-
-        /// <summary>
-        /// Tick all component
-        /// </summary>
-        public void Tick()
-        {
-            tickComponent.Tick();
-        }
-
-        /// <summary>
-        /// Destory framework(destory every component)
-        /// </summary>
-        public void Destory()
-        {
-            var container = Container as Container;
-            AssertThat.IsNotNull(container);
-            var components = container.components;
-            for (int i = 0; i < components.Count; i++)
-            {
-                Remove(components[i]);
-            }
+            container.Dispose();
+            container = null;
         }
     }
 }

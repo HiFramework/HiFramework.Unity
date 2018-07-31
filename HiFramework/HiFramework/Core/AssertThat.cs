@@ -1,8 +1,10 @@
 ﻿/***************************************************************
  * Description: This is assert logic
  * (ps. why not name as Asset, because when do unit test, this will conflict with unit test's Assert)
+ * 
+ * Document: https://github.com/hiramtan/HiFramework_unity
  * Author: hiramtan@live.com
-***************************************************************/
+ ****************************************************************************/
 
 using System;
 

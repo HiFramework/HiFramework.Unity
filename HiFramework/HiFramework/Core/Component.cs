@@ -2,8 +2,10 @@
  * Description: Base class of component
  * Componet must inherit from this
  * 
+ * Document: https://github.com/hiramtan/HiFramework_unity
  * Author: hiramtan@live.com
  ****************************************************************************/
+
 namespace HiFramework
 {
     /// <summary>
@@ -25,10 +27,8 @@ namespace HiFramework
             tickComponent.Regist(this);
         }
 
-        /// <summary>
-        /// When this component removed
-        /// </summary>
-        public virtual void OnDestory()
+        /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
+        public virtual void Dispose()
         {
             tickComponent.Unregist(this);
         }

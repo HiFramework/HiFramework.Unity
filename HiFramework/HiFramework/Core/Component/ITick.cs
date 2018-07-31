@@ -1,8 +1,9 @@
 ﻿/****************************************************************************
 * Description: If component want to have tick function should inherited from this interface
 *
-* Author: hiramtan @live.com
-****************************************************************************/
+ * Document: https://github.com/hiramtan/HiFramework_unity
+ * Author: hiramtan@live.com
+ ****************************************************************************/
 
 namespace HiFramework
 {
@@ -12,8 +13,8 @@ namespace HiFramework
     public interface ITick
     {
         /// <summary>
-        /// Tick method to run all tick components
+        /// Tick method to run all tick Components
         /// </summary>
-        void Tick();
+        void Tick(float deltaTime);
     }
 }

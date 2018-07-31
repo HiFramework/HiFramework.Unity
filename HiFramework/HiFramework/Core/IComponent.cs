@@ -1,21 +1,19 @@
 ﻿/****************************************************************************
 * Description: 
-*
-* Author: hiramtan @live.com
-****************************************************************************/
+* 
+ * Document: https://github.com/hiramtan/HiFramework_unity
+ * Author: hiramtan@live.com
+ ****************************************************************************/
+
+using System;
 
 namespace HiFramework
 {
-    public interface IComponent
+    public interface IComponent : IDisposable
     {
         /// <summary>
         /// When component created
         /// </summary>
         void OnCreated();
-
-        /// <summary>
-        /// When component removed
-        /// </summary>
-        void OnDestory();
     }
 }

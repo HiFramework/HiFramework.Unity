@@ -40,16 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\Framework.cs" />
-    <Compile Include="Core\AssertThat.cs" />
     <Compile Include="Core\Center.cs" />
+    <Compile Include="Core\AssertThat.cs" />
     <Compile Include="Core\Component.cs" />
     <Compile Include="Core\Component\TickComponent.cs" />
     <Compile Include="Core\Container.cs" />
     <Compile Include="Core\IComponent.cs" />
     <Compile Include="Core\IContainer.cs" />
     <Compile Include="Core\Component\ITick.cs" />
-    <Compile Include="Core\IFramework.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

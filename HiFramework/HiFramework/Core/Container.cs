@@ -15,72 +15,120 @@ namespace HiFramework
     internal class Container : IContainer
     {
         /// <summary>
-        /// Component list
+        /// List to hold all components
         /// </summary>
-        internal readonly List<IComponent> components = new List<IComponent>();
+        private List<IComponent> components;
 
         /// <summary>
-        /// Remove component
+        /// Tick Component to tick all components in framework
         /// </summary>
-        /// <param name="iComponent"></param>
-        public void Remove(IComponent iComponent)
-        {
+        private ITick tickComponent;
 
-            AssertThat.IsTrue(components.Contains(iComponent));
-            components.Remove(iComponent);
-            iComponent.OnDestory();
-            iComponent = null;
+        /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
+        public void Dispose()
+        {
+            AssertThat.IsNotNull(components, "Components is null");
+            for (int i = 0; i < components.Count; i++)
+            {
+                components[i].Dispose();
+            }
+            components.Clear();
+            components = null;
         }
 
         /// <summary>
-        /// Get component
+        /// 框架初始化
+        /// </summary>
+        public void Init()
+        {
+            AssertThat.IsNull(components, "Components is not null, Posible you dont dispose framework and reinit it again");
+            AssertThat.IsNull(tickComponent, "Tick components is not null, Posible you dont dispose framework and reinit it again");
+            components = new List<IComponent>();
+            tickComponent = Get<TickComponent>();
+        }
+
+        /// <summary>
+        /// Tick维护
+        /// </summary>
+        public void Tick(float deltaTime)
+        {
+            AssertThat.IsNotNull(tickComponent, "Make sure tick is not null(should init API first to init framework)");
+            tickComponent.Tick(deltaTime);
+        }
+
+        /// <summary>
+        /// 组建是否存在
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        public bool IsComponentExist<T>(T t) where T : class, IComponent
+        {
+            return GetComponentFromList<T>() != null;
+        }
+
+        /// <summary>
+        /// 获取组建（自动创建）
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         public T Get<T>() where T : class, IComponent
         {
-            if (IsExist<T>())
+            var component = GetComponentFromList<T>();
+            if (component != null)
             {
-                return GetFromList<T>();
+                return component as T;
             }
-            return Create<T>();
+            return CreateComponent<T>();
         }
 
         /// <summary>
-        /// If this component is exist
+        /// 移除组件
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        public bool IsExist<T>() where T : class, IComponent
+        /// <param name="t"></param>
+        public void Remove<T>(T t) where T : class, IComponent
         {
-            var c = GetFromList<T>();
-            return c != null;
+            var component = GetComponentFromList<T>();
+            Remove(component);
         }
 
         /// <summary>
-        /// Get componet from list
+        /// 移除组件
+        /// </summary>
+        /// <param name="component"></param>
+        public void Remove(IComponent component)
+        {
+            AssertThat.IsNotNull(component, "Component is null");
+            component.Dispose();
+            components.Remove(component);
+        }
+
+        /// <summary>
+        /// Get already exist component from list
         /// </summary>
         /// <typeparam name="T"></typeparam>
+        /// <param name="t"></param>
         /// <returns></returns>
-        private T GetFromList<T>() where T : class, IComponent
+        private IComponent GetComponentFromList<T>() where T : class, IComponent
         {
-            IComponent iComponent = null;
+            IComponent component = null;
             for (int i = 0; i < components.Count; i++)
             {
                 if (components[i] is T)
                 {
-                    iComponent = components[i];
+                    component = components[i] as T;
                     break;
                 }
             }
-            return iComponent as T;
+            return component;
         }
 
         /// <summary>
-        /// Add component to container
+        /// Add component to list
         /// </summary>
         /// <param name="component"></param>
-        private void AddToList(IComponent component)
+        private void AddComponentToList(IComponent component)
         {
             AssertThat.IsNotNull(component);
             AssertThat.IsFalse(components.Contains(component));
@@ -88,14 +136,14 @@ namespace HiFramework
         }
 
         /// <summary>
-        /// Create Component
+        /// Create component
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        private T Create<T>() where T : class, IComponent
+        private T CreateComponent<T>() where T : class, IComponent
         {
             var c = Activator.CreateInstance(typeof(T)) as T;
-            AddToList(c);
+            AddComponentToList(c);
             c.OnCreated();
             return c;
         }
