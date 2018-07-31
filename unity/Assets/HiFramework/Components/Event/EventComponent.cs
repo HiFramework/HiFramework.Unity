@@ -153,9 +153,9 @@ namespace HiFramework
         /// <summary>
         /// This will fired on component destoryed
         /// </summary>
-        public override void OnDestory()
+        public override void Dispose()
         {
-            base.OnDestory();
+            base.Dispose();
             foreach (var variable in container)
             {
                 variable.Value.Clear();

@@ -29,7 +29,7 @@ namespace HiFramework
             }
         }
 
-        public void Tick()
+        public void Tick(float deltaTime)
         {
             lock (locker)
             {

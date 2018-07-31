@@ -18,7 +18,7 @@ namespace HiFramework
         }
 
 
-        public override void Tick()
+        public override void Tick(float deltaTime)
         {
             if (Time.realtimeSinceStartup - _time >= _waitTime)
                 Done();

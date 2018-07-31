@@ -18,7 +18,7 @@ namespace HiFramework
             _repeatingTime = repeatingTime;
         }
 
-        public override void Tick()
+        public override void Tick(float deltaTime)
         {
             if (Time.realtimeSinceStartup >= _timeStart + _repeatingTime)
             {

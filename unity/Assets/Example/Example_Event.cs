@@ -7,14 +7,14 @@ public class Example_Event : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Framework.Init();
+        Center.Init();
         Init();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Framework.Tick();
+        Center.Tick(Time.deltaTime);
     }
 
 

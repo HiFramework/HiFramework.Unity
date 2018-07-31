@@ -18,7 +18,7 @@ namespace HiFramework
         }
 
 
-        public override void Tick()
+        public override void Tick(float deltaTime)
         {
             if (_resourceRequest.isDone)
                 Done();

@@ -21,15 +21,15 @@ namespace HiFramework
             ticks.Remove(iTick);
         }
 
-        public void Tick()
+        public void Tick(float deltaTime)
         {
             for (var i = 0; i < ticks.Count; i++)
-                ticks[i].Tick();
+                ticks[i].Tick(deltaTime);
         }
 
-        public override void OnDestory()
+        public override void Dispose()
         {
-            base.OnDestory();
+            base.Dispose();
             ticks.Clear();
         }
     }

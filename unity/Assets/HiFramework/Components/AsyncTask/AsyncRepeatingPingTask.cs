@@ -29,7 +29,7 @@ namespace HiFramework
             ping = new Ping(_ip);
         }
 
-        public override void Tick()
+        public override void Tick(float deltaTime)
         {
             if (Time.realtimeSinceStartup - _timeStart > _rate)
             {

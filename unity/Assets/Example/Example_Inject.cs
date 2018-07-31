@@ -7,7 +7,7 @@ public class Example_Inject : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Framework.Init();
+        Center.Init();
 
         Init();
     }
@@ -15,7 +15,7 @@ public class Example_Inject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Framework.Tick();
+        Center.Tick(Time.deltaTime);
     }
 
     void Init()

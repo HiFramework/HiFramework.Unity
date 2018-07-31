@@ -11,18 +11,18 @@ public class Example : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Framework.Init();
+        Center.Init();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Framework.Tick();
+        Center.Tick(Time.deltaTime);
     }
 
     void OnApplicationQuit()
     {
-        Framework.Destory();
+        Center.Dispose();
     }
 
     void Read()

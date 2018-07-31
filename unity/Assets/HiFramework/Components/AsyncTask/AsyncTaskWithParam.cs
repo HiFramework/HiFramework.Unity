@@ -16,7 +16,7 @@ namespace HiFramework
             Action = action;
         }
 
-        public abstract void Tick();
+        public abstract void Tick(float deltaTime);
         protected virtual void Done()
         {
             _iAsyncComponent.UnRegistTick(this);
