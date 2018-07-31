@@ -1,8 +1,16 @@
 # HiFramework_unity
 
-havent finish
+in developing
 
-未完成
+当前开发状态：
+- 核心逻辑完成：维护组件及Tick
+- 部分组件完成：异步任务，事件，消息，注入...
+- 待添加组件：通信，压缩，加密，UI，本地化...
+- 扩展逻辑：已添加部分扩展通用逻辑：快速列表，数值精度等
+- 文档：待添加最新文档
+
+
+旧文档：
 
 ## 项目介绍
 基于组件的项目管理框架,组件使用如下(更多文档查看wiki: [https://github.com/hiramtan/HiFramework_unity/wiki](https://github.com/hiramtan/HiFramework_unity/wiki) ):
