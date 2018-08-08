@@ -1,5 +1,5 @@
 ﻿/***************************************************************
- * Description: 
+ * Description: 字节位逻辑
  *
  * Documents: 
  * Author: hiramtan@live.com
