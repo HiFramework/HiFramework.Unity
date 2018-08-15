@@ -9,18 +9,18 @@ using System.Text;
 
 namespace HiFramework
 {
-    public class StringComponent : Component
+    public static class StringHelper
     {
         /// <summary>
         /// 格式化字符串
         /// </summary>
         /// <param name="info"></param>
         /// <returns></returns>
-        public static string FormatInfo(string info)
+        public static string Format(string info)
         {
-            if (info == null)
+            if (string.IsNullOrEmpty(info))
             {
-                throw new ArgumentNullException("info is null");
+                throw new ArgumentNullException("info is null or empty");
             }
             return string.Format("[{0}]", info);
         }
@@ -30,7 +30,7 @@ namespace HiFramework
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
-        public static string Get(params string[] args)
+        public static string Append(params string[] args)
         {
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < args.Length; i++)
