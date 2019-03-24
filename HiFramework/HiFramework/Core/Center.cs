@@ -34,7 +34,7 @@ namespace HiFramework
         }
 
         /// <summary>
-        /// 组建是否存在
+        /// 组件是否存在
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="t"></param>
