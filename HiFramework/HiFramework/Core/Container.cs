@@ -15,25 +15,25 @@ namespace HiFramework
     internal class Container : IContainer
     {
         /// <summary>
-        /// List to hold all components
+        /// List to hold all _components
         /// </summary>
-        private List<IComponent> components;
+        private List<IComponent> _components;
 
         /// <summary>
-        /// Tick Component to tick all components in framework
+        /// Tick Component to tick all _components in framework
         /// </summary>
-        private ITick tickComponent;
+        private ITick _tickComponent;
 
         /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
         public void Dispose()
         {
-            AssertThat.IsNotNull(components, "Components is null");
-            for (int i = 0; i < components.Count; i++)
+            AssertThat.IsNotNull(_components, "Components is null");
+            for (int i = 0; i < _components.Count; i++)
             {
-                components[i].Dispose();
+                _components[i].Dispose();
             }
-            components.Clear();
-            components = null;
+            _components.Clear();
+            _components = null;
         }
 
         /// <summary>
@@ -41,10 +41,10 @@ namespace HiFramework
         /// </summary>
         public void Init()
         {
-            AssertThat.IsNull(components, "Components is not null, Posible you dont dispose framework and reinit it again");
-            AssertThat.IsNull(tickComponent, "Tick components is not null, Posible you dont dispose framework and reinit it again");
-            components = new List<IComponent>();
-            tickComponent = Get<TickComponent>();
+            AssertThat.IsNull(_components, "Components is not null, Posible you dont dispose framework and reinit it again");
+            AssertThat.IsNull(_tickComponent, "Tick _components is not null, Posible you dont dispose framework and reinit it again");
+            _components = new List<IComponent>();
+            _tickComponent = Get<TickComponent>();
         }
 
         /// <summary>
@@ -52,8 +52,8 @@ namespace HiFramework
         /// </summary>
         public void Tick(float deltaTime)
         {
-            AssertThat.IsNotNull(tickComponent, "Make sure tick is not null(should init API first to init framework)");
-            tickComponent.Tick(deltaTime);
+            AssertThat.IsNotNull(_tickComponent, "Make sure tick is not null(should init API first to init framework)");
+            _tickComponent.Tick(deltaTime);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace HiFramework
         {
             AssertThat.IsNotNull(component, "Component is null");
             component.Dispose();
-            components.Remove(component);
+            _components.Remove(component);
         }
 
         /// <summary>
@@ -113,11 +113,11 @@ namespace HiFramework
         private IComponent GetComponentFromList<T>() where T : class, IComponent
         {
             IComponent component = null;
-            for (int i = 0; i < components.Count; i++)
+            for (int i = 0; i < _components.Count; i++)
             {
-                if (components[i] is T)
+                if (_components[i] is T)
                 {
-                    component = components[i] as T;
+                    component = _components[i] as T;
                     break;
                 }
             }
@@ -131,8 +131,8 @@ namespace HiFramework
         private void AddComponentToList(IComponent component)
         {
             AssertThat.IsNotNull(component);
-            AssertThat.IsFalse(components.Contains(component));
-            components.Add(component);
+            AssertThat.IsFalse(_components.Contains(component));
+            _components.Add(component);
         }
 
         /// <summary>

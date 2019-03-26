@@ -13,15 +13,15 @@ namespace HiFramework
     /// </summary>
     public static class Center
     {
-        private static IContainer container;
+        private static IContainer _container;
         /// <summary>
         /// 框架初始化
         /// </summary>
         public static void Init()
         {
-            AssertThat.IsNull(container, "Container is not null");
-            container = new Container();
-            container.Init();
+            AssertThat.IsNull(_container, "Container is not null");
+            _container = new Container();
+            _container.Init();
         }
 
         /// <summary>
@@ -29,8 +29,8 @@ namespace HiFramework
         /// </summary>
         public static void Tick(float deltaTime)
         {
-            AssertThat.IsNotNull(container, "Container is null");
-            container.Tick(deltaTime);
+            AssertThat.IsNotNull(_container, "Container is null");
+            _container.Tick(deltaTime);
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace HiFramework
         /// <returns></returns>
         public static bool IsComponentExist<T>(T t) where T : class, IComponent
         {
-            return container.IsComponentExist(t);
+            return _container.IsComponentExist(t);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace HiFramework
         /// <returns></returns>
         public static T Get<T>() where T : class, IComponent
         {
-            return container.Get<T>();
+            return _container.Get<T>();
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace HiFramework
         /// <param name="t"></param>
         public static void Remove<T>(T t) where T : class, IComponent
         {
-            container.Remove(t);
+            _container.Remove(t);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace HiFramework
         /// <param name="component"></param>
         public static void Remove(IComponent component)
         {
-            container.Remove(component);
+            _container.Remove(component);
         }
 
         /// <summary>
@@ -78,8 +78,17 @@ namespace HiFramework
         /// </summary>
         public static void Dispose()
         {
-            container.Dispose();
-            container = null;
+            _container.Dispose();
+            _container = null;
         }
+
+
+
+       
+
+
     }
 }
+
+
+

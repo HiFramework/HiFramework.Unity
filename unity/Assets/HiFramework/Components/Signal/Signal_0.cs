@@ -16,6 +16,11 @@ namespace HiFramework
         /// </summary>
         private event Action OnEvent;
 
+
+        public Signal(string name) : base(name)
+        {
+        }
+
         /// <summary>执行与释放或重置非托管资源关联的应用程序定义的任务。</summary>
         public override void Dispose()
         {
@@ -45,7 +50,14 @@ namespace HiFramework
         /// </summary>
         public void Fire()
         {
-            OnEvent();
+            if (OnEvent != null)
+            {
+                OnEvent();
+            }
+            else
+            {
+                Console.WriteLine("Event's action is null");
+            }
         }
     }
 }

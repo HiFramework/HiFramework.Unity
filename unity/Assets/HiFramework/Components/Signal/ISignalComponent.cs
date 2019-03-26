@@ -16,16 +16,16 @@ namespace HiFramework
         void AddSignal(string key, SignalBase signal);
 
         /// <summary>
-        /// Get signal 
-        /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
-        SignalBase GetSignal(string key);
-
-        /// <summary>
         /// Remove signal from container
         /// </summary>
         /// <param name="key"></param>
         void RemoveSignal(string key);
+
+        /// <summary>
+        /// Get signal
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        SignalBase GetSignal(string key);
     }
 }

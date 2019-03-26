@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\Bind\Bind.cs" />
     <Compile Include="Core\Center.cs" />
     <Compile Include="Core\AssertThat.cs" />
     <Compile Include="Core\Component.cs" />

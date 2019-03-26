@@ -16,21 +16,21 @@ namespace HiFramework
         /// <summary>
         /// Framework's tick component
         /// </summary>
-        private TickComponent tickComponent;
+        private TickComponent _tickComponent;
 
         /// <summary>
         /// When this component created
         /// </summary>
         public virtual void OnCreated()
         {
-            tickComponent = Center.Get<TickComponent>();
-            tickComponent.Regist(this);
+            _tickComponent = Center.Get<TickComponent>();
+            _tickComponent.Regist(this);
         }
 
         /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
         public virtual void Dispose()
         {
-            tickComponent.Unregist(this);
+            _tickComponent.Unregist(this);
         }
     }
 }
