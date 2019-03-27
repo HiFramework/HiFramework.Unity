@@ -1,6 +1,6 @@
 ﻿/****************************************************************************
  * Description: 
- * public:外部继承可扩展更多参数事件
+ * 
  * Document: https://github.com/hiramtan/HiFramework_unity
  * Author: hiramtan@live.com
  ****************************************************************************/
@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace HiFramework
 {
-    public class EventComponent : ComponentBase, IEventComponent
+    class EventComponent : ComponentBase, IEventComponent
     {/// <summary>
      /// Hold the events user registed
      /// </summary>
@@ -124,19 +124,6 @@ namespace HiFramework
             AssertThat.IsTrue(container.ContainsKey(key));
             container[key].Clear();
             container.Remove(key);
-        }
-
-        /// <summary>
-        /// Remove one special event with same key
-        /// </summary>
-        /// <param name="key"></param>
-        /// <param name="action"></param>
-        public void RemoveListener(string key, ActionBase action)
-        {
-            AssertThat.IsTrue(container.ContainsKey(key));
-            var actions = container[key];
-            AssertThat.IsTrue(actions.Contains(action));
-            actions.Remove(action);
         }
 
         public override void OnCreated()
