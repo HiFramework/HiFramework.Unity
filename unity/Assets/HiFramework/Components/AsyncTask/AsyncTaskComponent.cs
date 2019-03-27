@@ -5,42 +5,44 @@
  * Author: hiramtan@live.com
  ****************************************************************************/
 
-using HiFramework;
 using System.Collections.Generic;
 
-public class AsyncTaskComponent : ComponentBase, IAsyncTaskComponent, ITick
+namespace HiFramework
 {
-    private ITickComponent _tickComponent;
-    private List<ITick> _asyncTasks = new List<ITick>();
-
-    public override void OnCreated()
+    public class AsyncTaskComponent : ComponentBase, IAsyncTaskComponent, ITick
     {
-        _tickComponent = Center.Get<ITickComponent>();
-        _tickComponent.Regist(this);
-    }
+        private ITickComponent _tickComponent;
+        private List<ITick> _asyncTasks = new List<ITick>();
 
-    public override void Dispose()
-    {
-        _tickComponent.Unregist(this);
-    }
-
-    public void Tick(float time)
-    {
-        for (int i = 0; i < _asyncTasks.Count; i++)
+        public override void OnCreated()
         {
-            _asyncTasks[i].Tick(time);
+            _tickComponent = Center.Get<ITickComponent>();
+            _tickComponent.Regist(this);
         }
-    }
 
-    public void AddTask(ITick task)
-    {
-        AssertThat.IsFalse(_asyncTasks.Contains(task), "task already exist");
-        _asyncTasks.Add(task);
-    }
+        public override void Dispose()
+        {
+            _tickComponent.Unregist(this);
+        }
 
-    public void RemoveTask(ITick task)
-    {
-        AssertThat.IsTrue(_asyncTasks.Contains(task), "task not exist");
-        _asyncTasks.Remove(task);
+        public void Tick(float time)
+        {
+            for (int i = 0; i < _asyncTasks.Count; i++)
+            {
+                _asyncTasks[i].Tick(time);
+            }
+        }
+
+        public void AddTask(ITick task)
+        {
+            AssertThat.IsFalse(_asyncTasks.Contains(task), "task already exist");
+            _asyncTasks.Add(task);
+        }
+
+        public void RemoveTask(ITick task)
+        {
+            AssertThat.IsTrue(_asyncTasks.Contains(task), "task not exist");
+            _asyncTasks.Remove(task);
+        }
     }
 }
