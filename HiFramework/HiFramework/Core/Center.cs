@@ -13,6 +13,12 @@ namespace HiFramework
         private static Container _container = new Container();
         private static ITickComponent _iTickComponent;
 
+        public static void SetBinder(Binder binder)
+        {
+            AssertThat.IsNotNull(binder,"Binder is null");
+            Binder = binder;
+        }
+
         public static void Init()
         {
             Binder.Init();
