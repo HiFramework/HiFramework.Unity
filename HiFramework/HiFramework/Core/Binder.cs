@@ -16,6 +16,8 @@ namespace HiFramework
         public virtual void Init()
         {
             Bind<ITickComponent>().To<TickComponent>();
+            Bind<ISignalComponent>().To<SignalComponent>();
+            Bind<IEventComponent>().To<EventComponent>();
         }
 
         protected BindInfo<T> Bind<T>() where T : class

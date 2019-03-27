@@ -39,6 +39,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\Event\ActionBase.cs" />
+    <Compile Include="Components\Event\Action_0.cs" />
+    <Compile Include="Components\Event\Action_1.cs" />
+    <Compile Include="Components\Event\Action_2.cs" />
+    <Compile Include="Components\Event\Action_3.cs" />
+    <Compile Include="Components\Event\Action_4.cs" />
+    <Compile Include="Components\Event\EventComponent.cs" />
+    <Compile Include="Components\Event\IEventComponent.cs" />
     <Compile Include="Components\Signal\ISignalComponent.cs" />
     <Compile Include="Components\Signal\SignalComponent.cs" />
     <Compile Include="Components\Signal\Signal_0.cs" />

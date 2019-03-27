@@ -6,7 +6,7 @@
  ****************************************************************************/
 namespace HiFramework
 {
-    interface ISignalComponent
+    public interface ISignalComponent
     {
         T GetSignal<T>() where T : class;
         void RemoveSignal<T>() where T : class;

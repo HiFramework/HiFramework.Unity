@@ -6,7 +6,7 @@
  ****************************************************************************/
 namespace HiFramework
 {
-    interface ITick
+    public interface ITick
     {
         void Tick(float time);
     }

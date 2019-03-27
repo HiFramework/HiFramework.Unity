@@ -14,7 +14,7 @@ namespace HiFramework
 
         public void AddListener(Action<T1, T2> action)
         {
-            _action = action;
+            _action += action;
         }
 
         public void Fire(T1 t1, T2 t2)

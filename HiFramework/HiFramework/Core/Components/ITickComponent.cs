@@ -6,7 +6,7 @@
  ****************************************************************************/
 namespace HiFramework
 {
-    interface ITickComponent : ITick
+    public interface ITickComponent : ITick
     {
         void Regist<T>(T t) where T : ITick, new();
 
