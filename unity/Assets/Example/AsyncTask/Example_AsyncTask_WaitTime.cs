@@ -8,7 +8,6 @@ public class Example_AsyncTask_WaitTime : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Center.SetBinder(new MyBinder());
         Center.Init();
         new AsyncTaskWaitTime(OnLog, 10);
     }

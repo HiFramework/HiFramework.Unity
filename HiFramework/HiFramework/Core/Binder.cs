@@ -18,6 +18,8 @@ namespace HiFramework
             Bind<ITickComponent>().To<TickComponent>();
             Bind<ISignalComponent>().To<SignalComponent>();
             Bind<IEventComponent>().To<EventComponent>();
+            Bind<IIOComponent>().To<IOComponent>();
+            Bind<IAsyncTaskComponent>().To<AsyncTaskComponent>();
         }
 
         protected BindInfo<T> Bind<T>() where T : class

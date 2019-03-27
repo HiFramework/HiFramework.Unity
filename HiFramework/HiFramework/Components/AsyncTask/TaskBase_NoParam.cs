@@ -12,13 +12,13 @@ using System.Text;
 
 namespace HiFramework
 {
-    abstract class TaskBase<T> : ITick
+    public abstract class TaskBase : ITick
     {
         private IAsyncTaskComponent _asyncTaskComponent;
 
-        protected Action<T> Action;
+        protected Action Action;
 
-        protected TaskBase(Action<T> action)
+        protected TaskBase(Action action)
         {
             _asyncTaskComponent = Center.Get<IAsyncTaskComponent>();
             _asyncTaskComponent.AddTask(this);

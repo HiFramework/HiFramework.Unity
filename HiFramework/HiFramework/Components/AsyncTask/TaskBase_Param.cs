@@ -9,27 +9,27 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using UnityEngine;
 
 namespace HiFramework
 {
-    class AsyncTaskWWW : TaskBase<WWW>
+    public abstract class TaskBase<T> : ITick
     {
-        private WWW _www;
+        private IAsyncTaskComponent _asyncTaskComponent;
 
-        public AsyncTaskWWW(Action<WWW> action, string url) : base(action)
+        protected Action<T> Action { get; private set; }
+
+        protected TaskBase(Action<T> action)
         {
+            _asyncTaskComponent = Center.Get<IAsyncTaskComponent>();
+            _asyncTaskComponent.AddTask(this);
             Action = action;
-            _www = new WWW(url);
         }
 
-        public override void Tick(float time)
+        protected void Finish()
         {
-            if (_www.isDone)
-            {
-                Finish();
-                Action(_www);
-            }
+            _asyncTaskComponent.RemoveTask(this);
         }
+
+        public abstract void Tick(float time);
     }
 }

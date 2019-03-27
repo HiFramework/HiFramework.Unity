@@ -4,23 +4,20 @@
  * Document: https://github.com/hiramtan/HiFramework_unity
  * Author: hiramtan@live.com
  ****************************************************************************/
-
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using HiFramework;
 using UnityEngine;
 
-public class Example_Signal : MonoBehaviour
+public class Example_AsyncTask_Repeat : MonoBehaviour
 {
     // Use this for initialization
     void Start()
     {
         Center.Init();
 
-        var signalComponent = Center.Get<ISignalComponent>();
-        var signal = signalComponent.GetSignal<Example_Signal_Score>();
-        signal.AddListener(OnSignal);
-        signal.Fire(100);
+        var task = new AsyncTaskRepeat(OnLog, 2);
+        //task.Stop();
     }
 
     // Update is called once per frame
@@ -29,8 +26,8 @@ public class Example_Signal : MonoBehaviour
         Center.Tick(Time.deltaTime);
     }
 
-    void OnSignal(int score)
+    void OnLog()
     {
-        Debug.Log(score);
+        Debug.Log("log every 2s");
     }
 }

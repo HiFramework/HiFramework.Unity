@@ -6,28 +6,35 @@
  ****************************************************************************/
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using UnityEngine;
 
 namespace HiFramework
 {
-    class AsyncTaskWaitTime : TaskBase
+    public class AsyncTaskRepeat : TaskBase
     {
         float _startTime;
-        float _waitTime;
+        private float _repeatTime;
 
-        public AsyncTaskWaitTime(Action action, float waitTime) : base(action)
+        public AsyncTaskRepeat(Action action, float repeatTime) : base(action)
         {
-            _startTime = Time.realtimeSinceStartup;
-            _waitTime = waitTime;
+            _repeatTime = repeatTime;
         }
 
         public override void Tick(float time)
         {
-            if (Time.realtimeSinceStartup - _startTime > _waitTime)
+            if (Time.realtimeSinceStartup - _startTime > _repeatTime)
             {
-                Finish();
+                _startTime += _repeatTime;
                 Action();
             }
+        }
+
+        public void Stop()
+        {
+            Finish();
         }
     }
 }

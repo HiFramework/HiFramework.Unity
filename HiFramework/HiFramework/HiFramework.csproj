@@ -37,8 +37,18 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>lib\UnityEngine.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\AsyncTask\AsyncTaskComponent.cs" />
+    <Compile Include="Components\AsyncTask\AsyncTaskRepeat.cs" />
+    <Compile Include="Components\AsyncTask\AsyncTaskWaitTime.cs" />
+    <Compile Include="Components\AsyncTask\AsyncTaskWWW.cs" />
+    <Compile Include="Components\AsyncTask\IAsyncTaskComponent.cs" />
+    <Compile Include="Components\AsyncTask\TaskBase_NoParam.cs" />
+    <Compile Include="Components\AsyncTask\TaskBase_Param.cs" />
     <Compile Include="Components\Event\ActionBase.cs" />
     <Compile Include="Components\Event\Action_0.cs" />
     <Compile Include="Components\Event\Action_1.cs" />
@@ -47,6 +57,8 @@
     <Compile Include="Components\Event\Action_4.cs" />
     <Compile Include="Components\Event\EventComponent.cs" />
     <Compile Include="Components\Event\IEventComponent.cs" />
+    <Compile Include="Components\IO\IOComponent.cs" />
+    <Compile Include="Components\IO\IIOComponent.cs" />
     <Compile Include="Components\Signal\ISignalComponent.cs" />
     <Compile Include="Components\Signal\SignalComponent.cs" />
     <Compile Include="Components\Signal\Signal_0.cs" />

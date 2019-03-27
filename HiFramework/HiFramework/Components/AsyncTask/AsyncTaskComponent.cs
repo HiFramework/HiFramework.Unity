@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace HiFramework
 {
-    public class AsyncTaskComponent : ComponentBase, IAsyncTaskComponent, ITick
+    class AsyncTaskComponent : ComponentBase, IAsyncTaskComponent, ITick
     {
         private ITickComponent _tickComponent;
         private List<ITick> _asyncTasks = new List<ITick>();
