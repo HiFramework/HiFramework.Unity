@@ -23,9 +23,9 @@ namespace HiFramework
             return new BindInfo<T>(this);
         }
 
-        internal void SetKeyAndInstance(Type key, Type instance)
+        internal void SetKeyAndComponent(Type key, Type component)
         {
-            BindInfos[key] = instance;
+            BindInfos[key] = component;
         }
     }
 }

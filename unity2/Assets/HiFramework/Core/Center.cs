@@ -9,13 +9,13 @@ namespace HiFramework
 {
     public static class Center
     {
-        internal static readonly Binder _binder = new Binder();
-        internal static readonly Container _container = new Container();
+        internal static Binder Binder = new Binder();
+        internal static Container Container = new Container();
         private static ITickComponent _iTickComponent;
 
         public static void Init()
         {
-            _binder.Init();
+            Binder.Init();
 
             _iTickComponent = Get<ITickComponent>();
         }
@@ -25,9 +25,29 @@ namespace HiFramework
             _iTickComponent.Tick(time);
         }
 
-        public static T Get<T>()
+        public static bool IsComponentExist<T>()
         {
-            return _container.Get<T>();
+            return Container.IsComponentExist<T>();
+        }
+
+        public static T Get<T>() where T : class
+        {
+            return Container.Get<T>();
+        }
+
+        public static void Remove<T>()
+        {
+            Container.Remove<T>();
+        }
+
+        public static void Remove(Component component)
+        {
+            Container.Remove(component);
+        }
+
+        public static void DisposeAll()
+        {
+            Container.DisposeAll();
         }
     }
 }

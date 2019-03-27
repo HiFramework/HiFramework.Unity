@@ -1,4 +1,9 @@
-﻿using System;
+﻿/****************************************************************************
+ * Description: 
+ * 
+ * Document: https://github.com/hiramtan/HiFramework_unity
+ * Author: hiramtan@live.com
+ ****************************************************************************/
 using System.Collections.Generic;
 
 namespace HiFramework
@@ -8,6 +13,7 @@ namespace HiFramework
         private readonly List<ITick> _ticks = new List<ITick>();
         public override void OnCreated()
         {
+
         }
 
         public override void Dispose()

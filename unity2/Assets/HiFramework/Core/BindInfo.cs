@@ -1,4 +1,10 @@
-﻿namespace HiFramework
+﻿/****************************************************************************
+ * Description: 
+ * 
+ * Document: https://github.com/hiramtan/HiFramework_unity
+ * Author: hiramtan@live.com
+ ****************************************************************************/
+ namespace HiFramework
 {
     public class BindInfo<T>
     {
@@ -11,8 +17,8 @@
         public void To<U>() where U : Component, new()
         {
             var key = typeof(T);
-            var instance = typeof(U);
-            _binder.SetKeyAndInstance(key, instance);
+            var component = typeof(U);
+            _binder.SetKeyAndComponent(key, component);
         }
     }
 }
