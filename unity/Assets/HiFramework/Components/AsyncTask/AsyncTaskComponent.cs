@@ -4,13 +4,15 @@
  * Document: https://github.com/hiramtan/HiFramework_unity
  * Author: hiramtan@live.com
  ****************************************************************************/
- using HiFramework;
+
+using HiFramework;
 using System.Collections.Generic;
 
 public class AsyncTaskComponent : ComponentBase, IAsyncTaskComponent, ITick
 {
     private ITickComponent _tickComponent;
     private List<ITick> _asyncTasks = new List<ITick>();
+
     public override void OnCreated()
     {
         _tickComponent = Center.Get<ITickComponent>();
@@ -28,5 +30,17 @@ public class AsyncTaskComponent : ComponentBase, IAsyncTaskComponent, ITick
         {
             _asyncTasks[i].Tick(time);
         }
+    }
+
+    public void AddTask(ITick task)
+    {
+        AssertThat.IsFalse(_asyncTasks.Contains(task), "task already exist");
+        _asyncTasks.Add(task);
+    }
+
+    public void RemoveTask(ITick task)
+    {
+        AssertThat.IsTrue(_asyncTasks.Contains(task), "task not exist");
+        _asyncTasks.Remove(task);
     }
 }
