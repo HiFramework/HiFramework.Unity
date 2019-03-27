@@ -1,6 +1,5 @@
 ﻿/****************************************************************************
- * Description: 外部交互接口，初始化，tick
- * 通过该接口访问，创建，移除组件
+ * Description: 
  * 
  * Document: https://github.com/hiramtan/HiFramework_unity
  * Author: hiramtan@live.com
@@ -8,87 +7,47 @@
 
 namespace HiFramework
 {
-    /// <summary>
-    /// 框架对外接口静态类
-    /// </summary>
     public static class Center
     {
-        private static IContainer _container;
-        /// <summary>
-        /// 框架初始化
-        /// </summary>
+        internal static Binder Binder = new Binder();
+        private static Container _container = new Container();
+        private static ITickComponent _iTickComponent;
+
         public static void Init()
         {
-            AssertThat.IsNull(_container, "Container is not null");
-            _container = new Container();
-            _container.Init();
+            Binder.Init();
+
+            _iTickComponent = Get<ITickComponent>();
         }
 
-        /// <summary>
-        /// Tick维护
-        /// </summary>
-        public static void Tick(float deltaTime)
+        public static void Tick(float time)
         {
-            AssertThat.IsNotNull(_container, "Container is null");
-            _container.Tick(deltaTime);
+            _iTickComponent.Tick(time);
         }
 
-        /// <summary>
-        /// 组件是否存在
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="t"></param>
-        /// <returns></returns>
-        public static bool IsComponentExist<T>(T t) where T : class, IComponent
+        public static bool IsComponentExist<T>()
         {
-            return _container.IsComponentExist(t);
+            return _container.IsComponentExist<T>();
         }
 
-        /// <summary>
-        /// 获取组建（自动创建）
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        public static T Get<T>() where T : class, IComponent
+        public static T Get<T>() where T : class
         {
             return _container.Get<T>();
         }
 
-        /// <summary>
-        /// 移除组件
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="t"></param>
-        public static void Remove<T>(T t) where T : class, IComponent
+        public static void Remove<T>()
         {
-            _container.Remove(t);
+            _container.Remove<T>();
         }
 
-        /// <summary>
-        /// 移除组件
-        /// </summary>
-        /// <param name="component"></param>
-        public static void Remove(IComponent component)
+        public static void Remove(ComponentBase componentBase)
         {
-            _container.Remove(component);
+            _container.Remove(componentBase);
         }
 
-        /// <summary>
-        /// 销毁框架（移除组件）
-        /// </summary>
-        public static void Dispose()
+        public static void DisposeAll()
         {
-            _container.Dispose();
-            _container = null;
+            _container.DisposeAll();
         }
-
-
-
-       
-
-
     }
 }
-
-
-
