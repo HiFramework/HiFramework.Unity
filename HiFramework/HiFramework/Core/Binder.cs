@@ -20,6 +20,7 @@ namespace HiFramework
             Bind<IEventComponent>().To<EventComponent>();
             Bind<IIOComponent>().To<IOComponent>();
             Bind<IAsyncTaskComponent>().To<AsyncTaskComponent>();
+            Bind<IInjectComponent>().To<InjectComponent>();
         }
 
         protected BindInfo<T> Bind<T>() where T : class
