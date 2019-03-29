@@ -39,11 +39,11 @@ namespace HiFramework
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
-        public BindAsName To(object args)
+        public InjectBindAsName To(object args)
         {
             bindInfo.SetObject(args);
             BindToFinishHandler(bindInfo);
-            return new BindAsName(bindInfo);
+            return new InjectBindAsName(bindInfo);
         }
     }
 }

@@ -57,7 +57,7 @@
     <Compile Include="Components\Event\Action_4.cs" />
     <Compile Include="Components\Event\EventComponent.cs" />
     <Compile Include="Components\Event\IEventComponent.cs" />
-    <Compile Include="Components\Inject\BindAsName.cs" />
+    <Compile Include="Components\Inject\InjectBindAsName.cs" />
     <Compile Include="Components\Inject\InjectAttribute.cs" />
     <Compile Include="Components\Inject\IInjectComponent.cs" />
     <Compile Include="Components\Inject\InjectBindInfo.cs" />
@@ -69,6 +69,11 @@
     <Compile Include="Components\MainThread\MainThreadToExecute.cs" />
     <Compile Include="Components\MainThread\IMainThread.cs" />
     <Compile Include="Components\MainThread\MainThread.cs" />
+    <Compile Include="Components\ObjectManager\IObjectManager.cs" />
+    <Compile Include="Components\ObjectManager\ObjectsManager.cs" />
+    <Compile Include="Extensions\Pool\IPool.cs" />
+    <Compile Include="Extensions\Pool\IPoolObject.cs" />
+    <Compile Include="Extensions\Pool\Pool.cs" />
     <Compile Include="Components\Signal\ISignalComponent.cs" />
     <Compile Include="Components\Signal\SignalComponent.cs" />
     <Compile Include="Components\Signal\Signal_0.cs" />
@@ -87,8 +92,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Components\Signal\Signal_3.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Extensions\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

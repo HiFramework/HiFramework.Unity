@@ -7,7 +7,7 @@
 
 namespace HiFramework
 {
-    public class BindAsName
+    public class InjectBindAsName
     {
         /// <summary>
         /// 绑定信息
@@ -18,7 +18,7 @@ namespace HiFramework
         /// 构造函数，绑定信息
         /// </summary>
         /// <param name="bindInfo"></param>
-        public BindAsName(InjectBindInfo bindInfo)
+        public InjectBindAsName(InjectBindInfo bindInfo)
         {
             this.bindInfo = bindInfo;
         }
