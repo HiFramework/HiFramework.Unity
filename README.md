@@ -4,34 +4,53 @@
 
 in developing
 
-当前开发状态：
-- 核心逻辑完成：维护组件及Tick
-- 部分组件完成：异步任务，事件，消息，注入...
-- 待添加组件：通信，压缩，加密，UI，本地化...
-- 扩展逻辑：已添加部分扩展通用逻辑：快速列表，数值精度等
-- 文档：待添加最新文档
+
+-----------------------
+
+#### 如何使用
+从此地址下载dll,复制到项目中:[![Github Releases](https://img.shields.io/github/downloads/atom/atom/total.svg)](https://github.com/hiramtan/HiFramework_unity/releases) 
+
+``` csharp
+        var io = Center.Get<IIOComponent>();
+        io.ReadFile("path");
+```
+
+#### 简介
+- 基于接口实现:不关心具体实现只使用接口调用,方便快速替换实现方案
+- 基于组件实现:各功能模块组件相互独立不干扰
+- 基于绑定实现:用户可以自定义接口绑定实现
+- 可扩展:方便添加删除组件,即便是默认绑定组件用户也可以重写方法替换或删除
+- 逻辑分层:核心,组件,扩展
+
+#### 功能预览
+- 核心:已完成
+- 组件:
+  - 异步任务
+  - 事件
+  - 注入
+  - 消息
+  - 对象池
+  - 文件输入输出
+- 扩展:
+  - 比特位扩展
+  - 裁剪Float类型
+  - 快速列表
 
 
-旧文档：
-
-## 项目介绍
-基于组件的项目管理框架,组件使用如下(更多文档查看wiki: [https://github.com/hiramtan/HiFramework_unity/wiki](https://github.com/hiramtan/HiFramework_unity/wiki) ):
 
 
-## 使用方法
 
-从此地址下载unitypackage:[![Github Releases](https://img.shields.io/github/downloads/atom/atom/total.svg)](https://github.com/hiramtan/HiFramework_unity/releases) 
+#### wiki
+旧文档：(更多文档查看wiki: [https://github.com/hiramtan/HiFramework_unity/wiki](https://github.com/hiramtan/HiFramework_unity/wiki) ):
 
-ps.允许工程使用**unsafe**代码(项目中有对指针进行操作的逻辑).
 
-----
+
 
 点击链接加入QQ群【83596104】：https://jq.qq.com/?_wv=1027&k=5l6rZEr
 
 support: hiramtan@live.com
 
-
-***********
+-----------------
 
 MIT License
 

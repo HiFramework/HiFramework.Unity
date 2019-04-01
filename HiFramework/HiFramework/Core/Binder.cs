@@ -21,6 +21,8 @@ namespace HiFramework
             Bind<IIOComponent>().To<IOComponent>();
             Bind<IAsyncTaskComponent>().To<AsyncTaskComponent>();
             Bind<IInjectComponent>().To<InjectComponent>();
+            Bind<IMainThread>().To<MainThreadComponent>();
+            Bind<IObjectManager>().To<ObjectsManager>();
         }
 
         protected BindInfo<T> Bind<T>() where T : class

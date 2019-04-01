@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace HiFramework
 {
-    public class MainThreadComponent : ComponentBase, ITick, IMainThread
+    internal class MainThreadComponent : ComponentBase, ITick, IMainThread
     {
         private ITickComponent _tickComponent;
         /// <summary>
