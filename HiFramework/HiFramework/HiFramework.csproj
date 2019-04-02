@@ -71,6 +71,7 @@
     <Compile Include="Components\MainThread\MainThread.cs" />
     <Compile Include="Components\ObjectManager\IObjectManager.cs" />
     <Compile Include="Components\ObjectManager\ObjectsManager.cs" />
+    <Compile Include="Extensions\HiFloat.cs" />
     <Compile Include="Extensions\Pool\IPool.cs" />
     <Compile Include="Extensions\Pool\IPoolObject.cs" />
     <Compile Include="Extensions\Pool\Pool.cs" />
