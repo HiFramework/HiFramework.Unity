@@ -1,14 +1,14 @@
 # HiFramework_unity
 
-## Haven't Finish   未完成
-
-in developing
+![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)   [![GitHub release](https://img.shields.io/github/release/hiramtan/HiFramework_unity.svg)](https://github.com/hiramtan/HiFramework_unity/releases)
 
 
 -----------------------
 
 #### 如何使用
-从此地址下载dll,复制到项目中:[![Github Releases](https://img.shields.io/github/downloads/atom/atom/total.svg)](https://github.com/hiramtan/HiFramework_unity/releases) 
+[![Github Releases](https://img.shields.io/github/downloads/atom/atom/total.svg)](https://github.com/hiramtan/HiFramework_unity/releases) 
+
+从此地址下载dll,复制到项目中:
 
 ``` csharp
         var io = Center.Get<IIOComponent>();
