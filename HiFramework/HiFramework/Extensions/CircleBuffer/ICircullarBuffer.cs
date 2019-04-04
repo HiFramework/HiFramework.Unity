@@ -12,7 +12,7 @@ namespace HiFramework
     /// Reuse array
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    interface ICircullarBuffer<T> : IDisposable
+    public interface ICircularBuffer<T> : IDisposable
     {
         /// <summary>
         /// Array to contain element
@@ -27,7 +27,7 @@ namespace HiFramework
         /// <summary>
         /// Current read and write state
         /// </summary>
-        CircullarBuffer<T>.State EState { get; }
+        CircularBuffer<T>.State EState { get; }
 
         /// <summary>
         /// Index of read position
@@ -68,9 +68,10 @@ namespace HiFramework
         void Write(T[] bytes);
 
         /// <summary>
-        /// Read all from array
+        /// How many data to read
         /// </summary>
+        /// <param name="length"></param>
         /// <returns></returns>
-        T[] Read();
+        T[] Read(int length);
     }
 }
