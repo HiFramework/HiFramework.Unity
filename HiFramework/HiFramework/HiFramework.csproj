@@ -71,6 +71,7 @@
     <Compile Include="Components\MainThread\MainThread.cs" />
     <Compile Include="Components\ObjectManager\IObjectManager.cs" />
     <Compile Include="Components\ObjectManager\ObjectsManager.cs" />
+    <Compile Include="Core\Log.cs" />
     <Compile Include="Extensions\Bits.cs" />
     <Compile Include="Extensions\CircleBuffer\CircleBuffer.cs" />
     <Compile Include="Extensions\CircleBuffer\ICircullarBuffer.cs" />
