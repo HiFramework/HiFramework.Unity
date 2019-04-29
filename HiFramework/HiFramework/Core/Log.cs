@@ -1,5 +1,16 @@
-﻿using System;
+﻿/****************************************************************************
+ * Description:Fast dictionary logic and not use lingQ
+ *
+ * Author: hiramtan@live.com
+ ****************************************************************************/
+
+//#define UNITY
+
+#define VISUAL
+
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -11,26 +22,34 @@ namespace HiFramework
         public static bool IsWanningOn;
         public static bool IsErrorOn;
 
-        public static void SetLogger()
-        {
-        }
-
         public static void Print(params object[] obj)
         {
+#if VISUAL
             Console.WriteLine(obj);
+#else
+
+#endif
         }
 
         public static void Wanning(params object[] obj)
         {
+#if VISUAL
             Console.WriteLine(obj);
+#else
+
+#endif
         }
 
         public static void Error(params object[] obj)
         {
+#if VISUAL
             for (int i = 0; i < obj.Length; i++)
             {
                 throw new Exception(obj[i].ToString());
             }
+#else
+
+#endif
         }
     }
 }
