@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HiFramework</RootNamespace>
     <AssemblyName>HiFramework</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,8 +31,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HiFramework.Assert, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HiFramework.Assert.1.0.1\lib\net45\HiFramework.Assert.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -71,9 +77,6 @@
     <Compile Include="Components\MainThread\MainThread.cs" />
     <Compile Include="Components\ObjectManager\IObjectManager.cs" />
     <Compile Include="Components\ObjectManager\ObjectsManager.cs" />
-    <Compile Include="Core\Log.cs" />
-    <Compile Include="Core\Log\ILogProxy.cs" />
-    <Compile Include="Core\Log\Log.cs" />
     <Compile Include="Extensions\Bits.cs" />
     <Compile Include="Extensions\CircleBuffer\CircleBuffer.cs" />
     <Compile Include="Extensions\CircleBuffer\ICircullarBuffer.cs" />
@@ -89,7 +92,6 @@
     <Compile Include="Components\Signal\Signal_2.cs" />
     <Compile Include="Components\Signal\Signal_1.cs" />
     <Compile Include="Components\Signal\Signal_4.cs" />
-    <Compile Include="Core\AssertThat.cs" />
     <Compile Include="Core\Binder.cs" />
     <Compile Include="Core\BindInfo.cs" />
     <Compile Include="Core\Center.cs" />
@@ -102,6 +104,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Components\Signal\Signal_3.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

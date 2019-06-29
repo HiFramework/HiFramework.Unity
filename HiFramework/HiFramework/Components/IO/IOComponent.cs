@@ -7,6 +7,7 @@
 
 using System;
 using System.IO;
+using HiFramework.Assert;
 
 namespace HiFramework
 {

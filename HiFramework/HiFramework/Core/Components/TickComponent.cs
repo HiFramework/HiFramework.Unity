@@ -5,6 +5,7 @@
  * Author: hiramtan@live.com
  ****************************************************************************/
 using System.Collections.Generic;
+using HiFramework.Assert;
 
 namespace HiFramework
 {

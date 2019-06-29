@@ -5,6 +5,7 @@
  * Author: hiramtan@live.com
  ****************************************************************************/
 using System;
+using HiFramework.Assert;
 
 namespace HiFramework
 {

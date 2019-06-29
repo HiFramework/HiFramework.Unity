@@ -5,6 +5,8 @@
  * Author: hiramtan@live.com
  ****************************************************************************/
 
+using HiFramework.Assert;
+
 namespace HiFramework
 {
     public static class Center

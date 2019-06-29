@@ -1,0 +1,8 @@
+D:\MyGit\github\HiFramework_unity\HiFramework\HiFramework\bin\Release\HiFramework.dll
+D:\MyGit\github\HiFramework_unity\HiFramework\HiFramework\bin\Release\HiFramework.pdb
+D:\MyGit\github\HiFramework_unity\HiFramework\HiFramework\bin\Release\UnityEngine.dll
+D:\MyGit\github\HiFramework_unity\HiFramework\HiFramework\obj\Release\HiFramework.csprojAssemblyReference.cache
+D:\MyGit\github\HiFramework_unity\HiFramework\HiFramework\obj\Release\HiFramework.csproj.CoreCompileInputs.cache
+D:\MyGit\github\HiFramework_unity\HiFramework\HiFramework\obj\Release\HiFramework.csproj.CopyComplete
+D:\MyGit\github\HiFramework_unity\HiFramework\HiFramework\obj\Release\HiFramework.dll
+D:\MyGit\github\HiFramework_unity\HiFramework\HiFramework\obj\Release\HiFramework.pdb
