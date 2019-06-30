@@ -1,0 +1,11 @@
+D:\MyGit\github\HiFramework_unity\HiFramework.Unity\HiFramework.Unity\bin\Debug\HiFramework.Unity.dll
+D:\MyGit\github\HiFramework_unity\HiFramework.Unity\HiFramework.Unity\bin\Debug\HiFramework.Unity.pdb
+D:\MyGit\github\HiFramework_unity\HiFramework.Unity\HiFramework.Unity\bin\Debug\HiFramework.Assert.dll
+D:\MyGit\github\HiFramework_unity\HiFramework.Unity\HiFramework.Unity\bin\Debug\HiFramework.Core.dll
+D:\MyGit\github\HiFramework_unity\HiFramework.Unity\HiFramework.Unity\bin\Debug\HiFramework.dll
+D:\MyGit\github\HiFramework_unity\HiFramework.Unity\HiFramework.Unity\bin\Debug\UnityEngine.dll
+D:\MyGit\github\HiFramework_unity\HiFramework.Unity\HiFramework.Unity\obj\Debug\HiFramework.Unity.csprojAssemblyReference.cache
+D:\MyGit\github\HiFramework_unity\HiFramework.Unity\HiFramework.Unity\obj\Debug\HiFramework.Unity.csproj.CoreCompileInputs.cache
+D:\MyGit\github\HiFramework_unity\HiFramework.Unity\HiFramework.Unity\obj\Debug\HiFramework.Unity.csproj.CopyComplete
+D:\MyGit\github\HiFramework_unity\HiFramework.Unity\HiFramework.Unity\obj\Debug\HiFramework.Unity.dll
+D:\MyGit\github\HiFramework_unity\HiFramework.Unity\HiFramework.Unity\obj\Debug\HiFramework.Unity.pdb

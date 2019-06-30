@@ -5,6 +5,7 @@
  * Author: hiramtan@live.com
  ****************************************************************************/
  using HiFramework;
+ using HiFramework.Core;
 
 class Example_Bind_ITestComponent : ComponentBase, Example_Bind_ITest
 {

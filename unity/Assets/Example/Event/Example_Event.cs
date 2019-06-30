@@ -8,6 +8,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using HiFramework;
+using HiFramework.Core;
+using HiFramework.Unity;
 using UnityEngine;
 
 public class Example_Event : MonoBehaviour
@@ -25,7 +27,7 @@ public class Example_Event : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Center.Tick(Time.deltaTime);
+        Center.Get<ITickComponent>().Tick(Time.deltaTime);
     }
 
     void OnEvent(int score)

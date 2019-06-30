@@ -5,7 +5,9 @@
  * Author: hiramtan@live.com
  ****************************************************************************/
  using HiFramework;
-using UnityEngine;
+ using HiFramework.Core;
+ using HiFramework.Unity;
+ using UnityEngine;
 
 public class Example_Bind : MonoBehaviour
 {
@@ -22,6 +24,6 @@ public class Example_Bind : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Center.Tick(Time.deltaTime);
+        Center.Get<ITickComponent>().Tick(Time.deltaTime);
     }
 }

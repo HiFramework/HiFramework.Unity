@@ -1,4 +1,6 @@
 ﻿using HiFramework;
+using HiFramework.Core;
+using HiFramework.Unity;
 using UnityEngine;
 
 public class Example_Inject : MonoBehaviour
@@ -20,6 +22,6 @@ public class Example_Inject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Center.Tick(Time.deltaTime);
+        Center.Get<ITickComponent>().Tick(Time.deltaTime);
     }
 }

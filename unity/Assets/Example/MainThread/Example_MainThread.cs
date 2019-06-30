@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Threading;
 using HiFramework;
+using HiFramework.Core;
 using UnityEngine;
+using HiFramework.Unity;
 
 public class Example_MainThread : MonoBehaviour
 {
@@ -18,7 +20,7 @@ public class Example_MainThread : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Center.Tick(Time.deltaTime);
+        Center.Get<ITickComponent>().Tick(Time.deltaTime);
     }
 
     void Do()
