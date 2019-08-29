@@ -7,7 +7,7 @@
     <ProjectGuid>{821B61E5-3D1B-4E8D-8FAE-EC16934BEB24}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HiFramework</RootNamespace>
+    <RootNamespace>HiFramework.Unity</RootNamespace>
     <AssemblyName>HiFramework.Unity</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -48,6 +48,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\Fsm\Fsm.cs" />
+    <Compile Include="Extensions\Fsm\IFsm.cs" />
+    <Compile Include="Extensions\Fsm\IStateRule.cs" />
+    <Compile Include="Extensions\Fsm\IState.cs" />
+    <Compile Include="Extensions\Fsm\StateBase.cs" />
     <Compile Include="UnityBinder.cs" />
     <Compile Include="Components\AsyncTask\AsyncTaskComponent.cs" />
     <Compile Include="Components\AsyncTask\AsyncTaskRepeat.cs" />
