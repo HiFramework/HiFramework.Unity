@@ -21,7 +21,7 @@ namespace HiFramework.Unity
         /// </summary>
         /// <param name="name"></param>
         /// <param name="state"></param>
-        void RegistState(string name, StateBase state);
+        void RegistState(StateBase state);
 
         /// <summary>
         /// Init state machine
