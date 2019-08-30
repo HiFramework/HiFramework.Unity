@@ -32,13 +32,13 @@ namespace HiFramework.Unity
             }
         }
 
-        public void Regist<T>(T t) where T : ITick, new()
+        public void Regist<T>(T t) where T : ITick
         {
             Assert.IsFalse(_ticks.Contains(t), "Tick list alreay has this componentBase");
             _ticks.Add(t);
         }
 
-        public void Unregist<T>(T t) where T : ITick, new()
+        public void Unregist<T>(T t) where T : ITick
         {
             Assert.IsTrue(_ticks.Contains(t), "Tick list do not have this componentBase");
             _ticks.Remove(t);

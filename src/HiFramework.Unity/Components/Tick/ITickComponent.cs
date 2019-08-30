@@ -8,8 +8,8 @@ namespace HiFramework.Unity
 {
     public interface ITickComponent : ITick
     {
-        void Regist<T>(T t) where T : ITick, new();
+        void Regist<T>(T t) where T : ITick;
 
-        void Unregist<T>(T t) where T : ITick, new();
+        void Unregist<T>(T t) where T : ITick;
     }
 }

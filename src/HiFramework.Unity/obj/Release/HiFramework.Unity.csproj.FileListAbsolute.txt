@@ -30,4 +30,3 @@ D:\MyGit\github\HiFramework_unity\src\HiFramework.Unity\bin\Release\UnityEngine.
 D:\MyGit\github\HiFramework_unity\src\HiFramework.Unity\obj\Release\HiFramework.Unity.csproj.CopyComplete
 D:\MyGit\github\HiFramework_unity\HiFramework_unity\HiFramework.Unity.dll
 D:\MyGit\github\HiFramework_unity\HiFramework_unity\HiFramework.Unity.pdb
-D:\MyGit\github\HiFramework_unity\src\HiFramework.Unity\obj\Release\HiFramework.Unity.csprojAssemblyReference.cache
