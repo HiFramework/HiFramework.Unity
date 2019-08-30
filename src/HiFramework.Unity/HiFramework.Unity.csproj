@@ -50,7 +50,7 @@
   <ItemGroup>
     <Compile Include="Extensions\Fsm\Fsm.cs" />
     <Compile Include="Extensions\Fsm\IFsm.cs" />
-    <Compile Include="Extensions\Fsm\IStateRule.cs" />
+    <Compile Include="Extensions\Fsm\IStateChangeRule.cs" />
     <Compile Include="Extensions\Fsm\IState.cs" />
     <Compile Include="Extensions\Fsm\StateBase.cs" />
     <Compile Include="UnityBinder.cs" />

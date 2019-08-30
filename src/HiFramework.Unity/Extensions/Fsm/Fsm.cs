@@ -23,10 +23,10 @@ namespace HiFramework.Unity
         }
 
         private StateBase _currentState;
-        private IStateRule _rule;
+        private IStateChangeRule _rule;
         private Dictionary<string, StateBase> _states = new Dictionary<string, StateBase>();
 
-        public Fsm(IStateRule rule)
+        public Fsm(IStateChangeRule rule)
         {
             this._rule = rule;
         }

@@ -12,7 +12,7 @@ using System.Text;
 
 namespace HiFramework.Unity
 {
-    public interface IStateRule
+    public interface IStateChangeRule
     {
         bool IsCanChangeState(IState current, IState next);
     }

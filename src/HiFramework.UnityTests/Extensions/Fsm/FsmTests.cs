@@ -26,13 +26,13 @@ namespace HiFramework.Unity.Tests
         [TestMethod()]
         public void FsmTest()
         {
-            var fsm = new Fsm(new StateRule());
+            var fsm = new Fsm(new StateChangeRule());
         }
 
         [TestMethod()]
         public void RegistStateTest()
         {
-            var fsm = new Fsm(new StateRule());
+            var fsm = new Fsm(new StateChangeRule());
             fsm.RegistState(new Idle("idle", fsm));
             fsm.RegistState(new Run("run", fsm));
         }
@@ -40,7 +40,7 @@ namespace HiFramework.Unity.Tests
         [TestMethod()]
         public void InitTest()
         {
-            var fsm = new Fsm(new StateRule());
+            var fsm = new Fsm(new StateChangeRule());
             fsm.RegistState(new Idle("idle", fsm));
             fsm.RegistState(new Run("run", fsm));
             fsm.Init("idle");
@@ -49,7 +49,7 @@ namespace HiFramework.Unity.Tests
         [TestMethod()]
         public void ChangeStateTest()
         {
-            var fsm = new Fsm(new StateRule());
+            var fsm = new Fsm(new StateChangeRule());
             fsm.RegistState(new Idle("idle", fsm));
             fsm.RegistState(new Run("run", fsm));
             fsm.Init("idle");
@@ -59,7 +59,7 @@ namespace HiFramework.Unity.Tests
         [TestMethod()]
         public void TickTest()
         {
-            var fsm = new Fsm(new StateRule());
+            var fsm = new Fsm(new StateChangeRule());
             fsm.RegistState(new Idle("idle", fsm));
             fsm.RegistState(new Run("run", fsm));
             fsm.Init("idle");
@@ -69,13 +69,13 @@ namespace HiFramework.Unity.Tests
         [TestMethod()]
         public void DisposeTest()
         {
-            var fsm = new Fsm(new StateRule());
+            var fsm = new Fsm(new StateChangeRule());
             fsm.RegistState(new Idle("idle", fsm));
             fsm.Init("idle");
             fsm.Dispose();
         }
 
-        private class StateRule : IStateRule
+        private class StateChangeRule : IStateChangeRule
         {
             public bool IsCanChangeState(IState current, IState next)
             {
